@@ -104,6 +104,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(51, 51, 255));
         jButton5.setText("Login/registrera");
 
         jLabel1.setText("test commit");
