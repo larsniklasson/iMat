@@ -56,6 +56,7 @@ public class IMatView extends javax.swing.JFrame {
         searchTextFIeld = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -104,25 +105,27 @@ public class IMatView extends javax.swing.JFrame {
 
         jButton5.setText("Login/registrera");
 
+        jLabel1.setText("test commit");
+
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(selectedLabel)
+                .addGap(27, 27, 27)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(selectedLabel)
-                        .addGap(27, 27, 27)
-                        .addComponent(treeCollapseLabel))
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(272, 272, 272)
+                        .addComponent(jLabel1)
+                        .addGap(176, 176, 176)
                         .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addComponent(jButton5))
+                    .addComponent(treeCollapseLabel))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +138,8 @@ public class IMatView extends javax.swing.JFrame {
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -453,6 +457,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
