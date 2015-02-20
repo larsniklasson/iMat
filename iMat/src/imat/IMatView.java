@@ -138,33 +138,59 @@ public class IMatView extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(153, 0, 204));
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("baljväxter");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("bröd");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Grönsaker");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kål");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Grönsaksfrukter");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Ärtor, Linser & Bönor");
+        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("bär");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kött");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("citrusfrukter");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Fisk");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("drycker, varma");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Frukt & Bär");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Stenfrukter");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Meloner");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Citrusfrukter");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Exotiska Frukter");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Bär");
+        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("drycker, kalla");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bröd");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("ex. frukter");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Drycker");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Varma Drycker");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kalla Drycker");
+        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("fisk");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mejeriprodukter");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("gröns.-frukter");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mjöl, Socker & Salt");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("kål");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Nötter & Frön");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("kött");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Pasta, Potatis & Ris");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Pasta");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Potatis");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Ris");
+        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("mejeri");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Sötsaker");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("meloner");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("mjöl, aslt");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kryddor");
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree1.setToggleClickCount(1);
@@ -377,27 +403,109 @@ public class IMatView extends javax.swing.JFrame {
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
         String s = selectedNode.getUserObject().toString();
-
-        if(s.equals("baljväxter")){
-            varorViewList = dh.getProducts(ProductCategory.POD);
+        
+        
+        
+        switch(s){
+            case "Visa Alla":
+                varorViewList = dh.getProducts();
+                break;
+            case "Grönsaker":
+                varorViewList = dh.getProducts(ProductCategory.POD);
+                varorViewList.addAll(dh.getProducts(ProductCategory.CABBAGE));
+                varorViewList.addAll(dh.getProducts(ProductCategory.ROOT_VEGETABLE));
+                varorViewList.addAll(dh.getProducts(ProductCategory.VEGETABLE_FRUIT));
+                break;
+            
+            case "Kål":
+                varorViewList = dh.getProducts(ProductCategory.CABBAGE);
+                break;
+            case "Rotfrukter":
+                varorViewList = dh.getProducts(ProductCategory.ROOT_VEGETABLE);
+                break;
+            case "Grönsaksfrukter":
+                varorViewList = dh.getProducts(ProductCategory.VEGETABLE_FRUIT);
+                break;
+            case "Ärtor, Linser & Bönor":
+                varorViewList = dh.getProducts(ProductCategory.POD);
+                break;
+            
+            case "Kött":
+                varorViewList = dh.getProducts(ProductCategory.MEAT);
+                break;
+            case "Fisk":
+                varorViewList = dh.getProducts(ProductCategory.FISH);
+                break;
+            case "Frukt & Bär":
+                varorViewList = dh.getProducts(ProductCategory.BERRY);
+                varorViewList.addAll(dh.getProducts(ProductCategory.MELONS));
+                varorViewList.addAll(dh.getProducts(ProductCategory.CITRUS_FRUIT));
+                varorViewList.addAll(dh.getProducts(ProductCategory.EXOTIC_FRUIT));
+                varorViewList.addAll(dh.getProducts(ProductCategory.FRUIT));
+                break;
+            
+            case "Stenfrukter":
+                varorViewList = dh.getProducts(ProductCategory.FRUIT);
+                break;    
+            case "Meloner":
+                varorViewList = dh.getProducts(ProductCategory.MELONS);
+                break;    
+            case "Citrusfrukter":
+                varorViewList = dh.getProducts(ProductCategory.CITRUS_FRUIT);
+                break;    
+            case "Exotiska Frukter":
+                varorViewList = dh.getProducts(ProductCategory.EXOTIC_FRUIT);
+                break;    
+            case "Bär":
+                varorViewList = dh.getProducts(ProductCategory.BERRY);
+                break;    
+            
+            case "Bröd":
+                varorViewList = dh.getProducts(ProductCategory.BREAD);
+                break;    
+            case "Drycker":
+                varorViewList = dh.getProducts(ProductCategory.COLD_DRINKS);
+                varorViewList.addAll(dh.getProducts(ProductCategory.HOT_DRINKS));
+                break;   
+            case "Varma Drycker":
+                varorViewList = dh.getProducts(ProductCategory.HOT_DRINKS);
+                break;   
+            case "Kalla Drycker":
+                varorViewList = dh.getProducts(ProductCategory.COLD_DRINKS);
+                break;   
+            case "Mejeriprodukter":
+                varorViewList = dh.getProducts(ProductCategory.DAIRIES);
+                break;   
+            case "Mjöl, Socker & Salt":
+                varorViewList = dh.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+                break;   
+            case "Nötter & Frön":
+                varorViewList = dh.getProducts(ProductCategory.NUTS_AND_SEEDS);
+                break;
+            
+            case "Pasta, Potatis & Ris":
+                varorViewList = dh.getProducts(ProductCategory.PASTA);
+                varorViewList.addAll(dh.getProducts(ProductCategory.POTATO_RICE));
+                break; 
+            case "Pasta":
+                varorViewList = dh.getProducts(ProductCategory.PASTA);
+                break; 
+            case "Potatis":
+                varorViewList = dh.findProducts("potatis");
+                break; 
+            case "Ris":
+                varorViewList = dh.findProducts("ris");
+                break;   
+            case "Sötsaker":
+                varorViewList = dh.getProducts(ProductCategory.SWEET);
+                break;
+            case "Kryddor":
+                varorViewList = dh.getProducts(ProductCategory.HERB);
+                break;
+                
         }
-        if(s.equals("bröd")){
-            varorViewList = dh.getProducts(ProductCategory.BREAD);
-        }
-        if(s.equals("bär")){
-            varorViewList = dh.getProducts(ProductCategory.BERRY);
-        }
-        if(s.equals("citrusfrukter")){
-            varorViewList = dh.getProducts(ProductCategory.CITRUS_FRUIT);
-        }
-        if(s.equals("drycker, varma")){
-            varorViewList = dh.getProducts(ProductCategory.HOT_DRINKS);
-        }
-
-        if(s.equals("kål")){
-            varorViewList = dh.getProducts();
-
-        }
+        
+        
         TitleLabel.setText(s);
         jTree1.repaint();
 
@@ -410,7 +518,7 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTree1TreeWillCollapse
 
     private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
-        System.out.println("hej");
+        
         int row = jTree1.getClosestRowForLocation(evt.getX(), evt.getY());
 
         jTree1.setSelectionRow(row);
@@ -516,13 +624,13 @@ public class IMatView extends javax.swing.JFrame {
     private void updateKundVagn(){
         kundvagnPanel.removeAll();
         kundvagnPanel.revalidate();
-        System.out.println("total " + shoppingCart.getItems().size());
+        //System.out.println("total " + shoppingCart.getItems().size());
         kundvagnPanel.setLayout(new GridLayout((int)shoppingCart.getItems().size(),1));
         int counter = 0;
         
         if (shoppingCart.getItems().size() == 0){
             JLabel label = new JLabel("Kundvagnen tom");
-            System.out.println(label.getFont().toString());
+            //System.out.println(label.getFont().toString());
             kundvagnPanel.add(label);
         }
         
