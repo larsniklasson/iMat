@@ -426,6 +426,7 @@ public class IMatView extends javax.swing.JFrame {
             
             case "Kål":
                 varorViewList = dh.getProducts(ProductCategory.CABBAGE);
+                //stuff
                 break;
             case "Rotfrukter":
                 varorViewList = dh.getProducts(ProductCategory.ROOT_VEGETABLE);
