@@ -96,6 +96,7 @@ public class IMatView extends javax.swing.JFrame {
 
         treeCollapseLabel.setText("Din termos i gryningen");
 
+        searchButton.setBackground(new java.awt.Color(255, 51, 0));
         searchButton.setText("Sök");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
