@@ -6,6 +6,7 @@
 package imat;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -36,24 +37,71 @@ public class ProductInList extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        plusButton = new javax.swing.JButton();
+        minusButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField2.setText("" + (int)si.getAmount());
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 25, 24));
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
 
         jLabel1.setText(si.getProduct().getName());
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 3, 140, 24));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 3, 120, 24));
 
         jButton1.setText("X");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 5, 40, 20));
+
+        plusButton.setText("+");
+        plusButton.setToolTipText("Lägg till vara");
+        plusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        plusButton.setBorderPainted(false);
+        plusButton.setContentAreaFilled(false);
+        plusButton.setFocusPainted(false);
+        plusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusButtonActionPerformed(evt);
+            }
+        });
+        add(plusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 10, 30));
+
+        minusButton.setText("-");
+        minusButton.setToolTipText("Ta bort vara");
+        minusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        minusButton.setBorderPainted(false);
+        minusButton.setContentAreaFilled(false);
+        minusButton.setFocusPainted(false);
+        minusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minusButtonActionPerformed(evt);
+            }
+        });
+        add(minusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
+       si.setAmount(si.getAmount()+1);
+        jTextField2.setText("" + (int) si.getAmount());
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plusButtonActionPerformed
+
+    private void minusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusButtonActionPerformed
+        si.setAmount(si.getAmount()-1);
+        jTextField2.setText("" + (int) si.getAmount());
+        if(si.getAmount()<1){
+            JOptionPane jp = new JOptionPane("hej");
+            
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minusButtonActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton minusButton;
+    private javax.swing.JButton plusButton;
     // End of variables declaration//GEN-END:variables
     public JButton getButton(){
         return jButton1;
