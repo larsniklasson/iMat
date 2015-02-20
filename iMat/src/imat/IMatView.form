@@ -174,11 +174,13 @@
                   <Events>
                     <EventHandler event="treeCollapsed" listener="javax.swing.event.TreeExpansionListener" parameters="javax.swing.event.TreeExpansionEvent" handler="jTree1TreeCollapsed"/>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTree1MouseClicked"/>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTree1MousePressed"/>
                     <EventHandler event="treeWillCollapse" listener="javax.swing.event.TreeWillExpandListener" parameters="javax.swing.event.TreeExpansionEvent" handler="jTree1TreeWillCollapse"/>
                     <EventHandler event="valueChanged" listener="javax.swing.event.TreeSelectionListener" parameters="javax.swing.event.TreeSelectionEvent" handler="jTree1ValueChanged"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTree1.setRootVisible(false);&#xa;jTree1.setToggleClickCount(1);"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTree()"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTree1.setRootVisible(false);&#xa;jTree1.setToggleClickCount(1);&#xa;&#xa;for(MouseListener ml : jTree1.getMouseListeners()){&#xa;    System.out.println(123123);&#xa;    jTree1.removeMouseListener(ml);&#xa;}"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

@@ -11,9 +11,12 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -38,6 +41,9 @@ public class IMatView extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         updateKundVagn();
+        
+        
+        
     }
 
     /**
@@ -196,6 +202,11 @@ public class IMatView extends javax.swing.JFrame {
         jTree1.setToggleClickCount(1);
         jTree1.setRootVisible(false);
         jTree1.setToggleClickCount(1);
+
+        for(MouseListener ml : jTree1.getMouseListeners()){
+            System.out.println(123123);
+            jTree1.removeMouseListener(ml);
+        }
         jTree1.addTreeExpansionListener(new javax.swing.event.TreeExpansionListener() {
             public void treeCollapsed(javax.swing.event.TreeExpansionEvent evt) {
                 jTree1TreeCollapsed(evt);
@@ -206,6 +217,9 @@ public class IMatView extends javax.swing.JFrame {
         jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTree1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTree1MousePressed(evt);
             }
         });
         jTree1.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
@@ -408,6 +422,7 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
+        
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
         String s = selectedNode.getUserObject().toString();
         
@@ -522,14 +537,12 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTree1ValueChanged
 
     private void jTree1TreeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_jTree1TreeWillCollapse
-
+        
     }//GEN-LAST:event_jTree1TreeWillCollapse
 
     private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
         
-        int row = jTree1.getClosestRowForLocation(evt.getX(), evt.getY());
-
-        jTree1.setSelectionRow(row);
+        
 
     }//GEN-LAST:event_jTree1MouseClicked
 
@@ -541,6 +554,45 @@ public class IMatView extends javax.swing.JFrame {
     private void favoritesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoritesButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_favoritesButtonActionPerformed
+
+    private void jTree1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MousePressed
+        
+        TreePath path = jTree1.getClosestPathForLocation(evt.getX(), evt.getY());
+        if(jTree1.isPathSelected(path)){
+            if(jTree1.isExpanded(path)){
+                jTree1.collapsePath(path);
+            } else {
+                
+                jTree1.expandPath(path);
+                
+            }
+        } else {
+            
+            jTree1.expandPath(path);
+        }
+        
+        jTree1.setSelectionPath(path);
+        
+        /*int row = jTree1.getClosestRowForLocation(evt.getX(), evt.getY());
+        
+        if(jTree1.isRowSelected(row)){
+            if(jTree1.isExpanded(row)){
+                jTree1.collapseRow(row);
+            } else {
+                
+                for(int i = 0; i < jTree1.getRowCount(); i++){
+                    
+                }
+                jTree1.expandRow(row);
+            }
+        } else {
+            jTree1.expandRow(row);
+        }
+        
+        
+        jTree1.setSelectionRow(row);*/
+        
+    }//GEN-LAST:event_jTree1MousePressed
 
     /**
      * @param args the command line arguments

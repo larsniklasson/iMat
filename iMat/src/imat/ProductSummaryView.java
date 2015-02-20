@@ -44,7 +44,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
-        System.out.println(jLabel1.getHeight());
+        //System.out.println(jLabel1.getHeight());
         jLabel1.setIcon(dh.getImageIcon(p, 140, 100));
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
