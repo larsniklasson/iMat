@@ -248,6 +248,7 @@ public class IMatView extends javax.swing.JFrame {
 
         jButton2.setText("ink.lista");
 
+        jButton3.setBackground(new java.awt.Color(255, 0, 255));
         jButton3.setText("Töm");
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
