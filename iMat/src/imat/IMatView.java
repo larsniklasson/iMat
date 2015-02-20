@@ -52,15 +52,16 @@ public class IMatView extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         selectedLabel = new javax.swing.JLabel();
-        treeCollapseLabel = new javax.swing.JLabel();
         searchTextFIeld = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
+        favoritesButton = new javax.swing.JButton();
+        listorButton = new javax.swing.JButton();
+        settingsButton = new javax.swing.JButton();
+        kassarButton = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
         kundvagnPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -95,9 +96,6 @@ public class IMatView extends javax.swing.JFrame {
 
         selectedLabel.setText("IMAT");
 
-        treeCollapseLabel.setText("Din termos i gryningen");
-
-        searchButton.setBackground(new java.awt.Color(255, 51, 0));
         searchButton.setText("Sök");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,12 +103,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(51, 51, 255));
         jButton5.setText("Login/registrera");
-
-        jLabel1.setText("test commit");
-
-        jLabel4.setText("ett till test");
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -119,35 +112,24 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(selectedLabel)
-                .addGap(27, 27, 27)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(treeCollapseLabel))
-                .addGap(124, 124, 124)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5))
-                    .addComponent(jLabel4))
+                .addGap(258, 258, 258)
+                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectedLabel)
-                    .addComponent(treeCollapseLabel)
-                    .addComponent(jLabel4))
+                .addComponent(selectedLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton)
-                    .addComponent(jButton5)
-                    .addComponent(jLabel1))
+                    .addComponent(jButton5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -156,15 +138,7 @@ public class IMatView extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(153, 0, 204));
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("favoriter");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("inställningar");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("inköpslistor");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("-----------");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("baljväxter");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("baljväxter");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("bröd");
         treeNode1.add(treeNode2);
@@ -222,15 +196,46 @@ public class IMatView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTree1);
 
+        favoritesButton.setText("favoriter");
+        favoritesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favoritesButtonActionPerformed(evt);
+            }
+        });
+
+        listorButton.setText("inköpslistor");
+
+        settingsButton.setText("inställningar");
+
+        kassarButton.setText("färdiga kassar");
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(settingsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(listorButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(favoritesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kassarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(favoritesButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listorButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(settingsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kassarButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
@@ -255,7 +260,6 @@ public class IMatView extends javax.swing.JFrame {
 
         jButton2.setText("ink.lista");
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 255));
         jButton3.setText("Töm");
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
@@ -281,7 +285,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -350,57 +354,6 @@ public class IMatView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
-        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
-        String s = selectedNode.getUserObject().toString();
-        
-        if(s.equals("baljväxter")){
-            varorViewList = dh.getProducts(ProductCategory.POD);
-        }
-        if(s.equals("bröd")){
-            varorViewList = dh.getProducts(ProductCategory.BREAD);
-        }
-        if(s.equals("bär")){
-            varorViewList = dh.getProducts(ProductCategory.BERRY);
-        }
-        if(s.equals("citrusfrukter")){
-            varorViewList = dh.getProducts(ProductCategory.CITRUS_FRUIT);
-        }
-        if(s.equals("drycker, varma")){
-            varorViewList = dh.getProducts(ProductCategory.HOT_DRINKS);
-        }
-        
-        if(s.equals("kål")){
-            varorViewList = dh.getProducts();
-            
-        }
-        TitleLabel.setText(s);
-        jTree1.repaint();
-        
-        updateVarorView();
-        
-    }//GEN-LAST:event_jTree1ValueChanged
-
-    private void jTree1TreeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_jTree1TreeWillCollapse
-       
-    }//GEN-LAST:event_jTree1TreeWillCollapse
-
-    private void jTree1TreeCollapsed(javax.swing.event.TreeExpansionEvent evt) {//GEN-FIRST:event_jTree1TreeCollapsed
-        treeCollapseLabel.setText(evt.getPath().toString());
-        
-        jTree1.expandPath(evt.getPath());
-        
-    }//GEN-LAST:event_jTree1TreeCollapsed
-
-    private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
-        System.out.println("hej");
-        int row = jTree1.getClosestRowForLocation(evt.getX(), evt.getY());
-        
-        jTree1.setSelectionRow(row);
-        
-        
-    }//GEN-LAST:event_jTree1MouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -420,6 +373,58 @@ public class IMatView extends javax.swing.JFrame {
         dh.shutDown();
         System.exit(1);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
+        String s = selectedNode.getUserObject().toString();
+
+        if(s.equals("baljväxter")){
+            varorViewList = dh.getProducts(ProductCategory.POD);
+        }
+        if(s.equals("bröd")){
+            varorViewList = dh.getProducts(ProductCategory.BREAD);
+        }
+        if(s.equals("bär")){
+            varorViewList = dh.getProducts(ProductCategory.BERRY);
+        }
+        if(s.equals("citrusfrukter")){
+            varorViewList = dh.getProducts(ProductCategory.CITRUS_FRUIT);
+        }
+        if(s.equals("drycker, varma")){
+            varorViewList = dh.getProducts(ProductCategory.HOT_DRINKS);
+        }
+
+        if(s.equals("kål")){
+            varorViewList = dh.getProducts();
+
+        }
+        TitleLabel.setText(s);
+        jTree1.repaint();
+
+        updateVarorView();
+
+    }//GEN-LAST:event_jTree1ValueChanged
+
+    private void jTree1TreeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_jTree1TreeWillCollapse
+
+    }//GEN-LAST:event_jTree1TreeWillCollapse
+
+    private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
+        System.out.println("hej");
+        int row = jTree1.getClosestRowForLocation(evt.getX(), evt.getY());
+
+        jTree1.setSelectionRow(row);
+
+    }//GEN-LAST:event_jTree1MouseClicked
+
+    private void jTree1TreeCollapsed(javax.swing.event.TreeExpansionEvent evt) {//GEN-FIRST:event_jTree1TreeCollapsed
+        
+
+    }//GEN-LAST:event_jTree1TreeCollapsed
+
+    private void favoritesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoritesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_favoritesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,28 +466,29 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
+    private javax.swing.JButton favoritesButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTree jTree1;
+    private javax.swing.JButton kassarButton;
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
+    private javax.swing.JButton listorButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextFIeld;
     private javax.swing.JLabel selectedLabel;
+    private javax.swing.JButton settingsButton;
     private javax.swing.JPanel topPanel;
-    private javax.swing.JLabel treeCollapseLabel;
     private javax.swing.JPanel varorPanel;
     // End of variables declaration//GEN-END:variables
 

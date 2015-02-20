@@ -25,7 +25,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-19,0,0,3,-124"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,58,0,0,3,-124"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -65,22 +65,12 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="selectedLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="treeCollapseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="searchTextFIeld" min="-2" pref="291" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="searchButton" min="-2" pref="74" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
+                      <Component id="searchTextFIeld" min="-2" pref="291" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="searchButton" min="-2" pref="74" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="105" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -89,17 +79,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="selectedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="treeCollapseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="selectedLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="searchTextFIeld" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -112,18 +97,10 @@
                 <Property name="text" type="java.lang.String" value="IMAT"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="treeCollapseLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Din termos i gryningen"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="searchTextFIeld">
             </Component>
             <Component class="javax.swing.JButton" name="searchButton">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="33" red="ff" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
               </Properties>
               <Events>
@@ -132,20 +109,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="33" red="33" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Login/registrera"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="test commit"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ett till test"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -166,11 +130,32 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" pref="150" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="settingsButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="listorButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="favoritesButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="kassarButton" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="689" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <Component id="favoritesButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="listorButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="settingsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="kassarButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="629" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -185,7 +170,7 @@
                 <Component class="javax.swing.JTree" name="jTree1">
                   <Properties>
                     <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                      <TreeModel code="favoriter&#xa;inst&#xe4;llningar&#xa;ink&#xf6;pslistor&#xa;-----------&#xa;&#xa;baljv&#xe4;xter&#xa;br&#xf6;d&#xa;b&#xe4;r&#xa;citrusfrukter&#xa;drycker, varma&#xa;drycker, kalla&#xa;ex. frukter&#xa;fisk&#xa;gr&#xf6;ns.-frukter&#xa;k&#xe5;l&#xa;k&#xf6;tt&#xa;mejeri&#xa;meloner&#xa;mj&#xf6;l, aslt"/>
+                      <TreeModel code="baljv&#xe4;xter&#xa;br&#xf6;d&#xa;b&#xe4;r&#xa;citrusfrukter&#xa;drycker, varma&#xa;drycker, kalla&#xa;ex. frukter&#xa;fisk&#xa;gr&#xf6;ns.-frukter&#xa;k&#xe5;l&#xa;k&#xf6;tt&#xa;mejeri&#xa;meloner&#xa;mj&#xf6;l, aslt"/>
                     </Property>
                     <Property name="toggleClickCount" type="int" value="1"/>
                   </Properties>
@@ -201,6 +186,29 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="favoritesButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="favoriter"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favoritesButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="listorButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ink&#xf6;pslistor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="settingsButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="inst&#xe4;llningar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="kassarButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="f&#xe4;rdiga kassar"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="rightPanel">
@@ -244,7 +252,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="kundvagnPanel" pref="7" max="32767" attributes="0"/>
+                      <Component id="kundvagnPanel" pref="84" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -298,9 +306,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="0" red="ff" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="T&#xf6;m"/>
               </Properties>
             </Component>
