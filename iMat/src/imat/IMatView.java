@@ -41,7 +41,6 @@ public class IMatView extends javax.swing.JFrame {
         
         initComponents();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        //this.setSize(WIDTH, WIDTH);
         updateKundVagn();
         
         
@@ -810,6 +809,7 @@ public class IMatView extends javax.swing.JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         addToKundVagn(p, psv.getAmount());
+                        psv.resetAmount();
 //shoppingCart.addProduct(p);
                         updateKundVagn();
                     }

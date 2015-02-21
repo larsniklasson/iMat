@@ -135,8 +135,10 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }
     public int getAmount(){
         return (int) jSpinner1.getValue();
-       
-    }
+         }
+    public void resetAmount(){
+        jSpinner1.setValue(1);
+         }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
