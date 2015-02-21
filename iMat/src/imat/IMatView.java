@@ -64,10 +64,9 @@ public class IMatView extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        favoritesButton = new javax.swing.JButton();
-        listorButton = new javax.swing.JButton();
-        settingsButton = new javax.swing.JButton();
-        kassarButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTree2 = new javax.swing.JTree();
+        jSeparator1 = new javax.swing.JSeparator();
         rightPanel = new javax.swing.JPanel();
         kundvagnPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -141,7 +140,9 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
-        leftPanel.setBackground(new java.awt.Color(153, 0, 204));
+        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane1.setBorder(null);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
@@ -236,46 +237,52 @@ public class IMatView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTree1);
 
-        favoritesButton.setText("favoriter");
-        favoritesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                favoritesButtonActionPerformed(evt);
+        jScrollPane3.setBorder(null);
+
+        jTree2.setRootVisible(false);
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Favoriter");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Inköpslistor");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga Kassar");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
+        treeNode1.add(treeNode2);
+        jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTree2MousePressed(evt);
             }
         });
-
-        listorButton.setText("inköpslistor");
-
-        settingsButton.setText("inställningar");
-
-        kassarButton.setText("färdiga kassar");
+        jTree2.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                jTree2ValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTree2);
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+            .addComponent(jScrollPane3)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(settingsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listorButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(favoritesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(kassarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(19, 19, 19)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(favoritesButton)
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listorButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(settingsButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kassarButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(367, Short.MAX_VALUE))
         );
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
@@ -335,7 +342,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -429,6 +436,11 @@ public class IMatView extends javax.swing.JFrame {
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
+        
+        if(selectedNode == null){
+            return;
+        }
+        
         String s = selectedNode.getUserObject().toString();
         
         
@@ -556,10 +568,6 @@ public class IMatView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTree1TreeCollapsed
 
-    private void favoritesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoritesButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_favoritesButtonActionPerformed
-
     private void jTree1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MousePressed
         
         TreePath path = jTree1.getClosestPathForLocation(evt.getX(), evt.getY());
@@ -578,6 +586,8 @@ public class IMatView extends javax.swing.JFrame {
         
         jTree1.setSelectionPath(path);
         
+        
+        jTree2.clearSelection();
         /*int row = jTree1.getClosestRowForLocation(evt.getX(), evt.getY());
         
         if(jTree1.isRowSelected(row)){
@@ -603,6 +613,16 @@ public class IMatView extends javax.swing.JFrame {
        clearKundVagn();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTree2ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree2ValueChanged
+        System.out.println("träd2");
+    }//GEN-LAST:event_jTree2ValueChanged
+
+    private void jTree2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree2MousePressed
+        TreePath path = jTree2.getClosestPathForLocation(evt.getX(), evt.getY());
+        jTree2.setSelectionPath(path);
+        jTree1.clearSelection();
+    }//GEN-LAST:event_jTree2MousePressed
 
     /**
      * @param args the command line arguments
@@ -644,7 +664,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
-    private javax.swing.JButton favoritesButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -655,17 +674,17 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTree jTree1;
-    private javax.swing.JButton kassarButton;
+    private javax.swing.JTree jTree2;
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
-    private javax.swing.JButton listorButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextFIeld;
     private javax.swing.JLabel selectedLabel;
-    private javax.swing.JButton settingsButton;
     private javax.swing.JPanel topPanel;
     private javax.swing.JLabel totalPris;
     private javax.swing.JPanel varorPanel;
