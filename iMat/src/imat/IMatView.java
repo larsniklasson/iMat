@@ -683,7 +683,7 @@ public class IMatView extends javax.swing.JFrame {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        addToKundVagn(p, 1);
+                        addToKundVagn(p, psv.getAmount());
 //shoppingCart.addProduct(p);
                         updateKundVagn();
                     }
