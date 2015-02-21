@@ -615,7 +615,34 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTree2ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree2ValueChanged
-        System.out.println("träd2");
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree2.getLastSelectedPathComponent();
+        
+        if(selectedNode == null){
+            return;
+        }
+        
+        String s = selectedNode.getUserObject().toString();
+        
+        switch(s){
+            case "Favoriter":
+                varorViewList = dh.favorites();
+                updateVarorView();
+                break;
+            case "Inköpslistor":
+                // stuff
+                break;
+            case "Färdiga Kassar":
+                //
+                break;
+            case "Dagens Erbjudande":
+                //asfsdf
+                break;
+                
+                
+        }
+        
+        
+        TitleLabel.setText(s);
     }//GEN-LAST:event_jTree2ValueChanged
 
     private void jTree2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree2MousePressed

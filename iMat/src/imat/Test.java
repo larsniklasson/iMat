@@ -18,8 +18,7 @@ public class Test {
     public static void main(String[] args) {
         
         IMatDataHandler dh = IMatDataHandler.getInstance();
-        dh.getShoppingCart().clear();
-        dh.shutDown();
+        
         
         
     }
