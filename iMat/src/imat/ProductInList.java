@@ -82,6 +82,7 @@ public class ProductInList extends javax.swing.JPanel {
        si.setAmount(si.getAmount()+1);
         jTextField2.setText("" + (int) si.getAmount());
         
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_plusButtonActionPerformed
 
@@ -108,5 +109,11 @@ public class ProductInList extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     public JButton getButton(){
         return jButton1;
+    }
+    public JButton getplusButton(){
+     return plusButton;   
+    }
+    public JButton getminusButton(){
+     return minusButton;   
     }
 }

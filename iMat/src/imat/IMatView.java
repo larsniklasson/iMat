@@ -717,6 +717,22 @@ public class IMatView extends javax.swing.JFrame {
                     updateKundVagn();
                 }
             });
+            pil.getplusButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    addToKundVagn(si.getProduct(), 1);
+                    updateKundVagn();
+                }
+            });
+            pil.getminusButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    addToKundVagn(si.getProduct(), -1);
+                    updateKundVagn();
+                }
+            });
             kundvagnPanel.add(pil);
             counter ++;
         }
