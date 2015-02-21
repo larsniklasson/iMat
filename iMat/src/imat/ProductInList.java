@@ -79,20 +79,18 @@ public class ProductInList extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
-       si.setAmount(si.getAmount()+1);
+       /*si.setAmount(si.getAmount()+1);
         jTextField2.setText("" + (int) si.getAmount());
+        */
         
         
         // TODO add your handling code here:
     }//GEN-LAST:event_plusButtonActionPerformed
 
     private void minusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusButtonActionPerformed
-        si.setAmount(si.getAmount()-1);
+       /* si.setAmount(si.getAmount()-1);
         jTextField2.setText("" + (int) si.getAmount());
-        if(si.getAmount()<1){
-            JOptionPane jp = new JOptionPane("hej");
-            
-        }
+        */
         // TODO add your handling code here:
     }//GEN-LAST:event_minusButtonActionPerformed
 
