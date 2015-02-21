@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JLabel;
@@ -81,7 +82,7 @@ public class IMatView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        sortingComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -100,6 +101,12 @@ public class IMatView extends javax.swing.JFrame {
         topPanel.setPreferredSize(new java.awt.Dimension(800, 60));
 
         selectedLabel.setText("IMAT");
+
+        searchTextFIeld.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchTextFIeldKeyPressed(evt);
+            }
+        });
 
         searchButton.setText("Sök");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +130,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +289,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(367, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
@@ -299,41 +306,41 @@ public class IMatView extends javax.swing.JFrame {
         jLabel3.setText("Kundvagn");
 
         jButton1.setText("Till Kassan");
+        jButton1.setToolTipText("Gå till kassan med kundvagnen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("ink.lista");
+        jButton2.setText("Spara");
+        jButton2.setToolTipText("Spara kundvagn som en inköpslista");
 
-        jButton3.setText("Töm");
+        jButton3.setText("Töm kundvagn");
+        jButton3.setToolTipText("Ta bort alla varor i kundvagnen");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        totalPris.setText("Totalt" + shoppingCart.getTotal() + " kr");
+        totalPris.setText("Totalt:" + "   " + shoppingCart.getTotal() + " kr");
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rightPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(rightPanelLayout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
-                            .addComponent(totalPris, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kundvagnPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(rightPanelLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(totalPris, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         rightPanelLayout.setVerticalGroup(
@@ -342,15 +349,16 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(totalPris, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(57, 57, 57)
-                .addComponent(totalPris, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(511, 511, 511))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(524, 524, 524))
         );
 
         mainPanel.add(rightPanel, java.awt.BorderLayout.LINE_END);
@@ -381,15 +389,15 @@ public class IMatView extends javax.swing.JFrame {
 
         jLabel2.setText("Sortering: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Popularitet", "Pris lågt-högt", "Pris högt-lågt", "Bokstavsordning A-Ö", "Bokstavsordning Ö-A" }));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+        sortingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Popularitet", "Pris lågt-högt", "Pris högt-lågt", "Bokstavsordning A-Ö", "Bokstavsordning Ö-A" }));
+        sortingComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
+                sortingComboBoxItemStateChanged(evt);
             }
         });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        sortingComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                sortingComboBoxActionPerformed(evt);
             }
         });
 
@@ -400,18 +408,18 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel2)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         centerPanel.add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -661,13 +669,24 @@ public class IMatView extends javax.swing.JFrame {
         jTree1.clearSelection();
     }//GEN-LAST:event_jTree2MousePressed
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void sortingComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sortingComboBoxItemStateChanged
+        
+    }//GEN-LAST:event_sortingComboBoxItemStateChanged
+
+    private void sortingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortingComboBoxActionPerformed
         updateVarorView();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_sortingComboBoxActionPerformed
+
+    private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
+        TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
+        updateVarorView();
+       }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFIeldKeyPressed
+
 
     /**
      * @param args the command line arguments
@@ -713,7 +732,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -730,6 +748,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextFIeld;
     private javax.swing.JLabel selectedLabel;
+    private javax.swing.JComboBox sortingComboBox;
     private javax.swing.JPanel topPanel;
     private javax.swing.JLabel totalPris;
     private javax.swing.JPanel varorPanel;
@@ -740,7 +759,7 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel.revalidate();
         //varorPanel.repaint();  // denna behövdes inte
         
-        String s = String.valueOf(jComboBox1.getSelectedItem());
+        String s = String.valueOf(sortingComboBox.getSelectedItem());
         if(s == null){
             s = "Popularitet";
         }
