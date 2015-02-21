@@ -46,7 +46,7 @@ public class ProductInList extends javax.swing.JPanel {
         add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
 
         jLabel1.setText(si.getProduct().getName());
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 3, 120, 24));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 3, 80, 24));
 
         jButton1.setText("X");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 5, 40, 20));
