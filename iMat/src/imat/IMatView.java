@@ -702,7 +702,7 @@ public class IMatView extends javax.swing.JFrame {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        addToKundVagn(p, 1);
+                        addToKundVagn(p, psv.getAmount());
 //shoppingCart.addProduct(p);
                         updateKundVagn();
                     }
@@ -769,7 +769,7 @@ public class IMatView extends javax.swing.JFrame {
         }
     }
        if(!contains)
-           shoppingCart.addProduct(p);
+           shoppingCart.addProduct(p, d);
     }
     
     private void clearKundVagn(){
