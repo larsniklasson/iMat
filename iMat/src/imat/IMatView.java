@@ -382,6 +382,16 @@ public class IMatView extends javax.swing.JFrame {
         jLabel2.setText("Sortering: ");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Popularitet", "Pris lågt-högt", "Pris högt-lågt", "Bokstavsordning A-Ö", "Bokstavsordning Ö-A" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -651,6 +661,14 @@ public class IMatView extends javax.swing.JFrame {
         jTree1.clearSelection();
     }//GEN-LAST:event_jTree2MousePressed
 
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        updateVarorView();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -720,7 +738,14 @@ public class IMatView extends javax.swing.JFrame {
     private void updateVarorView() {
         varorPanel.removeAll();
         varorPanel.revalidate();
-        varorPanel.repaint();
+        //varorPanel.repaint();  // denna behövdes inte
+        
+        String s = String.valueOf(jComboBox1.getSelectedItem());
+        if(s == null){
+            s = "Popularitet";
+        }
+        varorViewList.sort(new ProductComparator(s));
+        
         for(Product p : varorViewList){
             try{
                 
