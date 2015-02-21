@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JLabel;
@@ -100,6 +101,12 @@ public class IMatView extends javax.swing.JFrame {
         topPanel.setPreferredSize(new java.awt.Dimension(800, 60));
 
         selectedLabel.setText("IMAT");
+
+        searchTextFIeld.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchTextFIeldKeyPressed(evt);
+            }
+        });
 
         searchButton.setText("Sök");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -651,6 +658,15 @@ public class IMatView extends javax.swing.JFrame {
         jTree2.setSelectionPath(path);
         jTree1.clearSelection();
     }//GEN-LAST:event_jTree2MousePressed
+
+    private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
+        TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
+        updateVarorView();
+       }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFIeldKeyPressed
 
     /**
      * @param args the command line arguments
