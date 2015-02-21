@@ -89,7 +89,6 @@ public class IMatView extends javax.swing.JFrame {
         sortingComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1100, 750));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -105,6 +104,7 @@ public class IMatView extends javax.swing.JFrame {
         topPanel.setBackground(new java.awt.Color(51, 255, 102));
         topPanel.setPreferredSize(new java.awt.Dimension(800, 60));
 
+        selectedLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/iMat.jpg"))); // NOI18N
         selectedLabel.setText("IMAT");
 
         searchTextFIeld.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -127,9 +127,8 @@ public class IMatView extends javax.swing.JFrame {
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(selectedLabel)
-                .addGap(258, 258, 258)
+                .addComponent(selectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,13 +139,12 @@ public class IMatView extends javax.swing.JFrame {
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(selectedLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton)
-                    .addComponent(jButton5))
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(selectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchButton)
+                        .addComponent(jButton5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -221,10 +219,10 @@ public class IMatView extends javax.swing.JFrame {
             jTree1.removeMouseListener(ml);
         }
         jTree1.addTreeExpansionListener(new javax.swing.event.TreeExpansionListener() {
-            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
-            }
             public void treeCollapsed(javax.swing.event.TreeExpansionEvent evt) {
                 jTree1TreeCollapsed(evt);
+            }
+            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
             }
         });
         jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -236,10 +234,10 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
         jTree1.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
-            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
-            }
             public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 jTree1TreeWillCollapse(evt);
+            }
+            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
@@ -294,7 +292,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
@@ -356,7 +354,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalPris, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
