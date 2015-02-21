@@ -683,7 +683,8 @@ public class IMatView extends javax.swing.JFrame {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        shoppingCart.addProduct(p);
+                        addToKundVagn(p, 1);
+//shoppingCart.addProduct(p);
                         updateKundVagn();
                     }
                 });
@@ -721,6 +722,19 @@ public class IMatView extends javax.swing.JFrame {
         }
         kundvagnPanel.repaint();
         totalPris.setText("Totalt" + shoppingCart.getTotal() + " kr");
+    }
+    
+    private void addToKundVagn(Product p, double d){
+        boolean contains = false;
+        
+        for(ShoppingItem si : shoppingCart.getItems()){
+        if(si.getProduct()==p){
+            si.setAmount(d + si.getAmount());
+            contains = true;
+        }
+    }
+       if(!contains)
+           shoppingCart.addProduct(p);
     }
     
     private void clearKundVagn(){

@@ -95,6 +95,9 @@ public class ProductInList extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_minusButtonActionPerformed
 
+    public ShoppingItem getShoppingItem(){
+        return si;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
