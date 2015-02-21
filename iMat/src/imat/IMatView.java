@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -725,7 +727,19 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchTextFIeldKeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String s = JOptionPane.showInputDialog("namn på listan?");
+        String s;
+        while (true){
+            s = JOptionPane.showInputDialog("namn på listan?");
+            
+            File f = new File(s);
+            try {
+              f.getCanonicalPath();
+              break;
+            } catch (IOException e) {
+               JOptionPane.showMessageDialog(this, "ogiltigt namn");
+            }
+            
+        }
         
         Utils.saveShoppingCartAsList(s);
     }//GEN-LAST:event_jButton2ActionPerformed
