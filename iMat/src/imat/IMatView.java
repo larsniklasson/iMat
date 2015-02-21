@@ -750,7 +750,7 @@ public class IMatView extends javax.swing.JFrame {
         }
     }
        if(!contains)
-           shoppingCart.addProduct(p);
+           shoppingCart.addProduct(p, d);
     }
     
     private void clearKundVagn(){
