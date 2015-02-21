@@ -23,6 +23,7 @@ public class ProductInList extends javax.swing.JPanel {
     public ProductInList(ShoppingItem si) {
         this.si = si;
         initComponents();
+        extraInfo.setVisible(false);
     }
 
     /**
@@ -39,17 +40,23 @@ public class ProductInList extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         plusButton = new javax.swing.JButton();
         minusButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        extraInfo = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+        });
 
         jTextField2.setText("" + (int)si.getAmount());
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
 
         jLabel1.setText(si.getProduct().getName());
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 3, 80, 24));
 
         jButton1.setText("X");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 5, 40, 20));
 
         plusButton.setText("+");
         plusButton.setToolTipText("Lägg till vara");
@@ -62,7 +69,6 @@ public class ProductInList extends javax.swing.JPanel {
                 plusButtonActionPerformed(evt);
             }
         });
-        add(plusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 10, 30));
 
         minusButton.setText("-");
         minusButton.setToolTipText("Ta bort vara");
@@ -75,7 +81,44 @@ public class ProductInList extends javax.swing.JPanel {
                 minusButtonActionPerformed(evt);
             }
         });
-        add(minusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 30));
+
+        jLabel2.setText(si.getProduct().getPrice() + " " + si.getProduct().getUnit());
+
+        extraInfo.setText("jLabel3");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(minusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(plusButton)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(extraInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(minusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(extraInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
@@ -94,17 +137,30 @@ public class ProductInList extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_minusButtonActionPerformed
 
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        extraInfo.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        extraInfo.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseExited
+
     public ShoppingItem getShoppingItem(){
         return si;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel extraInfo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JButton minusButton;
     private javax.swing.JButton plusButton;
     // End of variables declaration//GEN-END:variables
+    
     public JButton getButton(){
         return jButton1;
     }
