@@ -816,6 +816,8 @@ public class IMatView extends javax.swing.JFrame {
                 varorPanel.add(psv);
             } catch(Exception e){}
         }
+        
+        varorPanel.repaint();
     }
     
     private void updateKundVagn(){
