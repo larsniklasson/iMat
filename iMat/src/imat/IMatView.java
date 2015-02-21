@@ -101,10 +101,10 @@ public class IMatView extends javax.swing.JFrame {
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 750));
         mainPanel.setLayout(new java.awt.BorderLayout());
 
-        topPanel.setBackground(new java.awt.Color(51, 255, 102));
+        topPanel.setBackground(new java.awt.Color(255, 255, 255));
         topPanel.setPreferredSize(new java.awt.Dimension(800, 60));
 
-        selectedLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/iMat.jpg"))); // NOI18N
+        selectedLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/logga.jpg"))); // NOI18N
         selectedLabel.setText("IMAT");
 
         searchTextFIeld.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -219,10 +219,10 @@ public class IMatView extends javax.swing.JFrame {
             jTree1.removeMouseListener(ml);
         }
         jTree1.addTreeExpansionListener(new javax.swing.event.TreeExpansionListener() {
+            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
+            }
             public void treeCollapsed(javax.swing.event.TreeExpansionEvent evt) {
                 jTree1TreeCollapsed(evt);
-            }
-            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
             }
         });
         jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,10 +234,10 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
         jTree1.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
+            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
+            }
             public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 jTree1TreeWillCollapse(evt);
-            }
-            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
