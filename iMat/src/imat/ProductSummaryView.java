@@ -165,7 +165,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        if(!filled){
-           File sourceimage = new File("C:\\Users\\jesper\\Documents\\Skola\\DesignOchKonstruktionAvGrafiskaGranssnitt\\Projekt\\iMat\\iMat\\src\\imat\\resources\\bilder\\fylltHjärta.png");
+           File sourceimage = new File("src\\imat\\resources\\bilder\\fylltHjärta.png");
         try {
             Image image = ImageIO.read(sourceimage);
             jButton2.setIcon(new ImageIcon(image));
@@ -175,7 +175,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         filled = true;
        }
        else{
-        File sourceimage = new File("C:\\Users\\jesper\\Documents\\Skola\\DesignOchKonstruktionAvGrafiskaGranssnitt\\Projekt\\iMat\\iMat\\src\\imat\\resources\\bilder\\ofylltHjärta.png");
+        File sourceimage = new File("src\\imat\\resources\\bilder\\ofylltHjärta.png");
         try {
             Image image = ImageIO.read(sourceimage);
             jButton2.setIcon(new ImageIcon(image));

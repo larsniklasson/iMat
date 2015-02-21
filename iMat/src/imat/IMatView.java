@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
@@ -219,10 +220,10 @@ public class IMatView extends javax.swing.JFrame {
             jTree1.removeMouseListener(ml);
         }
         jTree1.addTreeExpansionListener(new javax.swing.event.TreeExpansionListener() {
-            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
-            }
             public void treeCollapsed(javax.swing.event.TreeExpansionEvent evt) {
                 jTree1TreeCollapsed(evt);
+            }
+            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
             }
         });
         jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,10 +235,10 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
         jTree1.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
-            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
-            }
             public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 jTree1TreeWillCollapse(evt);
+            }
+            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
@@ -318,6 +319,11 @@ public class IMatView extends javax.swing.JFrame {
 
         jButton2.setText("Spara");
         jButton2.setToolTipText("Spara kundvagn som en inköpslista");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Töm kundvagn");
         jButton3.setToolTipText("Ta bort alla varor i kundvagnen");
@@ -382,7 +388,7 @@ public class IMatView extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(varorPanel);
 
-        cardPanel.add(jScrollPane2, "card3");
+        cardPanel.add(jScrollPane2, "varor");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -717,6 +723,12 @@ public class IMatView extends javax.swing.JFrame {
        }
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTextFIeldKeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String s = JOptionPane.showInputDialog("namn på listan?");
+        
+        Utils.saveShoppingCartAsList(s);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     /**

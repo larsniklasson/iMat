@@ -320,6 +320,9 @@
                 <Property name="text" type="java.lang.String" value="Spara"/>
                 <Property name="toolTipText" type="java.lang.String" value="Spara kundvagn som en ink&#xf6;pslista"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
@@ -373,7 +376,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                      <CardConstraints cardName="card3"/>
+                      <CardConstraints cardName="varor"/>
                     </Constraint>
                   </Constraints>
 
