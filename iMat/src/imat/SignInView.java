@@ -5,6 +5,7 @@
  */
 package imat;
 
+import javax.swing.JButton;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
@@ -35,17 +36,21 @@ public class SignInView extends javax.swing.JPanel {
     private static  String zipCode;
     private static  String city;
     
+    private static JButton JB; 
+    
     
     /**
      * Creates new form SignInView
      */
-    public SignInView() {
+    public SignInView(JButton jbutton) {
         initComponents();
         
         isNewUser = false;
         this.regPanel.setVisible(isNewUser);
         user = im.getUser();
         customer = im.getCustomer();
+        
+        JB = jbutton;
     }
 
     /**
@@ -383,6 +388,7 @@ public class SignInView extends javax.swing.JPanel {
         }else{
             if(validSignIn()){
                 this.errorLabel.setText("Du är inloggad");
+                JB.setText(customer.getFirstName() + " " + customer.getLastName());
             }else{
                 this.errorLabel.setText("Lösernod och mail matchar inte");
             }
@@ -440,9 +446,6 @@ public class SignInView extends javax.swing.JPanel {
         this.regPanel.setVisible(isNewUser);
     }
     
-    public String getNameOfUser(){
-        return customer.getFirstName() + " " + customer.getLastName();
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -769,10 +769,9 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel.removeAll();
         varorPanel.revalidate();
         varorPanel.repaint();
-        SignInView SIV = new SignInView();
+        SignInView SIV = new SignInView(LoginRegistreraButton);
         varorPanel.add(SIV);
-        
-        LoginRegistreraButton.setText(SIV.getNameOfUser());
+      
     }//GEN-LAST:event_LoginRegistreraButtonActionPerformed
 
     private void varorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseEntered
@@ -860,12 +859,12 @@ public class IMatView extends javax.swing.JFrame {
             s = "Popularitet";
         }
 
-        //varorViewList.sort(new ProductComparator(s));
+        varorViewList.sort(new ProductComparator(s));
 
-        for (final Product p : varorViewList) {
+        for ( Product p : varorViewList) {
             try {
 
-                final ProductSummaryView psv = new ProductSummaryView(p);
+                ProductSummaryView psv = new ProductSummaryView(p);
                 psv.getButton().addActionListener(new ActionListener() {
 
                     @Override
