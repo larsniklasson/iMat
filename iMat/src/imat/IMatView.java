@@ -68,7 +68,7 @@ public class IMatView extends javax.swing.JFrame {
         selectedLabel = new javax.swing.JLabel();
         searchTextFIeld = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        LoginRegistreraButton = new javax.swing.JButton();
         leftPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -128,7 +128,12 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Login/registrera");
+        LoginRegistreraButton.setText("Login/registrera");
+        LoginRegistreraButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginRegistreraButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -141,7 +146,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(LoginRegistreraButton)
                 .addContainerGap(168, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
@@ -152,7 +157,7 @@ public class IMatView extends javax.swing.JFrame {
                     .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(searchButton)
-                        .addComponent(jButton5)))
+                        .addComponent(LoginRegistreraButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -760,14 +765,15 @@ public class IMatView extends javax.swing.JFrame {
         listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
         varorPanel.removeAll();
         varorPanel.revalidate();
         varorPanel.repaint();
         SignInView SIV = new SignInView();
-
         varorPanel.add(SIV);
-    }//GEN-LAST:event_jButton5ActionPerformed
+        
+        LoginRegistreraButton.setText(SIV.getNameOfUser());
+    }//GEN-LAST:event_LoginRegistreraButtonActionPerformed
 
     private void varorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseEntered
 
@@ -810,6 +816,7 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LoginRegistreraButton;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
@@ -819,7 +826,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -854,12 +860,12 @@ public class IMatView extends javax.swing.JFrame {
             s = "Popularitet";
         }
 
-        varorViewList.sort(new ProductComparator(s));
+        //varorViewList.sort(new ProductComparator(s));
 
-        for (Product p : varorViewList) {
+        for (final Product p : varorViewList) {
             try {
 
-                ProductSummaryView psv = new ProductSummaryView(p);
+                final ProductSummaryView psv = new ProductSummaryView(p);
                 psv.getButton().addActionListener(new ActionListener() {
 
                     @Override

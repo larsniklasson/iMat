@@ -96,12 +96,25 @@ public class SignInView extends javax.swing.JPanel {
         jLabel3.setText("*Lösernod:");
 
         MailField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        MailField.setForeground(new java.awt.Color(0, 153, 0));
+        MailField.setText("Exampel@domän.com");
+        MailField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                MailFieldFocusGained(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Logga in för köp");
 
         PasswordField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        PasswordField.setText("jPasswordField1");
+        PasswordField.setForeground(new java.awt.Color(0, 153, 0));
+        PasswordField.setText("12341234");
+        PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PasswordFieldFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout divPanel1Layout = new javax.swing.GroupLayout(divPanel1);
         divPanel1.setLayout(divPanel1Layout);
@@ -160,7 +173,6 @@ public class SignInView extends javax.swing.JPanel {
         jLabel7.setText("Mobilnummer:");
 
         RepPasswordField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        RepPasswordField.setText("jPasswordField2");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Stad:");
@@ -184,39 +196,42 @@ public class SignInView extends javax.swing.JPanel {
             .addComponent(jSeparator2)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(regPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(regPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RepPasswordField))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, regPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PhoneField))
+                    .addGroup(regPanelLayout.createSequentialGroup()
                         .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NameField)
+                            .addComponent(LastNameField)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, regPanelLayout.createSequentialGroup()
+                        .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(regPanelLayout.createSequentialGroup()
-                                .addComponent(ZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(regPanelLayout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel9)
+                                .addGap(1, 1, 1)))
+                        .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(regPanelLayout.createSequentialGroup()
+                                .addComponent(ZipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(CityField))
-                            .addComponent(AddressField)))
-                    .addGroup(regPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(regPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(RepPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, regPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PhoneField))
-                            .addGroup(regPanelLayout.createSequentialGroup()
-                                .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NameField)
-                                    .addComponent(LastNameField))))))
+                            .addComponent(AddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         regPanelLayout.setVerticalGroup(
@@ -374,6 +389,16 @@ public class SignInView extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_SignInButtonActionPerformed
+
+    private void MailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MailFieldFocusGained
+        // TODO add your handling code here:
+        MailField.setText("");
+    }//GEN-LAST:event_MailFieldFocusGained
+
+    private void PasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusGained
+        // TODO add your handling code here:
+        PasswordField.setText("");
+    }//GEN-LAST:event_PasswordFieldFocusGained
     
     
     private static boolean validRegistation(){
@@ -413,6 +438,10 @@ public class SignInView extends javax.swing.JPanel {
         }    
              
         this.regPanel.setVisible(isNewUser);
+    }
+    
+    public String getNameOfUser(){
+        return customer.getFirstName() + " " + customer.getLastName();
     }
     
 
