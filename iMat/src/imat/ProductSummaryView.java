@@ -30,6 +30,8 @@ public class ProductSummaryView extends javax.swing.JPanel {
     public ProductSummaryView(Product p) {
         this.p = p;
         initComponents();
+        favoriteButton.setVisible(false);
+        listButton.setVisible(false);
     }
     
     
@@ -48,27 +50,48 @@ public class ProductSummaryView extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        favoriteButton = new javax.swing.JButton();
+        listButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+        });
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         //System.out.println(jLabel1.getHeight());
         jLabel1.setIcon(dh.getImageIcon(p, 140, 100));
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 14, 137, 90));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText(p.getName());
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 114, 102, 22));
 
         jLabel3.setText("" + p.getPrice() + " " + p.getUnit());
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 146, 63, -1));
 
         jButton1.setText("Köp");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 185, -1, -1));
 
         jSpinner1.setValue(1);
         jSpinner1.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -85,70 +108,48 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 jSpinner1StateChanged(evt);
             }
         });
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/ofylltHjärta.png"))); // NOI18N
-        jButton2.setText("jButton2");
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jSpinner1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jSpinner1MouseEntered(evt);
             }
         });
+        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 186, -1, -1));
 
-        jButton4.setText("jButton2");
-        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setFocusPainted(false);
+        favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/ofylltHjärta.png"))); // NOI18N
+        favoriteButton.setText("jButton2");
+        favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        favoriteButton.setBorderPainted(false);
+        favoriteButton.setContentAreaFilled(false);
+        favoriteButton.setFocusPainted(false);
+        favoriteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                favoriteButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                favoriteButtonMouseExited(evt);
+            }
+        });
+        favoriteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favoriteButtonActionPerformed(evt);
+            }
+        });
+        add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 111, 30, 28));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        listButton.setText("jButton2");
+        listButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        listButton.setBorderPainted(false);
+        listButton.setContentAreaFilled(false);
+        listButton.setFocusPainted(false);
+        listButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                listButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                listButtonMouseExited(evt);
+            }
+        });
+        add(listButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 146, 30, 26));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -164,12 +165,12 @@ public class ProductSummaryView extends javax.swing.JPanel {
 // TODO add your handling code here:
     }//GEN-LAST:event_jSpinner1StateChanged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void favoriteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoriteButtonActionPerformed
        if(!filled){
            File sourceimage = new File("src\\imat\\resources\\bilder\\fylltHjärta.png");
         try {
             Image image = ImageIO.read(sourceimage);
-            jButton2.setIcon(new ImageIcon(image));
+            favoriteButton.setIcon(new ImageIcon(image));
         } catch (IOException ex) {
             Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -179,7 +180,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         File sourceimage = new File("src\\imat\\resources\\bilder\\ofylltHjärta.png");
         try {
             Image image = ImageIO.read(sourceimage);
-            jButton2.setIcon(new ImageIcon(image));
+            favoriteButton.setIcon(new ImageIcon(image));
         } catch (IOException ex) {
             Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -187,8 +188,45 @@ public class ProductSummaryView extends javax.swing.JPanel {
        }
         
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_favoriteButtonActionPerformed
 
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        showFavoriteAndListButtons();
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        hideFavoriteAndListButtons();
+    }//GEN-LAST:event_formMouseExited
+
+    private void favoriteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseEntered
+        showFavoriteAndListButtons();
+    }//GEN-LAST:event_favoriteButtonMouseEntered
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        showFavoriteAndListButtons();
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jSpinner1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpinner1MouseEntered
+        showFavoriteAndListButtons();
+    }//GEN-LAST:event_jSpinner1MouseEntered
+
+    private void listButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listButtonMouseEntered
+        showFavoriteAndListButtons();
+    }//GEN-LAST:event_listButtonMouseEntered
+
+    private void favoriteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseExited
+        hideFavoriteAndListButtons();
+    }//GEN-LAST:event_favoriteButtonMouseExited
+
+    private void listButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listButtonMouseExited
+        hideFavoriteAndListButtons();
+    }//GEN-LAST:event_listButtonMouseExited
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        hideFavoriteAndListButtons();
+        }//GEN-LAST:event_jButton1MouseExited
+
+    
     
     public JButton getButton(){
         return jButton1;
@@ -199,15 +237,23 @@ public class ProductSummaryView extends javax.swing.JPanel {
     public void resetAmount(){
         jSpinner1.setValue(1);
          }
+    public void showFavoriteAndListButtons(){
+        listButton.setVisible(true);
+        favoriteButton.setVisible(true);
+    }
+    protected void hideFavoriteAndListButtons(){
+        listButton.setVisible(false);
+        favoriteButton.setVisible(false);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton favoriteButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JButton listButton;
     // End of variables declaration//GEN-END:variables
     private boolean filled = false;
 }

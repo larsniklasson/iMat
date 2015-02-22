@@ -391,6 +391,11 @@ public class IMatView extends javax.swing.JFrame {
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(8);
 
         varorPanel.setBackground(new java.awt.Color(0, 153, 0));
+        varorPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                varorPanelMouseEntered(evt);
+            }
+        });
         updateVarorView();
 
         varorPanel.setLayout(new ModifiedFlowLayout());
@@ -769,6 +774,10 @@ public class IMatView extends javax.swing.JFrame {
         
         varorPanel.add(SIV);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void varorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseEntered
+        
+    }//GEN-LAST:event_varorPanelMouseEntered
 
 
     /**
