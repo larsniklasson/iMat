@@ -865,6 +865,7 @@ public class IMatView extends javax.swing.JFrame {
             try {
 
                 ProductSummaryView psv = new ProductSummaryView(p);
+                psv.setAntalLabel();
                 psv.getButton().addActionListener(new ActionListener() {
 
                     @Override
@@ -874,7 +875,7 @@ public class IMatView extends javax.swing.JFrame {
                         updateKundVagn();
                     }
                 });
-                if(dh.isFavorite(p)){
+                if (dh.isFavorite(p)) {
                     psv.setFavorite();
                 }
                 psv.getFavoriteButton().addActionListener(new ActionListener() {

@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.text.DecimalFormat;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -60,7 +61,7 @@ public class ProductInList extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(si.getProduct().getName());
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 70, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 70, 30));
 
         jButton1.setText("X");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 40, 30));
@@ -92,7 +93,7 @@ public class ProductInList extends javax.swing.JPanel {
         add(minusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText(si.getProduct().getPrice() + " " + si.getProduct().getUnit());
+        jLabel2.setText(String.format( "%.2f", si.getProduct().getPrice()) );
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 70, 30));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,5 +146,8 @@ public class ProductInList extends javax.swing.JPanel {
     }
     public JButton getminusButton(){
      return minusButton;   
+    }
+    public void setPriceLabel(){
+        DecimalFormat df = new DecimalFormat("#.00");
     }
 }
