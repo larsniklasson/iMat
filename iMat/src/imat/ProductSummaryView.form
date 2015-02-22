@@ -91,7 +91,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="97" y="185" width="-1" height="-1"/>
+          <AbsoluteConstraints x="100" y="190" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -109,16 +109,15 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="200" width="-1" height="-1"/>
+          <AbsoluteConstraints x="60" y="190" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="favoriteButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imat/resources/bilder/ofylltHj&#xe4;rta.png"/>
+          <Image iconType="3" name="/imat/resources/bilder/heartInteFyllt.jpg"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jButton2"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder/>
@@ -133,15 +132,20 @@
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="favoriteButtonMouseExited"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favoriteButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="120" y="111" width="30" height="28"/>
+          <AbsoluteConstraints x="110" y="111" width="40" height="28"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="listButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton2"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/imat/resources/bilder/note.jpg"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder/>
@@ -155,65 +159,12 @@
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listButtonMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listButtonMouseExited"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="120" y="146" width="30" height="26"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JButton" name="plusButton">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="L&#xe4;gg till vara"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-            <EmptyBorder/>
-          </Border>
-        </Property>
-        <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="plusButtonActionPerformed"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="180" width="40" height="30"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-            <EmptyBorder/>
-          </Border>
-        </Property>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="180" width="30" height="30"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JButton" name="minusButton">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Ta bort vara"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-            <EmptyBorder/>
-          </Border>
-        </Property>
-        <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minusButtonActionPerformed"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="180" width="30" height="30"/>
+          <AbsoluteConstraints x="110" y="146" width="40" height="40"/>
         </Constraint>
       </Constraints>
     </Component>

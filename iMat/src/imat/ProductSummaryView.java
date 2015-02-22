@@ -53,9 +53,6 @@ public class ProductSummaryView extends javax.swing.JPanel {
         amountSpinner = new javax.swing.JSpinner();
         favoriteButton = new javax.swing.JButton();
         listButton = new javax.swing.JButton();
-        plusButton = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        minusButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -97,7 +94,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 185, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
 
         amountSpinner.setValue(1);
         amountSpinner.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -122,10 +119,9 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 amountSpinnerMouseExited(evt);
             }
         });
-        add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, -1, -1));
+        add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
-        favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/ofylltHjärta.png"))); // NOI18N
-        favoriteButton.setText("jButton2");
+        favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/heartInteFyllt.jpg"))); // NOI18N
         favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         favoriteButton.setBorderPainted(false);
         favoriteButton.setContentAreaFilled(false);
@@ -143,9 +139,9 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 favoriteButtonActionPerformed(evt);
             }
         });
-        add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 111, 30, 28));
+        add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 111, 40, 28));
 
-        listButton.setText("jButton2");
+        listButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/note.jpg"))); // NOI18N
         listButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         listButton.setBorderPainted(false);
         listButton.setContentAreaFilled(false);
@@ -158,34 +154,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 listButtonMouseExited(evt);
             }
         });
-        add(listButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 146, 30, 26));
-
-        plusButton.setToolTipText("Lägg till vara");
-        plusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        plusButton.setBorderPainted(false);
-        plusButton.setContentAreaFilled(false);
-        plusButton.setFocusPainted(false);
-        plusButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                plusButtonActionPerformed(evt);
-            }
-        });
-        add(plusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 40, 30));
-
-        jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 30, 30));
-
-        minusButton.setToolTipText("Ta bort vara");
-        minusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        minusButton.setBorderPainted(false);
-        minusButton.setContentAreaFilled(false);
-        minusButton.setFocusPainted(false);
-        minusButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                minusButtonActionPerformed(evt);
-            }
-        });
-        add(minusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 30, 30));
+        add(listButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 146, 40, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -202,8 +171,8 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }//GEN-LAST:event_amountSpinnerStateChanged
 
     private void favoriteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoriteButtonActionPerformed
-       if(!filled){
-           File sourceimage = new File("src\\imat\\resources\\bilder\\fylltHjärta.png");
+      /* if(!filled){
+           File sourceimage = new File("src\\imat\\resources\\bilder\\heartFyllt.jpg");
         try {
             Image image = ImageIO.read(sourceimage);
             favoriteButton.setIcon(new ImageIcon(image));
@@ -213,7 +182,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         filled = true;
        }
        else{
-        File sourceimage = new File("src\\imat\\resources\\bilder\\ofylltHjärta.png");
+        File sourceimage = new File("src\\imat\\resources\\bilder\\HeartInteFyllt.jpg");
         try {
             Image image = ImageIO.read(sourceimage);
             favoriteButton.setIcon(new ImageIcon(image));
@@ -221,7 +190,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
             Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
         }
         filled = false;
-       }
+       }*/
         
 // TODO add your handling code here:
     }//GEN-LAST:event_favoriteButtonActionPerformed
@@ -266,21 +235,6 @@ public class ProductSummaryView extends javax.swing.JPanel {
         showFavoriteAndListButtons();
     }//GEN-LAST:event_amountSpinnerMouseExited
 
-    private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
-        /*si.setAmount(si.getAmount()+1);
-        jTextField2.setText("" + (int) si.getAmount());
-        */
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_plusButtonActionPerformed
-
-    private void minusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusButtonActionPerformed
-        /* si.setAmount(si.getAmount()-1);
-        jTextField2.setText("" + (int) si.getAmount());
-        */
-        // TODO add your handling code here:
-    }//GEN-LAST:event_minusButtonActionPerformed
-
     
     
     public JButton getButton(){
@@ -308,18 +262,24 @@ public class ProductSummaryView extends javax.swing.JPanel {
         favoriteButton.setVisible(false);
         amountSpinner.setVisible(false);
     }
+    public void setFavorite(){
+        File sourceimage = new File("src\\imat\\resources\\bilder\\HeartFyllt.jpg");
+                            try {
+                                Image image = ImageIO.read(sourceimage);
+                                favoriteButton.setIcon(new ImageIcon(image));
+                            } catch (IOException ex) {
+                                Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner amountSpinner;
-    private javax.swing.JButton favoriteButton;
+    public javax.swing.JButton favoriteButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JButton listButton;
-    private javax.swing.JButton minusButton;
-    private javax.swing.JButton plusButton;
+    public javax.swing.JButton listButton;
     // End of variables declaration//GEN-END:variables
-    private boolean filled = false;
+    public boolean filled = false;
 }
