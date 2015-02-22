@@ -39,6 +39,9 @@ public class IMatView extends javax.swing.JFrame {
      * Creates new form IMatView
      */
     public IMatView() {
+        
+        Utils.makeInköpslistaDir();
+        
         shoppingCart = dh.getShoppingCart();
         
         

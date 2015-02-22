@@ -19,14 +19,21 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Lasse
  */
 public class Utils {
-    public static void saveShoppingCartAsList(String name){
+    
+    public static void makeInköpslistaDir(){
         IMatDataHandler dh = IMatDataHandler.getInstance();
-        
         String path = dh.imatDirectory() + "\\inköpslistor";
         File dir = new File(path);
         if(!dir.exists()){
             dir.mkdirs();
         }
+    }
+    
+    public static void saveShoppingCartAsList(String name){
+        IMatDataHandler dh = IMatDataHandler.getInstance();
+        
+        String path = dh.imatDirectory() + "\\inköpslistor";
+        
         
         
         File f = new File(path + "\\" + name + ".txt");

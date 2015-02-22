@@ -142,7 +142,7 @@ public class listorPanel extends javax.swing.JPanel {
         
         File f = new File(dh.imatDirectory() + "\\inköpslistor\\" + s);
         
-        String fileContent;
+        String fileContent = "";
         
         if(f.exists()){
             Scanner sc = null;
@@ -151,8 +151,11 @@ public class listorPanel extends javax.swing.JPanel {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            fileContent = sc.nextLine();
+            if(sc.hasNextLine()){
+                fileContent = sc.nextLine();
+            } else {
+                return;
+            }
         } else {
             return;
         }
