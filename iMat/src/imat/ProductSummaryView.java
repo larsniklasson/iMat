@@ -237,6 +237,12 @@ public class ProductSummaryView extends javax.swing.JPanel {
     public void resetAmount(){
         jSpinner1.setValue(1);
          }
+    public JButton getFavoriteButton(){
+        return favoriteButton;
+    }
+    public JButton getListButton(){
+        return listButton;
+    }
     public void showFavoriteAndListButtons(){
         listButton.setVisible(true);
         favoriteButton.setVisible(true);

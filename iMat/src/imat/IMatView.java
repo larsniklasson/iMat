@@ -876,6 +876,20 @@ public class IMatView extends javax.swing.JFrame {
                         updateKundVagn();
                     }
                 });
+                psv.getFavoriteButton().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //Lägga till till favoriter
+                    }
+                });
+                psv.getListButton().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //Lägga till till inköpslista
+                    }
+                });
                 varorPanel.add(psv);
             } catch(Exception e){}
         }
