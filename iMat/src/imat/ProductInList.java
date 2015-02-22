@@ -53,18 +53,14 @@ public class ProductInList extends javax.swing.JPanel {
                 formMouseExited(evt);
             }
         });
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setText("" + (int)si.getAmount());
+        jTextField2.setText(String.format("%.2f", si.getAmount()));
         jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 18, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(si.getProduct().getName());
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 70, 30));
 
         jButton1.setText("X");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 40, 30));
 
         plusButton.setText("+");
         plusButton.setToolTipText("Lägg till vara");
@@ -77,7 +73,6 @@ public class ProductInList extends javax.swing.JPanel {
                 plusButtonActionPerformed(evt);
             }
         });
-        add(plusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 20, 30));
 
         minusButton.setText("-");
         minusButton.setToolTipText("Ta bort vara");
@@ -90,33 +85,51 @@ public class ProductInList extends javax.swing.JPanel {
                 minusButtonActionPerformed(evt);
             }
         });
-        add(minusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(String.format( "%.2f", si.getProduct().getPrice()) + " " + si.getProduct().getUnit());
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 70, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(minusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(plusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(minusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(plusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
-       /*si.setAmount(si.getAmount()+1);
-        jTextField2.setText("" + (int) si.getAmount());
-        */
-        
-        
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_plusButtonActionPerformed
 
     private void minusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusButtonActionPerformed
-       /* si.setAmount(si.getAmount()-1);
-        jTextField2.setText("" + (int) si.getAmount());
-        */
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_minusButtonActionPerformed
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         JLabel jl = new JLabel("extraInfo");
         
-//this.extraInfo.setVisible(true);
+        //this.extraInfo.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_formMouseEntered
 
@@ -147,7 +160,11 @@ public class ProductInList extends javax.swing.JPanel {
     public JButton getminusButton(){
      return minusButton;   
     }
-    public void setPriceLabel(){
-        DecimalFormat df = new DecimalFormat("#.00");
+    public boolean isKgItem(){
+        if (si.getProduct().getUnit().equals("kr/kg")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

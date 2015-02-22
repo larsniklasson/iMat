@@ -771,7 +771,7 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel.repaint();
         SignInView SIV = new SignInView(LoginRegistreraButton);
         varorPanel.add(SIV);
-      
+
     }//GEN-LAST:event_LoginRegistreraButtonActionPerformed
 
     private void varorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseEntered
@@ -861,7 +861,7 @@ public class IMatView extends javax.swing.JFrame {
 
         varorViewList.sort(new ProductComparator(s));
 
-        for ( Product p : varorViewList) {
+        for (Product p : varorViewList) {
             try {
 
                 ProductSummaryView psv = new ProductSummaryView(p);
@@ -949,7 +949,11 @@ public class IMatView extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    addToKundVagn(si.getProduct(), 1);
+                    if (pil.isKgItem()) {
+                        addToKundVagn(si.getProduct(), 0.2);
+                    } else {
+                        addToKundVagn(si.getProduct(), 1);
+                    }
                     updateKundVagn();
                 }
             });
@@ -957,7 +961,10 @@ public class IMatView extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    addToKundVagn(si.getProduct(), -1);
+                    if(pil.isKgItem())
+                    addToKundVagn(si.getProduct(), -0.2);
+                    else
+                        addToKundVagn(si.getProduct(), -1);
                     updateKundVagn();
                 }
             });

@@ -97,7 +97,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 190, 60, -1));
 
-        amountSpinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), Double.valueOf(1.0d), null, Double.valueOf(1.0d)));
+        amountSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         amountSpinner.setValue(1);
         amountSpinner.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -292,7 +292,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         if (p.getUnit().equals("kr/kg")) {
             return (double) amountkgSpinner.getValue();
         } else {
-            return (int) amountSpinner.getValue();
+            return (double) (int) amountSpinner.getValue();
         }
     }
 
