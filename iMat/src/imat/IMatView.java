@@ -82,6 +82,7 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
+        listorPanel = new imat.listorPanel();
         centerTopPanel = new javax.swing.JPanel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         titlePanel = new javax.swing.JPanel();
@@ -390,7 +391,8 @@ public class IMatView extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(varorPanel);
 
-        cardPanel.add(jScrollPane2, "varor");
+        cardPanel.add(jScrollPane2, "varorCard");
+        cardPanel.add(listorPanel, "listorCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -499,7 +501,9 @@ public class IMatView extends javax.swing.JFrame {
         }
         
         String s = selectedNode.getUserObject().toString();
-        
+        if(!s.equals("Inköpslistor")){
+            switchCard("varorCard");
+        }
         
         
         switch(s){
@@ -678,7 +682,12 @@ public class IMatView extends javax.swing.JFrame {
             return;
         }
         
+        
         String s = selectedNode.getUserObject().toString();
+        
+        if(!s.equals("Inköpslistor")){
+            switchCard("varorCard");
+        }
         
         switch(s){
             case "Favoriter":
@@ -686,7 +695,8 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView();
                 break;
             case "Inköpslistor":
-                // stuff
+                listorPanel.update();
+                switchCard("listorCard");
                 break;
             case "Färdiga Kassar":
                 //
@@ -742,6 +752,7 @@ public class IMatView extends javax.swing.JFrame {
         }
         
         Utils.saveShoppingCartAsList(s);
+        listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -802,6 +813,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JTree jTree2;
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
+    private imat.listorPanel listorPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JButton searchButton;
@@ -911,6 +923,9 @@ public class IMatView extends javax.swing.JFrame {
         updateKundVagn();
     }
     
-    
+    public void switchCard(String card){
+        CardLayout cl = (CardLayout) cardPanel.getLayout();
+        cl.show(cardPanel, card);
+    }
     
 }
