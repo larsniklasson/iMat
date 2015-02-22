@@ -125,6 +125,11 @@ public class IMatView extends javax.swing.JFrame {
         });
 
         jButton5.setText("Login/registrera");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -755,6 +760,15 @@ public class IMatView extends javax.swing.JFrame {
         listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        varorPanel.removeAll();
+        varorPanel.revalidate();
+        varorPanel.repaint();
+        SignInView SIV = new SignInView();
+        
+        varorPanel.add(SIV);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -836,7 +850,8 @@ public class IMatView extends javax.swing.JFrame {
         if(s == null){
             s = "Popularitet";
         }
-        varorViewList.sort(new ProductComparator(s));
+        
+       varorViewList.sort(new ProductComparator(s));
         
         for(Product p : varorViewList){
             try{
@@ -871,7 +886,7 @@ public class IMatView extends javax.swing.JFrame {
             kundvagnPanel.add(label);
         }
         
-        for(ShoppingItem si : shoppingCart.getItems()){
+        for(final ShoppingItem si : shoppingCart.getItems()){
             final int c = counter;
             ProductInList pil = new ProductInList(si);
             pil.getButton().addActionListener(new ActionListener() {
