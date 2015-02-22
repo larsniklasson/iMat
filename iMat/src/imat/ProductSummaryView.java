@@ -20,10 +20,12 @@ import se.chalmers.ait.dat215.project.*;
  * @author Lasse
  */
 public class ProductSummaryView extends javax.swing.JPanel {
+
     IMatDataHandler dh = IMatDataHandler.getInstance();
-    
+
     private Product p;
     private int amountToBuy = 1;
+
     /**
      * Creates new form ProductSummaryView
      */
@@ -34,12 +36,10 @@ public class ProductSummaryView extends javax.swing.JPanel {
         listButton.setVisible(false);
         amountSpinner.setVisible(false);
         amountkgSpinner.setVisible(false);
-        
-       // amountSpinner.setVisible(false);
+
+        // amountSpinner.setVisible(false);
     }
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -199,32 +199,32 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }//GEN-LAST:event_amountSpinnerAncestorAdded
 
     private void amountSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_amountSpinnerStateChanged
-        
+
 // TODO add your handling code here:
     }//GEN-LAST:event_amountSpinnerStateChanged
 
     private void favoriteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoriteButtonActionPerformed
-      /* if(!filled){
-           File sourceimage = new File("src\\imat\\resources\\bilder\\heartFyllt.jpg");
-        try {
-            Image image = ImageIO.read(sourceimage);
-            favoriteButton.setIcon(new ImageIcon(image));
-        } catch (IOException ex) {
-            Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        filled = true;
-       }
-       else{
-        File sourceimage = new File("src\\imat\\resources\\bilder\\HeartInteFyllt.jpg");
-        try {
-            Image image = ImageIO.read(sourceimage);
-            favoriteButton.setIcon(new ImageIcon(image));
-        } catch (IOException ex) {
-            Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        filled = false;
-       }*/
-        
+        /* if(!filled){
+         File sourceimage = new File("src\\imat\\resources\\bilder\\heartFyllt.jpg");
+         try {
+         Image image = ImageIO.read(sourceimage);
+         favoriteButton.setIcon(new ImageIcon(image));
+         } catch (IOException ex) {
+         Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         filled = true;
+         }
+         else{
+         File sourceimage = new File("src\\imat\\resources\\bilder\\HeartInteFyllt.jpg");
+         try {
+         Image image = ImageIO.read(sourceimage);
+         favoriteButton.setIcon(new ImageIcon(image));
+         } catch (IOException ex) {
+         Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         filled = false;
+         }*/
+
 // TODO add your handling code here:
     }//GEN-LAST:event_favoriteButtonActionPerformed
 
@@ -284,60 +284,64 @@ public class ProductSummaryView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_amountkgSpinnerMouseExited
 
-    
-    
-    public JButton getButton(){
+    public JButton getButton() {
         return jButton1;
     }
-    public int getAmount(){
-        return (int) amountSpinner.getValue();
-         }
-    public void resetAmount(){
-        amountSpinner.setValue(1);
-         }
-    public double getAmountKg(){
-        return (double) amountkgSpinner.getValue();
+
+    public double getAmount() {
+        if (p.getUnit().equals("kr/kg")) {
+            return (double) amountkgSpinner.getValue();
+        } else {
+            return (int) amountSpinner.getValue();
+        }
     }
-    public void resetAmountKg(){
+
+    public void resetAmount() {
+        amountSpinner.setValue(1);
         amountkgSpinner.setValue(0.2);
     }
-    public JButton getFavoriteButton(){
+
+    public JButton getFavoriteButton() {
         return favoriteButton;
     }
-    public JButton getListButton(){
+
+    public JButton getListButton() {
         return listButton;
     }
-    public void showFavoriteAndListButtons(){
+
+    public void showFavoriteAndListButtons() {
         listButton.setVisible(true);
         favoriteButton.setVisible(true);
         //amountSpinner.setVisible(true);
     }
-    protected void hideFavoriteAndListButtons(){
+
+    protected void hideFavoriteAndListButtons() {
         listButton.setVisible(false);
         favoriteButton.setVisible(false);
         //amountSpinner.setVisible(false);
     }
-    public void setFavorite(){
+
+    public void setFavorite() {
         File sourceimage = new File("src\\imat\\resources\\bilder\\HeartFyllt.jpg");
-                            try {
-                                Image image = ImageIO.read(sourceimage);
-                                favoriteButton.setIcon(new ImageIcon(image));
-                            } catch (IOException ex) {
-                                Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+        try {
+            Image image = ImageIO.read(sourceimage);
+            favoriteButton.setIcon(new ImageIcon(image));
+        } catch (IOException ex) {
+            Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    public void setAntalLabel(){
-        if(p.getUnit().equals("kr/kg")){
+
+    public void setAntalLabel() {
+        if (p.getUnit().equals("kr/kg")) {
             antalLabel.setText("Antal kg:");
             amountkgSpinner.setVisible(true);
             //amountSpinner.NumberEditor;
-        }
-        else{
+        } else {
             antalLabel.setText("Antal:");
             amountSpinner.setVisible(true);
+        }
     }
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner amountSpinner;
     private javax.swing.JSpinner amountkgSpinner;

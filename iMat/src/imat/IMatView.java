@@ -347,7 +347,7 @@ public class IMatView extends javax.swing.JFrame {
         });
 
         totalPris.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        totalPris.setText("Totalt:  " + shoppingCart.getTotal() + " kr");
+        totalPris.setText("Totalt:  " + String.format("%.2f", shoppingCart.getTotal()) + " kr");
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
@@ -965,7 +965,7 @@ public class IMatView extends javax.swing.JFrame {
             counter++;
         }
         kundvagnPanel.repaint();
-        totalPris.setText("Totalt:  " + shoppingCart.getTotal() + " kr");
+        totalPris.setText("Totalt:  " + String.format("%.2f", shoppingCart.getTotal()) + " kr");
     }
 
     private void addToKundVagn(Product p, double d) {

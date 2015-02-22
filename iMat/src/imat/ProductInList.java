@@ -93,7 +93,7 @@ public class ProductInList extends javax.swing.JPanel {
         add(minusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText(String.format( "%.2f", si.getProduct().getPrice()) );
+        jLabel2.setText(String.format( "%.2f", si.getProduct().getPrice()) + " " + si.getProduct().getUnit());
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 70, 30));
     }// </editor-fold>//GEN-END:initComponents
 
