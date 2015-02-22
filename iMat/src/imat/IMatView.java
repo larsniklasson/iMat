@@ -128,11 +128,6 @@ public class IMatView extends javax.swing.JFrame {
         });
 
         jButton5.setText("Login/registrera");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -309,9 +304,10 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
 
-        rightPanel.setBackground(new java.awt.Color(0, 204, 255));
+        rightPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightPanel.setPreferredSize(new java.awt.Dimension(250, 550));
 
+        kundvagnPanel.setBackground(new java.awt.Color(51, 153, 0));
         kundvagnPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         kundvagnPanel.setPreferredSize(new java.awt.Dimension(230, 5));
         kundvagnPanel.setLayout(new java.awt.GridLayout(1, 0));
@@ -344,7 +340,8 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        totalPris.setText("Totalt:" + "   " + shoppingCart.getTotal() + " kr");
+        totalPris.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        totalPris.setText("Totalt:  " + shoppingCart.getTotal() + " kr");
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
@@ -393,6 +390,7 @@ public class IMatView extends javax.swing.JFrame {
 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(8);
 
+        varorPanel.setBackground(new java.awt.Color(0, 153, 0));
         updateVarorView();
 
         varorPanel.setLayout(new ModifiedFlowLayout());
@@ -920,7 +918,7 @@ public class IMatView extends javax.swing.JFrame {
             counter ++;
         }
         kundvagnPanel.repaint();
-        totalPris.setText("Totalt" + shoppingCart.getTotal() + " kr");
+        totalPris.setText("Totalt:  " + shoppingCart.getTotal() + " kr");
     }
     
     private void addToKundVagn(Product p, double d){

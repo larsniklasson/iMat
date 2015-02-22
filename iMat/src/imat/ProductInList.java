@@ -43,6 +43,7 @@ public class ProductInList extends javax.swing.JPanel {
         minusButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 formMouseEntered(evt);
@@ -54,6 +55,7 @@ public class ProductInList extends javax.swing.JPanel {
 
         jTextField2.setText("" + (int)si.getAmount());
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(si.getProduct().getName());
 
         jButton1.setText("X");
@@ -82,6 +84,7 @@ public class ProductInList extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(si.getProduct().getPrice() + " " + si.getProduct().getUnit());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
