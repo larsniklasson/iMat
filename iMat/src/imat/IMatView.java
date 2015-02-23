@@ -757,11 +757,23 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchTextFIeldKeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String s = JOptionPane.showInputDialog("namn på listan?");
+        String s;
         
-        if(s == null){
-            return;
+        while(true){
+            s = JOptionPane.showInputDialog("namn på listan?");
+            
+            if(s == null){
+                return;
+            }
+            
+            if(s.contains(";")){
+                JOptionPane.showMessageDialog(this, "semikolon ej tillåtet");
+                
+            } else {
+                break;
+            }
         }
+        
         
         Utils.saveShoppingCartAsList(s);
         listorPanel.update();
