@@ -6,8 +6,11 @@
 package imat;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -157,7 +160,7 @@ public class listorPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    private void updateVarorList(String s) {
+    private void updateVarorList(final String s) {
         
         
         jPanel1.removeAll();
@@ -167,10 +170,10 @@ public class listorPanel extends javax.swing.JPanel {
         File f = new File(dh.imatDirectory() + "\\inköpslistor\\" + map.get(s));
         
         String fileContent = "";
-        
+        Scanner sc;
         if(f.exists()){
             
-            Scanner sc = null;
+            sc = null;
             try {
                 sc = new Scanner(f);
             } catch (FileNotFoundException ex) {
@@ -183,12 +186,17 @@ public class listorPanel extends javax.swing.JPanel {
             }
         } else {
             return;
+            
         }
+        
+        sc.close();
         
         String [] arr = fileContent.split(";");
         int counter = 0;
         for(String x : arr){
             counter ++;
+            final int c = counter; // for listeners
+            
             if(counter == 1){
                 continue;
             }
@@ -196,8 +204,151 @@ public class listorPanel extends javax.swing.JPanel {
             
             
             ShoppingItem si = new ShoppingItem(dh.getProduct(Integer.parseInt(y[0])), Double.parseDouble(y[1]));
+            
             //jPanel1.add(new JLabel("hej"));
-            jPanel1.add(new ProductInList(si));
+            ProductInList pil = new ProductInList(si);
+            pil.getButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Scanner sc = null;
+                    try {
+                        sc = new Scanner(f);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    String newString = "";
+                    
+                    String ss = sc.nextLine();
+                    String[] arr = ss.split(";");
+                    
+                    for(int i = 0; i < arr.length; i ++){
+                        if(i != c-1){
+                            newString += arr[i] + ";";
+                        }
+                        
+                    }
+                    
+                    sc.close();
+                    PrintWriter pw = null;
+                    try {
+                        pw = new PrintWriter(f);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    pw.print(newString);
+                    pw.close();
+                    
+                    updateVarorList(s);
+                    
+                }
+            });
+            
+            pil.getplusButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Scanner sc = null;
+                    try {
+                        sc = new Scanner(f);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    String newString = "";
+                    
+                    String ss = sc.nextLine();
+                    String[] arr = ss.split(";");
+                    
+                    for(int i = 0; i < arr.length; i ++){
+                        if(i == c-1){
+                            String aShoppingItem = arr[i];
+                            String[] xx = aShoppingItem.split(":");
+                            
+                            Double newAmount = Double.parseDouble(xx[1]);
+                            if(pil.isKgItem()){
+                                newAmount += 0.2;
+                            } else {
+                                newAmount += 1;
+                            }
+                            
+                            newString += xx[0] + ":" + newAmount + ";";
+                        } else {
+                            newString += arr[i] + ";";
+                        }
+                        
+                        
+                    }
+                    
+                    sc.close();
+                    PrintWriter pw = null;
+                    try {
+                        pw = new PrintWriter(f);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    pw.print(newString);
+                    pw.close();
+                    
+                    updateVarorList(s);
+                }
+            });
+            
+            pil.getminusButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Scanner sc = null;
+                    try {
+                        sc = new Scanner(f);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    String newString = "";
+                    
+                    String ss = sc.nextLine();
+                    String[] arr = ss.split(";");
+                    
+                    for(int i = 0; i < arr.length; i ++){
+                        if(i == c-1){
+                            String aShoppingItem = arr[i];
+                            String[] xx = aShoppingItem.split(":");
+                            
+                            Double newAmount = Double.parseDouble(xx[1]);
+                            if(pil.isKgItem()){
+                                newAmount = Math.max(0, newAmount-0.2);
+                            } else {
+                                newAmount = Math.max(0, newAmount-1);
+                            }
+                            
+                            newString += xx[0] + ":" + newAmount + ";";
+                        } else {
+                            newString += arr[i] + ";";
+                        }
+                        
+                        
+                    }
+                    
+                    sc.close();
+                    PrintWriter pw = null;
+                    try {
+                        pw = new PrintWriter(f);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    pw.print(newString);
+                    pw.close();
+                    
+                    updateVarorList(s);
+                }
+            });
+            
+            jPanel1.add(pil);
         }
         
         jPanel1.repaint();
