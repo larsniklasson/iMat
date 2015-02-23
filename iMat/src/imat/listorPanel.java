@@ -8,7 +8,9 @@ package imat;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -22,6 +24,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Lasse
  */
 public class listorPanel extends javax.swing.JPanel {
+    Map<String,String> map = new TreeMap<String,String>();
+    
     IMatDataHandler dh = IMatDataHandler.getInstance();
     DefaultListModel<String> listModel;
     /**
@@ -39,8 +43,16 @@ public class listorPanel extends javax.swing.JPanel {
         
         File[] listOfFiles = folder.listFiles();
         
+        Scanner sc = null;
         for(File f : listOfFiles){
-            listModel.addElement(f.getName());
+            try {
+                sc = new Scanner(f);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String listName = sc.nextLine().split(";")[0];
+            listModel.addElement(listName);
+            map.put(listName, f.getName());
         }
         
         
@@ -113,7 +125,7 @@ public class listorPanel extends javax.swing.JPanel {
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         if (!evt.getValueIsAdjusting()) {//This line prevents double events
             String s = (String) jList1.getSelectedValue();
-            System.out.println(s);
+            
             
             updateVarorList(s);
 
@@ -136,15 +148,18 @@ public class listorPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void updateVarorList(String s) {
+        
+        
         jPanel1.removeAll();
         jPanel1.revalidate();
         jPanel1.repaint();
         
-        File f = new File(dh.imatDirectory() + "\\inköpslistor\\" + s);
+        File f = new File(dh.imatDirectory() + "\\inköpslistor\\" + map.get(s));
         
         String fileContent = "";
         
         if(f.exists()){
+            
             Scanner sc = null;
             try {
                 sc = new Scanner(f);
@@ -161,9 +176,12 @@ public class listorPanel extends javax.swing.JPanel {
         }
         
         String [] arr = fileContent.split(";");
-        
+        int counter = 0;
         for(String x : arr){
-            
+            counter ++;
+            if(counter == 1){
+                continue;
+            }
             String[] y = x.split(":");
             
             

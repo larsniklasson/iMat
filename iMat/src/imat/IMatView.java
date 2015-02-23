@@ -757,19 +757,7 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchTextFIeldKeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String s;
-        while (true) {
-            s = JOptionPane.showInputDialog("namn på listan?");
-
-            File f = new File(s);
-            try {
-                f.getCanonicalPath();
-                break;
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "ogiltigt namn");
-            }
-
-        }
+        String s = JOptionPane.showInputDialog("namn på listan?");
 
         Utils.saveShoppingCartAsList(s);
         listorPanel.update();

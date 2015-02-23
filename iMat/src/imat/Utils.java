@@ -32,38 +32,26 @@ public class Utils {
     public static void saveShoppingCartAsList(String name){
         IMatDataHandler dh = IMatDataHandler.getInstance();
         
-        String path = dh.imatDirectory() + "\\inköpslistor";
+        String path = dh.imatDirectory() + "\\inköpslistor\\";
         
-        
-        
-        File f = new File(path + "\\" + name + ".txt");
-        
-        
-        
-        
-        if(!f.exists()) {
-            try {
-                f.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            int counter = 1;
-            while(true){
-                f = new File(path + "\\" + name + " (" + counter + ")" + ".txt");
-                if(!f.exists()){
-                    try {
-                        f.createNewFile();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    break;
+        File f;
+        int counter = 1;
+        while(true){
+            f = new File(path + counter + ".txt");
+            if(!f.exists()){
+                try {
+                    f.createNewFile();
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                counter ++;
+                
+                break;
             }
-            
-        
+            counter ++;
         }
+        
+        
         
         PrintWriter pw = null;
         try {
@@ -71,6 +59,8 @@ public class Utils {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        pw.print(name + ";");
         
         for(ShoppingItem si : dh.getShoppingCart().getItems()){
             pw.print(si.getProduct().getProductId() + ":" + si.getAmount() + ";");
