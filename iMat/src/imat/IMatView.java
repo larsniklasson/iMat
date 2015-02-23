@@ -89,7 +89,6 @@ public class IMatView extends javax.swing.JFrame {
         listorPanel = new imat.listorPanel();
         loginPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         titlePanel = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
@@ -98,6 +97,8 @@ public class IMatView extends javax.swing.JFrame {
         sortingComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1200, 750));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -148,7 +149,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(LoginRegistreraButton)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,8 +315,8 @@ public class IMatView extends javax.swing.JFrame {
         rightPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightPanel.setPreferredSize(new java.awt.Dimension(250, 550));
 
-        kundvagnPanel.setBackground(new java.awt.Color(51, 153, 0));
-        kundvagnPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        kundvagnPanel.setBackground(new java.awt.Color(255, 255, 255));
+        kundvagnPanel.setBorder(new javax.swing.border.MatteBorder(null));
         kundvagnPanel.setPreferredSize(new java.awt.Dimension(230, 5));
         kundvagnPanel.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -419,7 +420,8 @@ public class IMatView extends javax.swing.JFrame {
 
         centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 35));
         centerTopPanel.setLayout(new javax.swing.BoxLayout(centerTopPanel, javax.swing.BoxLayout.LINE_AXIS));
-        centerTopPanel.add(filler2);
+
+        titlePanel.setBackground(new java.awt.Color(255, 255, 255));
 
         TitleLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -430,9 +432,9 @@ public class IMatView extends javax.swing.JFrame {
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
-                .addGap(0, 125, Short.MAX_VALUE)
+                .addGap(0, 144, Short.MAX_VALUE)
                 .addComponent(TitleLabel)
-                .addGap(0, 118, Short.MAX_VALUE))
+                .addGap(0, 139, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,8 +445,12 @@ public class IMatView extends javax.swing.JFrame {
         );
 
         centerTopPanel.add(titlePanel);
+
+        filler1.setBackground(new java.awt.Color(255, 255, 255));
+        filler1.setRequestFocusEnabled(false);
         centerTopPanel.add(filler1);
 
+        sortPanel.setBackground(new java.awt.Color(255, 255, 255));
         sortPanel.setAlignmentX(3.0F);
 
         jLabel2.setText("Sortering: ");
@@ -466,7 +472,7 @@ public class IMatView extends javax.swing.JFrame {
         sortPanelLayout.setHorizontalGroup(
             sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sortPanelLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -825,7 +831,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
