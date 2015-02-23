@@ -985,6 +985,7 @@ public class IMatView extends javax.swing.JFrame {
             kundvagnPanel.add(pil);
             counter++;
         }
+        
         kundvagnPanel.repaint();
         totalPris.setText("Totalt:  " + String.format("%.2f", shoppingCart.getTotal()) + " kr");
     }
