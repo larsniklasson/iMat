@@ -87,6 +87,7 @@ public class IMatView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
         listorPanel = new imat.listorPanel();
+        loginPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         titlePanel = new javax.swing.JPanel();
@@ -410,6 +411,9 @@ public class IMatView extends javax.swing.JFrame {
 
         cardPanel.add(jScrollPane2, "varorCard");
         cardPanel.add(listorPanel, "listorCard");
+
+        loginPanel.setBackground(new java.awt.Color(0, 153, 0));
+        cardPanel.add(loginPanel, "LoginCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -766,11 +770,11 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
-        varorPanel.removeAll();
-        varorPanel.revalidate();
-        varorPanel.repaint();
+
         SignInView SIV = new SignInView(LoginRegistreraButton);
-        varorPanel.add(SIV);
+        switchCard("LoginCard");
+        TitleLabel.setText("Login");
+        loginPanel.add(SIV);
 
     }//GEN-LAST:event_LoginRegistreraButtonActionPerformed
 
@@ -836,6 +840,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
     private imat.listorPanel listorPanel;
+    private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JButton searchButton;
