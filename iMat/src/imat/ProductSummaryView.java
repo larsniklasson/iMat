@@ -25,6 +25,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
     private Product p;
     private int amountToBuy = 1;
+    
 
     /**
      * Creates new form ProductSummaryView
@@ -73,11 +74,12 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
         //System.out.println(jLabel1.getHeight());
         jLabel1.setIcon(dh.getImageIcon(p, 140, 100));
+        jLabel1.setLabelFor(this);
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 4, 150, 100));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 160, 120));
 
         jLabel3.setText(String.format( "%.2f", p.getPrice()) + " " + p.getUnit());
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setText("Köp");
@@ -95,9 +97,11 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 190, 60, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 60, -1));
 
         amountSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        amountSpinner.setToolTipText("Välj hur mycket du vill lägga i kundvagnen");
+        amountSpinner.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         amountSpinner.setValue(1);
         amountSpinner.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -121,7 +125,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 amountSpinnerMouseExited(evt);
             }
         });
-        add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 50, -1));
+        add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, -1));
 
         favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/heartInteFyllt.jpg"))); // NOI18N
         favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -141,7 +145,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 favoriteButtonActionPerformed(evt);
             }
         });
-        add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 40, 28));
+        add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 40, 28));
 
         listButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/note.jpg"))); // NOI18N
         listButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -156,14 +160,16 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 listButtonMouseExited(evt);
             }
         });
-        add(listButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 40, 40));
+        add(listButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 40, 40));
 
         nameLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         nameLabel.setText(p.getName());
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 114, 110, 22));
-        add(antalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 50, 20));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, 22));
+        add(antalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 50, 20));
 
         amountkgSpinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.2d), Double.valueOf(0.2d), null, Double.valueOf(0.2d)));
+        amountkgSpinner.setToolTipText("Välj hur mycket du vill lägga i kundvagnen");
+        amountkgSpinner.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         amountkgSpinner.setValue(0.2);
         amountkgSpinner.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -187,7 +193,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 amountkgSpinnerMouseExited(evt);
             }
         });
-        add(amountkgSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 50, -1));
+        add(amountkgSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
