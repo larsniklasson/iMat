@@ -33,10 +33,16 @@ public class listorPanel extends javax.swing.JPanel {
      */
     public listorPanel() {
         initComponents();
+        update();
         
     }
     
     public void update(){
+        int index = jList1.getSelectedIndex();
+        if(index == -1){
+            index = 0;
+        }
+        
         listModel = new DefaultListModel<String>();
         
         File folder = new File(dh.imatDirectory() + "\\inköpslistor");
@@ -57,6 +63,7 @@ public class listorPanel extends javax.swing.JPanel {
         
         
         jList1.setModel(listModel);
+        jList1.setSelectedIndex(index);
         this.repaint();
     }
     
@@ -123,6 +130,9 @@ public class listorPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        if(jList1.getSelectedIndex() == -1){
+            return;
+        }
         if (!evt.getValueIsAdjusting()) {//This line prevents double events
             String s = (String) jList1.getSelectedValue();
             

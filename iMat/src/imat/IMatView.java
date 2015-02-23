@@ -717,7 +717,7 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView();
                 break;
             case "Inköpslistor":
-                listorPanel.update();
+                //listorPanel.update();
                 switchCard("listorCard");
                 break;
             case "Färdiga Kassar":
@@ -758,7 +758,11 @@ public class IMatView extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String s = JOptionPane.showInputDialog("namn på listan?");
-
+        
+        if(s == null){
+            return;
+        }
+        
         Utils.saveShoppingCartAsList(s);
         listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
