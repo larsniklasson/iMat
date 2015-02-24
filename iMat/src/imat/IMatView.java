@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
@@ -21,9 +22,16 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
@@ -931,7 +939,98 @@ public class IMatView extends javax.swing.JFrame {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //Lägga till till inköpslista
+                        JMenuItem menuItem;
+                        JPopupMenu popup;
+                        popup = new JPopupMenu();
+                        
+                        JPanel title = new JPanel();
+                        title.setLayout(new BoxLayout(title, BoxLayout.X_AXIS));
+                        
+                        title.add(new JLabel("      Välj inköpslista    "));
+                        JLabel x = new JLabel("  X ");
+                        x.addMouseListener(new MouseListener() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                popup.setVisible(false);
+                            }
+                            @Override
+                            public void mousePressed(MouseEvent e) {}
+
+                            @Override
+                            public void mouseReleased(MouseEvent e) {}
+
+                            @Override
+                            public void mouseEntered(MouseEvent e) {}
+
+                            @Override
+                            public void mouseExited(MouseEvent e) {}
+                        });
+                        title.add(x);
+                        popup.add(title);
+                        popup.add(new JSeparator());
+                        
+                        
+                        
+                        
+                        for(String s : Utils.getListor()){
+                            menuItem = new JMenuItem(s);
+                            menuItem.addActionListener(new ActionListener() {
+
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    Utils.addProductToList(psv.getProduct(), s);
+                                }
+                            });
+                            popup.add(menuItem);
+                        }
+                        popup.add(new JSeparator());
+                        
+                        JPanel panel = new JPanel();
+                        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+                        
+                        JTextField tf = new JTextField();
+                        
+                        panel.add(tf);
+                        
+                        
+                        
+                        JButton button = new JButton("ny");
+                        button.addActionListener(new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                if(tf.getText().length() == 0 || tf.getText().contains(";") || Utils.getListor().contains(tf.getText())){
+                                    tf.setText("");
+                                    
+                                    return;
+                                }
+                                
+                                Utils.createEmptyList(tf.getText());
+                                //Utils.addProductToList(psv.getProduct(), tf.getText());
+                                
+                                JMenuItem newItem = new JMenuItem(tf.getText());
+                                newItem.addActionListener(new ActionListener() {
+
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        Utils.addProductToList(psv.getProduct(), tf.getText());
+                                    }
+                                });
+                                popup.add(newItem, popup.getComponentCount()-2);
+                                
+                                popup.setVisible(false);
+                                popup.setVisible(true);
+                                
+                                tf.setText("");
+                            }
+                        });
+                        
+                        panel.add(button);
+                        popup.add(panel);
+                        
+                        
+                        
+                        popup.show(psv.getListButton(), 40, 0);
                     }
                 });
                 varorPanel.add(psv);

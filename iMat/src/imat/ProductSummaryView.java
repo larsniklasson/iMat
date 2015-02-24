@@ -307,6 +307,10 @@ public class ProductSummaryView extends javax.swing.JPanel {
         amountkgSpinner.setValue(0.2);
     }
 
+    public Product getProduct(){
+        return this.p;
+    }
+    
     public JButton getFavoriteButton() {
         return favoriteButton;
     }
