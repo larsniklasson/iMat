@@ -17,7 +17,7 @@ public class FinalBuyView extends javax.swing.JPanel {
     /**
      * Creates new form FinalBuyView
      */
-    public FinalBuyView(SignInView SIV) {
+    public FinalBuyView() {
         initComponents();
         
         IMatDataHandler im = IMatDataHandler.getInstance();
@@ -32,6 +32,18 @@ public class FinalBuyView extends javax.swing.JPanel {
         this.cityField.setText(im.getCustomer().getPostAddress());
         this.emailField.setText(im.getUser().getUserName());
         this.phoneField.setText(im.getCustomer().getPhoneNumber());
+        
+        for(int i = 1; i <= 31; i++){
+            deliveryDComboBox.addItem(i+"");
+            if(i<=12){
+                deliveryMComboBox.addItem(i+"");
+                validMComboBox.addItem(i+"");
+            }
+            //deliveryFComboBox;
+            //deliveryTComboBox;
+            
+            //validYComboBox;
+        }
         
     }
 

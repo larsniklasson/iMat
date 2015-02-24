@@ -515,7 +515,7 @@ public class IMatView extends javax.swing.JFrame {
 
     private void completetOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completetOrderButtonActionPerformed
         completeOrderPanel.removeAll();
-        FinalBuyView FBV = new FinalBuyView(SIV);
+        FinalBuyView FBV = new FinalBuyView();
         switchCard("completeOrderCard");
         TitleLabel.setText("Order");
         completeOrderPanel.add(FBV);
