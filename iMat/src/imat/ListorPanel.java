@@ -54,6 +54,12 @@ public class ListorPanel extends javax.swing.JPanel {
         
         File[] listOfFiles = folder.listFiles();
         
+        if(listOfFiles.length == 0){
+            jPanel1.removeAll();
+            jPanel1.revalidate();
+            jPanel1.repaint();
+        }
+        
         Scanner sc = null;
         for(File f : listOfFiles){
             try {
@@ -198,8 +204,10 @@ public class ListorPanel extends javax.swing.JPanel {
             System.out.println("failed deletion");
         }
         
+        jList1.setSelectedIndex(jList1.getSelectedIndex()-1);
+        
         this.update();
-        this.updateVarorList(s);
+        //this.updateVarorList(s);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

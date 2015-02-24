@@ -23,7 +23,7 @@ public class Utils {
     
     public static void makeInköpslistaDir(){
         IMatDataHandler dh = IMatDataHandler.getInstance();
-        String path = dh.imatDirectory() + "\\inköpslistor";
+        String path = dh.imatDirectory() + "/inköpslistor";
         File dir = new File(path);
         if(!dir.exists()){
             dir.mkdirs();
@@ -33,7 +33,7 @@ public class Utils {
     public static void saveShoppingCartAsList(String name){
         IMatDataHandler dh = IMatDataHandler.getInstance();
         
-        String path = dh.imatDirectory() + "\\inköpslistor\\";
+        String path = dh.imatDirectory() + "/inköpslistor/";
         
         File f;
         int counter = 1;
@@ -89,7 +89,7 @@ public class Utils {
     
     
     private static boolean isNameOK(String name){
-        File folder = new File(IMatDataHandler.getInstance().imatDirectory() + "\\inköpslistor");
+        File folder = new File(IMatDataHandler.getInstance().imatDirectory() + "/inköpslistor");
         
         File[] listOfFiles = folder.listFiles();
         
