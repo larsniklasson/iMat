@@ -1,2 +1,3 @@
 *.class
 /iMat/dist/
+iMat/nbproject/private/private.properties
