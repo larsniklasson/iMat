@@ -5,6 +5,9 @@
  */
 package imat;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingCart;
+
 /**
  *
  * @author Rasmus
@@ -14,8 +17,22 @@ public class FinalBuyView extends javax.swing.JPanel {
     /**
      * Creates new form FinalBuyView
      */
-    public FinalBuyView() {
+    public FinalBuyView(SignInView SIV) {
         initComponents();
+        
+        IMatDataHandler im = IMatDataHandler.getInstance();
+        ShoppingCart SC = im.getShoppingCart();
+        
+        totalLabel.setText(totalLabel.getText()+ " " + SC.getTotal() + " kr");
+        
+        this.nameField.setText(im.getCustomer().getFirstName());
+        this.LastNameField.setText(im.getCustomer().getLastName());
+        this.addressField.setText(im.getCustomer().getAddress());
+        this.zipCodeField.setText(im.getCustomer().getPostCode());
+        this.cityField.setText(im.getCustomer().getPostAddress());
+        this.emailField.setText(im.getUser().getUserName());
+        this.phoneField.setText(im.getCustomer().getPhoneNumber());
+        
     }
 
     /**
@@ -140,9 +157,8 @@ public class FinalBuyView extends javax.swing.JPanel {
             }
         });
 
-        totalLabel.setBackground(new java.awt.Color(0, 153, 0));
-        totalLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        totalLabel.setForeground(new java.awt.Color(0, 153, 0));
+        totalLabel.setBackground(new java.awt.Color(255, 255, 255));
+        totalLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         totalLabel.setText("Totalt:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -186,7 +202,7 @@ public class FinalBuyView extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(deliveryTComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(SMSBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -306,8 +322,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(cityField))
                                         .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 131, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
@@ -352,7 +368,7 @@ public class FinalBuyView extends javax.swing.JPanel {
                     .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)

@@ -39,7 +39,8 @@ public class IMatView extends javax.swing.JFrame {
     private IMatDataHandler dh = IMatDataHandler.getInstance();
 
     List<Product> varorViewList = dh.getProducts();
-
+    
+    private SignInView SIV;
     /**
      * Creates new form IMatView
      */
@@ -87,7 +88,6 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
-        listorPanel = new imat.ListorPanel(this);
         loginPanel = new javax.swing.JPanel();
         completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
@@ -413,23 +413,10 @@ public class IMatView extends javax.swing.JFrame {
         jScrollPane2.setViewportView(varorPanel);
 
         cardPanel.add(jScrollPane2, "varorCard");
-        cardPanel.add(listorPanel, "listorCard");
 
         loginPanel.setBackground(new java.awt.Color(0, 153, 0));
         cardPanel.add(loginPanel, "LoginCard");
-
-        javax.swing.GroupLayout completeOrderPanelLayout = new javax.swing.GroupLayout(completeOrderPanel);
-        completeOrderPanel.setLayout(completeOrderPanelLayout);
-        completeOrderPanelLayout.setHorizontalGroup(
-            completeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 646, Short.MAX_VALUE)
-        );
-        completeOrderPanelLayout.setVerticalGroup(
-            completeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 949, Short.MAX_VALUE)
-        );
-
-        cardPanel.add(completeOrderPanel, "card5");
+        cardPanel.add(completeOrderPanel, "completeOrderCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -515,11 +502,11 @@ public class IMatView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void completetOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completetOrderButtonActionPerformed
-        loginPanel.removeAll();
-        SignInView SIV = new SignInView(LoginRegistreraButton);
-        switchCard("LoginCard");
-        TitleLabel.setText("Login");
-        loginPanel.add(SIV);
+        completeOrderPanel.removeAll();
+        FinalBuyView FBV = new FinalBuyView(SIV);
+        switchCard("completeOrderCard");
+        TitleLabel.setText("Order");
+        completeOrderPanel.add(FBV);
     }//GEN-LAST:event_completetOrderButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -736,7 +723,7 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView();
                 break;
             case "Inköpslistor":
-                listorPanel.update();
+                //listorPanel.update();
                 switchCard("listorCard");
                 break;
             case "Färdiga Kassar":
@@ -796,12 +783,12 @@ public class IMatView extends javax.swing.JFrame {
         
         Utils.saveShoppingCartAsList(s);
         
-        listorPanel.update();
+        //listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
         loginPanel.removeAll();
-        SignInView SIV = new SignInView(LoginRegistreraButton);
+        SIV = new SignInView(LoginRegistreraButton);
         switchCard("LoginCard");
         TitleLabel.setText("Login");
         loginPanel.add(SIV);
@@ -869,7 +856,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JTree jTree2;
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
-    private imat.ListorPanel listorPanel;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;

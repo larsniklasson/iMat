@@ -101,7 +101,6 @@ public class SignInView extends javax.swing.JPanel {
         jLabel3.setText("*Lösernod:");
 
         MailField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        MailField.setForeground(new java.awt.Color(0, 153, 0));
         MailField.setText("Exampel@domän.com");
         MailField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -113,7 +112,6 @@ public class SignInView extends javax.swing.JPanel {
         jLabel1.setText("Logga in för köp");
 
         PasswordField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        PasswordField.setForeground(new java.awt.Color(0, 153, 0));
         PasswordField.setText("12341234");
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
