@@ -43,6 +43,7 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class IMatView extends javax.swing.JFrame {
 
+    ListorPanel listorPanel;
     private ShoppingCart shoppingCart;
     private IMatDataHandler dh = IMatDataHandler.getInstance();
 
@@ -426,6 +427,9 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel.add(loginPanel, "LoginCard");
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
+        listorPanel = new ListorPanel(this);
+        cardPanel.add(listorPanel,"listorCard");
+
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
         centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 35));
@@ -731,7 +735,7 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView();
                 break;
             case "Inköpslistor":
-                //listorPanel.update();
+                listorPanel.update();
                 switchCard("listorCard");
                 break;
             case "Färdiga Kassar":
@@ -791,7 +795,7 @@ public class IMatView extends javax.swing.JFrame {
         
         Utils.saveShoppingCartAsList(s);
         
-        //listorPanel.update();
+        listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
