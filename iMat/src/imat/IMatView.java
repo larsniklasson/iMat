@@ -79,7 +79,7 @@ public class IMatView extends javax.swing.JFrame {
         rightPanel = new javax.swing.JPanel();
         kundvagnPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        completetOrderButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         totalPris = new javax.swing.JLabel();
@@ -89,6 +89,7 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel = new javax.swing.JPanel();
         listorPanel = new imat.ListorPanel();
         loginPanel = new javax.swing.JPanel();
+        completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
@@ -325,11 +326,11 @@ public class IMatView extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Kundvagn");
 
-        jButton1.setText("Till Kassan");
-        jButton1.setToolTipText("Gå till kassan med kundvagnen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        completetOrderButton.setText("Till Kassan");
+        completetOrderButton.setToolTipText("Gå till kassan med kundvagnen");
+        completetOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                completetOrderButtonActionPerformed(evt);
             }
         });
 
@@ -359,7 +360,7 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(completetOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(rightPanelLayout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -385,7 +386,7 @@ public class IMatView extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(completetOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(524, 524, 524))
         );
 
@@ -416,6 +417,19 @@ public class IMatView extends javax.swing.JFrame {
 
         loginPanel.setBackground(new java.awt.Color(0, 153, 0));
         cardPanel.add(loginPanel, "LoginCard");
+
+        javax.swing.GroupLayout completeOrderPanelLayout = new javax.swing.GroupLayout(completeOrderPanel);
+        completeOrderPanel.setLayout(completeOrderPanelLayout);
+        completeOrderPanelLayout.setHorizontalGroup(
+            completeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 646, Short.MAX_VALUE)
+        );
+        completeOrderPanelLayout.setVerticalGroup(
+            completeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 949, Short.MAX_VALUE)
+        );
+
+        cardPanel.add(completeOrderPanel, "card5");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -500,9 +514,13 @@ public class IMatView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void completetOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completetOrderButtonActionPerformed
+        loginPanel.removeAll();
+        SignInView SIV = new SignInView(LoginRegistreraButton);
+        switchCard("LoginCard");
+        TitleLabel.setText("Login");
+        loginPanel.add(SIV);
+    }//GEN-LAST:event_completetOrderButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
@@ -782,7 +800,7 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
-
+        loginPanel.removeAll();
         SignInView SIV = new SignInView(LoginRegistreraButton);
         switchCard("LoginCard");
         TitleLabel.setText("Login");
@@ -836,8 +854,9 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
+    private javax.swing.JPanel completeOrderPanel;
+    private javax.swing.JButton completetOrderButton;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
