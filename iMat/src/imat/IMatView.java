@@ -87,7 +87,7 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
-        listorPanel = new imat.ListorPanel();
+        listorPanel = new imat.ListorPanel(this);
         loginPanel = new javax.swing.JPanel();
         completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
@@ -956,7 +956,7 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel.repaint();
     }
 
-    private void updateKundVagn() {
+    public void updateKundVagn() {
         kundvagnPanel.removeAll();
         kundvagnPanel.revalidate();
         //System.out.println("total " + shoppingCart.getItems().size());
@@ -1011,7 +1011,7 @@ public class IMatView extends javax.swing.JFrame {
         totalPris.setText("Totalt:  " + String.format("%.2f", shoppingCart.getTotal()) + " kr");
     }
 
-    private void addToKundVagn(Product p, double d) {
+    public void addToKundVagn(Product p, double d) {
         boolean contains = false;
 
         for (ShoppingItem si : shoppingCart.getItems()) {

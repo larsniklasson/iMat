@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -27,6 +29,10 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Lasse
  */
 public class ListorPanel extends javax.swing.JPanel {
+    List<ShoppingItem> list = new ArrayList<ShoppingItem>();
+    
+    IMatView view;
+    
     Map<String,String> map;
     
     IMatDataHandler dh = IMatDataHandler.getInstance();
@@ -34,13 +40,15 @@ public class ListorPanel extends javax.swing.JPanel {
     /**
      * Creates new form listorPanel
      */
-    public ListorPanel() {
+    public ListorPanel(IMatView view) {
+        this.view = view;
         initComponents();
         update();
         
     }
     
     public void update(){
+        
         map = new TreeMap<String,String>();
         
         int index = jList1.getSelectedIndex();
@@ -130,6 +138,11 @@ public class ListorPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("lägg till i kundvagnen");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -210,6 +223,14 @@ public class ListorPanel extends javax.swing.JPanel {
         //this.updateVarorList(s);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        for(ShoppingItem si : list){
+            view.addToKundVagn(si.getProduct(), si.getAmount());
+        }
+        view.updateKundVagn();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -222,7 +243,7 @@ public class ListorPanel extends javax.swing.JPanel {
 
     private void updateVarorList(final String s) {
         
-        
+        list.clear();
         
         
         jPanel1.removeAll();
@@ -268,6 +289,8 @@ public class ListorPanel extends javax.swing.JPanel {
             
             
             ShoppingItem si = new ShoppingItem(dh.getProduct(Integer.parseInt(y[0])), Double.parseDouble(y[1]));
+            list.add(si);
+            
             
             totalPrice += si.getProduct().getPrice() * si.getAmount();
             
