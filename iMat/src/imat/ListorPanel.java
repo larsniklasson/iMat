@@ -26,21 +26,23 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author Lasse
  */
-public class listorPanel extends javax.swing.JPanel {
-    Map<String,String> map = new TreeMap<String,String>();
+public class ListorPanel extends javax.swing.JPanel {
+    Map<String,String> map;
     
     IMatDataHandler dh = IMatDataHandler.getInstance();
     DefaultListModel<String> listModel;
     /**
      * Creates new form listorPanel
      */
-    public listorPanel() {
+    public ListorPanel() {
         initComponents();
         update();
         
     }
     
     public void update(){
+        map = new TreeMap<String,String>();
+        
         int index = jList1.getSelectedIndex();
         if(index == -1){
             index = 0;
@@ -57,9 +59,11 @@ public class listorPanel extends javax.swing.JPanel {
             try {
                 sc = new Scanner(f);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("catch block");
+                Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
             String listName = sc.nextLine().split(";")[0];
+            sc.close();
             listModel.addElement(listName);
             map.put(listName, f.getName());
         }
@@ -83,6 +87,8 @@ public class listorPanel extends javax.swing.JPanel {
         jList1 = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -110,6 +116,15 @@ public class listorPanel extends javax.swing.JPanel {
 
         jLabel1.setText("jLabel1");
 
+        jButton1.setText("Ta Bort");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("lägg till i kundvagnen");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,8 +134,13 @@ public class listorPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
@@ -135,7 +155,11 @@ public class listorPanel extends javax.swing.JPanel {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,8 +184,28 @@ public class listorPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jList1MousePressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String s = (String) jList1.getSelectedValue();
+        File f = new File(dh.imatDirectory() + "\\inköpslistor\\" + map.get(s));
+        
+        System.out.println(f.getName());
+        
+        
+        if(f.delete()){
+            System.out.println("list was deleted successfully");
+            
+        } else {
+            System.out.println("failed deletion");
+        }
+        
+        this.update();
+        this.updateVarorList(s);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
@@ -169,6 +213,8 @@ public class listorPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void updateVarorList(final String s) {
+        
+        
         
         
         jPanel1.removeAll();
@@ -187,7 +233,7 @@ public class listorPanel extends javax.swing.JPanel {
             try {
                 sc = new Scanner(f);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
             if(sc.hasNextLine()){
                 fileContent = sc.nextLine();
@@ -227,7 +273,7 @@ public class listorPanel extends javax.swing.JPanel {
                     try {
                         sc = new Scanner(f);
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
                     String newString = "";
@@ -247,7 +293,7 @@ public class listorPanel extends javax.swing.JPanel {
                     try {
                         pw = new PrintWriter(f);
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
                     pw.print(newString);
@@ -266,7 +312,7 @@ public class listorPanel extends javax.swing.JPanel {
                     try {
                         sc = new Scanner(f);
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
                     String newString = "";
@@ -299,7 +345,7 @@ public class listorPanel extends javax.swing.JPanel {
                     try {
                         pw = new PrintWriter(f);
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
                     pw.print(newString);
@@ -317,7 +363,7 @@ public class listorPanel extends javax.swing.JPanel {
                     try {
                         sc = new Scanner(f);
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
                     String newString = "";
@@ -350,7 +396,7 @@ public class listorPanel extends javax.swing.JPanel {
                     try {
                         pw = new PrintWriter(f);
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
                     pw.print(newString);

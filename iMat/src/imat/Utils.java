@@ -98,21 +98,26 @@ public class Utils {
             try {
                 sc = new Scanner(f);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(listorPanel.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
             String listName;
             try{
                 listName = sc.nextLine().split(";")[0];
             } catch (Exception e){
+                sc.close();
                 continue;
             }
             
             
             
             if(name.equals(listName)){
+                sc.close();
                 return false;
+            } else {
+                sc.close();
             }
         }
+        sc.close();
         return true;
 
     }

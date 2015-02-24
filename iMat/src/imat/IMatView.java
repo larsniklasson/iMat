@@ -17,6 +17,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -86,7 +87,7 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
-        listorPanel = new imat.listorPanel();
+        listorPanel = new imat.ListorPanel();
         loginPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
@@ -717,7 +718,7 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView();
                 break;
             case "Inköpslistor":
-                //listorPanel.update();
+                listorPanel.update();
                 switchCard("listorCard");
                 break;
             case "Färdiga Kassar":
@@ -776,6 +777,7 @@ public class IMatView extends javax.swing.JFrame {
         
         
         Utils.saveShoppingCartAsList(s);
+        
         listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -848,7 +850,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JTree jTree2;
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
-    private imat.listorPanel listorPanel;
+    private imat.ListorPanel listorPanel;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
