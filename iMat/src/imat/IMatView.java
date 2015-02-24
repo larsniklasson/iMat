@@ -503,7 +503,7 @@ public class IMatView extends javax.swing.JFrame {
 
     private void completetOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completetOrderButtonActionPerformed
         completeOrderPanel.removeAll();
-        FinalBuyView FBV = new FinalBuyView(SIV);
+        FinalBuyView FBV = new FinalBuyView();
         switchCard("completeOrderCard");
         TitleLabel.setText("Order");
         completeOrderPanel.add(FBV);
@@ -723,7 +723,7 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView();
                 break;
             case "Inköpslistor":
-                //listorPanel.update();
+                listorPanel.update();
                 switchCard("listorCard");
                 break;
             case "Färdiga Kassar":
@@ -783,7 +783,7 @@ public class IMatView extends javax.swing.JFrame {
         
         Utils.saveShoppingCartAsList(s);
         
-        //listorPanel.update();
+        listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
