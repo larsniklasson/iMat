@@ -284,14 +284,6 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Inköpslistor");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga Kassar");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept3");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept4");
-        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
         treeNode1.add(treeNode2);
@@ -315,7 +307,7 @@ public class IMatView extends javax.swing.JFrame {
             .addComponent(jScrollPane1)
             .addComponent(jScrollPane3)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -323,11 +315,11 @@ public class IMatView extends javax.swing.JFrame {
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(375, Short.MAX_VALUE))
         );
 
@@ -411,7 +403,7 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel.add(rightPanel, java.awt.BorderLayout.LINE_END);
 
-        centerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        centerPanel.setBackground(new java.awt.Color(194, 194, 194));
         centerPanel.setLayout(new java.awt.BorderLayout());
 
         cardPanel.setBackground(new java.awt.Color(0, 102, 102));
@@ -457,8 +449,6 @@ public class IMatView extends javax.swing.JFrame {
 
         listorPanel = new ListorPanel(this);
         cardPanel.add(listorPanel,"listorCard");
-        defaultBagPanel = new DefaultBagPanel(this);
-        cardPanel.add(defaultBagPanel, "defaultBagCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
