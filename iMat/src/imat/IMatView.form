@@ -209,7 +209,7 @@
                 <Component class="javax.swing.JTree" name="jTree2">
                   <Properties>
                     <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                      <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga Kassar&#xa;Dagens Erbjudande"/>
+                      <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga Kassar&#xa; Recept1&#xa; Recept2&#xa; Recept3&#xa;Dagens Erbjudande"/>
                     </Property>
                   </Properties>
                   <Events>
