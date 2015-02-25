@@ -114,7 +114,7 @@ public class IMatView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1200, 750));
+        setPreferredSize(new java.awt.Dimension(1300, 750));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -458,6 +458,8 @@ public class IMatView extends javax.swing.JFrame {
 
         listorPanel = new ListorPanel(this);
         cardPanel.add(listorPanel,"listorCard");
+        defaultBagPanel = new DefaultBagPanel(this);
+        cardPanel.add(defaultBagPanel, "defaultBagCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
