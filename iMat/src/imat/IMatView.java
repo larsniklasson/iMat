@@ -770,12 +770,16 @@ public class IMatView extends javax.swing.JFrame {
                 listorPanel.update();
                 switchCard("listorCard");
                 break;
-            case "Färdiga Kassar":
+            /*case "Färdiga Kassar":
                 switchCard("defaultBagCard");
                 //
-                break;
+                break;*/
             case "Recept1":
-                defaultBagPanel.update();
+                defaultBagPanel.initializeDefaultBag(s);
+                switchCard("defaultBagCard");
+                break;
+            case "Recept2":
+                defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
                 break;
             case "Dagens Erbjudande":
