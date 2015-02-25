@@ -57,6 +57,7 @@ public class IMatView extends javax.swing.JFrame {
     public IMatView() {
 
         Utils.makeInköpslistaDir();
+        Utils.makeRecipeListDir();
 
         shoppingCart = dh.getShoppingCart();
 
