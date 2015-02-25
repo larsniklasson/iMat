@@ -525,6 +525,7 @@ public class IMatView extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
+        switchCard("varorCard");
         updateVarorView();
 
     }//GEN-LAST:event_searchButtonActionPerformed
