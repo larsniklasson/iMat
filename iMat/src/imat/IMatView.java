@@ -23,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -34,6 +35,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreePath;
 import se.chalmers.ait.dat215.project.*;
 
@@ -64,6 +66,7 @@ public class IMatView extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         updateKundVagn();
+        treeImage();
 
     }
 
@@ -683,8 +686,10 @@ public class IMatView extends javax.swing.JFrame {
         }
 
         TitleLabel.setText(s);
-        jTree1.repaint();
+        jTree1.repaint(); 
 
+        
+        
         updateVarorView(varorPanel, false);
 
     }//GEN-LAST:event_jTree1ValueChanged
@@ -1167,6 +1172,13 @@ public class IMatView extends javax.swing.JFrame {
     public void switchCard(String card) {
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, card);
+    }
+    
+    public void treeImage(){
+    Icon closedIcon = new ImageIcon("src/imat/resources/bilder/kasse.jpg");
+    DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) jTree2.getCellRenderer();
+    renderer.setClosedIcon(closedIcon);
+    
     }
 
 }
