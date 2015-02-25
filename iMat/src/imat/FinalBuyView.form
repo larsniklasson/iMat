@@ -274,7 +274,7 @@
                               <Component id="homeDeliveryRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="deliveryDComboBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -282,18 +282,12 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="deliveryMComboBox" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="deliveryFComboBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="deliveryTComboBox" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="deliveryFComboBox" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="SMSBox" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="120" max="32767" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -319,8 +313,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="pickupDeliveryRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="deliveryFComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="deliveryTComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="SMSBox" min="-2" max="-2" attributes="0"/>
@@ -370,25 +362,16 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel13">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="-"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="deliveryTComboBox">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Till"/>
-              </StringArray>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JComboBox" name="deliveryFComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Fr&#xe5;n"/>
+              <StringArray count="6">
+                <StringItem index="0" value="Tid p&#xe5; dygnet..."/>
+                <StringItem index="1" value="10:00-12:00"/>
+                <StringItem index="2" value="12:00-14:00"/>
+                <StringItem index="3" value="16:00-18:00"/>
+                <StringItem index="4" value="18:00-20:00"/>
+                <StringItem index="5" value="20:00-22:00"/>
               </StringArray>
             </Property>
           </Properties>
