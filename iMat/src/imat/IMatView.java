@@ -82,9 +82,9 @@ public class IMatView extends javax.swing.JFrame {
         updateKundVagn();
 
         
-            
-        
         treeImage();
+        
+        jTree1.setSelectionRow(0);
 
     }
 
@@ -444,7 +444,6 @@ public class IMatView extends javax.swing.JFrame {
                 varorPanelMouseEntered(evt);
             }
         });
-        updateVarorView(ProductCategory.MELONS);
 
         varorPanel.setLayout(new ModifiedFlowLayout());
 
@@ -558,7 +557,7 @@ public class IMatView extends javax.swing.JFrame {
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
         switchCard("varorCard");
         updateVarorView(dh.findProducts(searchTextFIeld.getText().toLowerCase()));
-        
+        jTree1.setSelectionRow(-1);
 
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -783,6 +782,7 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView(dh.favorites());
                 break;
             case "Inköpslistor":
+                //sortPanel.setVisible(false);
                 listorPanel.update();
                 switchCard("listorCard");
                 break;
@@ -809,7 +809,21 @@ public class IMatView extends javax.swing.JFrame {
 
     private void jTree2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree2MousePressed
         TreePath path = jTree2.getClosestPathForLocation(evt.getX(), evt.getY());
+        if (jTree2.isPathSelected(path)) {
+            if (jTree2.isExpanded(path)) {
+                jTree2.collapsePath(path);
+            } else {
+
+                jTree2.expandPath(path);
+
+            }
+        } else {
+
+            jTree2.expandPath(path);
+        }
+
         jTree2.setSelectionPath(path);
+
         jTree1.clearSelection();
     }//GEN-LAST:event_jTree2MousePressed
 

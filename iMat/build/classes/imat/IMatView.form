@@ -411,7 +411,6 @@
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="varorPanel.setLayout(new ModifiedFlowLayout());"/>
-                        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="updateVarorView(ProductCategory.MELONS);"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
