@@ -48,7 +48,7 @@ public class IMatView extends javax.swing.JFrame {
     private ShoppingCart shoppingCart;
     private IMatDataHandler dh = IMatDataHandler.getInstance();
 
-    List<Product> varorViewList = dh.getProducts();
+    List<Product> varorViewList = dh.favorites();
     
     private SignInView SIV;
     /**
@@ -98,6 +98,8 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        allaVarorPanel = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
         completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
@@ -415,13 +417,31 @@ public class IMatView extends javax.swing.JFrame {
                 varorPanelMouseEntered(evt);
             }
         });
-        updateVarorView();
+        updateVarorView(varorPanel, false);
 
         varorPanel.setLayout(new ModifiedFlowLayout());
 
         jScrollPane2.setViewportView(varorPanel);
 
         cardPanel.add(jScrollPane2, "varorCard");
+
+        javax.swing.GroupLayout allaVarorPanelLayout = new javax.swing.GroupLayout(allaVarorPanel);
+        allaVarorPanel.setLayout(allaVarorPanelLayout);
+        allaVarorPanelLayout.setHorizontalGroup(
+            allaVarorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 667, Short.MAX_VALUE)
+        );
+        allaVarorPanelLayout.setVerticalGroup(
+            allaVarorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 947, Short.MAX_VALUE)
+        );
+
+        allaVarorPanel.setLayout(new ModifiedFlowLayout());
+        updateVarorView(allaVarorPanel,true);
+
+        jScrollPane4.setViewportView(allaVarorPanel);
+
+        cardPanel.add(jScrollPane4, "allaVarorCard");
 
         loginPanel.setBackground(new java.awt.Color(0, 153, 0));
         cardPanel.add(loginPanel, "LoginCard");
@@ -528,7 +548,7 @@ public class IMatView extends javax.swing.JFrame {
         varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
         switchCard("varorCard");
-        updateVarorView();
+        updateVarorView(varorPanel, false);
 
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -556,7 +576,8 @@ public class IMatView extends javax.swing.JFrame {
 
         switch (s) {
             case "Visa Alla":
-                varorViewList = dh.getProducts();
+                switchCard("allaVarorCard");
+                
                 break;
             case "Grönsaker":
                 varorViewList = dh.getProducts(ProductCategory.POD);
@@ -657,7 +678,7 @@ public class IMatView extends javax.swing.JFrame {
         TitleLabel.setText(s);
         jTree1.repaint();
 
-        updateVarorView();
+        updateVarorView(varorPanel, false);
 
     }//GEN-LAST:event_jTree1ValueChanged
 
@@ -736,7 +757,7 @@ public class IMatView extends javax.swing.JFrame {
         switch (s) {
             case "Favoriter":
                 varorViewList = dh.favorites();
-                updateVarorView();
+                updateVarorView(varorPanel, false);
                 break;
             case "Inköpslistor":
                 listorPanel.update();
@@ -767,14 +788,15 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_sortingComboBoxItemStateChanged
 
     private void sortingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortingComboBoxActionPerformed
-        updateVarorView();
+        //updateVarorView();
     }//GEN-LAST:event_sortingComboBoxActionPerformed
 
     private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
             TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
-            updateVarorView();
+            updateVarorView(varorPanel, false);
+            switchCard("varorCard");
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTextFIeldKeyPressed
@@ -855,6 +877,7 @@ public class IMatView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginRegistreraButton;
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JPanel allaVarorPanel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
@@ -868,6 +891,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
@@ -887,9 +911,14 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel varorPanel;
     // End of variables declaration//GEN-END:variables
 
-    private void updateVarorView() {
-        varorPanel.removeAll();
-        varorPanel.revalidate();
+    private void updateVarorView(JPanel jp, boolean isAllaVarorPanel) {
+        
+        if(isAllaVarorPanel){
+            varorViewList = dh.getProducts();
+        }
+        
+        jp.removeAll();
+        jp.revalidate();
         //varorPanel.repaint();  // denna behövdes inte
 
         String s = String.valueOf(sortingComboBox.getSelectedItem());
@@ -1042,12 +1071,12 @@ public class IMatView extends javax.swing.JFrame {
                         popup.show(psv.getListButton(), 40, 0);
                     }
                 });
-                varorPanel.add(psv);
+                jp.add(psv);
             } catch (Exception e) {
             }
         }
 
-        varorPanel.repaint();
+        jp.repaint();
     }
 
     public void updateKundVagn() {
