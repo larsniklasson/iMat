@@ -66,7 +66,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         
         listModel = new DefaultListModel<String>();
         
-        File folder = new File(dh.imatDirectory() + "/recept");
+        File folder = new File(dh.imatDirectory() + "/Recept");
         
         File[] listOfFiles = folder.listFiles();
         
@@ -213,7 +213,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         
         Double totalPrice = 0.0;
         
-        File f = new File(dh.imatDirectory() + "/recept/" + map.get(s));
+        File f = new File(dh.imatDirectory() + "/Recept/" + map.get(s));
         
         String fileContent = "";
         Scanner sc;
