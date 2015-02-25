@@ -73,6 +73,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         //System.out.println(jLabel1.getHeight());
+
         jLabel1.setIcon(dh.getImageIcon(p, 140, 100));
         jLabel1.setLabelFor(this);
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));

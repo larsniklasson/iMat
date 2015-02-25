@@ -189,7 +189,7 @@
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTree()"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTree1.setRootVisible(false);&#xa;jTree1.setToggleClickCount(1);&#xa;&#xa;for(MouseListener ml : jTree1.getMouseListeners()){&#xa;    System.out.println(123123);&#xa;    jTree1.removeMouseListener(ml);&#xa;}"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTree1.setRootVisible(false);&#xa;jTree1.setToggleClickCount(1);&#xa;&#xa;for(MouseListener ml : jTree1.getMouseListeners()){&#xa;    &#xa;    jTree1.removeMouseListener(ml);&#xa;}"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -408,39 +408,10 @@
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="varorPanel.setLayout(new ModifiedFlowLayout());"/>
-                        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="updateVarorView(varorPanel, false);"/>
+                        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="updateVarorView(ProductCategory.MELONS);"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-                    </Container>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                      <CardConstraints cardName="allaVarorCard"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="allaVarorPanel">
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="allaVarorPanel.setLayout(new ModifiedFlowLayout());&#xa;updateVarorView(allaVarorPanel,true);"/>
-                      </AuxValues>
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="667" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="947" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
                     </Container>
                   </SubComponents>
                 </Container>

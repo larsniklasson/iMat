@@ -6,6 +6,7 @@
 package imat;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -19,8 +20,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -45,19 +51,25 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class IMatView extends javax.swing.JFrame {
 
+    
+    Map<Product, ProductSummaryView> map = new HashMap<Product, ProductSummaryView>();
+    
     ListorPanel listorPanel;
     DefaultBagPanel defaultBagPanel;
     private ShoppingCart shoppingCart;
     private IMatDataHandler dh = IMatDataHandler.getInstance();
 
-    List<Product> varorViewList = dh.favorites();
+    List<Product> varorViewList = dh.getProducts();
     
     private SignInView SIV;
     /**
      * Creates new form IMatView
      */
     public IMatView() {
-
+        
+        
+        initMap();
+        
         Utils.makeInköpslistaDir();
         Utils.makeRecipeListDir();
 
@@ -67,7 +79,8 @@ public class IMatView extends javax.swing.JFrame {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         updateKundVagn();
         
-
+            
+        
     }
 
     /**
@@ -102,8 +115,6 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        allaVarorPanel = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
         completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
@@ -116,7 +127,6 @@ public class IMatView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1200, 750));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -248,7 +258,7 @@ public class IMatView extends javax.swing.JFrame {
         jTree1.setToggleClickCount(1);
 
         for(MouseListener ml : jTree1.getMouseListeners()){
-            System.out.println(123123);
+
             jTree1.removeMouseListener(ml);
         }
         jTree1.addTreeExpansionListener(new javax.swing.event.TreeExpansionListener() {
@@ -428,7 +438,7 @@ public class IMatView extends javax.swing.JFrame {
                 varorPanelMouseEntered(evt);
             }
         });
-        updateVarorView(varorPanel, false);
+        updateVarorView(ProductCategory.MELONS);
 
         varorPanel.setLayout(new ModifiedFlowLayout());
 
@@ -436,30 +446,14 @@ public class IMatView extends javax.swing.JFrame {
 
         cardPanel.add(jScrollPane2, "varorCard");
 
-        javax.swing.GroupLayout allaVarorPanelLayout = new javax.swing.GroupLayout(allaVarorPanel);
-        allaVarorPanel.setLayout(allaVarorPanelLayout);
-        allaVarorPanelLayout.setHorizontalGroup(
-            allaVarorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 667, Short.MAX_VALUE)
-        );
-        allaVarorPanelLayout.setVerticalGroup(
-            allaVarorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 947, Short.MAX_VALUE)
-        );
-
-        allaVarorPanel.setLayout(new ModifiedFlowLayout());
-        updateVarorView(allaVarorPanel,true);
-
-        jScrollPane4.setViewportView(allaVarorPanel);
-
-        cardPanel.add(jScrollPane4, "allaVarorCard");
-
         loginPanel.setBackground(new java.awt.Color(0, 153, 0));
         cardPanel.add(loginPanel, "LoginCard");
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
         listorPanel = new ListorPanel(this);
         cardPanel.add(listorPanel,"listorCard");
+        defaultBagPanel = new DefaultBagPanel(this);
+        cardPanel.add(defaultBagPanel, "defaultBagCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -557,7 +551,7 @@ public class IMatView extends javax.swing.JFrame {
         varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
         switchCard("varorCard");
-        updateVarorView(varorPanel, false);
+        //updateVarorView();
 
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -571,7 +565,9 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
-
+        
+        ProductCategory[] pcArr;
+        
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
 
         if (selectedNode == null) {
@@ -582,104 +578,115 @@ public class IMatView extends javax.swing.JFrame {
         if (!s.equals("Inköpslistor")) {
             switchCard("varorCard");
         }
-
+        
+       
+        
         switch (s) {
             case "Visa Alla":
-                switchCard("allaVarorCard");
+                
+                updateVarorView(ProductCategory.values());
                 
                 break;
             case "Grönsaker":
-                varorViewList = dh.getProducts(ProductCategory.POD);
-                varorViewList.addAll(dh.getProducts(ProductCategory.CABBAGE));
-                varorViewList.addAll(dh.getProducts(ProductCategory.ROOT_VEGETABLE));
-                varorViewList.addAll(dh.getProducts(ProductCategory.VEGETABLE_FRUIT));
+                pcArr = new ProductCategory[4];
+                pcArr[0] = ProductCategory.POD;
+                pcArr[1] = ProductCategory.CABBAGE;
+                pcArr[2] = ProductCategory.ROOT_VEGETABLE;
+                pcArr[3] = ProductCategory.VEGETABLE_FRUIT;
+                updateVarorView(pcArr);
                 break;
 
             case "Kål":
-                varorViewList = dh.getProducts(ProductCategory.CABBAGE);
-                //stuff
+                updateVarorView(ProductCategory.CABBAGE);
                 break;
             case "Rotfrukter":
-                varorViewList = dh.getProducts(ProductCategory.ROOT_VEGETABLE);
+                updateVarorView(ProductCategory.ROOT_VEGETABLE);
                 break;
             case "Grönsaksfrukter":
-                varorViewList = dh.getProducts(ProductCategory.VEGETABLE_FRUIT);
+                updateVarorView(ProductCategory.VEGETABLE_FRUIT);
                 break;
             case "Ärtor, Linser & Bönor":
-                varorViewList = dh.getProducts(ProductCategory.POD);
+                updateVarorView(ProductCategory.POD);
                 break;
 
             case "Kött":
-                varorViewList = dh.getProducts(ProductCategory.MEAT);
+                updateVarorView(ProductCategory.MEAT);
                 break;
             case "Fisk":
-                varorViewList = dh.getProducts(ProductCategory.FISH);
+                updateVarorView(ProductCategory.FISH);
                 break;
             case "Frukt & Bär":
-                varorViewList = dh.getProducts(ProductCategory.BERRY);
-                varorViewList.addAll(dh.getProducts(ProductCategory.MELONS));
-                varorViewList.addAll(dh.getProducts(ProductCategory.CITRUS_FRUIT));
-                varorViewList.addAll(dh.getProducts(ProductCategory.EXOTIC_FRUIT));
-                varorViewList.addAll(dh.getProducts(ProductCategory.FRUIT));
+                pcArr = new ProductCategory[5];
+                pcArr[0] = ProductCategory.MELONS;
+                pcArr[1] = ProductCategory.BERRY;
+                pcArr[2] = ProductCategory.FRUIT;
+                pcArr[3] = ProductCategory.EXOTIC_FRUIT;
+                pcArr[4] = ProductCategory.CITRUS_FRUIT;
+                updateVarorView(pcArr);
                 break;
 
             case "Stenfrukter":
-                varorViewList = dh.getProducts(ProductCategory.FRUIT);
+                updateVarorView(ProductCategory.FRUIT);
                 break;
             case "Meloner":
-                varorViewList = dh.getProducts(ProductCategory.MELONS);
+                updateVarorView(ProductCategory.MELONS);
                 break;
             case "Citrusfrukter":
-                varorViewList = dh.getProducts(ProductCategory.CITRUS_FRUIT);
+                updateVarorView(ProductCategory.CITRUS_FRUIT);
                 break;
             case "Exotiska Frukter":
-                varorViewList = dh.getProducts(ProductCategory.EXOTIC_FRUIT);
+                updateVarorView(ProductCategory.EXOTIC_FRUIT);
                 break;
             case "Bär":
-                varorViewList = dh.getProducts(ProductCategory.BERRY);
+                updateVarorView(ProductCategory.BERRY);
                 break;
 
             case "Bröd":
-                varorViewList = dh.getProducts(ProductCategory.BREAD);
+                updateVarorView(ProductCategory.BREAD);
                 break;
             case "Drycker":
-                varorViewList = dh.getProducts(ProductCategory.COLD_DRINKS);
-                varorViewList.addAll(dh.getProducts(ProductCategory.HOT_DRINKS));
+                pcArr = new ProductCategory[2];
+                pcArr[0] = ProductCategory.HOT_DRINKS;
+                pcArr[1] = ProductCategory.COLD_DRINKS;
+                updateVarorView(pcArr);
                 break;
             case "Varma Drycker":
-                varorViewList = dh.getProducts(ProductCategory.HOT_DRINKS);
+                updateVarorView(ProductCategory.HOT_DRINKS);
                 break;
             case "Kalla Drycker":
-                varorViewList = dh.getProducts(ProductCategory.COLD_DRINKS);
+                updateVarorView(ProductCategory.COLD_DRINKS);
                 break;
             case "Mejeriprodukter":
-                varorViewList = dh.getProducts(ProductCategory.DAIRIES);
+                updateVarorView(ProductCategory.DAIRIES);
                 break;
             case "Mjöl, Socker & Salt":
-                varorViewList = dh.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+                updateVarorView(ProductCategory.FLOUR_SUGAR_SALT);
                 break;
             case "Nötter & Frön":
-                varorViewList = dh.getProducts(ProductCategory.NUTS_AND_SEEDS);
+                updateVarorView(ProductCategory.NUTS_AND_SEEDS);
                 break;
 
             case "Pasta, Potatis & Ris":
-                varorViewList = dh.getProducts(ProductCategory.PASTA);
-                varorViewList.addAll(dh.getProducts(ProductCategory.POTATO_RICE));
+                pcArr = new ProductCategory[2];
+                pcArr[0] = ProductCategory.PASTA;
+                pcArr[1] = ProductCategory.POTATO_RICE;
+                
+                updateVarorView(pcArr);
                 break;
             case "Pasta":
-                varorViewList = dh.getProducts(ProductCategory.PASTA);
+                updateVarorView(ProductCategory.PASTA);
                 break;
             case "Potatis":
-                varorViewList = dh.findProducts("potatis");
+                updateVarorView(dh.findProducts("potatis"));
                 break;
             case "Ris":
-                varorViewList = dh.findProducts("ris");
+                updateVarorView(dh.findProducts("ris"));
                 break;
             case "Sötsaker":
-                varorViewList = dh.getProducts(ProductCategory.SWEET);
+                updateVarorView(ProductCategory.SWEET);
                 break;
             case "Kryddor":
-                varorViewList = dh.getProducts(ProductCategory.HERB);
+                updateVarorView(ProductCategory.HERB);
                 break;
 
         }
@@ -687,7 +694,7 @@ public class IMatView extends javax.swing.JFrame {
         TitleLabel.setText(s);
         jTree1.repaint();
 
-        updateVarorView(varorPanel, false);
+        //updateVarorView();
 
     }//GEN-LAST:event_jTree1ValueChanged
 
@@ -765,8 +772,7 @@ public class IMatView extends javax.swing.JFrame {
 
         switch (s) {
             case "Favoriter":
-                varorViewList = dh.favorites();
-                updateVarorView(varorPanel, false);
+                updateVarorView(dh.favorites());
                 break;
             case "Inköpslistor":
                 listorPanel.update();
@@ -805,14 +811,15 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_sortingComboBoxItemStateChanged
 
     private void sortingComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortingComboBoxActionPerformed
-        //updateVarorView();
+        sortVarorView();
+        
     }//GEN-LAST:event_sortingComboBoxActionPerformed
 
     private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
             TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
-            updateVarorView(varorPanel, false);
+            //updateVarorView();
             switchCard("varorCard");
         }
         // TODO add your handling code here:
@@ -894,7 +901,6 @@ public class IMatView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginRegistreraButton;
     private javax.swing.JLabel TitleLabel;
-    private javax.swing.JPanel allaVarorPanel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
@@ -908,7 +914,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
@@ -927,187 +932,53 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JLabel totalPris;
     private javax.swing.JPanel varorPanel;
     // End of variables declaration//GEN-END:variables
-
-    private void updateVarorView(JPanel jp, boolean isAllaVarorPanel) {
+    
+    private void updateVarorView(List<Product> list){
+        varorPanel.removeAll();
+        varorPanel.revalidate();
         
-        if(isAllaVarorPanel){
-            varorViewList = dh.getProducts();
+        for(Product p: list){
+            varorPanel.add(map.get(p));
         }
         
-        jp.removeAll();
-        jp.revalidate();
+        varorPanel.repaint();
+    }
+    
+    private void updateVarorView(ProductCategory pc){
+        updateVarorView(new ProductCategory[]{pc});
+    }
+    
+    
+    
+    
+    private void updateVarorView(ProductCategory[] pcArr) {
+        
+        
+        
+        varorPanel.removeAll();
+        varorPanel.revalidate();
         //varorPanel.repaint();  // denna behövdes inte
 
         String s = String.valueOf(sortingComboBox.getSelectedItem());
         if (s == null) {
             s = "Popularitet";
         }
-
-        varorViewList.sort(new ProductComparator(s));
-
-        for (Product p : varorViewList) {
-            try {
-
-                ProductSummaryView psv = new ProductSummaryView(p);
-                psv.setAntalLabel();
-                psv.getButton().addActionListener(new ActionListener() {
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        addToKundVagn(p, psv.getAmount());
-                        psv.resetAmount();
-                        updateKundVagn();
-                    }
-                });
-                if (dh.isFavorite(p)) {
-                    psv.setFavorite();
-                }
-                psv.getFavoriteButton().addActionListener(new ActionListener() {
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (!dh.isFavorite(p)) {
-                            File sourceimage = new File("src/imat/resources/bilder/heartFyllt.jpg");
-                            try {
-                                Image image = ImageIO.read(sourceimage);
-                                psv.favoriteButton.setIcon(new ImageIcon(image));
-                            } catch (IOException ex) {
-                                Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            //psv.filled = true;
-                            dh.addFavorite(p);
-                        } else {
-                            File sourceimage = new File("src/imat/resources/bilder/HeartInteFyllt.jpg");
-                            try {
-                                Image image = ImageIO.read(sourceimage);
-                                psv.favoriteButton.setIcon(new ImageIcon(image));
-                            } catch (IOException ex) {
-                                Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            //psv.filled = false;
-                            dh.removeFavorite(p);
-                        }
-                        //Lägga till till favoriter
-                    }
-                });
-                psv.getListButton().addActionListener(new ActionListener() {
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        JMenuItem menuItem;
-                        JPopupMenu popup;
-                        popup = new JPopupMenu();
-                        
-                        JPanel title = new JPanel();
-                        title.setLayout(new BoxLayout(title, BoxLayout.X_AXIS));
-                        
-                        title.add(new JLabel("      Välj inköpslista    "));
-                        JLabel x = new JLabel("  X ");
-                        x.addMouseListener(new MouseListener() {
-                            @Override
-                            public void mouseClicked(MouseEvent e) {
-                                popup.setVisible(false);
-                            }
-                            @Override
-                            public void mousePressed(MouseEvent e) {}
-
-                            @Override
-                            public void mouseReleased(MouseEvent e) {}
-
-                            @Override
-                            public void mouseEntered(MouseEvent e) {}
-
-                            @Override
-                            public void mouseExited(MouseEvent e) {}
-                        });
-                        title.add(x);
-                        popup.add(title);
-                        popup.add(new JSeparator());
-                        
-                        
-                        
-                        
-                        for(String s : Utils.getListor()){
-                            menuItem = new JMenuItem(s);
-                            menuItem.addActionListener(new ActionListener() {
-
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    Utils.addProductToList(psv.getProduct(), s);
-                                }
-                            });
-                            popup.add(menuItem);
-                        }
-                        popup.add(new JSeparator());
-                        
-                        JPanel panel = new JPanel();
-                        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-                        
-                        
-                        
-                        JTextField tf = new JTextField();
-                        JButton button = new JButton("ny");
-                        
-                        panel.add(tf);
-                        
-                        tf.addKeyListener(new KeyAdapter() {
-                            public void keyPressed(KeyEvent evt){
-                                if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-                                    button.doClick();
-                                }
-                            }
-                        });
-                        
-                        
-                        
-                        button.addActionListener(new ActionListener() {
-
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                if(tf.getText().length() == 0 || tf.getText().contains(";") || Utils.getListor().contains(tf.getText())){
-                                    tf.setText("");
-                                    
-                                    return;
-                                }
-                                
-                                Utils.createEmptyList(tf.getText());
-                                //Utils.addProductToList(psv.getProduct(), tf.getText());
-                                
-                                JMenuItem newItem = new JMenuItem(tf.getText());
-                                newItem.addActionListener(new ActionListener() {
-
-                                    @Override
-                                    public void actionPerformed(ActionEvent e) {
-                                        System.out.println(newItem.getText());
-                                        Utils.addProductToList(psv.getProduct(), newItem.getText());
-                                    }
-                                });
-                                popup.add(newItem, popup.getComponentCount()-2);
-                                
-                                popup.setVisible(false);
-                                popup.setVisible(true);
-                                
-                                tf.setText("");
-                            }
-                        });
-                        
-                        
-                        panel.add(button);
-                        popup.add(panel);
-                        
-                        
-                        
-                        popup.show(psv.getListButton(), 40, 0);
-                    }
-                });
-                jp.add(psv);
-            } catch (Exception e) {
+        
+        for(ProductCategory pc: pcArr){
+            for(Product p : dh.getProducts(pc)){
+                varorPanel.add(map.get(p));
             }
         }
+        
+        //varorViewList.sort(new ProductComparator(s));
 
-        jp.repaint();
+        
+
+        varorPanel.repaint();
     }
-
+    
+    
+    
     public void updateKundVagn() {
         kundvagnPanel.removeAll();
         kundvagnPanel.revalidate();
@@ -1185,6 +1056,192 @@ public class IMatView extends javax.swing.JFrame {
     public void switchCard(String card) {
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, card);
+    }
+    
+    
+    
+    private void initMap() {
+        for(Product p : dh.getProducts()){
+            ProductSummaryView psv = new ProductSummaryView(p);
+
+
+            psv.setAntalLabel();
+            psv.getButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    addToKundVagn(p, psv.getAmount());
+                    psv.resetAmount();
+                    updateKundVagn();
+                }
+            });
+            if (dh.isFavorite(p)) {
+                psv.setFavorite();
+            }
+            psv.getFavoriteButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (!dh.isFavorite(p)) {
+                        File sourceimage = new File("src/imat/resources/bilder/heartFyllt.jpg");
+                        try {
+                            Image image = ImageIO.read(sourceimage);
+                            psv.favoriteButton.setIcon(new ImageIcon(image));
+                        } catch (IOException ex) {
+                            Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //psv.filled = true;
+                        dh.addFavorite(p);
+                    } else {
+                        File sourceimage = new File("src/imat/resources/bilder/HeartInteFyllt.jpg");
+                        try {
+                            Image image = ImageIO.read(sourceimage);
+                            psv.favoriteButton.setIcon(new ImageIcon(image));
+                        } catch (IOException ex) {
+                            Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //psv.filled = false;
+                        dh.removeFavorite(p);
+                    }
+                    //Lägga till till favoriter
+                }
+            });
+            psv.getListButton().addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JMenuItem menuItem;
+                    JPopupMenu popup;
+                    popup = new JPopupMenu();
+
+                    JPanel title = new JPanel();
+                    title.setLayout(new BoxLayout(title, BoxLayout.X_AXIS));
+
+                    title.add(new JLabel("      Välj inköpslista    "));
+                    JLabel x = new JLabel("  X ");
+                    x.addMouseListener(new MouseListener() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            popup.setVisible(false);
+                        }
+                        @Override
+                        public void mousePressed(MouseEvent e) {}
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {}
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {}
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {}
+                    });
+                    title.add(x);
+                    popup.add(title);
+                    popup.add(new JSeparator());
+
+
+
+
+                    for(String s : Utils.getListor()){
+                        menuItem = new JMenuItem(s);
+                        menuItem.addActionListener(new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                Utils.addProductToList(psv.getProduct(), s);
+                            }
+                        });
+                        popup.add(menuItem);
+                    }
+                    popup.add(new JSeparator());
+
+                    JPanel panel = new JPanel();
+                    panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+
+
+
+                    JTextField tf = new JTextField();
+                    JButton button = new JButton("ny");
+
+                    panel.add(tf);
+
+                    tf.addKeyListener(new KeyAdapter() {
+                        public void keyPressed(KeyEvent evt){
+                            if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                                button.doClick();
+                            }
+                        }
+                    });
+
+
+
+                    button.addActionListener(new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if(tf.getText().length() == 0 || tf.getText().contains(";") || Utils.getListor().contains(tf.getText())){
+                                tf.setText("");
+
+                                return;
+                            }
+
+                            Utils.createEmptyList(tf.getText());
+                            //Utils.addProductToList(psv.getProduct(), tf.getText());
+
+                            JMenuItem newItem = new JMenuItem(tf.getText());
+                            newItem.addActionListener(new ActionListener() {
+
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    System.out.println(newItem.getText());
+                                    Utils.addProductToList(psv.getProduct(), newItem.getText());
+                                }
+                            });
+                            popup.add(newItem, popup.getComponentCount()-2);
+
+                            popup.setVisible(false);
+                            popup.setVisible(true);
+
+                            tf.setText("");
+                        }
+                    });
+
+
+                    panel.add(button);
+                    popup.add(panel);
+
+
+
+                    popup.show(psv.getListButton(), 40, 0);
+                }
+            });
+
+            map.put(p,psv);
+        }
+    }
+
+    private void sortVarorView() {
+        String s = String.valueOf(sortingComboBox.getSelectedItem());
+        
+        Component[] components = varorPanel.getComponents();
+        varorPanel.removeAll();
+        varorPanel.revalidate();
+        List<Product> list = new ArrayList<Product>();
+        
+        for(Component c : components){
+            ProductSummaryView psv = null;
+            if(c instanceof ProductSummaryView){
+                psv = (ProductSummaryView) c;
+                list.add(psv.getProduct());
+            }
+            
+        }
+        
+        Collections.sort(list, new ProductComparator(s));
+        
+        updateVarorView(list);
+        
     }
 
 }
