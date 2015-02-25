@@ -12,7 +12,9 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -1041,13 +1043,23 @@ public class IMatView extends javax.swing.JFrame {
                         JPanel panel = new JPanel();
                         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
                         
+                        
+                        
                         JTextField tf = new JTextField();
+                        JButton button = new JButton("ny");
                         
                         panel.add(tf);
                         
+                        tf.addKeyListener(new KeyAdapter() {
+                            public void keyPressed(KeyEvent evt){
+                                if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                                    button.doClick();
+                                }
+                            }
+                        });
                         
                         
-                        JButton button = new JButton("ny");
+                        
                         button.addActionListener(new ActionListener() {
 
                             @Override
@@ -1078,6 +1090,7 @@ public class IMatView extends javax.swing.JFrame {
                                 tf.setText("");
                             }
                         });
+                        
                         
                         panel.add(button);
                         popup.add(panel);
