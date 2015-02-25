@@ -58,7 +58,7 @@ public class ListorPanel extends javax.swing.JPanel {
         
         listModel = new DefaultListModel<String>();
         
-        File folder = new File(dh.imatDirectory() + "\\inköpslistor");
+        File folder = new File(dh.imatDirectory() + "/inköpslistor");
         
         File[] listOfFiles = folder.listFiles();
         
@@ -221,7 +221,7 @@ public class ListorPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String s = (String) jList1.getSelectedValue();
-        File f = new File(dh.imatDirectory() + "\\inköpslistor\\" + map.get(s));
+        File f = new File(dh.imatDirectory() + "/inköpslistor/" + map.get(s));
         
         System.out.println(f.getName());
         
@@ -270,7 +270,7 @@ public class ListorPanel extends javax.swing.JPanel {
         
         Double totalPrice = 0.0;
         
-        File f = new File(dh.imatDirectory() + "\\inköpslistor\\" + map.get(s));
+        File f = new File(dh.imatDirectory() + "/inköpslistor/" + map.get(s));
         
         String fileContent = "";
         Scanner sc;
