@@ -1066,7 +1066,8 @@ public class IMatView extends javax.swing.JFrame {
 
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
-                                        Utils.addProductToList(psv.getProduct(), tf.getText());
+                                        System.out.println(newItem.getText());
+                                        Utils.addProductToList(psv.getProduct(), newItem.getText());
                                     }
                                 });
                                 popup.add(newItem, popup.getComponentCount()-2);
