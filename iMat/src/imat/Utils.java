@@ -148,7 +148,7 @@ public class Utils {
             
             try{
                 if(listName.equals(sc.nextLine().split(";")[0])){
-                    System.out.println("hej");
+                    
                     sc.close();
                     sc = new Scanner(f);
                     

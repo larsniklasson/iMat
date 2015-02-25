@@ -12,7 +12,9 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -66,7 +68,7 @@ public class IMatView extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         updateKundVagn();
-        treeImage();
+    treeImage();
 
     }
 
@@ -116,6 +118,7 @@ public class IMatView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1300, 750));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -775,12 +778,16 @@ public class IMatView extends javax.swing.JFrame {
                 listorPanel.update();
                 switchCard("listorCard");
                 break;
-            case "Färdiga Kassar":
+            /*case "Färdiga Kassar":
                 switchCard("defaultBagCard");
                 //
-                break;
+                break;*/
             case "Recept1":
-                defaultBagPanel.update();
+                defaultBagPanel.initializeDefaultBag(s);
+                switchCard("defaultBagCard");
+                break;
+            case "Recept2":
+                defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
                 break;
             case "Dagens Erbjudande":
@@ -1042,13 +1049,23 @@ public class IMatView extends javax.swing.JFrame {
                         JPanel panel = new JPanel();
                         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
                         
+                        
+                        
                         JTextField tf = new JTextField();
+                        JButton button = new JButton("ny");
                         
                         panel.add(tf);
                         
+                        tf.addKeyListener(new KeyAdapter() {
+                            public void keyPressed(KeyEvent evt){
+                                if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                                    button.doClick();
+                                }
+                            }
+                        });
                         
                         
-                        JButton button = new JButton("ny");
+                        
                         button.addActionListener(new ActionListener() {
 
                             @Override
@@ -1067,7 +1084,8 @@ public class IMatView extends javax.swing.JFrame {
 
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
-                                        Utils.addProductToList(psv.getProduct(), tf.getText());
+                                        System.out.println(newItem.getText());
+                                        Utils.addProductToList(psv.getProduct(), newItem.getText());
                                     }
                                 });
                                 popup.add(newItem, popup.getComponentCount()-2);
@@ -1078,6 +1096,7 @@ public class IMatView extends javax.swing.JFrame {
                                 tf.setText("");
                             }
                         });
+                        
                         
                         panel.add(button);
                         popup.add(panel);

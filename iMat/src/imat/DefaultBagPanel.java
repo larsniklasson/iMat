@@ -33,17 +33,16 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class DefaultBagPanel extends javax.swing.JPanel {
 
     List<ShoppingItem> list = new ArrayList<ShoppingItem>();
-    
+
     IMatView view;
-    
-    Map<String,String> map;
-    
+
+    Map<String, String> map;
+
     IMatDataHandler dh = IMatDataHandler.getInstance();
     DefaultListModel<String> listModel;
-    
+
     private BufferedImage image;
-    
-    
+
     /**
      * Creates new form defaultBadPanel
      */
@@ -51,36 +50,36 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         this.view = view;
         initComponents();
         update();
-        
+
         addBackground();
     }
-    
-    public void update(){
-        
-        map = new TreeMap<String,String>();
-        
+
+    public void update() {
+
+        map = new TreeMap<String, String>();
+
         int index = jList1.getSelectedIndex();
-        if(index == -1){
+        if (index == -1) {
             index = 0;
         }
-        
+
         listModel = new DefaultListModel<String>();
-        
+
         File folder = new File(dh.imatDirectory() + "/Recept");
-        
+
         File[] listOfFiles = folder.listFiles();
-        
-        if(listOfFiles.length == 0){
+
+        if (listOfFiles.length == 0) {
             jPanel1.removeAll();
             jPanel1.revalidate();
             jPanel1.repaint();
-            
-            jLabel1.setText("Totalt: ");
+
+            totalLabel.setText("Totalt: ");
             jLabel2.setText("");
         }
-        
+
         Scanner sc = null;
-        for(File f : listOfFiles){
+        for (File f : listOfFiles) {
             try {
                 sc = new Scanner(f);
             } catch (FileNotFoundException ex) {
@@ -92,8 +91,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             listModel.addElement(listName);
             map.put(listName, f.getName());
         }
-        
-        
+
         jList1.setModel(listModel);
         jList1.setSelectedIndex(index);
         this.repaint();
@@ -108,17 +106,18 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        totalLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(235, 235, 235));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 60, 31));
+        totalLabel.setText("jLabel1");
+        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 110, 31));
 
         jButton2.setText("lägg till i kundvagnen");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +125,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 330, 140, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 140, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Recept");
@@ -158,12 +157,13 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 80, 101, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 22, 220, 297));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.setOpaque(false);
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 297));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        for(ShoppingItem si : list){
+        for (ShoppingItem si : list) {
             view.addToKundVagn(si.getProduct(), si.getAmount());
         }
         view.updateKundVagn();
@@ -179,7 +179,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jList1KeyPressed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        if(jList1.getSelectedIndex() == -1){
+        if (jList1.getSelectedIndex() == -1) {
             return;
         }
         if (!evt.getValueIsAdjusting()) {//This line prevents double events
@@ -193,133 +193,98 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
-
 
     private void updateVarorList(final String s) {
         jLabel2.setText(s);
-        
+
         list.clear();
-        
-        
+
         jPanel1.removeAll();
         jPanel1.revalidate();
         jPanel1.repaint();
-        
+
         Double totalPrice = 0.0;
-        
+
         File f = new File(dh.imatDirectory() + "/Recept/" + map.get(s));
-        
+
         String fileContent = "";
         Scanner sc;
-        if(f.exists()){
-            
+        if (f.exists()) {
+
             sc = null;
             try {
                 sc = new Scanner(f);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(sc.hasNextLine()){
+            if (sc.hasNextLine()) {
                 fileContent = sc.nextLine();
             } else {
                 return;
             }
         } else {
             return;
-            
+
         }
-        
+
         sc.close();
-        
-        String [] arr = fileContent.split(";");
+
+        String[] arr = fileContent.split(";");
         int counter = 0;
-        for(String x : arr){
-            counter ++;
+        for (String x : arr) {
+            counter++;
             final int c = counter; // for listeners
-            
-            if(counter == 1){
+
+            if (counter == 1) {
                 continue;
             }
             String[] y = x.split(":");
-            
-            
+
             ShoppingItem si = new ShoppingItem(dh.getProduct(Integer.parseInt(y[0])), Double.parseDouble(y[1]));
             list.add(si);
-            
-            
+
             totalPrice += si.getProduct().getPrice() * si.getAmount();
-            
+
             //jPanel1.add(new JLabel("hej"));
             ProductInRecipeList pil = new ProductInRecipeList(si);
             pil.getDeleteButton().addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    
+
                     pil.setVisible(false);
                     list.remove(si);
-                    
-                    /*
-                    Scanner sc = null;
-                    try {
-                        sc = new Scanner(f);
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    String newString = "";
-                    
-                    String ss = sc.nextLine();
-                    String[] arr = ss.split(";");
-                    
-                    for(int i = 0; i < arr.length; i ++){
-                        if(i != c-1){
-                            newString += arr[i] + ";";
-                        }
-                        
-                    }
-                    
-                    sc.close();
-                    PrintWriter pw = null;
-                    try {
-                        pw = new PrintWriter(f);
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    pw.print(newString);
-                    pw.close();
-                    
-                    updateVarorList(s);
-                    */
+                    //totalPrice -= si.getProduct().getPrice() * si.getAmount();
+
                 }
             });
-            
-            
+
             jPanel1.add(pil);
         }
-        
-        jLabel1.setText("Totalt: " + String.format("%.2f", totalPrice) + " kr");
-        
+
+        totalLabel.setText("Totalt: " + String.format("%.2f", totalPrice) + " kr");
+
         jPanel1.repaint();
         this.repaint();
-        
+
     }
-    
-   
 
     public void addBackground() {
-       try {                
-          image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
-       } catch (IOException ex) {
+        try {
+            image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
+        } catch (IOException ex) {
             // handle exception...
-       }
+        }
+    }
+
+    public void lowerPrice() {
+            
     }
 
     @Override
@@ -327,8 +292,27 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, null); // see javadoc for more info on the parameters            
     }
-    
-   
+
+    public void initializeDefaultBag(String s) {
+        switch (s) {
+            case "Recept1":
+                try {
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
+                    updateVarorList(s);
+                } catch (IOException ex) {
+                    // handle exception...
+                }
+                break;
+            case "Recept2":
+                try {
+                    image = ImageIO.read(new File("src/imat/resources/bilder/star.jpg"));
+                    updateVarorList(s);
+                } catch (IOException ex) {
+                    // handle exception...
+                }
+                break;
+        }
+
+    }
+
 }
-
-
