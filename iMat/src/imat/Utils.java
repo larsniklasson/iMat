@@ -32,6 +32,14 @@ public class Utils {
             dir.mkdirs();
         }
     }
+    public static void makeRecipeListDir(){
+        IMatDataHandler dh = IMatDataHandler.getInstance();
+        String path = dh.imatDirectory() + "/Recept";
+        File dir = new File(path);
+        if(!dir.exists()){
+            dir.mkdirs();
+    }
+    }
     
     public static void saveShoppingCartAsList(String name){
         IMatDataHandler dh = IMatDataHandler.getInstance();
