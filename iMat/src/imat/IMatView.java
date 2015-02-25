@@ -245,10 +245,10 @@ public class IMatView extends javax.swing.JFrame {
             jTree1.removeMouseListener(ml);
         }
         jTree1.addTreeExpansionListener(new javax.swing.event.TreeExpansionListener() {
-            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
-            }
             public void treeCollapsed(javax.swing.event.TreeExpansionEvent evt) {
                 jTree1TreeCollapsed(evt);
+            }
+            public void treeExpanded(javax.swing.event.TreeExpansionEvent evt) {
             }
         });
         jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -260,10 +260,10 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
         jTree1.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
-            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
-            }
             public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 jTree1TreeWillCollapse(evt);
+            }
+            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
@@ -432,6 +432,7 @@ public class IMatView extends javax.swing.JFrame {
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
+        centerTopPanel.setBackground(new java.awt.Color(255, 255, 255));
         centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 35));
         centerTopPanel.setLayout(new javax.swing.BoxLayout(centerTopPanel, javax.swing.BoxLayout.LINE_AXIS));
 
