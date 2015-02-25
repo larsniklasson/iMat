@@ -31,6 +31,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -42,6 +43,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreePath;
 import se.chalmers.ait.dat215.project.*;
 
@@ -78,9 +80,12 @@ public class IMatView extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         updateKundVagn();
+
         
             
         
+        treeImage();
+
     }
 
     /**
@@ -127,6 +132,7 @@ public class IMatView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1300, 750));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -692,9 +698,10 @@ public class IMatView extends javax.swing.JFrame {
         }
 
         TitleLabel.setText(s);
-        jTree1.repaint();
+        jTree1.repaint(); 
 
-        //updateVarorView();
+        
+        
 
     }//GEN-LAST:event_jTree1ValueChanged
 
@@ -1058,6 +1065,7 @@ public class IMatView extends javax.swing.JFrame {
         cl.show(cardPanel, card);
     }
     
+
     
     
     private void initMap() {
@@ -1241,7 +1249,15 @@ public class IMatView extends javax.swing.JFrame {
         Collections.sort(list, new ProductComparator(s));
         
         updateVarorView(list);
+    }
         
+
+    public void treeImage(){
+    Icon closedIcon = new ImageIcon("src/imat/resources/bilder/kasse.jpg");
+    DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) jTree2.getCellRenderer();
+    renderer.setClosedIcon(closedIcon);
+    
+
     }
 
 }

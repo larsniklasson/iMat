@@ -333,7 +333,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }
 
     public void setFavorite() {
-        File sourceimage = new File("src\\imat\\resources\\bilder\\HeartFyllt.jpg");
+        File sourceimage = new File("src/imat/resources/bilder/heartFyllt.jpg");
         try {
             Image image = ImageIO.read(sourceimage);
             favoriteButton.setIcon(new ImageIcon(image));

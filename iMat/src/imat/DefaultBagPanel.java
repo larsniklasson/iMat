@@ -74,7 +74,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             jPanel1.revalidate();
             jPanel1.repaint();
 
-            jLabel1.setText("Totalt: ");
+            totalLabel.setText("Totalt: ");
             jLabel2.setText("");
         }
 
@@ -106,7 +106,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        totalLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -116,8 +116,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(235, 235, 235));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, 60, 31));
+        totalLabel.setText("jLabel1");
+        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 110, 31));
 
         jButton2.setText("lägg till i kundvagnen");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -193,11 +193,11 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 
     private void updateVarorList(final String s) {
@@ -260,47 +260,15 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
                     pil.setVisible(false);
                     list.remove(si);
+                    //totalPrice -= si.getProduct().getPrice() * si.getAmount();
 
-                    /*
-                     Scanner sc = null;
-                     try {
-                     sc = new Scanner(f);
-                     } catch (FileNotFoundException ex) {
-                     Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                    
-                     String newString = "";
-                    
-                     String ss = sc.nextLine();
-                     String[] arr = ss.split(";");
-                    
-                     for(int i = 0; i < arr.length; i ++){
-                     if(i != c-1){
-                     newString += arr[i] + ";";
-                     }
-                        
-                     }
-                    
-                     sc.close();
-                     PrintWriter pw = null;
-                     try {
-                     pw = new PrintWriter(f);
-                     } catch (FileNotFoundException ex) {
-                     Logger.getLogger(ListorPanel.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                    
-                     pw.print(newString);
-                     pw.close();
-                    
-                     updateVarorList(s);
-                     */
                 }
             });
 
             jPanel1.add(pil);
         }
 
-        jLabel1.setText("Totalt: " + String.format("%.2f", totalPrice) + " kr");
+        totalLabel.setText("Totalt: " + String.format("%.2f", totalPrice) + " kr");
 
         jPanel1.repaint();
         this.repaint();
@@ -313,6 +281,10 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         } catch (IOException ex) {
             // handle exception...
         }
+    }
+
+    public void lowerPrice() {
+            
     }
 
     @Override
@@ -343,5 +315,4 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
     }
 
-    
 }
