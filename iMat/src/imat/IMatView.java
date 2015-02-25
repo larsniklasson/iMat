@@ -61,7 +61,7 @@ public class IMatView extends javax.swing.JFrame {
     private ShoppingCart shoppingCart;
     private IMatDataHandler dh = IMatDataHandler.getInstance();
 
-    List<Product> varorViewList = dh.getProducts();
+    
     
     private SignInView SIV;
     /**
@@ -554,10 +554,11 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_completetOrderButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
+        
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
         switchCard("varorCard");
-        //updateVarorView();
+        updateVarorView(dh.findProducts(searchTextFIeld.getText().toLowerCase()));
+        
 
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -824,10 +825,7 @@ public class IMatView extends javax.swing.JFrame {
 
     private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            varorViewList = dh.findProducts(searchTextFIeld.getText().toLowerCase());
-            TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
-            //updateVarorView();
-            switchCard("varorCard");
+            searchButton.doClick();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTextFIeldKeyPressed
@@ -944,11 +942,15 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel.removeAll();
         varorPanel.revalidate();
         
+        String s = String.valueOf(sortingComboBox.getSelectedItem());
+        Collections.sort(list, new ProductComparator(s));
+        
         for(Product p: list){
             varorPanel.add(map.get(p));
         }
         
         varorPanel.repaint();
+        
     }
     
     private void updateVarorView(ProductCategory pc){
@@ -960,11 +962,7 @@ public class IMatView extends javax.swing.JFrame {
     
     private void updateVarorView(ProductCategory[] pcArr) {
         
-        
-        
-        varorPanel.removeAll();
-        varorPanel.revalidate();
-        //varorPanel.repaint();  // denna behövdes inte
+        List<Product> list = new ArrayList<Product>();
 
         String s = String.valueOf(sortingComboBox.getSelectedItem());
         if (s == null) {
@@ -973,15 +971,11 @@ public class IMatView extends javax.swing.JFrame {
         
         for(ProductCategory pc: pcArr){
             for(Product p : dh.getProducts(pc)){
-                varorPanel.add(map.get(p));
+                list.add(p);
             }
         }
         
-        //varorViewList.sort(new ProductComparator(s));
-
-        
-
-        varorPanel.repaint();
+        updateVarorView(list);
     }
     
     
