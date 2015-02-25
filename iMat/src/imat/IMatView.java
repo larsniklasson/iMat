@@ -449,6 +449,8 @@ public class IMatView extends javax.swing.JFrame {
 
         listorPanel = new ListorPanel(this);
         cardPanel.add(listorPanel,"listorCard");
+        defaultBagPanel = new DefaultBagPanel(this);
+        cardPanel.add(defaultBagPanel, "defaultBagCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
