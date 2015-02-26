@@ -972,21 +972,21 @@ public class IMatView extends javax.swing.JFrame {
         
         this.setLocation((int)(prevPoint.getX() + deltax), (int)(prevPoint.getY() + deltay));*/
         if(isFullScreen){
-            this.setSize(900, 600);
+            this.setSize(994, 600);
             jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizegray.png"));
             //this.setLocation(500, this.getLocation().y + evt.getY() - y);
             isFullScreen = false;
+            
+           
             
             
         }
         else {
             System.out.println(x);
             System.out.println(this.getLocation().x + evt.getX() - x);
-            int newx = this.getLocation().x + evt.getX() - x;
-            newx = Math.max(0, newx);
-            Rectangle rec = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
             
-            newx = Math.min(newx, rec.width - 900);
+            int newx = this.getLocation().x + evt.getX() - x;
+            
             this.setLocation(newx, this.getLocation().y + evt.getY() - y);
         
             jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizegray.png"));
@@ -1000,8 +1000,18 @@ public class IMatView extends javax.swing.JFrame {
     private void topPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMousePressed
         if(isFullScreen){
             
-            x = 0 + 450;
-            y = 0;
+            x = 996/2;
+            if(evt.getXOnScreen() < 996/2){
+                x = evt.getXOnScreen();
+            }
+            int screenwidth = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+            
+            if(evt.getXOnScreen() > screenwidth - 996/2){
+               int diff = evt.getXOnScreen() - (screenwidth - 996/2);
+               x = 996 - (996/2 - diff);
+            }
+            
+            y = evt.getY();
         } else {
             
             x = evt.getX();
