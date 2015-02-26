@@ -6,6 +6,7 @@
 package imat;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
@@ -36,13 +37,13 @@ public class SignInView extends javax.swing.JPanel {
     private static  String zipCode;
     private static  String city;
     
-    private static JButton JB; 
+    private static JLabel JB; 
     
     
     /**
      * Creates new form SignInView
      */
-    public SignInView(JButton jbutton) {
+    public SignInView(JLabel jbutton) {
         initComponents();
         
         isNewUser = false;

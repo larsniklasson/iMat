@@ -5,7 +5,9 @@
  */
 package imat;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -110,7 +112,8 @@ public class IMatView extends javax.swing.JFrame {
         
         jTree1.setSelectionRow(0);
         
-        
+        setSize(996,600);
+        setLocationRelativeTo(null);
 
     }
 
@@ -127,11 +130,11 @@ public class IMatView extends javax.swing.JFrame {
         topPanel = new javax.swing.JPanel();
         searchTextFIeld = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        LoginRegistreraButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        loginButton = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -207,14 +210,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        LoginRegistreraButton.setText("Login/registrera");
-        LoginRegistreraButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginRegistreraButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("iMat");
 
@@ -260,6 +256,24 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
+        loginButton.setBackground(new java.awt.Color(230, 230, 230));
+        loginButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(228, 228, 228));
+        loginButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        loginButton.setText("Logga in");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
@@ -267,13 +281,13 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addComponent(LoginRegistreraButton)
-                .addGap(96, 96, 96)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 367, Short.MAX_VALUE)
+                .addComponent(loginButton)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
@@ -287,19 +301,18 @@ public class IMatView extends javax.swing.JFrame {
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topPanelLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(searchButton)
-                                .addComponent(LoginRegistreraButton))))
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchButton)
+                            .addComponent(loginButton)))
                     .addGroup(topPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(14, 14, 14)
                         .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
@@ -543,7 +556,7 @@ public class IMatView extends javax.swing.JFrame {
 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(8);
 
-        varorPanel.setBackground(new java.awt.Color(0, 153, 0));
+        varorPanel.setBackground(new java.awt.Color(204, 204, 204));
         varorPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 varorPanelMouseEntered(evt);
@@ -556,7 +569,7 @@ public class IMatView extends javax.swing.JFrame {
 
         cardPanel.add(jScrollPane2, "varorCard");
 
-        loginPanel.setBackground(new java.awt.Color(0, 153, 0));
+        loginPanel.setBackground(new java.awt.Color(0, 153, 51));
         cardPanel.add(loginPanel, "LoginCard");
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
@@ -1026,14 +1039,6 @@ public class IMatView extends javax.swing.JFrame {
         //prevPoint = this.getLocation();
     }//GEN-LAST:event_topPanelMouseReleased
 
-    private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
-        loginPanel.removeAll();
-        SIV = new SignInView(LoginRegistreraButton);
-        switchCard("LoginCard");
-        TitleLabel.setText("Login");
-        loginPanel.add(SIV);
-    }//GEN-LAST:event_LoginRegistreraButtonActionPerformed
-
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
 
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
@@ -1127,6 +1132,22 @@ public class IMatView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_topPanelMouseClicked
 
+    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+        loginPanel.removeAll();
+        SIV = new SignInView(loginButton);
+        switchCard("LoginCard");
+        TitleLabel.setText("Login");
+        loginPanel.add(SIV);
+    }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseEntered
+        loginButton.setForeground(Color.white);
+    }//GEN-LAST:event_loginButtonMouseEntered
+
+    private void loginButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseExited
+        loginButton.setForeground(new Color(230,230,230));
+    }//GEN-LAST:event_loginButtonMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1164,7 +1185,6 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginRegistreraButton;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
@@ -1187,6 +1207,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JTree jTree2;
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
+    private javax.swing.JLabel loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
