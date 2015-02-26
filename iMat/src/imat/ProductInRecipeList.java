@@ -23,7 +23,7 @@ public class ProductInRecipeList extends javax.swing.JPanel {
     public ProductInRecipeList(ShoppingItem si) {
         this.si = si;
         initComponents();
-        kgStItem();
+        
     }
 
     /**
@@ -39,52 +39,29 @@ public class ProductInRecipeList extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        kgStLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(235, 235, 235));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         deleteButton.setText("X");
         deleteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         deleteButton.setBorderPainted(false);
         deleteButton.setContentAreaFilled(false);
+        add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 40, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText(String.format( "%.2f", si.getProduct().getPrice()) + " " + si.getProduct().getUnit());
+        jLabel2.setText(String.format( "%.2f", si.getProduct().getPrice()*si.getAmount()) + " kr");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 70, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(si.getProduct().getName());
+        jLabel1.setToolTipText(si.getProduct().getName());
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 70, 30));
 
         jTextField2.setBackground(new java.awt.Color(235, 235, 235));
-        jTextField2.setText(String.format("%.2f", si.getAmount()));
+        jTextField2.setText(String.format("%.2f", si.getAmount()) + " " + si.getProduct().getUnitSuffix());
         jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        kgStLabel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kgStLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(kgStLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -93,7 +70,6 @@ public class ProductInRecipeList extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JLabel kgStLabel;
     // End of variables declaration//GEN-END:variables
 
  public JButton getDeleteButton(){
@@ -105,17 +81,7 @@ public class ProductInRecipeList extends javax.swing.JPanel {
         } else {
             return false;
         }
-    }
- 
- public void kgStItem(){
-     if(isKgItem()){
-         kgStLabel.setText("Kg");
-     }
-     else
-         kgStLabel.setText("St");
- }
- 
- 
+    } 
 }
 
 

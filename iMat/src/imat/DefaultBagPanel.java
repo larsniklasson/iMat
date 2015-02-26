@@ -41,6 +41,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     IMatDataHandler dh = IMatDataHandler.getInstance();
     DefaultListModel<String> listModel;
 
+    private Double totalPrice;
+
     private BufferedImage image;
 
     /**
@@ -209,7 +211,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         jPanel1.revalidate();
         jPanel1.repaint();
 
-        Double totalPrice = 0.0;
+        totalPrice = 0.0;
 
         File f = new File(dh.imatDirectory() + "/Recept/" + map.get(s));
 
@@ -260,8 +262,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
                     pil.setVisible(false);
                     list.remove(si);
-                    //totalPrice -= si.getProduct().getPrice() * si.getAmount();
-
+                    totalPrice -= si.getProduct().getPrice() * si.getAmount();
+                    totalLabel.setText("Totalt: " + String.format("%.2f", totalPrice) + " kr");
                 }
             });
 
@@ -284,7 +286,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     }
 
     public void lowerPrice() {
-            
+
     }
 
     @Override
