@@ -127,7 +127,7 @@ public class IMatView extends javax.swing.JFrame {
         TitleLabel = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         sortPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        sortLabel = new javax.swing.JLabel();
         sortingComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -476,10 +476,10 @@ public class IMatView extends javax.swing.JFrame {
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(titlePanelLayout.createSequentialGroup()
-                .addGap(0, 144, Short.MAX_VALUE)
-                .addComponent(TitleLabel)
-                .addGap(0, 139, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,7 +498,7 @@ public class IMatView extends javax.swing.JFrame {
         sortPanel.setBackground(new java.awt.Color(255, 255, 255));
         sortPanel.setAlignmentX(3.0F);
 
-        jLabel2.setText("Sortering: ");
+        sortLabel.setText("Sortering: ");
 
         sortingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Popularitet", "Pris lågt-högt", "Pris högt-lågt", "Bokstavsordning A-Ö", "Bokstavsordning Ö-A" }));
         sortingComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -517,8 +517,8 @@ public class IMatView extends javax.swing.JFrame {
         sortPanelLayout.setHorizontalGroup(
             sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sortPanelLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addComponent(sortLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -528,7 +528,7 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(sortPanelLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(sortLabel)
                     .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3))
         );
@@ -780,9 +780,9 @@ public class IMatView extends javax.swing.JFrame {
         switch (s) {
             case "Favoriter":
                 updateVarorView(dh.favorites());
+                
                 break;
             case "Inköpslistor":
-                //sortPanel.setVisible(false);
                 listorPanel.update();
                 switchCard("listorCard");
                 break;
@@ -928,7 +928,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -944,6 +943,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextFIeld;
     private javax.swing.JLabel selectedLabel;
+    private javax.swing.JLabel sortLabel;
     private javax.swing.JPanel sortPanel;
     private javax.swing.JComboBox sortingComboBox;
     private javax.swing.JPanel titlePanel;
@@ -1054,7 +1054,7 @@ public class IMatView extends javax.swing.JFrame {
 
         for (ShoppingItem si : shoppingCart.getItems()) {
             if (si.getProduct() == p) {
-                si.setAmount(d + si.getAmount());
+                si.setAmount(Math.max(0, d + si.getAmount()));
                 contains = true;
             }
         }
