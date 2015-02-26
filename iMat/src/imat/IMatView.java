@@ -6,6 +6,7 @@
 package imat;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -1510,10 +1511,14 @@ public class IMatView extends javax.swing.JFrame {
         
 
     public void treeImage(){
-    Icon closedIcon = new ImageIcon("src/imat/resources/bilder/kasse.jpg");
+    Icon closedIcon = new ImageIcon("src/imat/resources/bilder/erbjudande.jpg");
     DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) jTree2.getCellRenderer();
     renderer.setClosedIcon(closedIcon);
     
+        DefaultTreeCellRenderer renderer1 = (DefaultTreeCellRenderer) jTree1.getCellRenderer();
+        renderer1.setClosedIcon(null);
+        renderer1.setLeafIcon(null);
+        renderer1.setOpenIcon(null);
 
     }
 
