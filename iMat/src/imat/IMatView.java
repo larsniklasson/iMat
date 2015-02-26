@@ -9,8 +9,12 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -34,11 +38,13 @@ import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JRootPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicTreeUI;
@@ -53,6 +59,15 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class IMatView extends javax.swing.JFrame {
 
+    /*
+    Point pointAtPress;
+    Point prevPoint;*/
+    boolean isFullScreen = false;
+    Point prevLocation;
+    Dimension prevDimension;
+    
+    int x;
+    int y;
     
     Map<Product, ProductSummaryView> map = new HashMap<Product, ProductSummaryView>();
     
@@ -64,11 +79,20 @@ public class IMatView extends javax.swing.JFrame {
     
     
     private SignInView SIV;
+    
+    ComponentResizer cr;
     /**
      * Creates new form IMatView
      */
     public IMatView() {
         
+        cr = new ComponentResizer();
+        cr.registerComponent(this);
+        cr.setSnapSize(new Dimension(1, 1));
+        cr.setMinimumSize(new Dimension(40,40));
+        
+        this.setUndecorated(true);
+        //this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
         
         initMap();
         
@@ -85,6 +109,8 @@ public class IMatView extends javax.swing.JFrame {
         treeImage();
         
         jTree1.setSelectionRow(0);
+        
+        
 
     }
 
@@ -99,10 +125,13 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
-        selectedLabel = new javax.swing.JLabel();
         searchTextFIeld = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         LoginRegistreraButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -142,17 +171,26 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
+        mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 750));
         mainPanel.setLayout(new java.awt.BorderLayout());
 
-        topPanel.setBackground(new java.awt.Color(255, 255, 255));
-        topPanel.setPreferredSize(new java.awt.Dimension(800, 60));
-
-        selectedLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/logga.jpg"))); // NOI18N
-        selectedLabel.setText("IMAT");
-        selectedLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        topPanel.setBackground(new java.awt.Color(0, 153, 51));
+        topPanel.setPreferredSize(new java.awt.Dimension(800, 50));
+        topPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                topPanelMouseDragged(evt);
+            }
+        });
+        topPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                selectedLabelMouseClicked(evt);
+                topPanelMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                topPanelMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                topPanelMouseReleased(evt);
             }
         });
 
@@ -176,30 +214,92 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("iMat");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/closegray.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel1MouseReleased(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/maximizegray.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
+            }
+        });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/minimizegray.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanelLayout.createSequentialGroup()
-                .addComponent(selectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
                 .addComponent(LoginRegistreraButton)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addGap(96, 96, 96)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(selectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(searchButton)
-                        .addComponent(LoginRegistreraButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topPanelLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchButton)
+                                .addComponent(LoginRegistreraButton))))
+                    .addGroup(topPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
@@ -352,7 +452,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
@@ -421,7 +521,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 3, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalPris, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
@@ -430,7 +530,7 @@ public class IMatView extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(completetOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(524, 524, 524))
+                .addGap(584, 584, 584))
         );
 
         mainPanel.add(rightPanel, java.awt.BorderLayout.LINE_END);
@@ -482,9 +582,9 @@ public class IMatView extends javax.swing.JFrame {
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,7 +622,7 @@ public class IMatView extends javax.swing.JFrame {
         sortPanelLayout.setHorizontalGroup(
             sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sortPanelLayout.createSequentialGroup()
-                .addContainerGap(107, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sortLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,15 +656,6 @@ public class IMatView extends javax.swing.JFrame {
         TitleLabel.setText("Order");
         completeOrderPanel.add(FBV);
     }//GEN-LAST:event_completetOrderButtonActionPerformed
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        
-        TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
-        switchCard("varorCard");
-        updateVarorView(dh.findProducts(searchTextFIeld.getText().toLowerCase()));
-        jTree1.setSelectionRow(-1);
-
-    }//GEN-LAST:event_searchButtonActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 
@@ -842,13 +933,6 @@ public class IMatView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_sortingComboBoxActionPerformed
 
-    private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            searchButton.doClick();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFIeldKeyPressed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String s;
         
@@ -873,23 +957,165 @@ public class IMatView extends javax.swing.JFrame {
         listorPanel.update();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void varorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseEntered
+
+    }//GEN-LAST:event_varorPanelMouseEntered
+
+    private void topPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMouseDragged
+        
+        /*
+        int deltax = (int) (evt.getXOnScreen()- pointAtPress.getX());
+        int deltay = (int) (evt.getYOnScreen()- pointAtPress.getY());
+        
+        System.out.println("deltax " + deltax);
+        System.out.println("deltay " + deltay);
+        
+        this.setLocation((int)(prevPoint.getX() + deltax), (int)(prevPoint.getY() + deltay));*/
+        if(isFullScreen){
+            this.setSize(900, 600);
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizegray.png"));
+            //this.setLocation(500, this.getLocation().y + evt.getY() - y);
+            isFullScreen = false;
+            
+            
+        }
+        else {
+            System.out.println(x);
+            System.out.println(this.getLocation().x + evt.getX() - x);
+            int newx = this.getLocation().x + evt.getX() - x;
+            newx = Math.max(0, newx);
+            Rectangle rec = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+            
+            newx = Math.min(newx, rec.width - 900);
+            this.setLocation(newx, this.getLocation().y + evt.getY() - y);
+        
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizegray.png"));
+            cr.setDragInsets(new Insets(5, 5, 5, 5));
+            
+        }
+        
+        
+    }//GEN-LAST:event_topPanelMouseDragged
+
+    private void topPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMousePressed
+        if(isFullScreen){
+            
+            x = 0 + 450;
+            y = 0;
+        } else {
+            
+            x = evt.getX();
+            y = evt.getY();
+        }
+        
+
+//pointAtPress = evt.getLocationOnScreen();
+    }//GEN-LAST:event_topPanelMousePressed
+
+    private void topPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMouseReleased
+        //prevPoint = this.getLocation();
+    }//GEN-LAST:event_topPanelMouseReleased
+
     private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
         loginPanel.removeAll();
         SIV = new SignInView(LoginRegistreraButton);
         switchCard("LoginCard");
         TitleLabel.setText("Login");
         loginPanel.add(SIV);
-
     }//GEN-LAST:event_LoginRegistreraButtonActionPerformed
 
-    private void varorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseEntered
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
 
-    }//GEN-LAST:event_varorPanelMouseEntered
+        TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
+        switchCard("varorCard");
+        updateVarorView(dh.findProducts(searchTextFIeld.getText().toLowerCase()));
+        jTree1.setSelectionRow(-1);
+    }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void selectedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectedLabelMouseClicked
+    private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            searchButton.doClick();
+        }
         // TODO add your handling code here:
-        updateVarorView(ProductCategory.values());
-    }//GEN-LAST:event_selectedLabelMouseClicked
+    }//GEN-LAST:event_searchTextFIeldKeyPressed
+
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+        
+    }//GEN-LAST:event_jLabel1MouseReleased
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel1.setIcon(new ImageIcon("src/imat/resources/bilder/closewhite.png"));
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        jLabel1.setIcon(new ImageIcon("src/imat/resources/bilder/closegray.png"));
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        dh.shutDown();
+        System.exit(1);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        if(!isFullScreen){
+            Rectangle rec = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+            prevLocation = this.getLocation();
+            prevDimension = this.getSize();
+            
+            this.setSize(rec.width, rec.height);
+            this.setLocation(0, 0);
+            cr.setDragInsets(new Insets(0, 0, 0, 0));
+            
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/smallergray.png"));
+            isFullScreen = true;
+        } else {
+            System.out.println("hej");
+            this.setSize(prevDimension);
+            this.setLocation(prevLocation);
+            
+            cr.setDragInsets(new Insets(5, 5, 5, 5));
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizegray.png"));
+            isFullScreen = false;
+            
+        }
+        
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        if(isFullScreen){
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/smallerwhite.png"));
+        } else {
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizewhite.png"));
+        }
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+                           
+        if(isFullScreen){
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/smallergray.png"));
+        } else {
+            jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizegray.png"));
+        }
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        jLabel5.setIcon(new ImageIcon("src/imat/resources/bilder/minimizewhite.png"));
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+                            
+        jLabel5.setIcon(new ImageIcon("src/imat/resources/bilder/minimizegray.png"));
+    }//GEN-LAST:event_jLabel5MouseExited
+
+    private void topPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMouseClicked
+        if(evt.getClickCount() == 2){
+            jLabel4MouseClicked(null);
+        }
+    }//GEN-LAST:event_topPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -938,7 +1164,11 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -952,7 +1182,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextFIeld;
-    private javax.swing.JLabel selectedLabel;
     private javax.swing.JLabel sortLabel;
     private javax.swing.JPanel sortPanel;
     private javax.swing.JComboBox sortingComboBox;
