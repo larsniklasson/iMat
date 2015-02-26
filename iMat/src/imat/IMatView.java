@@ -150,6 +150,11 @@ public class IMatView extends javax.swing.JFrame {
 
         selectedLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/logga.jpg"))); // NOI18N
         selectedLabel.setText("IMAT");
+        selectedLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                selectedLabelMouseClicked(evt);
+            }
+        });
 
         searchTextFIeld.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -880,6 +885,11 @@ public class IMatView extends javax.swing.JFrame {
     private void varorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseEntered
 
     }//GEN-LAST:event_varorPanelMouseEntered
+
+    private void selectedLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectedLabelMouseClicked
+        // TODO add your handling code here:
+        updateVarorView(ProductCategory.values());
+    }//GEN-LAST:event_selectedLabelMouseClicked
 
     /**
      * @param args the command line arguments
