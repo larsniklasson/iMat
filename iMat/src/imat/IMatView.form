@@ -78,11 +78,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="138" max="-2" attributes="0"/>
-<<<<<<< HEAD
                       <EmptySpace max="-2" attributes="0"/>
-=======
-                      <EmptySpace pref="298" max="32767" attributes="0"/>
->>>>>>> origin/master
+
                       <Component id="searchTextFIeld" min="-2" pref="178" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="60" max="-2" attributes="0"/>
