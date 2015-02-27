@@ -82,7 +82,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         jLabel3.setText(String.format( "%.2f", p.getPrice()) + " " + p.getUnit());
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
+        jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setText("Köp");
         jButton1.setBorderPainted(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {

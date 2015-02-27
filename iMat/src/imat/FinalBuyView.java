@@ -5,8 +5,6 @@
  */
 package imat;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 
@@ -19,15 +17,11 @@ public class FinalBuyView extends javax.swing.JPanel {
     /**
      * Creates new form FinalBuyView
      */
-    
-    private static JPanel jp;
-    
-    public FinalBuyView(JPanel jpInput) {
+    public FinalBuyView() {
         initComponents();
         
         IMatDataHandler im = IMatDataHandler.getInstance();
         ShoppingCart SC = im.getShoppingCart();
-        jp = jpInput;
         
         totalLabel.setText(totalLabel.getText()+ " " + SC.getTotal() + " kr");
         
@@ -393,20 +387,6 @@ public class FinalBuyView extends javax.swing.JPanel {
 
     private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
         // TODO add your handling code here:
-        jp.removeAll();
-        jp.revalidate();
-        jp.repaint();
-        jp.add(new orderNotification());
-        
-        //JFrame frame = new JFrame();
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
-        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-       // frame.setSize(300,250);
-        //frame.setLocation(((this.getWidth()-frame.getWidth())/2), ((this.getHeight()-frame.getHeight())/2));
-       /* System.out.println(this.getWidth()+ " "+ frame.getWidth());
-        frame.add(new orderNotification());
-        frame.setUndecorated(true);
-        frame.setVisible(true);*/
     }//GEN-LAST:event_OrderButtonActionPerformed
 
     private void zipCodeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeFieldActionPerformed
