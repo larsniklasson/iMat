@@ -91,7 +91,7 @@ public class SignInView extends javax.swing.JPanel {
         errorLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(0, 153, 0)));
+        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(204, 204, 204)));
 
         divPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
