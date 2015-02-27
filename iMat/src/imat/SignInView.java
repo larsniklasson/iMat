@@ -5,6 +5,7 @@
  */
 package imat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import se.chalmers.ait.dat215.project.Customer;
@@ -374,6 +375,7 @@ public class SignInView extends javax.swing.JPanel {
             if(validSignIn()){
                 this.errorLabel.setText("Du är inloggad");
                 JB.setText(customer.getFirstName() + " " + customer.getLastName());
+                JB.setIcon(new ImageIcon("src/imat/resources/bilder/gubbet.png"));
             }else{
                 this.errorLabel.setText("Lösenord och mail matchar inte");
             }
