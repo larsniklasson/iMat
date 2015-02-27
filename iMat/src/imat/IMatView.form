@@ -75,22 +75,22 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="138" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="searchTextFIeld" min="-2" pref="178" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" pref="103" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="searchTextFIeld" min="-2" pref="268" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace pref="367" max="32767" attributes="0"/>
+                      <EmptySpace pref="427" max="32767" attributes="0"/>
                       <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -103,7 +103,10 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="searchTextFIeld" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="3" attributes="0">
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                      <Component id="searchButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Component id="loginButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -116,7 +119,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -225,23 +228,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator1" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="240" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="216" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="341" max="-2" attributes="0"/>
-                      <EmptySpace pref="133" max="32767" attributes="0"/>
+                      <EmptySpace pref="137" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -353,7 +352,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="kundvagnPanel" pref="3" max="32767" attributes="0"/>
+                      <Component id="kundvagnPanel" pref="10" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="totalPris" min="-2" pref="31" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -503,7 +502,7 @@
                 <Container class="javax.swing.JPanel" name="loginPanel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="99" red="0" type="rgb"/>
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -515,6 +514,11 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
                 <Container class="javax.swing.JPanel" name="completeOrderPanel">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                       <CardConstraints cardName="completeOrderCard"/>
@@ -552,10 +556,9 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
-                              <Component id="TitleLabel" min="-2" pref="308" max="-2" attributes="0"/>
-                              <EmptySpace pref="29" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="TitleLabel" min="-2" pref="300" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="102" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -613,7 +616,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="46" max="32767" attributes="0"/>
+                              <EmptySpace pref="59" max="32767" attributes="0"/>
                               <Component id="sortLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="sortingComboBox" min="-2" max="-2" attributes="0"/>
