@@ -742,6 +742,7 @@ public class IMatView extends javax.swing.JFrame {
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         
+        
         ProductCategory[] pcArr;
         
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
@@ -749,7 +750,8 @@ public class IMatView extends javax.swing.JFrame {
         if (selectedNode == null) {
             return;
         }
-
+        
+        showSortPanelAndAntalProductLabel(true);
         String s = selectedNode.getUserObject().toString();
         if (!s.equals("Inköpslistor")) {
             switchCard("varorCard");
@@ -945,7 +947,11 @@ public class IMatView extends javax.swing.JFrame {
         }
 
         String s = selectedNode.getUserObject().toString();
-
+        
+        
+        
+        showSortPanelAndAntalProductLabel(s.equals("Favoriter"));
+        
         if (!s.equals("Inköpslistor")) {
             switchCard("varorCard");
         }
@@ -1617,6 +1623,12 @@ public class IMatView extends javax.swing.JFrame {
     jTree2.setCellRenderer(new LocalCellRenderer(jTree2));
     jTree1.setCellRenderer(new LocalCellRenderer(jTree1));
 
+    }
+    
+    private void showSortPanelAndAntalProductLabel(boolean b){
+        antalProdukterLabel.setVisible(b);
+        sortLabel.setVisible(b);
+        sortingComboBox.setVisible(b);
     }
 
 }
