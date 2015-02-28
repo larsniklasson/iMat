@@ -49,6 +49,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JRootPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -173,6 +174,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
+        mainPanel.setBackground(new java.awt.Color(153, 0, 0));
         mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 750));
         mainPanel.setLayout(new java.awt.BorderLayout());
@@ -321,8 +323,12 @@ public class IMatView extends javax.swing.JFrame {
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 153, 0));
         jScrollPane1.setBorder(null);
+        jScrollPane1.setOpaque(false);
 
+        jTree1.setBackground(new java.awt.Color(235, 255, 236));
+        jTree1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
         treeNode1.add(treeNode2);
@@ -379,6 +385,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kryddor");
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTree1.setToggleClickCount(1);
         jTree1.setRootVisible(false);
         jTree1.setToggleClickCount(1);
@@ -458,13 +465,12 @@ public class IMatView extends javax.swing.JFrame {
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
@@ -549,12 +555,12 @@ public class IMatView extends javax.swing.JFrame {
         centerPanel.setPreferredSize(new java.awt.Dimension(700, 47));
         centerPanel.setLayout(new java.awt.BorderLayout());
 
-        cardPanel.setBackground(new java.awt.Color(0, 102, 102));
+        cardPanel.setBackground(new java.awt.Color(204, 255, 204));
         cardPanel.setLayout(new java.awt.CardLayout());
 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(8);
 
-        varorPanel.setBackground(new java.awt.Color(204, 204, 204));
+        varorPanel.setBackground(new java.awt.Color(255, 255, 255));
         varorPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 varorPanelMouseEntered(evt);
@@ -596,7 +602,7 @@ public class IMatView extends javax.swing.JFrame {
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 102, Short.MAX_VALUE))
+                .addGap(0, 68, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -634,7 +640,7 @@ public class IMatView extends javax.swing.JFrame {
         sortPanelLayout.setHorizontalGroup(
             sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sortPanelLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(sortLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -828,7 +834,10 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTree1TreeCollapsed
 
     private void jTree1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MousePressed
-
+        
+        if(evt.getButton() != MouseEvent.BUTTON1){
+            return;
+        }
         TreePath path = jTree1.getClosestPathForLocation(evt.getX(), evt.getY());
         if (jTree1.isPathSelected(path)) {
             if (jTree1.isExpanded(path)) {
@@ -1157,6 +1166,12 @@ public class IMatView extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        
+        
+        UIManager.put("nimbusSelectionBackground", new Color(122,255,125).darker().darker());
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1534,10 +1549,7 @@ public class IMatView extends javax.swing.JFrame {
     DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) jTree2.getCellRenderer();
     renderer.setClosedIcon(closedIcon);
     
-        DefaultTreeCellRenderer renderer1 = (DefaultTreeCellRenderer) jTree1.getCellRenderer();
-        renderer1.setClosedIcon(null);
-        renderer1.setLeafIcon(null);
-        renderer1.setOpenIcon(null);
+    jTree1.setCellRenderer(new LocalCellRenderer(jTree1));
 
     }
 

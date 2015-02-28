@@ -5,12 +5,16 @@
  */
 package imat;
 
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import se.chalmers.ait.dat215.project.*;
@@ -237,10 +241,12 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         showFavoriteAndListButtons();
+        setBorder(BorderFactory.createLineBorder(new Color(150,150,150)));
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         hideFavoriteAndListButtons();
+        setBorder(BorderFactory.createEmptyBorder());
     }//GEN-LAST:event_formMouseExited
 
     private void favoriteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseEntered
