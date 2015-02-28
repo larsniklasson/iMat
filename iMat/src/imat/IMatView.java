@@ -321,7 +321,7 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
-        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+        leftPanel.setBackground(new java.awt.Color(236, 255, 235));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 153, 0));
         jScrollPane1.setBorder(null);
@@ -426,6 +426,7 @@ public class IMatView extends javax.swing.JFrame {
         jScrollPane3.setBorder(null);
 
         jTree2.setRootVisible(false);
+        jTree2.setBackground(new java.awt.Color(236, 255, 235));
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Favoriter");
         treeNode1.add(treeNode2);
@@ -475,7 +476,7 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
 
-        rightPanel.setBackground(new java.awt.Color(255, 255, 255));
+        rightPanel.setBackground(new java.awt.Color(235, 255, 235));
         rightPanel.setPreferredSize(new java.awt.Dimension(300, 550));
 
         kundvagnPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -586,11 +587,12 @@ public class IMatView extends javax.swing.JFrame {
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
-        centerTopPanel.setBackground(new java.awt.Color(255, 255, 255));
+        centerTopPanel.setBackground(new java.awt.Color(235, 255, 236));
         centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 35));
         centerTopPanel.setLayout(new javax.swing.BoxLayout(centerTopPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         titlePanel.setBackground(new java.awt.Color(255, 255, 255));
+        titlePanel.setOpaque(false);
 
         TitleLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -620,6 +622,7 @@ public class IMatView extends javax.swing.JFrame {
 
         sortPanel.setBackground(new java.awt.Color(255, 255, 255));
         sortPanel.setAlignmentX(3.0F);
+        sortPanel.setOpaque(false);
 
         sortLabel.setText("Sortering: ");
 
