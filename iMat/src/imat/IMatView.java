@@ -10,6 +10,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
@@ -164,6 +165,7 @@ public class IMatView extends javax.swing.JFrame {
         centerTopPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
+        antalProdukterLabel = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         sortPanel = new javax.swing.JPanel();
         sortLabel = new javax.swing.JLabel();
@@ -630,30 +632,38 @@ public class IMatView extends javax.swing.JFrame {
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
         centerTopPanel.setBackground(new java.awt.Color(235, 255, 236));
-        centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 35));
+        centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 42));
         centerTopPanel.setLayout(new javax.swing.BoxLayout(centerTopPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         titlePanel.setBackground(new java.awt.Color(255, 255, 255));
         titlePanel.setOpaque(false);
 
-        TitleLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        TitleLabel.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TitleLabel.setText("Title");
+
+        antalProdukterLabel.setFont(new java.awt.Font("Lucida Sans", 0, 13)); // NOI18N
+        antalProdukterLabel.setForeground(new java.awt.Color(102, 102, 102));
+        antalProdukterLabel.setText("8 Produkter");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
-                .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(TitleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(antalProdukterLabel)
+                .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(TitleLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleLabel)
+                    .addComponent(antalProdukterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         centerTopPanel.add(titlePanel);
@@ -665,8 +675,10 @@ public class IMatView extends javax.swing.JFrame {
         sortPanel.setBackground(new java.awt.Color(255, 255, 255));
         sortPanel.setAlignmentX(3.0F);
         sortPanel.setOpaque(false);
+        sortPanel.setPreferredSize(new java.awt.Dimension(201, 41));
 
-        sortLabel.setText("Sortering: ");
+        sortLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        sortLabel.setText("Sortering:");
 
         sortingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Popularitet", "Pris lågt-högt", "Pris högt-lågt", "Bokstavsordning A-Ö", "Bokstavsordning Ö-A" }));
         sortingComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -693,12 +705,11 @@ public class IMatView extends javax.swing.JFrame {
         );
         sortPanelLayout.setVerticalGroup(
             sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sortPanelLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sortPanelLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
                 .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sortLabel)
-                    .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3))
+                    .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         centerTopPanel.add(sortPanel);
@@ -1245,6 +1256,7 @@ public class IMatView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JLabel antalProdukterLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
@@ -1287,6 +1299,8 @@ public class IMatView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void updateVarorView(List<Product> list){
+        antalProdukterLabel.setText(list.size() + " Produkter");
+        
         varorPanel.removeAll();
         varorPanel.revalidate();
         
