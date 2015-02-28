@@ -241,7 +241,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         showFavoriteAndListButtons();
-        setBorder(BorderFactory.createLineBorder(new Color(150,150,150)));
+        setBorder(BorderFactory.createLineBorder(new Color(175,175,175)));
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited

@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JTree;
@@ -88,7 +89,7 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
             int row,
             boolean hasFocus) {
         
-        //System.out.println("där");
+        
         JComponent comp = (JComponent) super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
         
         //comp.setOpaque(true);
@@ -105,8 +106,7 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
         if (highlight) {
             //r.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
             
-            int[] selRows = tree.getSelectionRows();
-            if(selRows.length != 0 && tree.getSelectionRows()[0] != row){
+            if(!tree.isRowSelected(row)){
                 r.setText("<html><u>" + name  + "</u></html>");
             }
             

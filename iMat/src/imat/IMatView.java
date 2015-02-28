@@ -113,7 +113,7 @@ public class IMatView extends javax.swing.JFrame {
         
         jTree1.setSelectionRow(0);
         
-        setSize(996,600);
+        setSize(1050,600);
         setLocationRelativeTo(null);
 
     }
