@@ -5,10 +5,12 @@
  */
 package imat;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
@@ -48,6 +50,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JRootPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -111,7 +114,8 @@ public class IMatView extends javax.swing.JFrame {
         
         jTree1.setSelectionRow(0);
         
-        
+        setSize(1050,600);
+        setLocationRelativeTo(null);
 
     }
 
@@ -123,22 +127,28 @@ public class IMatView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         searchTextFIeld = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        LoginRegistreraButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        loginButton = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jTree2 = new javax.swing.JTree();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTree2 = new javax.swing.JTree();
-        jSeparator1 = new javax.swing.JSeparator();
         rightPanel = new javax.swing.JPanel();
         kundvagnPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -155,6 +165,7 @@ public class IMatView extends javax.swing.JFrame {
         centerTopPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
+        antalProdukterLabel = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         sortPanel = new javax.swing.JPanel();
         sortLabel = new javax.swing.JLabel();
@@ -171,6 +182,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
+        mainPanel.setBackground(new java.awt.Color(153, 0, 0));
         mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 750));
         mainPanel.setLayout(new java.awt.BorderLayout());
@@ -207,14 +219,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        LoginRegistreraButton.setText("Login/registrera");
-        LoginRegistreraButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginRegistreraButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("iMat");
 
@@ -260,20 +265,38 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
+        loginButton.setBackground(new java.awt.Color(230, 230, 230));
+        loginButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(228, 228, 228));
+        loginButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        loginButton.setText("Logga in");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
+            .addGroup(topPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
-                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addComponent(LoginRegistreraButton)
-                .addGap(96, 96, 96)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, Short.MAX_VALUE)
+                .addComponent(loginButton)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
@@ -287,38 +310,127 @@ public class IMatView extends javax.swing.JFrame {
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topPanelLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(topPanelLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(searchButton))
                             .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
                                 .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(searchButton)
-                                .addComponent(LoginRegistreraButton))))
+                                .addComponent(loginButton))))
                     .addGroup(topPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(14, 14, 14)
                         .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
-        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+        leftPanel.setBackground(new java.awt.Color(236, 255, 235));
+        leftPanel.setLayout(new javax.swing.BoxLayout(leftPanel, javax.swing.BoxLayout.Y_AXIS));
 
-        jScrollPane1.setBorder(null);
+        jPanel4.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("ANVÄNDARE");
+        jPanel4.add(jLabel7);
+
+        leftPanel.add(jPanel4);
+
+        jPanel2.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jTree2.setRootVisible(false);
+
+        jTree2.setToggleClickCount(1);
+
+        for(MouseListener ml : jTree2.getMouseListeners()){
+
+            jTree2.removeMouseListener(ml);
+        }
+        jTree2.setBackground(new java.awt.Color(236, 255, 235));
+        jTree2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Favoriter");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Inköpslistor");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga Kassar");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept1");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept2");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept3");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
+        treeNode1.add(treeNode2);
+        jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTree2MousePressed(evt);
+            }
+        });
+        jTree2.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                jTree2ValueChanged(evt);
+            }
+        });
+        jPanel2.add(jTree2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel5.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel5.setPreferredSize(new java.awt.Dimension(164, 15));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 164, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel5, java.awt.BorderLayout.CENTER);
+
+        leftPanel.add(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("VAROR");
+        jPanel3.add(jLabel6);
+
+        leftPanel.add(jPanel3);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane1.setBackground(new java.awt.Color(0, 153, 0));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setOpaque(false);
+
+        jTree1.setBackground(new java.awt.Color(235, 255, 236));
+        jTree1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Grönsaker");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kål");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Grönsaksfrukter");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Ärtor, Linser & Bönor");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Ärtväxter");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kött");
@@ -364,6 +476,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kryddor");
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTree1.setToggleClickCount(1);
         jTree1.setRootVisible(false);
         jTree1.setToggleClickCount(1);
@@ -401,63 +514,13 @@ public class IMatView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTree1);
 
-        jScrollPane3.setBorder(null);
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jTree2.setRootVisible(false);
-        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Favoriter");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Inköpslistor");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga Kassar");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
-        treeNode1.add(treeNode2);
-        jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTree2MousePressed(evt);
-            }
-        });
-        jTree2.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
-            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
-                jTree2ValueChanged(evt);
-            }
-        });
-        jScrollPane3.setViewportView(jTree2);
+        leftPanel.add(jPanel1);
 
-        javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
-        leftPanel.setLayout(leftPanelLayout);
-        leftPanelLayout.setHorizontalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addComponent(jScrollPane3)
-            .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        leftPanelLayout.setVerticalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
-        );
+        mainPanel.add(leftPanel, java.awt.BorderLayout.WEST);
 
-        mainPanel.add(leftPanel, java.awt.BorderLayout.LINE_START);
-
-        rightPanel.setBackground(new java.awt.Color(255, 255, 255));
+        rightPanel.setBackground(new java.awt.Color(235, 255, 235));
         rightPanel.setPreferredSize(new java.awt.Dimension(300, 550));
 
         kundvagnPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -500,20 +563,18 @@ public class IMatView extends javax.swing.JFrame {
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
+            .addGroup(rightPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(completetOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(rightPanelLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(completetOrderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(totalPris, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(totalPris, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(rightPanelLayout.createSequentialGroup()
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,7 +582,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 3, Short.MAX_VALUE)
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalPris, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
@@ -539,12 +600,12 @@ public class IMatView extends javax.swing.JFrame {
         centerPanel.setPreferredSize(new java.awt.Dimension(700, 47));
         centerPanel.setLayout(new java.awt.BorderLayout());
 
-        cardPanel.setBackground(new java.awt.Color(0, 102, 102));
+        cardPanel.setBackground(new java.awt.Color(204, 255, 204));
         cardPanel.setLayout(new java.awt.CardLayout());
 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(8);
 
-        varorPanel.setBackground(new java.awt.Color(0, 153, 0));
+        varorPanel.setBackground(new java.awt.Color(255, 255, 255));
         varorPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 varorPanelMouseEntered(evt);
@@ -557,8 +618,10 @@ public class IMatView extends javax.swing.JFrame {
 
         cardPanel.add(jScrollPane2, "varorCard");
 
-        loginPanel.setBackground(new java.awt.Color(0, 153, 0));
+        loginPanel.setBackground(new java.awt.Color(204, 204, 204));
         cardPanel.add(loginPanel, "LoginCard");
+
+        completeOrderPanel.setBackground(new java.awt.Color(204, 204, 204));
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
         listorPanel = new ListorPanel(this);
@@ -568,31 +631,39 @@ public class IMatView extends javax.swing.JFrame {
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
-        centerTopPanel.setBackground(new java.awt.Color(255, 255, 255));
-        centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 35));
+        centerTopPanel.setBackground(new java.awt.Color(235, 255, 236));
+        centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 42));
         centerTopPanel.setLayout(new javax.swing.BoxLayout(centerTopPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         titlePanel.setBackground(new java.awt.Color(255, 255, 255));
+        titlePanel.setOpaque(false);
 
-        TitleLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        TitleLabel.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TitleLabel.setText("Title");
+
+        antalProdukterLabel.setFont(new java.awt.Font("Lucida Sans", 0, 13)); // NOI18N
+        antalProdukterLabel.setForeground(new java.awt.Color(102, 102, 102));
+        antalProdukterLabel.setText("8 Produkter");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(titlePanelLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(TitleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(antalProdukterLabel)
+                .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(TitleLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleLabel)
+                    .addComponent(antalProdukterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         centerTopPanel.add(titlePanel);
@@ -603,8 +674,11 @@ public class IMatView extends javax.swing.JFrame {
 
         sortPanel.setBackground(new java.awt.Color(255, 255, 255));
         sortPanel.setAlignmentX(3.0F);
+        sortPanel.setOpaque(false);
+        sortPanel.setPreferredSize(new java.awt.Dimension(201, 41));
 
-        sortLabel.setText("Sortering: ");
+        sortLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        sortLabel.setText("Sortering:");
 
         sortingComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Popularitet", "Pris lågt-högt", "Pris högt-lågt", "Bokstavsordning A-Ö", "Bokstavsordning Ö-A" }));
         sortingComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -623,7 +697,7 @@ public class IMatView extends javax.swing.JFrame {
         sortPanelLayout.setHorizontalGroup(
             sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sortPanelLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sortLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -631,12 +705,11 @@ public class IMatView extends javax.swing.JFrame {
         );
         sortPanelLayout.setVerticalGroup(
             sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sortPanelLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sortPanelLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
                 .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sortLabel)
-                    .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3))
+                    .addComponent(sortingComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         centerTopPanel.add(sortPanel);
@@ -652,7 +725,7 @@ public class IMatView extends javax.swing.JFrame {
 
     private void completetOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completetOrderButtonActionPerformed
         completeOrderPanel.removeAll();
-        FinalBuyView FBV = new FinalBuyView();
+        FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel);
         switchCard("completeOrderCard");
         TitleLabel.setText("Order");
         completeOrderPanel.add(FBV);
@@ -669,6 +742,7 @@ public class IMatView extends javax.swing.JFrame {
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         
+        
         ProductCategory[] pcArr;
         
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree1.getLastSelectedPathComponent();
@@ -676,7 +750,8 @@ public class IMatView extends javax.swing.JFrame {
         if (selectedNode == null) {
             return;
         }
-
+        
+        showSortPanelAndAntalProductLabel(true);
         String s = selectedNode.getUserObject().toString();
         if (!s.equals("Inköpslistor")) {
             switchCard("varorCard");
@@ -708,7 +783,7 @@ public class IMatView extends javax.swing.JFrame {
             case "Grönsaksfrukter":
                 updateVarorView(ProductCategory.VEGETABLE_FRUIT);
                 break;
-            case "Ärtor, Linser & Bönor":
+            case "Ärtväxter":
                 updateVarorView(ProductCategory.POD);
                 break;
 
@@ -817,7 +892,10 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTree1TreeCollapsed
 
     private void jTree1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MousePressed
-
+        
+        if(evt.getButton() != MouseEvent.BUTTON1){
+            return;
+        }
         TreePath path = jTree1.getClosestPathForLocation(evt.getX(), evt.getY());
         if (jTree1.isPathSelected(path)) {
             if (jTree1.isExpanded(path)) {
@@ -869,7 +947,11 @@ public class IMatView extends javax.swing.JFrame {
         }
 
         String s = selectedNode.getUserObject().toString();
-
+        
+        
+        
+        showSortPanelAndAntalProductLabel(s.equals("Favoriter"));
+        
         if (!s.equals("Inköpslistor")) {
             switchCard("varorCard");
         }
@@ -1027,14 +1109,6 @@ public class IMatView extends javax.swing.JFrame {
         //prevPoint = this.getLocation();
     }//GEN-LAST:event_topPanelMouseReleased
 
-    private void LoginRegistreraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginRegistreraButtonActionPerformed
-        loginPanel.removeAll();
-        SIV = new SignInView(LoginRegistreraButton);
-        switchCard("LoginCard");
-        TitleLabel.setText("Login");
-        loginPanel.add(SIV);
-    }//GEN-LAST:event_LoginRegistreraButtonActionPerformed
-
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
 
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
@@ -1128,6 +1202,22 @@ public class IMatView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_topPanelMouseClicked
 
+    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+        loginPanel.removeAll();
+        SIV = new SignInView(loginButton);
+        switchCard("LoginCard");
+        TitleLabel.setText("Login");
+        loginPanel.add(SIV);
+    }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseEntered
+        loginButton.setForeground(Color.white);
+    }//GEN-LAST:event_loginButtonMouseEntered
+
+    private void loginButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseExited
+        loginButton.setForeground(new Color(230,230,230));
+    }//GEN-LAST:event_loginButtonMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1138,6 +1228,12 @@ public class IMatView extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        
+        
+        UIManager.put("nimbusSelectionBackground", new Color(122,255,125).darker().darker());
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1165,8 +1261,8 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginRegistreraButton;
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JLabel antalProdukterLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
@@ -1180,14 +1276,20 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
     private javax.swing.JPanel kundvagnPanel;
     private javax.swing.JPanel leftPanel;
+    private javax.swing.JLabel loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
@@ -1203,6 +1305,8 @@ public class IMatView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void updateVarorView(List<Product> list){
+        antalProdukterLabel.setText(list.size() + " Produkter");
+        
         varorPanel.removeAll();
         varorPanel.revalidate();
         
@@ -1511,15 +1615,20 @@ public class IMatView extends javax.swing.JFrame {
         
 
     public void treeImage(){
-    Icon closedIcon = new ImageIcon("src/imat/resources/bilder/erbjudande.jpg");
+    /*Icon closedIcon = new ImageIcon("src/imat/resources/bilder/erbjudande.jpg");
     DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) jTree2.getCellRenderer();
     renderer.setClosedIcon(closedIcon);
-    
-        DefaultTreeCellRenderer renderer1 = (DefaultTreeCellRenderer) jTree1.getCellRenderer();
-        renderer1.setClosedIcon(null);
-        renderer1.setLeafIcon(null);
-        renderer1.setOpenIcon(null);
+    */
+        
+    jTree2.setCellRenderer(new LocalCellRenderer(jTree2));
+    jTree1.setCellRenderer(new LocalCellRenderer(jTree1));
 
+    }
+    
+    private void showSortPanelAndAntalProductLabel(boolean b){
+        antalProdukterLabel.setVisible(b);
+        sortLabel.setVisible(b);
+        sortingComboBox.setVisible(b);
     }
 
 }

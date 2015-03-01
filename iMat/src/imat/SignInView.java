@@ -5,7 +5,9 @@
  */
 package imat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
@@ -36,13 +38,13 @@ public class SignInView extends javax.swing.JPanel {
     private static  String zipCode;
     private static  String city;
     
-    private static JButton JB; 
+    private static JLabel JB; 
     
     
     /**
      * Creates new form SignInView
      */
-    public SignInView(JButton jbutton) {
+    public SignInView(JLabel jbutton) {
         initComponents();
         
         isNewUser = false;
@@ -90,7 +92,7 @@ public class SignInView extends javax.swing.JPanel {
         errorLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(0, 153, 0)));
+        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(204, 204, 204)));
 
         divPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -373,6 +375,7 @@ public class SignInView extends javax.swing.JPanel {
             if(validSignIn()){
                 this.errorLabel.setText("Du är inloggad");
                 JB.setText(customer.getFirstName() + " " + customer.getLastName());
+                JB.setIcon(new ImageIcon("src/imat/resources/bilder/gubbet.png"));
             }else{
                 this.errorLabel.setText("Lösenord och mail matchar inte");
             }

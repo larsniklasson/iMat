@@ -60,10 +60,10 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
         map = new TreeMap<String, String>();
 
-        int index = jList1.getSelectedIndex();
-        if (index == -1) {
+        //int index = jList1.getSelectedIndex();
+        /*if (index == -1) {
             index = 0;
-        }
+        }*/
 
         listModel = new DefaultListModel<String>();
 
@@ -93,11 +93,12 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             listModel.addElement(listName);
             map.put(listName, f.getName());
         }
-
+/*
         jList1.setModel(listModel);
         jList1.setSelectedIndex(index);
         this.repaint();
-    }
+    */
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,8 +112,6 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         totalLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(235, 235, 235));
@@ -135,30 +134,6 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 41, 294, 26));
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jList1MousePressed(evt);
-            }
-        });
-        jList1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jList1KeyPressed(evt);
-            }
-        });
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jList1ValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 80, 101, -1));
-
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.setOpaque(false);
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 297));
@@ -172,33 +147,11 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jList1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MousePressed
-
-    }//GEN-LAST:event_jList1MousePressed
-
-    private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
-
-    }//GEN-LAST:event_jList1KeyPressed
-
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        if (jList1.getSelectedIndex() == -1) {
-            return;
-        }
-        if (!evt.getValueIsAdjusting()) {//This line prevents double events
-            String s = (String) jList1.getSelectedValue();
-
-            updateVarorList(s);
-
-        }
-    }//GEN-LAST:event_jList1ValueChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 

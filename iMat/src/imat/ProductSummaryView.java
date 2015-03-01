@@ -5,12 +5,16 @@
  */
 package imat;
 
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import se.chalmers.ait.dat215.project.*;
@@ -82,7 +86,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         jLabel3.setText(String.format( "%.2f", p.getPrice()) + " " + p.getUnit());
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
+        jButton1.setBackground(new java.awt.Color(0, 153, 51));
         jButton1.setText("Köp");
         jButton1.setBorderPainted(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -237,10 +241,12 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         showFavoriteAndListButtons();
+        setBorder(BorderFactory.createLineBorder(new Color(175,175,175)));
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         hideFavoriteAndListButtons();
+        setBorder(BorderFactory.createEmptyBorder());
     }//GEN-LAST:event_formMouseExited
 
     private void favoriteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseEntered
