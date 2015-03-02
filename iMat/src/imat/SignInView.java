@@ -38,16 +38,20 @@ public class SignInView extends javax.swing.JPanel {
     private static  String zipCode;
     private static  String city;
     
-    private static JLabel JB; 
+    private static JLabel JB;
+    private static String prevView;
+    private static IMatView iMatView;
     
     
     /**
      * Creates new form SignInView
      */
-    public SignInView(JLabel jbutton) {
+    public SignInView(IMatView imv,JLabel jbutton, String lastView) {
         initComponents();
         
         isNewUser = false;
+        prevView = lastView;
+        iMatView = imv;
         this.regPanel.setVisible(isNewUser);
         user = im.getUser();
         customer = im.getCustomer();
@@ -367,7 +371,12 @@ public class SignInView extends javax.swing.JPanel {
                 switchForumState();
                 
             }else{
-                this.errorLabel.setText("Lösernoden matcher inte");
+                
+                if(password.equals(rePassword)){
+                    this.errorLabel.setText("Lösernoden matcher inte");
+                 }else if(password.length() > 6){
+                    this.errorLabel.setText("Ditt lösenord måste innehålla minst 6 tecken");
+                 }
             }
             
             
@@ -376,6 +385,9 @@ public class SignInView extends javax.swing.JPanel {
                 this.errorLabel.setText("Du är inloggad");
                 JB.setText(customer.getFirstName() + " " + customer.getLastName());
                 JB.setIcon(new ImageIcon("src/imat/resources/bilder/gubbet.png"));
+                System.out.println(prevView);
+                iMatView.switchCard(prevView);
+                iMatView.isLoggedIn = true;
             }else{
                 this.errorLabel.setText("Lösenord och mail matchar inte");
             }
