@@ -1211,8 +1211,10 @@ public class IMatView extends javax.swing.JFrame {
         
         if(!isLoggedIn){
             loginPanel.removeAll();
+            loginPanel.revalidate();
             SIV = new SignInView(this,loginButton ,lastView);
             switchCard("LoginCard");
+            showSortPanelAndAntalProductLabel(false);
             TitleLabel.setText("Login");
             loginPanel.add(SIV);
         } else {
