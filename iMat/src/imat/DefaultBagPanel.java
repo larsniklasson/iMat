@@ -6,6 +6,7 @@
 package imat;
 
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,6 +55,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         this.view = view;
         initComponents();
         update();
+        this.setBackground(Color.white);
 
         //addBackground();
     }
