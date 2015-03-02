@@ -104,22 +104,23 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
         
         switch(name){
             case "Favoriter":
-                r.setIcon(new ImageIcon("src/imat/resources/bilder/favoriter.jpg"));
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/favoriter.png"));
                 break;
              
             case "Färdiga Kassar":
-                r.setIcon(new ImageIcon("src/imat/resources/bilder/kasse.jpg"));
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/kasse.png"));
                 break;
              
             case "Inköpslistor":
-                r.setIcon(new ImageIcon("src/imat/resources/bilder/inkopslista.jpg"));
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/inkopslista.png"));
                 break;
              
             case "Dagens Erbjudande":
-                r.setIcon(new ImageIcon("src/imat/resources/bilder/erbjudande.jpg"));
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/erbjudande.png"));
                 break;
             default:
                 r.setIcon(null);
+                
         }
         
         Dimension size = r.getPreferredSize();
