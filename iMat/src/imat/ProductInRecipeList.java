@@ -40,9 +40,10 @@ public class ProductInRecipeList extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(235, 235, 235));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        deleteButton.setBackground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("X");
         deleteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         deleteButton.setBorderPainted(false);
@@ -58,7 +59,6 @@ public class ProductInRecipeList extends javax.swing.JPanel {
         jLabel1.setToolTipText(si.getProduct().getName());
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 70, 30));
 
-        jTextField2.setBackground(new java.awt.Color(235, 235, 235));
         jTextField2.setText(String.format("%.2f", si.getAmount()) + " " + si.getProduct().getUnitSuffix());
         jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 30));
