@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.Random;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -100,6 +101,26 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
         
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
         String name = node.getUserObject().toString();
+        
+        switch(name){
+            case "Favoriter":
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/favoriter.jpg"));
+                break;
+             
+            case "Färdiga Kassar":
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/kasse.jpg"));
+                break;
+             
+            case "Inköpslistor":
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/inkopslista.jpg"));
+                break;
+             
+            case "Dagens Erbjudande":
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/erbjudande.jpg"));
+                break;
+            default:
+                r.setIcon(null);
+        }
         
         Dimension size = r.getPreferredSize();
         

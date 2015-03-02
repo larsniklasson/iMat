@@ -138,7 +138,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 41, 294, 26));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Varor att köpa "));
         jPanel1.setOpaque(false);
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 297));
     }// </editor-fold>//GEN-END:initComponents
