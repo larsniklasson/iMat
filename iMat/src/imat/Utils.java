@@ -24,6 +24,27 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class Utils {
     
+    public static void makeLoginTextFile(){
+        IMatDataHandler dh = IMatDataHandler.getInstance();
+        String path = dh.imatDirectory();
+        File f = new File(path + "/login.txt");
+        if(!f.exists()){
+            try {
+                f.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            PrintWriter pw = null;
+            try {
+                pw = new PrintWriter(f);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pw.print("0");
+            pw.close();
+        }
+    }
+    
     public static void makeInköpslistaDir(){
         IMatDataHandler dh = IMatDataHandler.getInstance();
         String path = dh.imatDirectory() + "/inköpslistor";

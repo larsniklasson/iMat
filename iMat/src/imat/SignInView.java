@@ -5,6 +5,12 @@
  */
 package imat;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -42,6 +48,8 @@ public class SignInView extends javax.swing.JPanel {
     private static String prevView;
     private static IMatView iMatView;
     
+    private static String rememberMe;
+    
     
     /**
      * Creates new form SignInView
@@ -49,14 +57,32 @@ public class SignInView extends javax.swing.JPanel {
     public SignInView(IMatView imv,JLabel jbutton, String lastView) {
         initComponents();
         
+        File f = new File(im.imatDirectory() + "/login.txt");
+        Scanner sc = null;
+        try {
+            sc = new Scanner(f);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SignInView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = sc.nextLine();
+        sc.close();
+        
+        rememberMe = s;
+        
         isNewUser = false;
         prevView = lastView;
         iMatView = imv;
         this.regPanel.setVisible(isNewUser);
         user = im.getUser();
         customer = im.getCustomer();
-        
         JB = jbutton;
+        
+        if(rememberMe.equals("1")){
+            MailField.setText(user.getUserName());
+            PasswordField.setText(user.getPassword());
+            rememberMeCheckBox.setSelected(true);
+        }
+        
     }
 
     /**
@@ -94,9 +120,10 @@ public class SignInView extends javax.swing.JPanel {
         SignInButton = new javax.swing.JButton();
         NewUserLabel = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
+        rememberMeCheckBox = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(204, 204, 204)));
+        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(255, 255, 255)));
 
         divPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -149,6 +176,8 @@ public class SignInView extends javax.swing.JPanel {
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
+
+        divPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         regPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -285,6 +314,14 @@ public class SignInView extends javax.swing.JPanel {
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
+        rememberMeCheckBox.setBackground(new java.awt.Color(255, 255, 255));
+        rememberMeCheckBox.setText("Kom ihåg mig");
+        rememberMeCheckBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rememberMeCheckBoxStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout divPanel2Layout = new javax.swing.GroupLayout(divPanel2);
         divPanel2.setLayout(divPanel2Layout);
         divPanel2Layout.setHorizontalGroup(
@@ -293,6 +330,8 @@ public class SignInView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(errorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rememberMeCheckBox)
+                .addGap(18, 18, 18)
                 .addComponent(NewUserLabel)
                 .addGap(18, 18, 18)
                 .addComponent(SignInButton)
@@ -307,7 +346,8 @@ public class SignInView extends javax.swing.JPanel {
                 .addGroup(divPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignInButton)
                     .addComponent(NewUserLabel)
-                    .addComponent(errorLabel))
+                    .addComponent(errorLabel)
+                    .addComponent(rememberMeCheckBox))
                 .addContainerGap())
         );
 
@@ -388,6 +428,18 @@ public class SignInView extends javax.swing.JPanel {
                 System.out.println(prevView);
                 iMatView.switchCard(prevView);
                 iMatView.isLoggedIn = true;
+                
+                File f = new File(im.imatDirectory() + "/login.txt");
+                PrintWriter pw = null;
+                try {
+                    pw = new PrintWriter(f);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(SignInView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                pw.print(rememberMe);
+                pw.close();
+                
             }else{
                 this.errorLabel.setText("Lösenord och mail matchar inte");
             }
@@ -409,6 +461,18 @@ public class SignInView extends javax.swing.JPanel {
         // TODO add your handling code here:
         switchForumState();
     }//GEN-LAST:event_NewUserLabelMousePressed
+
+    private void rememberMeCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rememberMeCheckBoxStateChanged
+        // TODO add your handling code here:
+        
+        if(rememberMeCheckBox.isSelected()){
+            rememberMe = "1";
+        } else {
+            rememberMe = "0";
+        }
+        
+        
+    }//GEN-LAST:event_rememberMeCheckBoxStateChanged
     
     
     private static boolean validRegistation(){
@@ -479,5 +543,6 @@ public class SignInView extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel regPanel;
+    private javax.swing.JCheckBox rememberMeCheckBox;
     // End of variables declaration//GEN-END:variables
 }

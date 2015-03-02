@@ -205,7 +205,7 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Logga in"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Standardmark&#xf6;r"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -277,7 +277,7 @@
                       <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga Kassar&#xa; Lax i ugn&#xa; Recept2&#xa; Recept3&#xa;Dagens Erbjudande"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Standardmark&#xf6;r"/>
+                      <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -384,7 +384,7 @@
                           <TreeModel code="Visa Alla&#xa;Gr&#xf6;nsaker&#xa;  Rotfrukter&#xa;  K&#xe5;l&#xa;  Gr&#xf6;nsaksfrukter&#xa;  &#xc4;rtv&#xe4;xter&#xa;K&#xf6;tt&#xa;Fisk&#xa;Frukt &amp; B&#xe4;r&#xa;  Stenfrukter&#xa;  Meloner&#xa;  Citrusfrukter&#xa;  Exotiska Frukter&#xa;  B&#xe4;r&#xa;Br&#xf6;d&#xa;Drycker&#xa;  Varma Drycker&#xa;  Kalla Drycker&#xa;Mejeriprodukter&#xa;Mj&#xf6;l, Socker &amp; Salt&#xa;N&#xf6;tter &amp; Fr&#xf6;n&#xa;Pasta, Potatis &amp; Ris&#xa;  Pasta&#xa;  Potatis&#xa;  Ris&#xa;S&#xf6;tsaker&#xa;Kryddor"/>
                         </Property>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                          <Color id="Standardmark&#xf6;r"/>
+                          <Color id="Default Cursor"/>
                         </Property>
                         <Property name="toggleClickCount" type="int" value="1"/>
                       </Properties>
@@ -598,6 +598,22 @@
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                        <CompoundBorder>
+                          <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder thickness="2">
+                              <Color PropertyName="color" blue="cc" green="ff" red="cc" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                          <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder>
+                              <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </CompoundBorder>
+                      </Border>
                     </Property>
                   </Properties>
                   <Constraints>
