@@ -116,6 +116,8 @@ public class IMatView extends javax.swing.JFrame {
         
         setSize(1050,600);
         setLocationRelativeTo(null);
+        
+        defaultBagPanel.setBackground(Color.WHITE);
 
     }
 
@@ -127,7 +129,6 @@ public class IMatView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
@@ -371,7 +372,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
         treeNode1.add(treeNode2);
         jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTree2MousePressed(evt);
@@ -476,7 +477,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kryddor");
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTree1.setToggleClickCount(1);
         jTree1.setRootVisible(false);
         jTree1.setToggleClickCount(1);
