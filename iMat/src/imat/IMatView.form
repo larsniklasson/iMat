@@ -274,7 +274,7 @@
                       <Font name="Segoe UI Semibold" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                      <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga Kassar&#xa; Recept1&#xa; Recept2&#xa; Recept3&#xa;Dagens Erbjudande"/>
+                      <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga Kassar&#xa; Lax i ugn&#xa; Recept2&#xa; Recept3&#xa;Dagens Erbjudande"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Standardmark&#xf6;r"/>
@@ -447,7 +447,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="kundvagnPanel" pref="10" max="32767" attributes="0"/>
+                      <Component id="kundvagnPanel" pref="6" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="totalPris" min="-2" pref="31" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>

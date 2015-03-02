@@ -44,6 +44,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     private Double totalPrice;
 
     private BufferedImage image;
+    
+    private File recipeFile;
 
     /**
      * Creates new form defaultBadPanel
@@ -53,7 +55,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         initComponents();
         update();
 
-        addBackground();
+        //addBackground();
     }
 
     public void update() {
@@ -155,7 +157,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 
-    private void updateVarorList(final String s) {
+    private void updateVarorList(final String s, final File f) {
         jLabel2.setText(s);
 
         list.clear();
@@ -166,7 +168,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
         totalPrice = 0.0;
 
-        File f = new File(dh.imatDirectory() + "/Recept/" + map.get(s));
+       // File f = new File(dh.imatDirectory() + "/Recept/" + map.get(s));
+        //File f = new File("src/imat/resources/filer/recept/" + map.get(s));
 
         String fileContent = "";
         Scanner sc;
@@ -230,13 +233,13 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
     }
 
-    public void addBackground() {
+   /* public void addBackground() {
         try {
             image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
         } catch (IOException ex) {
             // handle exception...
         }
-    }
+    }*/
 
     public void lowerPrice() {
 
@@ -249,11 +252,14 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     }
 
     public void initializeDefaultBag(String s) {
+
         switch (s) {
-            case "Recept1":
+            case "Lax i ugn":
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
-                    updateVarorList(s);
+                    image = ImageIO.read(new File("src/imat/resources/bilder/LaxIUgn.jpg"));
+                    recipeFile = new File("src/imat/resources/filer/recept/Laxiugn.txt");
+
+                    //updateVarorList(s, f);
                 } catch (IOException ex) {
                     // handle exception...
                 }
@@ -261,12 +267,16 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             case "Recept2":
                 try {
                     image = ImageIO.read(new File("src/imat/resources/bilder/star.jpg"));
-                    updateVarorList(s);
+                    recipeFile = new File("src/imat/resources/filer/recept/laxiugn.txt");
+
+                    //updateVarorList(s, f);
                 } catch (IOException ex) {
                     // handle exception...
                 }
                 break;
         }
+
+                            updateVarorList(s, recipeFile);
 
     }
 
