@@ -256,7 +256,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         switch (s) {
             case "Lax i ugn":
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/LaxIUgn.jpg"));
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
                     recipeFile = new File("src/imat/resources/filer/recept/Laxiugn.txt");
 
                     //updateVarorList(s, f);
