@@ -25,7 +25,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,37,0,0,4,79"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,40,0,0,4,79"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -205,7 +205,7 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Logga in"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Standardmark&#xf6;r"/>
                 </Property>
               </Properties>
               <Events>
@@ -277,7 +277,7 @@
                       <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga Kassar&#xa; Recept1&#xa; Recept2&#xa; Recept3&#xa;Dagens Erbjudande"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
+                      <Color id="Standardmark&#xf6;r"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -384,7 +384,7 @@
                           <TreeModel code="Visa Alla&#xa;Gr&#xf6;nsaker&#xa;  Rotfrukter&#xa;  K&#xe5;l&#xa;  Gr&#xf6;nsaksfrukter&#xa;  &#xc4;rtv&#xe4;xter&#xa;K&#xf6;tt&#xa;Fisk&#xa;Frukt &amp; B&#xe4;r&#xa;  Stenfrukter&#xa;  Meloner&#xa;  Citrusfrukter&#xa;  Exotiska Frukter&#xa;  B&#xe4;r&#xa;Br&#xf6;d&#xa;Drycker&#xa;  Varma Drycker&#xa;  Kalla Drycker&#xa;Mejeriprodukter&#xa;Mj&#xf6;l, Socker &amp; Salt&#xa;N&#xf6;tter &amp; Fr&#xf6;n&#xa;Pasta, Potatis &amp; Ris&#xa;  Pasta&#xa;  Potatis&#xa;  Ris&#xa;S&#xf6;tsaker&#xa;Kryddor"/>
                         </Property>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                          <Color id="Hand Cursor"/>
+                          <Color id="Standardmark&#xf6;r"/>
                         </Property>
                         <Property name="toggleClickCount" type="int" value="1"/>
                       </Properties>
