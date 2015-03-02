@@ -70,6 +70,9 @@ public class IMatView extends javax.swing.JFrame {
     Point prevLocation;
     Dimension prevDimension;
     
+    boolean isLoggedIn = false;
+    String lastView ="";
+    
     int x;
     int y;
     
@@ -127,7 +130,6 @@ public class IMatView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
@@ -618,7 +620,7 @@ public class IMatView extends javax.swing.JFrame {
 
         cardPanel.add(jScrollPane2, "varorCard");
 
-        loginPanel.setBackground(new java.awt.Color(204, 204, 204));
+        loginPanel.setBackground(new java.awt.Color(255, 255, 255));
         cardPanel.add(loginPanel, "LoginCard");
 
         completeOrderPanel.setBackground(new java.awt.Color(204, 204, 204));
@@ -725,7 +727,7 @@ public class IMatView extends javax.swing.JFrame {
 
     private void completetOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completetOrderButtonActionPerformed
         completeOrderPanel.removeAll();
-        FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel);
+        FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel, this);
         switchCard("completeOrderCard");
         TitleLabel.setText("Order");
         completeOrderPanel.add(FBV);
@@ -1203,11 +1205,31 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_topPanelMouseClicked
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        loginPanel.removeAll();
-        SIV = new SignInView(loginButton);
-        switchCard("LoginCard");
-        TitleLabel.setText("Login");
-        loginPanel.add(SIV);
+        
+        
+        if(!isLoggedIn){
+            loginPanel.removeAll();
+            SIV = new SignInView(this,loginButton ,lastView);
+            switchCard("LoginCard");
+            TitleLabel.setText("Login");
+            loginPanel.add(SIV);
+        } else {
+            JPopupMenu pu = new JPopupMenu();
+            JMenuItem mi = new JMenuItem("Logga ut");
+            mi.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    isLoggedIn = false;
+                    loginButton.setText("Logga in");
+                    loginButton.setIcon(null);
+                    
+                }
+            });
+            
+            pu.add(mi);
+            pu.show(loginButton, loginButton.getWidth()- mi.getPreferredSize().width,loginButton.getHeight());
+        }
     }//GEN-LAST:event_loginButtonMouseClicked
 
     private void loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseEntered
@@ -1425,6 +1447,9 @@ public class IMatView extends javax.swing.JFrame {
     public void switchCard(String card) {
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, card);
+        if(!card.equals("LoginCard")){
+           lastView = card;
+        }
     }
     
 

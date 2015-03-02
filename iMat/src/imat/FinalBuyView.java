@@ -21,23 +21,29 @@ public class FinalBuyView extends javax.swing.JPanel {
      */
     
     private static JPanel jp;
+    private static IMatView imv;
     
-    public FinalBuyView(JPanel jpInput) {
+    public FinalBuyView(JPanel jpInput, IMatView imvInput) {
         initComponents();
         
         IMatDataHandler im = IMatDataHandler.getInstance();
+        imv = imvInput;
         ShoppingCart SC = im.getShoppingCart();
         jp = jpInput;
         
         totalLabel.setText(totalLabel.getText()+ " " + SC.getTotal() + " kr");
         
-        this.nameField.setText(im.getCustomer().getFirstName());
-        this.LastNameField.setText(im.getCustomer().getLastName());
-        this.addressField.setText(im.getCustomer().getAddress());
-        this.zipCodeField.setText(im.getCustomer().getPostCode());
-        this.cityField.setText(im.getCustomer().getPostAddress());
-        this.emailField.setText(im.getUser().getUserName());
-        this.phoneField.setText(im.getCustomer().getPhoneNumber());
+        if(imv.isLoggedIn){
+        
+            this.nameField.setText(im.getCustomer().getFirstName());
+            this.LastNameField.setText(im.getCustomer().getLastName());
+            this.addressField.setText(im.getCustomer().getAddress());
+            this.zipCodeField.setText(im.getCustomer().getPostCode());
+            this.cityField.setText(im.getCustomer().getPostAddress());
+            this.emailField.setText(im.getUser().getUserName());
+            this.phoneField.setText(im.getCustomer().getPhoneNumber());
+        
+        }
         
         for(int i = 1; i <= 31; i++){
             deliveryDComboBox.addItem(i+"");
