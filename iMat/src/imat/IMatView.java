@@ -525,7 +525,7 @@ public class IMatView extends javax.swing.JFrame {
         mainPanel.add(leftPanel, java.awt.BorderLayout.WEST);
 
         rightPanel.setBackground(new java.awt.Color(235, 255, 235));
-        rightPanel.setPreferredSize(new java.awt.Dimension(300, 550));
+        rightPanel.setPreferredSize(new java.awt.Dimension(260, 550));
 
         kundvagnPanel.setBackground(new java.awt.Color(255, 255, 255));
         kundvagnPanel.setBorder(new javax.swing.border.MatteBorder(null));
@@ -573,11 +573,11 @@ public class IMatView extends javax.swing.JFrame {
                     .addComponent(completetOrderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(totalPris, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(kundvagnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         rightPanelLayout.setVerticalGroup(

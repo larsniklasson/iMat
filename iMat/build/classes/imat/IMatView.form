@@ -412,7 +412,7 @@
               <Color blue="eb" green="ff" red="eb" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[300, 550]"/>
+              <Dimension value="[260, 550]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -430,12 +430,12 @@
                           <Component id="completetOrderButton" alignment="1" max="32767" attributes="0"/>
                           <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton3" pref="154" max="32767" attributes="0"/>
+                              <Component id="jButton3" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton2" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                           <Component id="totalPris" alignment="0" max="32767" attributes="0"/>
-                          <Component id="kundvagnPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="kundvagnPanel" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
