@@ -5,8 +5,15 @@
  */
 package imat;
 
+import java.awt.AWTException;
+import java.awt.MouseInfo;
 import java.awt.Paint;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Robot;
 import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,6 +35,9 @@ public class ProductInList extends javax.swing.JPanel {
     public ProductInList(ShoppingItem si) {
         this.si = si;
         initComponents();
+        
+        
+        
         
         //extraInfo.setVisible(false);
     }
@@ -87,7 +97,6 @@ public class ProductInList extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 0, 28, 30));
 
         plusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/plussmall.png"))); // NOI18N
-        plusButton.setToolTipText("");
         plusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         plusButton.setBorderPainted(false);
         plusButton.setContentAreaFilled(false);
@@ -100,6 +109,9 @@ public class ProductInList extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 plusButtonMouseExited(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                plusButtonMouseReleased(evt);
+            }
         });
         plusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +121,6 @@ public class ProductInList extends javax.swing.JPanel {
         add(plusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 0, 28, 30));
 
         minusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/minussmall.png"))); // NOI18N
-        minusButton.setToolTipText("");
         minusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         minusButton.setBorderPainted(false);
         minusButton.setContentAreaFilled(false);
@@ -196,6 +207,10 @@ public class ProductInList extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void plusButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusButtonMouseReleased
+        
+    }//GEN-LAST:event_plusButtonMouseReleased
 
     public ShoppingItem getShoppingItem(){
         return si;

@@ -12,11 +12,12 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  * @author Rasmus
  */
 public class orderNotification extends javax.swing.JPanel {
-
+    IMatView view;
     /**
      * Creates new form orderNotification
      */
-    public orderNotification(String name, String lastName, String address, String dv) {
+    public orderNotification(IMatView view, String name, String lastName, String address, String dv) {
+        this.view = view;
         initComponents();
         IMatDataHandler dh = IMatDataHandler.getInstance();
         deliveryLabel.setText("Val av metod: " + dv);
@@ -101,7 +102,8 @@ public class orderNotification extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        view.orderPanel.update();
+        view.switchCard("orderCard");
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

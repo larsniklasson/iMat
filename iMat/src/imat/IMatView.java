@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -16,8 +17,10 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -33,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,6 +83,7 @@ public class IMatView extends javax.swing.JFrame {
     
     Map<Product, ProductSummaryView> map = new HashMap<Product, ProductSummaryView>();
     
+    OrderPanel orderPanel;
     ListorPanel listorPanel;
     DefaultBagPanel defaultBagPanel;
     private ShoppingCart shoppingCart;
@@ -671,6 +677,8 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel.add(listorPanel,"listorCard");
         defaultBagPanel = new DefaultBagPanel(this);
         cardPanel.add(defaultBagPanel, "defaultBagCard");
+        orderPanel = new OrderPanel(this);
+        cardPanel.add(orderPanel, "orderCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -1258,8 +1266,9 @@ public class IMatView extends javax.swing.JFrame {
             loginPanel.add(SIV);
         } else {
             JPopupMenu pu = new JPopupMenu();
-            JMenuItem cs = new JMenuItem("Inställngar");
+            JMenuItem cs = new JMenuItem("Inställnigar");
             JMenuItem mi = new JMenuItem("Logga ut");
+            JMenuItem xx = new JMenuItem("Tidigare Köp");
             mi.addActionListener(new ActionListener() {
 
                 @Override
@@ -1285,7 +1294,18 @@ public class IMatView extends javax.swing.JFrame {
                 }
             });
             
+            xx.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    orderPanel.update();
+                    switchCard("orderCard");
+                }
+            });
+            
+            
             pu.add(cs);
+            pu.add(xx);
             pu.add(mi);
             pu.show(loginButton, loginButton.getWidth()- mi.getPreferredSize().width,loginButton.getHeight());
         }
@@ -1466,6 +1486,7 @@ public class IMatView extends javax.swing.JFrame {
                     updateKundVagn();
                 }
             });
+            
             pil.getplusButton().addActionListener(new ActionListener() {
 
                 @Override
@@ -1491,10 +1512,17 @@ public class IMatView extends javax.swing.JFrame {
             });
             kundvagnPanel.add(pil);
             counter++;
+            
         }
+        
+        
+        
         
         kundvagnPanel.repaint();
         totalPris.setText("Totalt:  " + String.format("%.2f", shoppingCart.getTotal()) + " kr");
+        
+        
+        
     }
 
     public void addToKundVagn(Product p, double d) {

@@ -23,11 +23,12 @@ public class FinalBuyView extends javax.swing.JPanel {
     private static JPanel jp;
     private static IMatView imv;
     private static boolean ishomeDelivery;
+    private IMatDataHandler im;
     
     public FinalBuyView(JPanel jpInput, IMatView imvInput) {
         initComponents();
         
-        IMatDataHandler im = IMatDataHandler.getInstance();
+        im = IMatDataHandler.getInstance();
         imv = imvInput;
         ShoppingCart SC = im.getShoppingCart();
         jp = jpInput;
@@ -422,6 +423,9 @@ public class FinalBuyView extends javax.swing.JPanel {
 
     private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
         // TODO add your handling code here:
+        im.placeOrder(false);
+        im.shutDown();
+        
         jp.removeAll();
         jp.revalidate();
         jp.repaint();
@@ -431,7 +435,7 @@ public class FinalBuyView extends javax.swing.JPanel {
         }else{
             s = "Hämtas";
         }
-        jp.add(new orderNotification(nameField.getText(),LastNameField.getText(),addressField.getText(), s));
+        jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), s));
         //homeDeliveryRadioButton
         //pickupDeliveryRadioButton
         
