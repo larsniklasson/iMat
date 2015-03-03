@@ -64,7 +64,7 @@ public class ProductInList extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(si.getProduct().getName());
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 0, 90, 30));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/removesmall2.png"))); // NOI18N
         jButton1.setToolTipText("Ta bort varan från kundvagnen");
@@ -84,7 +84,7 @@ public class ProductInList extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 20, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 0, 28, 30));
 
         plusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/plussmall.png"))); // NOI18N
         plusButton.setToolTipText("");
