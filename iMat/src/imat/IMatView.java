@@ -164,6 +164,7 @@ public class IMatView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
+        changeInfoPanel = new javax.swing.JPanel();
         completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
@@ -625,7 +626,10 @@ public class IMatView extends javax.swing.JFrame {
         loginPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
         cardPanel.add(loginPanel, "LoginCard");
 
-        completeOrderPanel.setBackground(new java.awt.Color(204, 204, 204));
+        changeInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        cardPanel.add(changeInfoPanel, "changeInfoCard");
+
+        completeOrderPanel.setBackground(new java.awt.Color(255, 255, 255));
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
         listorPanel = new ListorPanel(this);
@@ -1219,6 +1223,7 @@ public class IMatView extends javax.swing.JFrame {
             loginPanel.add(SIV);
         } else {
             JPopupMenu pu = new JPopupMenu();
+            JMenuItem cs = new JMenuItem("Inställngar");
             JMenuItem mi = new JMenuItem("Logga ut");
             mi.addActionListener(new ActionListener() {
 
@@ -1231,6 +1236,21 @@ public class IMatView extends javax.swing.JFrame {
                 }
             });
             
+            cs.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeInfoPanel.removeAll();
+                    changeInfoPanel.revalidate();
+                    changeInfoPanel.add(new changeInfoView());
+                    
+                    switchCard("changeInfoCard");
+                    
+                    
+                }
+            });
+            
+            pu.add(cs);
             pu.add(mi);
             pu.show(loginButton, loginButton.getWidth()- mi.getPreferredSize().width,loginButton.getHeight());
         }
@@ -1292,6 +1312,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
+    private javax.swing.JPanel changeInfoPanel;
     private javax.swing.JPanel completeOrderPanel;
     private javax.swing.JButton completetOrderButton;
     private javax.swing.Box.Filler filler1;

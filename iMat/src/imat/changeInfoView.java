@@ -5,33 +5,18 @@
  */
 package imat;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
-import sun.security.util.Password;
 
 /**
  *
  * @author Rasmus
  */
-public class SignInView extends javax.swing.JPanel {
-    
+public class changeInfoView extends javax.swing.JPanel {
     private static  IMatDataHandler im = IMatDataHandler.getInstance();
-    
     private static  User user;
     private static  Customer customer;
-    
-    private static  boolean isNewUser;
-    
     private static String mail;
     private static  String password;
     private static  String rePassword;
@@ -44,44 +29,35 @@ public class SignInView extends javax.swing.JPanel {
     private static  String zipCode;
     private static  String city;
     
-    private static JLabel JB;
-    private static String prevView;
-    private static IMatView iMatView;
-    
-    private static String rememberMe;
-    
-    
     /**
-     * Creates new form SignInView
+     * Creates new form changeInfoView
      */
-    public SignInView(IMatView imv,JLabel jbutton, String lastView) {
+    public changeInfoView() {
         initComponents();
         
-        File f = new File(im.imatDirectory() + "/login.txt");
-        Scanner sc = null;
-        try {
-            sc = new Scanner(f);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(SignInView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String s = sc.nextLine();
-        sc.close();
-        
-        rememberMe = s;
-        
-        isNewUser = false;
-        prevView = lastView;
-        iMatView = imv;
-        this.regPanel.setVisible(isNewUser);
         user = im.getUser();
         customer = im.getCustomer();
-        JB = jbutton;
         
-        if(rememberMe.equals("1")){
-            MailField.setText(user.getUserName());
-            PasswordField.setText(user.getPassword());
-            rememberMeCheckBox.setSelected(true);
+        NameField.setText(im.getCustomer().getFirstName());
+        LastNameField.setText(im.getCustomer().getLastName());
+        AddressField.setText(im.getCustomer().getAddress());
+        ZipCodeField.setText(im.getCustomer().getPostCode());
+        CityField.setText(im.getCustomer().getPostAddress());
+        MailField.setText(im.getUser().getUserName());
+        System.out.println(im.getCustomer().getMobilePhoneNumber());
+        PhoneField.setText(im.getCustomer().getPhoneNumber());
+        PasswordField.setText(im.getUser().getPassword());
+        RepPasswordField.setText(im.getUser().getPassword());
+    }
+    
+    
+    private static boolean validRegistation(){
+        if(password.equals(rePassword) && password.length() > 6){
+            return true;
         }
+        
+        //more validation here...
+        return false;
         
     }
 
@@ -94,6 +70,7 @@ public class SignInView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         divPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -118,12 +95,10 @@ public class SignInView extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         SignInButton = new javax.swing.JButton();
-        NewUserLabel = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
-        rememberMeCheckBox = new javax.swing.JCheckBox();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(255, 255, 255)));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(255, 255, 255)));
 
         divPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -134,7 +109,6 @@ public class SignInView extends javax.swing.JPanel {
         jLabel3.setText("*Lösenord:");
 
         MailField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        MailField.setText("Exampel@domän.com");
         MailField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 MailFieldFocusGained(evt);
@@ -146,6 +120,11 @@ public class SignInView extends javax.swing.JPanel {
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 PasswordFieldFocusGained(evt);
+            }
+        });
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
             }
         });
 
@@ -225,7 +204,7 @@ public class SignInView extends javax.swing.JPanel {
             .addComponent(jSeparator2)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(regPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, regPanelLayout.createSequentialGroup()
                         .addGroup(regPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,33 +273,14 @@ public class SignInView extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        SignInButton.setText("Logga in");
+        SignInButton.setText("Spara");
         SignInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignInButtonActionPerformed(evt);
             }
         });
 
-        NewUserLabel.setForeground(new java.awt.Color(0, 153, 0));
-        NewUserLabel.setText("Ny användare");
-        NewUserLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                NewUserLabelMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                NewUserLabelMousePressed(evt);
-            }
-        });
-
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-
-        rememberMeCheckBox.setBackground(new java.awt.Color(255, 255, 255));
-        rememberMeCheckBox.setText("Kom ihåg mig");
-        rememberMeCheckBox.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                rememberMeCheckBoxStateChanged(evt);
-            }
-        });
 
         javax.swing.GroupLayout divPanel2Layout = new javax.swing.GroupLayout(divPanel2);
         divPanel2.setLayout(divPanel2Layout);
@@ -330,10 +290,6 @@ public class SignInView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(errorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rememberMeCheckBox)
-                .addGap(18, 18, 18)
-                .addComponent(NewUserLabel)
-                .addGap(18, 18, 18)
                 .addComponent(SignInButton)
                 .addContainerGap())
             .addComponent(regPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -345,107 +301,47 @@ public class SignInView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(divPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignInButton)
-                    .addComponent(NewUserLabel)
-                    .addComponent(errorLabel)
-                    .addComponent(rememberMeCheckBox))
+                    .addComponent(errorLabel))
                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(divPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(divPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(divPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(divPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(divPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(divPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(divPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(divPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 508, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NewUserLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMouseClicked
-        // TODO add your handling code here:
-        switchForumState();
-        
-    }//GEN-LAST:event_NewUserLabelMouseClicked
-
-    private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
-        // TODO add your handling code here:
-        
-        mail = this.MailField.getText();
-        password = new String(this.PasswordField.getPassword());
-        
-        if(isNewUser){
-            
-            rePassword = new String(this.RepPasswordField.getPassword());
-
-            firstName = this.NameField.getText();
-            lastName = this.LastNameField.getText();
-            phoneNummer = this.PhoneField.getText();
-            System.out.println(phoneNummer);
-            address = this.AddressField.getText();
-            zipCode = this.ZipCodeField.getText();
-            city = this.CityField.getText();
-            
-            
-            
-            if(validRegistation()){
-                
-                user.setUserName(mail);
-                user.setPassword(password);
-                
-                customer.setFirstName(firstName);
-                customer.setLastName(lastName);
-                customer.setMobilePhoneNumber(phoneNummer);
-                
-                customer.setAddress(address);
-                customer.setPostCode(zipCode);
-                customer.setPostAddress(city);
-                
-                this.errorLabel.setText("Du är registrerad");
-                switchForumState();
-                
-            }else{
-                
-                if(password.equals(rePassword)){
-                    this.errorLabel.setText("Lösernoden matcher inte");
-                 }else if(password.length() > 6){
-                    this.errorLabel.setText("Ditt lösenord måste innehålla minst 6 tecken");
-                 }
-            }
-            
-            
-        }else{
-            if(validSignIn()){
-                this.errorLabel.setText("Du är inloggad");
-                JB.setText(customer.getFirstName() + " " + customer.getLastName());
-                JB.setIcon(new ImageIcon("src/imat/resources/bilder/gubbet.png"));
-                System.out.println(prevView);
-                iMatView.switchCard(prevView);
-                iMatView.isLoggedIn = true;
-                
-                File f = new File(im.imatDirectory() + "/login.txt");
-                PrintWriter pw = null;
-                try {
-                    pw = new PrintWriter(f);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(SignInView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                pw.print(rememberMe);
-                pw.close();
-                
-            }else{
-                this.errorLabel.setText("Lösenord och mail matchar inte");
-            }
-        }
-        
-    }//GEN-LAST:event_SignInButtonActionPerformed
 
     private void MailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MailFieldFocusGained
         // TODO add your handling code here:
@@ -457,64 +353,51 @@ public class SignInView extends javax.swing.JPanel {
         PasswordField.setText("");
     }//GEN-LAST:event_PasswordFieldFocusGained
 
-    private void NewUserLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMousePressed
+    private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
         // TODO add your handling code here:
-        switchForumState();
-    }//GEN-LAST:event_NewUserLabelMousePressed
+        mail = this.MailField.getText();
+        password = new String(this.PasswordField.getPassword());
 
-    private void rememberMeCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rememberMeCheckBoxStateChanged
-        // TODO add your handling code here:
-        
-        if(rememberMeCheckBox.isSelected()){
-            rememberMe = "1";
-        } else {
-            rememberMe = "0";
-        }
-        
-        
-    }//GEN-LAST:event_rememberMeCheckBoxStateChanged
-    
-    
-    private static boolean validRegistation(){
-        if(password.equals(rePassword) && password.length() > 6){
-            return true;
-        }
-        
-        //more validation here...
-        return false;
-        
-    }
-    
-    private static boolean validSignIn(){
-        if(user.getUserName().equals(mail)){
-            if(user.getPassword().equals(password)){
-                return true;
+        rePassword = new String(this.RepPasswordField.getPassword());
+
+        firstName = this.NameField.getText();
+        lastName = this.LastNameField.getText();
+        phoneNummer = this.PhoneField.getText();
+
+        address = this.AddressField.getText();
+        zipCode = this.ZipCodeField.getText();
+        city = this.CityField.getText();
+
+            if(validRegistation()){
+
+                user.setUserName(mail);
+                user.setPassword(password);
+
+                customer.setFirstName(firstName);
+                customer.setLastName(lastName);
+                customer.setMobilePhoneNumber(phoneNummer);
+
+                customer.setAddress(address);
+                customer.setPostCode(zipCode);
+                customer.setPostAddress(city);
+
+            }else{
+
+                if(password.equals(rePassword)){
+                    this.errorLabel.setText("Lösernoden matcher inte");
+                }else if(password.length() > 6){
+                    this.errorLabel.setText("Ditt lösenord måste innehålla minst 6 tecken");
+                }
             }
-        }
+
         
-        return false;
-    }
-    
-    
-    private void switchForumState(){
-        
-        isNewUser = !isNewUser;
-        
-        if(isNewUser){
-            
-            this.SignInButton.setText("Registrera");
-            this.NewUserLabel.setText("Redan Registrerad");
-            
-        }else{
-            
-            this.SignInButton.setText("Logga in");
-            this.NewUserLabel.setText("Ny användare");
-        }    
-             
-        this.regPanel.setVisible(isNewUser);
-    }
-    
-    
+
+    }//GEN-LAST:event_SignInButtonActionPerformed
+
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddressField;
@@ -522,7 +405,6 @@ public class SignInView extends javax.swing.JPanel {
     private javax.swing.JTextField LastNameField;
     private javax.swing.JTextField MailField;
     private javax.swing.JTextField NameField;
-    private javax.swing.JLabel NewUserLabel;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JTextField PhoneField;
     private javax.swing.JPasswordField RepPasswordField;
@@ -540,9 +422,9 @@ public class SignInView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel regPanel;
-    private javax.swing.JCheckBox rememberMeCheckBox;
     // End of variables declaration//GEN-END:variables
 }
