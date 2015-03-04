@@ -970,7 +970,6 @@ public class IMatView extends javax.swing.JFrame {
                 switchCard("listorCard");
                 break;
             /*case "Färdiga Kassar":
-                defaultBagPanel.initializeDefaultBag2(s);
                 switchCard("defaultBagCard");
                 //
                 break;*/
