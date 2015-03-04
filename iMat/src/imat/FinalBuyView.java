@@ -22,14 +22,17 @@ public class FinalBuyView extends javax.swing.JPanel {
     
     private static JPanel jp;
     private static IMatView imv;
+    private static boolean ishomeDelivery;
+    private IMatDataHandler im;
     
     public FinalBuyView(JPanel jpInput, IMatView imvInput) {
         initComponents();
         
-        IMatDataHandler im = IMatDataHandler.getInstance();
+        im = IMatDataHandler.getInstance();
         imv = imvInput;
         ShoppingCart SC = im.getShoppingCart();
         jp = jpInput;
+        ishomeDelivery = false;
         
         totalLabel.setText(totalLabel.getText()+ " " + SC.getTotal() + " kr");
         
@@ -41,7 +44,8 @@ public class FinalBuyView extends javax.swing.JPanel {
             this.zipCodeField.setText(im.getCustomer().getPostCode());
             this.cityField.setText(im.getCustomer().getPostAddress());
             this.emailField.setText(im.getUser().getUserName());
-            this.phoneField.setText(im.getCustomer().getPhoneNumber());
+            this.phoneField.setText(im.getCustomer().getMobilePhoneNumber());
+            
         
         }
         
@@ -155,8 +159,28 @@ public class FinalBuyView extends javax.swing.JPanel {
         });
 
         homeDeliveryRadioButton.setText("HemKörning");
+        homeDeliveryRadioButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                homeDeliveryRadioButtonStateChanged(evt);
+            }
+        });
+        homeDeliveryRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeDeliveryRadioButtonActionPerformed(evt);
+            }
+        });
 
         pickupDeliveryRadioButton.setText("Hämta i butik");
+        pickupDeliveryRadioButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pickupDeliveryRadioButtonStateChanged(evt);
+            }
+        });
+        pickupDeliveryRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickupDeliveryRadioButtonActionPerformed(evt);
+            }
+        });
 
         SMSBox.setText("SMS Anvisering");
 
@@ -168,7 +192,7 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         deliveryFComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tid på dygnet...", "10:00-12:00", "12:00-14:00", "16:00-18:00", "18:00-20:00", "20:00-22:00" }));
 
-        OrderButton.setBackground(new java.awt.Color(0, 153, 0));
+        OrderButton.setBackground(new java.awt.Color(0, 153, 51));
         OrderButton.setText("Slutför köp");
         OrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -399,10 +423,21 @@ public class FinalBuyView extends javax.swing.JPanel {
 
     private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
         // TODO add your handling code here:
+        im.placeOrder(false);
+        im.shutDown();
+        
         jp.removeAll();
         jp.revalidate();
         jp.repaint();
-        jp.add(new orderNotification());
+        String s = "";
+        if(ishomeDelivery){
+            s = "Hemkörning";
+        }else{
+            s = "Hämtas";
+        }
+        jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), s));
+        //homeDeliveryRadioButton
+        //pickupDeliveryRadioButton
         
         //JFrame frame = new JFrame();
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
@@ -442,6 +477,31 @@ public class FinalBuyView extends javax.swing.JPanel {
     private void CVCFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CVCFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CVCFieldActionPerformed
+
+    private void homeDeliveryRadioButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_homeDeliveryRadioButtonStateChanged
+        // TODO add your handling code here:
+        //System.out.println(homeDeliveryRadioButton.getText());
+        
+        //pickupDeliveryRadioButton.
+    }//GEN-LAST:event_homeDeliveryRadioButtonStateChanged
+
+    private void pickupDeliveryRadioButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pickupDeliveryRadioButtonStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_pickupDeliveryRadioButtonStateChanged
+
+    private void homeDeliveryRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeDeliveryRadioButtonActionPerformed
+        // TODO add your handling code here:
+        pickupDeliveryRadioButton.setSelected(false);
+        
+        ishomeDelivery = true;
+    }//GEN-LAST:event_homeDeliveryRadioButtonActionPerformed
+
+    private void pickupDeliveryRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickupDeliveryRadioButtonActionPerformed
+        // TODO add your handling code here:
+        homeDeliveryRadioButton.setSelected(false);
+        ishomeDelivery = false;
+    }//GEN-LAST:event_pickupDeliveryRadioButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

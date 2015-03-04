@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -16,8 +17,10 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -33,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,6 +83,7 @@ public class IMatView extends javax.swing.JFrame {
     
     Map<Product, ProductSummaryView> map = new HashMap<Product, ProductSummaryView>();
     
+    OrderPanel orderPanel;
     ListorPanel listorPanel;
     DefaultBagPanel defaultBagPanel;
     private ShoppingCart shoppingCart;
@@ -154,16 +160,19 @@ public class IMatView extends javax.swing.JFrame {
         jTree1 = new javax.swing.JTree();
         rightPanel = new javax.swing.JPanel();
         kundvagnPanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         completetOrderButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         totalPris = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        antalProdukterIKundVagnLabel = new javax.swing.JLabel();
         centerPanel = new javax.swing.JPanel();
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         varorPanel = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
+        changeInfoPanel = new javax.swing.JPanel();
         completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
@@ -524,16 +533,12 @@ public class IMatView extends javax.swing.JFrame {
         mainPanel.add(leftPanel, java.awt.BorderLayout.WEST);
 
         rightPanel.setBackground(new java.awt.Color(235, 255, 235));
-        rightPanel.setPreferredSize(new java.awt.Dimension(300, 550));
+        rightPanel.setPreferredSize(new java.awt.Dimension(260, 550));
 
         kundvagnPanel.setBackground(new java.awt.Color(255, 255, 255));
-        kundvagnPanel.setBorder(new javax.swing.border.MatteBorder(null));
+        kundvagnPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         kundvagnPanel.setPreferredSize(new java.awt.Dimension(230, 5));
         kundvagnPanel.setLayout(new java.awt.GridLayout(1, 0));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Kundvagn");
 
         completetOrderButton.setText("Till Kassan");
         completetOrderButton.setToolTipText("Gå till kassan med kundvagnen");
@@ -562,30 +567,67 @@ public class IMatView extends javax.swing.JFrame {
         totalPris.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         totalPris.setText("Totalt:  " + String.format("%.2f", shoppingCart.getTotal()) + " kr");
 
+        jPanel6.setOpaque(false);
+        jPanel6.setPreferredSize(new java.awt.Dimension(64, 17));
+
+        jLabel3.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Kundvagn");
+
+        antalProdukterIKundVagnLabel.setFont(new java.awt.Font("Lucida Sans", 0, 13)); // NOI18N
+        antalProdukterIKundVagnLabel.setForeground(new java.awt.Color(119, 119, 119));
+        antalProdukterIKundVagnLabel.setText("0 Produkter");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(antalProdukterIKundVagnLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(antalProdukterIKundVagnLabel)))
+        );
+
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(completetOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(rightPanelLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+            .addGroup(rightPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(totalPris, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addGap(4, 4, 4))
             .addGroup(rightPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(completetOrderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightPanelLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(totalPris, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                 .addContainerGap())
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 6, Short.MAX_VALUE)
+                .addComponent(kundvagnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 11, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalPris, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
@@ -625,13 +667,18 @@ public class IMatView extends javax.swing.JFrame {
         loginPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
         cardPanel.add(loginPanel, "LoginCard");
 
-        completeOrderPanel.setBackground(new java.awt.Color(204, 204, 204));
+        changeInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        cardPanel.add(changeInfoPanel, "changeInfoCard");
+
+        completeOrderPanel.setBackground(new java.awt.Color(255, 255, 255));
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
         listorPanel = new ListorPanel(this);
         cardPanel.add(listorPanel,"listorCard");
         defaultBagPanel = new DefaultBagPanel(this);
         cardPanel.add(defaultBagPanel, "defaultBagCard");
+        orderPanel = new OrderPanel(this);
+        cardPanel.add(orderPanel, "orderCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -1217,7 +1264,9 @@ public class IMatView extends javax.swing.JFrame {
             loginPanel.add(SIV);
         } else {
             JPopupMenu pu = new JPopupMenu();
+            JMenuItem cs = new JMenuItem("Inställnigar");
             JMenuItem mi = new JMenuItem("Logga ut");
+            JMenuItem xx = new JMenuItem("Tidigare Köp");
             mi.addActionListener(new ActionListener() {
 
                 @Override
@@ -1229,6 +1278,32 @@ public class IMatView extends javax.swing.JFrame {
                 }
             });
             
+            cs.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeInfoPanel.removeAll();
+                    changeInfoPanel.revalidate();
+                    changeInfoPanel.add(new changeInfoView());
+                    
+                    switchCard("changeInfoCard");
+                    
+                    
+                }
+            });
+            
+            xx.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    orderPanel.update();
+                    switchCard("orderCard");
+                }
+            });
+            
+            
+            pu.add(cs);
+            pu.add(xx);
             pu.add(mi);
             pu.show(loginButton, loginButton.getWidth()- mi.getPreferredSize().width,loginButton.getHeight());
         }
@@ -1286,10 +1361,12 @@ public class IMatView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JLabel antalProdukterIKundVagnLabel;
     private javax.swing.JLabel antalProdukterLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerTopPanel;
+    private javax.swing.JPanel changeInfoPanel;
     private javax.swing.JPanel completeOrderPanel;
     private javax.swing.JButton completetOrderButton;
     private javax.swing.Box.Filler filler1;
@@ -1307,6 +1384,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTree jTree1;
@@ -1373,6 +1451,7 @@ public class IMatView extends javax.swing.JFrame {
     
     
     public void updateKundVagn() {
+        antalProdukterIKundVagnLabel.setText(shoppingCart.getItems().size() + " Produkter");
         kundvagnPanel.removeAll();
         kundvagnPanel.revalidate();
         //System.out.println("total " + shoppingCart.getItems().size());
@@ -1384,10 +1463,19 @@ public class IMatView extends javax.swing.JFrame {
             //System.out.println(label.getFont().toString());
             kundvagnPanel.add(label);
         }
-
+        
+        
+        
         for (final ShoppingItem si : shoppingCart.getItems()) {
             final int c = counter;
+            
+            
             ProductInList pil = new ProductInList(si);
+            
+            if(c == 0){
+                pil.setBorder(null);
+            }
+            
             pil.getButton().addActionListener(new ActionListener() {
 
                 @Override
@@ -1396,6 +1484,7 @@ public class IMatView extends javax.swing.JFrame {
                     updateKundVagn();
                 }
             });
+            
             pil.getplusButton().addActionListener(new ActionListener() {
 
                 @Override
@@ -1421,10 +1510,17 @@ public class IMatView extends javax.swing.JFrame {
             });
             kundvagnPanel.add(pil);
             counter++;
+            
         }
+        
+        
+        
         
         kundvagnPanel.repaint();
         totalPris.setText("Totalt:  " + String.format("%.2f", shoppingCart.getTotal()) + " kr");
+        
+        
+        
     }
 
     public void addToKundVagn(Product p, double d) {

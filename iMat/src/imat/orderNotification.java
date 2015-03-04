@@ -5,17 +5,25 @@
  */
 package imat;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+
 /**
  *
  * @author Rasmus
  */
 public class orderNotification extends javax.swing.JPanel {
-
+    IMatView view;
     /**
      * Creates new form orderNotification
      */
-    public orderNotification() {
+    public orderNotification(IMatView view, String name, String lastName, String address, String dv) {
+        this.view = view;
         initComponents();
+        IMatDataHandler dh = IMatDataHandler.getInstance();
+        deliveryLabel.setText("Val av metod: " + dv);
+        nameLabel.setText(name+" "+lastName);
+        addressLabel.setText("Till: " + address);
+        priceLabel.setText("Totalkostnad: "+dh.getShoppingCart().getTotal()+" kr");
     }
 
     /**
@@ -28,10 +36,10 @@ public class orderNotification extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        deliveryLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -39,13 +47,13 @@ public class orderNotification extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel1.setText("Tack för ditt köp!");
 
-        jLabel2.setText("leverans metod");
+        deliveryLabel.setText("leverans metod");
 
-        jLabel3.setText("jLabel3");
+        nameLabel.setText("jLabel3");
 
-        jLabel4.setText("jLabel4");
+        addressLabel.setText("jLabel4");
 
-        jLabel5.setText("jLabel5");
+        priceLabel.setText("jLabel5");
 
         jButton1.setText("Din order");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,12 +74,12 @@ public class orderNotification extends javax.swing.JPanel {
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
+                            .addComponent(deliveryLabel)
+                            .addComponent(nameLabel)
+                            .addComponent(addressLabel)
+                            .addComponent(priceLabel)
                             .addComponent(jLabel1))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addGap(0, 254, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -80,13 +88,13 @@ public class orderNotification extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(deliveryLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(nameLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(addressLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(priceLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -94,16 +102,18 @@ public class orderNotification extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        view.orderPanel.update();
+        view.switchCard("orderCard");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel deliveryLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel priceLabel;
     // End of variables declaration//GEN-END:variables
 }

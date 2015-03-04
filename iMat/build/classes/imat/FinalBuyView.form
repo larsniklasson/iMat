@@ -328,11 +328,19 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="HemK&#xf6;rning"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="homeDeliveryRadioButtonStateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeDeliveryRadioButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="pickupDeliveryRadioButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="H&#xe4;mta i butik"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="pickupDeliveryRadioButtonStateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pickupDeliveryRadioButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="SMSBox">
           <Properties>
@@ -399,7 +407,7 @@
             <Component class="javax.swing.JButton" name="OrderButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="99" red="0" type="rgb"/>
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Slutf&#xf6;r k&#xf6;p"/>
               </Properties>
