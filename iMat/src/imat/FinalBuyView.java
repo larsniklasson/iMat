@@ -34,7 +34,8 @@ public class FinalBuyView extends javax.swing.JPanel {
         jp = jpInput;
         ishomeDelivery = false;
         
-        totalLabel.setText(totalLabel.getText()+ " " + SC.getTotal() + " kr");
+        totalLabel.setText(totalLabel.getText()+ " " + (String.format("%.2f",SC.getTotal())) + " kr");
+     
         
         if(imv.isLoggedIn){
         

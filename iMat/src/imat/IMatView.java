@@ -281,7 +281,7 @@ public class IMatView extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         loginButton.setForeground(new java.awt.Color(228, 228, 228));
         loginButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        loginButton.setText("Logga in");
+        loginButton.setText("Logga in/Registrera");
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -306,7 +306,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
                 .addComponent(loginButton)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
@@ -1258,6 +1258,7 @@ public class IMatView extends javax.swing.JFrame {
         
         if(!isLoggedIn){
             loginPanel.removeAll();
+            loginPanel.revalidate();
             SIV = new SignInView(this,loginButton ,lastView);
             switchCard("LoginCard");
             TitleLabel.setText("Login");

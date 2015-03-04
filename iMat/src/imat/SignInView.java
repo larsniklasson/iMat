@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -301,8 +302,7 @@ public class SignInView extends javax.swing.JPanel {
             }
         });
 
-        NewUserLabel.setForeground(new java.awt.Color(0, 153, 0));
-        NewUserLabel.setText("Ny användare");
+        NewUserLabel.setText("Ny användare?");
         NewUserLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 NewUserLabelMouseClicked(evt);
@@ -406,12 +406,12 @@ public class SignInView extends javax.swing.JPanel {
                 customer.setAddress(address);
                 customer.setPostCode(zipCode);
                 customer.setPostAddress(city);
-                
+                this.errorLabel.setForeground(Color.green);
                 this.errorLabel.setText("Du är registrerad");
                 switchForumState();
                 
             }else{
-                
+                this.errorLabel.setForeground(Color.red);
                 if(password.equals(rePassword)){
                     this.errorLabel.setText("Lösernoden matcher inte");
                  }else if(password.length() > 6){
