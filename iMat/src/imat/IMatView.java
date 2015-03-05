@@ -53,6 +53,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRootPane;
+import javax.swing.JScrollBar;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -126,6 +127,9 @@ public class IMatView extends javax.swing.JFrame {
         
         setSize(1050,600);
         setLocationRelativeTo(null);
+        
+        Utils.changeScrollBar(jScrollPane1, 5);
+        Utils.changeScrollBar(jScrollPane2, 13);
 
     }
 
@@ -1754,5 +1758,7 @@ public class IMatView extends javax.swing.JFrame {
         sortLabel.setVisible(b);
         sortingComboBox.setVisible(b);
     }
+    
+    
 
 }

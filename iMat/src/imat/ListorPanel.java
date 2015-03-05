@@ -45,6 +45,8 @@ public class ListorPanel extends javax.swing.JPanel {
         initComponents();
         update();
         
+        Utils.changeScrollBar(jScrollPane1, 11);
+        
     }
     
     public void update(){

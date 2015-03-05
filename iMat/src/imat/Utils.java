@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,6 +15,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -23,6 +26,13 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Lasse
  */
 public class Utils {
+    
+    public static void changeScrollBar(JScrollPane pane, int width){
+        JScrollBar sb = pane.getVerticalScrollBar();
+        sb.setUI(new MyScrollbarUI2());
+        sb.setPreferredSize(new Dimension(width, Integer.MAX_VALUE));
+        
+    }
     
     public static void makeLoginTextFile(){
         IMatDataHandler dh = IMatDataHandler.getInstance();
