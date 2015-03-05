@@ -437,6 +437,8 @@ public class FinalBuyView extends javax.swing.JPanel {
             s = "Hämtas";
         }
         jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), s));
+        im.placeOrder(true);
+        imv.updateKundVagn();
         //homeDeliveryRadioButton
         //pickupDeliveryRadioButton
         

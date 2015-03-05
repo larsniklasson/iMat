@@ -1265,7 +1265,7 @@ public class IMatView extends javax.swing.JFrame {
             loginPanel.add(SIV);
         } else {
             JPopupMenu pu = new JPopupMenu();
-            JMenuItem cs = new JMenuItem("Inställnigar");
+            JMenuItem cs = new JMenuItem("Min profil");
             JMenuItem mi = new JMenuItem("Logga ut");
             JMenuItem xx = new JMenuItem("Tidigare Köp");
             mi.addActionListener(new ActionListener() {
