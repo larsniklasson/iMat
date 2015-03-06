@@ -133,9 +133,11 @@ public class ProductSummaryView extends javax.swing.JPanel {
         add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, -1));
 
         favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/heartInteFyllt.jpg"))); // NOI18N
+        favoriteButton.setToolTipText("Lägg till vara som favorit");
         favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         favoriteButton.setBorderPainted(false);
         favoriteButton.setContentAreaFilled(false);
+        favoriteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         favoriteButton.setFocusPainted(false);
         favoriteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -153,9 +155,11 @@ public class ProductSummaryView extends javax.swing.JPanel {
         add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 40, 28));
 
         listButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/note.jpg"))); // NOI18N
+        listButton.setToolTipText("Lägg till vara i en inköpslista");
         listButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         listButton.setBorderPainted(false);
         listButton.setContentAreaFilled(false);
+        listButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listButton.setFocusPainted(false);
         listButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
