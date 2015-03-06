@@ -42,6 +42,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
@@ -1362,7 +1363,7 @@ public class IMatView extends javax.swing.JFrame {
          */
         
         
-        
+        UIManager.put("List.focusCellHighlightBorder", BorderFactory.createEmptyBorder(1, 5, 1, 5));
         UIManager.put("nimbusSelectionBackground", new Color(122,255,125).darker().darker());
         
         
@@ -1382,6 +1383,8 @@ public class IMatView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(IMatView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        
+        
         //</editor-fold>
 
         /* Create and display the form */

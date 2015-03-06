@@ -152,6 +152,7 @@ public class ListorPanel extends javax.swing.JPanel {
         jPanel2.setOpaque(false);
 
         jList1.setBackground(new java.awt.Color(240, 240, 240));
+        jList1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -173,6 +174,7 @@ public class ListorPanel extends javax.swing.JPanel {
                 jList1ValueChanged(evt);
             }
         });
+        jList1.setCellRenderer(new MyCellRenderer(jList1));
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
