@@ -288,10 +288,10 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                     // handle exception...
                 }
                 break;
-            case "Recept2":
+            case "Kycklingpasta":
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/star.jpg"));
-                    recipeFile = new File("src/imat/resources/filer/recept/laxiugn.txt");
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept2.png"));
+                    recipeFile = new File("src/imat/resources/filer/recept/Kycklingpasta.txt");
 
                     //updateVarorList(s, f);
                 } catch (IOException ex) {
