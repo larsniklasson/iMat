@@ -25,6 +25,9 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class ProductSummaryView extends javax.swing.JPanel {
 
+    private Color noHover = new Color(204,204,204);
+    private Color hover = new Color(150,150,150);
+    
     IMatDataHandler dh = IMatDataHandler.getInstance();
 
     private Product p;
@@ -63,9 +66,15 @@ public class ProductSummaryView extends javax.swing.JPanel {
         nameLabel = new javax.swing.JLabel();
         antalLabel = new javax.swing.JLabel();
         amountkgSpinner = new javax.swing.JSpinner();
+        jPanel1 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 formMouseEntered(evt);
@@ -83,6 +92,8 @@ public class ProductSummaryView extends javax.swing.JPanel {
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 160, 120));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(177, 39, 4));
         jLabel3.setText(String.format( "%.2f", p.getPrice()) + " " + p.getUnit());
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
@@ -104,7 +115,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 60, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 206, 60, 28));
 
         amountSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         amountSpinner.setToolTipText("Välj hur mycket du vill lägga i kundvagnen");
@@ -132,7 +143,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 amountSpinnerMouseExited(evt);
             }
         });
-        add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, -1));
+        add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 205, 50, -1));
 
         favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/heartInteFyllt.jpg"))); // NOI18N
         favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -200,7 +211,11 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 amountkgSpinnerMouseExited(evt);
             }
         });
-        add(amountkgSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, -1));
+        add(amountkgSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 205, 50, -1));
+
+        jPanel1.setBackground(new java.awt.Color(239, 239, 239));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 4, 1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 200, 178, 39));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -243,12 +258,12 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         showFavoriteAndListButtons();
-        setBorder(BorderFactory.createLineBorder(new Color(175,175,175)));
+        setBorder(BorderFactory.createLineBorder(hover));
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         hideFavoriteAndListButtons();
-        setBorder(BorderFactory.createEmptyBorder());
+        setBorder(BorderFactory.createLineBorder(noHover));
     }//GEN-LAST:event_formMouseExited
 
     private void favoriteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseEntered
@@ -298,6 +313,10 @@ public class ProductSummaryView extends javax.swing.JPanel {
     private void amountkgSpinnerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amountkgSpinnerMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_amountkgSpinnerMouseExited
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        System.out.println(this.contains(evt.getPoint()));
+    }//GEN-LAST:event_formMouseMoved
 
     public JButton getButton() {
         return jButton1;
@@ -369,6 +388,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JButton listButton;
     private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
