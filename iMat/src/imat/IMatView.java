@@ -1259,6 +1259,7 @@ public class IMatView extends javax.swing.JFrame {
             SIV = new SignInView(this,loginButton ,lastView);
             switchCard("LoginCard");
             TitleLabel.setText("Login");
+            showSortPanelAndAntalProductLabel(false);
             loginPanel.add(SIV);
         } else {
             JPopupMenu pu = new JPopupMenu();
@@ -1283,7 +1284,8 @@ public class IMatView extends javax.swing.JFrame {
                     changeInfoPanel.removeAll();
                     changeInfoPanel.revalidate();
                     changeInfoPanel.add(new changeInfoView());
-                    
+                    TitleLabel.setText("Inställningar");
+                    showSortPanelAndAntalProductLabel(false);
                     switchCard("changeInfoCard");
                     
                     
@@ -1295,7 +1297,10 @@ public class IMatView extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     orderPanel.update();
+                    showSortPanelAndAntalProductLabel(false);
                     switchCard("orderCard");
+                    
+                    TitleLabel.setText("Tidigare Köp");
                 }
             });
             
