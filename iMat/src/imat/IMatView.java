@@ -135,7 +135,7 @@ public class IMatView extends javax.swing.JFrame {
         Utils.changeScrollBar(jScrollPane3, 7);
         Utils.changeScrollBar(jScrollPane2, 13);
         
-        
+        topPanel.requestFocus();
 
     }
 
@@ -318,9 +318,9 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addComponent(loginButton)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
@@ -336,21 +336,18 @@ public class IMatView extends javax.swing.JFrame {
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topPanelLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(topPanelLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(searchButton))
-                            .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(loginButton))))
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(searchTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginButton)
+                            .addComponent(searchButton)))
                     .addGroup(topPanelLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))))
-                .addContainerGap())
+                .addGap(11, 11, 11))
         );
 
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
@@ -1206,6 +1203,7 @@ public class IMatView extends javax.swing.JFrame {
     private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             searchButton.doClick();
+            searchButton.requestFocus();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTextFIeldKeyPressed
