@@ -725,6 +725,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="varorPanelMouseMoved"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="varorPanelMouseEntered"/>
                       </Events>
                       <AuxValues>

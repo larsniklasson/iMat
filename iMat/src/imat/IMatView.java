@@ -127,7 +127,7 @@ public class IMatView extends javax.swing.JFrame {
         
         jTree1.setSelectionRow(0);
         
-        setSize(1050,600);
+        setSize(1010,600);
         setLocationRelativeTo(null);
         
         Utils.changeScrollBar(jScrollPane1, 5);
@@ -697,6 +697,11 @@ public class IMatView extends javax.swing.JFrame {
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(8);
 
         varorPanel.setBackground(new java.awt.Color(255, 255, 255));
+        varorPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                varorPanelMouseMoved(evt);
+            }
+        });
         varorPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 varorPanelMouseEntered(evt);
@@ -1370,6 +1375,12 @@ public class IMatView extends javax.swing.JFrame {
         clearKundVagn();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void varorPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseMoved
+        
+        
+        
+    }//GEN-LAST:event_varorPanelMouseMoved
+
     /**
      * @param args the command line arguments
      */
@@ -1627,7 +1638,7 @@ public class IMatView extends javax.swing.JFrame {
     
     private void initMap() {
         for(Product p : dh.getProducts()){
-            ProductSummaryView psv = new ProductSummaryView(p);
+            ProductSummaryView psv = new ProductSummaryView(this,p);
 
 
             psv.setAntalLabel();
@@ -1826,6 +1837,9 @@ public class IMatView extends javax.swing.JFrame {
         sortingComboBox.setVisible(b);
     }
     
+    public JPanel getVarorPanel(){
+        return varorPanel;
+    }
     
 
 }

@@ -6,9 +6,13 @@
 package imat;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -17,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JSpinner;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -32,12 +37,13 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
     private Product p;
     private int amountToBuy = 1;
-    
+    IMatView view;
 
     /**
      * Creates new form ProductSummaryView
      */
-    public ProductSummaryView(Product p) {
+    public ProductSummaryView(IMatView view, Product p) {
+        this.view = view;
         this.p = p;
         initComponents();
         favoriteButton.setVisible(false);
@@ -45,6 +51,48 @@ public class ProductSummaryView extends javax.swing.JPanel {
         amountSpinner.setVisible(false);
         amountkgSpinner.setVisible(false);
 
+        
+        
+        for(Component c : this.getComponents()){
+            c.addMouseListener(new MouseListener() {
+
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    for(Component c : view.getVarorPanel().getComponents()){
+                        if(c instanceof ProductSummaryView){
+                            ((ProductSummaryView)c).setNoHoverBorder();
+                            ((ProductSummaryView)c).hideFavoriteAndListButtons();
+                        }
+                    }
+
+                    setHoverBorder();
+                    showFavoriteAndListButtons();
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                }
+            });
+            
+        }
+        
+        
+        
         // amountSpinner.setVisible(false);
     }
 
@@ -135,6 +183,11 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 amountSpinnerStateChanged(evt);
             }
         });
+        amountSpinner.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                amountSpinnerMouseMoved(evt);
+            }
+        });
         amountSpinner.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 amountSpinnerMouseEntered(evt);
@@ -183,6 +236,12 @@ public class ProductSummaryView extends javax.swing.JPanel {
         nameLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         nameLabel.setText(p.getName());
         add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, 22));
+
+        antalLabel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                antalLabelMouseMoved(evt);
+            }
+        });
         add(antalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 50, 20));
 
         amountkgSpinner.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.2d), Double.valueOf(0.2d), null, Double.valueOf(0.2d)));
@@ -215,6 +274,19 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(239, 239, 239));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 4, 1));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jPanel1MouseMoved(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+        });
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 200, 178, 39));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -257,45 +329,49 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }//GEN-LAST:event_favoriteButtonActionPerformed
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        showFavoriteAndListButtons();
-        setBorder(BorderFactory.createLineBorder(hover));
+        //showFavoriteAndListButtons();
+        //setHoverBorder();
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        hideFavoriteAndListButtons();
-        setBorder(BorderFactory.createLineBorder(noHover));
+        //hideFavoriteAndListButtons();
+        //setNoHoverBorder();
     }//GEN-LAST:event_formMouseExited
 
     private void favoriteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseEntered
-        showFavoriteAndListButtons();
+        //showFavoriteAndListButtons();
+        //setHoverBorder();
     }//GEN-LAST:event_favoriteButtonMouseEntered
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        showFavoriteAndListButtons();
+        //showFavoriteAndListButtons();
+        //setHoverBorder();
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void amountSpinnerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amountSpinnerMouseEntered
-        showFavoriteAndListButtons();
+        //showFavoriteAndListButtons();
+        //setHoverBorder();
     }//GEN-LAST:event_amountSpinnerMouseEntered
 
     private void listButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listButtonMouseEntered
-        showFavoriteAndListButtons();
+        //showFavoriteAndListButtons();
+        //setHoverBorder();
     }//GEN-LAST:event_listButtonMouseEntered
 
     private void favoriteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseExited
-        hideFavoriteAndListButtons();
+        //hideFavoriteAndListButtons();
     }//GEN-LAST:event_favoriteButtonMouseExited
 
     private void listButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listButtonMouseExited
-        hideFavoriteAndListButtons();
+        //hideFavoriteAndListButtons();
     }//GEN-LAST:event_listButtonMouseExited
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        hideFavoriteAndListButtons();
+        //hideFavoriteAndListButtons();
         }//GEN-LAST:event_jButton1MouseExited
 
     private void amountSpinnerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amountSpinnerMouseExited
-        showFavoriteAndListButtons();
+        
     }//GEN-LAST:event_amountSpinnerMouseExited
 
     private void amountkgSpinnerAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_amountkgSpinnerAncestorAdded
@@ -307,7 +383,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }//GEN-LAST:event_amountkgSpinnerStateChanged
 
     private void amountkgSpinnerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amountkgSpinnerMouseEntered
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_amountkgSpinnerMouseEntered
 
     private void amountkgSpinnerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amountkgSpinnerMouseExited
@@ -315,8 +391,46 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }//GEN-LAST:event_amountkgSpinnerMouseExited
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-        System.out.println(this.contains(evt.getPoint()));
+        for(Component c : view.getVarorPanel().getComponents()){
+            if(c instanceof ProductSummaryView){
+                ((ProductSummaryView)c).setNoHoverBorder();
+                ((ProductSummaryView)c).hideFavoriteAndListButtons();
+            }
+        }
+        
+        setHoverBorder();
+        showFavoriteAndListButtons();
     }//GEN-LAST:event_formMouseMoved
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+        for(Component c : view.getVarorPanel().getComponents()){
+            if(c instanceof ProductSummaryView){
+                ((ProductSummaryView)c).setNoHoverBorder();
+                ((ProductSummaryView)c).hideFavoriteAndListButtons();
+            }
+        }
+        
+        setHoverBorder();
+        showFavoriteAndListButtons();
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+        //setNoHoverBorder();
+        //hideFavoriteAndListButtons();
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void amountSpinnerMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amountSpinnerMouseMoved
+        
+    }//GEN-LAST:event_amountSpinnerMouseMoved
+
+    private void antalLabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_antalLabelMouseMoved
+        
+    }//GEN-LAST:event_antalLabelMouseMoved
+
+    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
+        showFavoriteAndListButtons();
+        setHoverBorder();
+    }//GEN-LAST:event_jPanel1MouseMoved
 
     public JButton getButton() {
         return jButton1;
@@ -367,6 +481,16 @@ public class ProductSummaryView extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void setNoHoverBorder(){
+        setBorder(BorderFactory.createLineBorder(noHover));
+        jPanel1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, noHover));
+    }
+    
+    public void setHoverBorder(){
+        setBorder(BorderFactory.createLineBorder(hover));
+        jPanel1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, hover));
     }
 
     public void setAntalLabel() {
