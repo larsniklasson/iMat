@@ -202,6 +202,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         favoriteButton.setBorderPainted(false);
         favoriteButton.setContentAreaFilled(false);
+        favoriteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         favoriteButton.setFocusPainted(false);
         favoriteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -222,6 +223,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         listButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         listButton.setBorderPainted(false);
         listButton.setContentAreaFilled(false);
+        listButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listButton.setFocusPainted(false);
         listButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -334,8 +336,9 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        //hideFavoriteAndListButtons();
-        //setNoHoverBorder();
+        System.out.println("exitsummm");        
+        hideFavoriteAndListButtons();
+        setNoHoverBorder();
     }//GEN-LAST:event_formMouseExited
 
     private void favoriteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_favoriteButtonMouseEntered

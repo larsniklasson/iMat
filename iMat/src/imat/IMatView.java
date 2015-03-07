@@ -28,6 +28,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -133,6 +134,8 @@ public class IMatView extends javax.swing.JFrame {
         Utils.changeScrollBar(jScrollPane1, 5);
         Utils.changeScrollBar(jScrollPane3, 7);
         Utils.changeScrollBar(jScrollPane2, 13);
+        
+        
 
     }
 
@@ -353,6 +356,11 @@ public class IMatView extends javax.swing.JFrame {
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
         leftPanel.setBackground(new java.awt.Color(236, 255, 235));
+        leftPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                leftPanelMouseMoved(evt);
+            }
+        });
         leftPanel.setLayout(new javax.swing.BoxLayout(leftPanel, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel4.setBackground(new java.awt.Color(235, 255, 235));
@@ -692,6 +700,11 @@ public class IMatView extends javax.swing.JFrame {
         centerPanel.setLayout(new java.awt.BorderLayout());
 
         cardPanel.setBackground(new java.awt.Color(204, 255, 204));
+        cardPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cardPanelMouseExited(evt);
+            }
+        });
         cardPanel.setLayout(new java.awt.CardLayout());
 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(8);
@@ -705,6 +718,9 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 varorPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                varorPanelMouseExited(evt);
             }
         });
 
@@ -1376,10 +1392,27 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void varorPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseMoved
-        
+        for(Component c : varorPanel.getComponents()){
+            if(c instanceof ProductSummaryView){
+                ((ProductSummaryView)c).setNoHoverBorder();
+                ((ProductSummaryView)c).hideFavoriteAndListButtons();
+            }
+        }
         
         
     }//GEN-LAST:event_varorPanelMouseMoved
+
+    private void varorPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseExited
+        
+    }//GEN-LAST:event_varorPanelMouseExited
+
+    private void cardPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardPanelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardPanelMouseExited
+
+    private void leftPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftPanelMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_leftPanelMouseMoved
 
     /**
      * @param args the command line arguments

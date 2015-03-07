@@ -222,6 +222,9 @@
               <Color blue="eb" green="ff" red="ec" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="leftPanelMouseMoved"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="West"/>
@@ -695,6 +698,9 @@
                   <Color blue="cc" green="ff" red="cc" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cardPanelMouseExited"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="listorPanel = new ListorPanel(this);&#xa;cardPanel.add(listorPanel,&quot;listorCard&quot;);&#xa;defaultBagPanel = new DefaultBagPanel(this);&#xa;cardPanel.add(defaultBagPanel, &quot;defaultBagCard&quot;);&#xa;orderPanel = new ListorPanel1(this);&#xa;cardPanel.add(orderPanel, &quot;orderCard&quot;);"/>
               </AuxValues>
@@ -727,6 +733,7 @@
                       <Events>
                         <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="varorPanelMouseMoved"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="varorPanelMouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="varorPanelMouseExited"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="varorPanel.setLayout(new ModifiedFlowLayout());"/>
