@@ -85,15 +85,15 @@
                       <Component id="searchTextFIeld" min="-2" pref="268" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace pref="148" max="32767" attributes="0"/>
-                      <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="136" max="32767" attributes="0"/>
+                      <Component id="loginButton" min="-2" pref="153" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="jLabel1" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -101,26 +101,26 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="searchTextFIeld" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="loginButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" max="32767" attributes="0"/>
+                                  <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <EmptySpace min="11" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="loginButton" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -151,8 +151,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imat/resources/bilder/closegray.png"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[30, 33]"/>
                 </Property>
               </Properties>
               <Events>
@@ -164,8 +168,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imat/resources/bilder/maximizegray.png"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[30, 33]"/>
                 </Property>
               </Properties>
               <Events>
@@ -176,8 +184,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imat/resources/bilder/minimizegray.png"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[30, 33]"/>
                 </Property>
               </Properties>
               <Events>
@@ -198,9 +210,9 @@
                   <Color blue="e4" green="e4" red="e4" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Logga in/Registrera"/>
+                <Property name="text" type="java.lang.String" value="Logga in/Registrera "/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Standardmark&#xf6;r"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -275,7 +287,7 @@
                       <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga kassar&#xa; Lax i ugn&#xa; Kycklingpasta&#xa; R&#xe4;ksm&#xf6;rg&#xe5;s&#xa;Dagens Erbjudande"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Standardmark&#xf6;r"/>
+                      <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -382,7 +394,7 @@
                           <TreeModel code="Visa Alla&#xa;Gr&#xf6;nsaker&#xa;  Rotfrukter&#xa;  K&#xe5;l&#xa;  Gr&#xf6;nsaksfrukter&#xa;  &#xc4;rtv&#xe4;xter&#xa;K&#xf6;tt&#xa;Fisk&#xa;Frukt &amp; B&#xe4;r&#xa;  Stenfrukter&#xa;  Meloner&#xa;  Citrusfrukter&#xa;  Exotiska Frukter&#xa;  B&#xe4;r&#xa;Br&#xf6;d&#xa;Drycker&#xa;  Varma Drycker&#xa;  Kalla Drycker&#xa;Mejeriprodukter&#xa;Mj&#xf6;l, Socker &amp; Salt&#xa;N&#xf6;tter &amp; Fr&#xf6;n&#xa;Pasta, Potatis &amp; Ris&#xa;  Pasta&#xa;  Potatis&#xa;  Ris&#xa;S&#xf6;tsaker&#xa;Kryddor"/>
                         </Property>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                          <Color id="Standardmark&#xf6;r"/>
+                          <Color id="Default Cursor"/>
                         </Property>
                         <Property name="toggleClickCount" type="int" value="1"/>
                       </Properties>
@@ -425,7 +437,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel6" pref="267" max="32767" attributes="0"/>
+                          <Component id="jPanel6" pref="262" max="32767" attributes="0"/>
                           <Component id="jPanel7" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
