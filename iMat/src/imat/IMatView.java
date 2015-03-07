@@ -396,7 +396,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kycklingpasta");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept3");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Räksmörgås");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
@@ -1084,6 +1084,10 @@ public class IMatView extends javax.swing.JFrame {
                 switchCard("defaultBagCard");
                 break;
             case "Kycklingpasta":
+                defaultBagPanel.initializeDefaultBag(s);
+                switchCard("defaultBagCard");
+                break;
+            case "Räksmörgås":
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
                 break;
