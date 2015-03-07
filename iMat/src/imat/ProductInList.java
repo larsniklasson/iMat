@@ -80,7 +80,7 @@ public class ProductInList extends javax.swing.JPanel {
         jButton1.setToolTipText("Ta bort varan från kundvagnen");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton1MouseEntered(evt);
@@ -97,10 +97,11 @@ public class ProductInList extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 0, 28, 30));
 
         plusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/plussmall.png"))); // NOI18N
+        plusButton.setToolTipText("Lägg till en vara");
         plusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         plusButton.setBorderPainted(false);
         plusButton.setContentAreaFilled(false);
-        plusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        plusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         plusButton.setFocusPainted(false);
         plusButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -121,10 +122,11 @@ public class ProductInList extends javax.swing.JPanel {
         add(plusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 0, 28, 30));
 
         minusButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/minussmall.png"))); // NOI18N
+        minusButton.setToolTipText("Tag bort en vara");
         minusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         minusButton.setBorderPainted(false);
         minusButton.setContentAreaFilled(false);
-        minusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         minusButton.setFocusPainted(false);
         minusButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
