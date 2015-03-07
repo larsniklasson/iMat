@@ -136,10 +136,10 @@ public class ProductSummaryView extends javax.swing.JPanel {
 
         //System.out.println(jLabel1.getHeight());
 
-        jLabel1.setIcon(dh.getImageIcon(p, 140, 100));
+        jLabel1.setIcon(dh.getImageIcon(p, 158, 100));
         jLabel1.setLabelFor(this);
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 160, 120));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, 120));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(177, 39, 4));
