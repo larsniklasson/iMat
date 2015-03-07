@@ -13,6 +13,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
+import javax.swing.border.MatteBorder;
 
 /**
  *
@@ -73,10 +74,12 @@ public class MyCellRenderer extends DefaultListCellRenderer{
         
         Color bg = Color.red;
         if(isSelected){
-            setBackground(new Color(240,240,240));
+            setBackground(new Color(240,255,240));
+            setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(230,230,230)), BorderFactory.createEmptyBorder(0, 5, 0, 5)));
 
         } else {
             setBackground(Color.white);
+            
 
         }
         

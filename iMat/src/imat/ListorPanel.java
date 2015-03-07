@@ -36,6 +36,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Lasse
  */
 public class ListorPanel extends javax.swing.JPanel {
+    private static final String NO_LISTS = "Inga listor";
+    
     List<ShoppingItem> list = new ArrayList<ShoppingItem>();
     
     IMatView view;
@@ -97,6 +99,8 @@ public class ListorPanel extends javax.swing.JPanel {
             
             jLabel3.setText("Totalt: ");
             jLabel2.setText("");
+            
+            listModel.addElement(NO_LISTS);
         }
         
         Scanner sc = null;
@@ -116,7 +120,20 @@ public class ListorPanel extends javax.swing.JPanel {
         
         jList1.setModel(listModel);
         jList1.setSelectedIndex(index);
-        //this.repaint();
+        
+        int height = jPanel7.getSize().height;
+        
+        
+        
+        int a = listOfFiles.length * 20;
+        System.out.println("a = " + a);
+        
+        
+        jScrollPane1.setPreferredSize(new Dimension(30, Math.min(Math.max(26, a+6), height)));
+       
+        
+        this.revalidate();
+        this.repaint();
     }
     
     /**
@@ -129,9 +146,11 @@ public class ListorPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -151,6 +170,11 @@ public class ListorPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setOpaque(false);
 
+        jPanel7.setOpaque(false);
+        jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(38, 30));
+
         jList1.setBackground(new java.awt.Color(240, 240, 240));
         jList1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel() {
@@ -158,7 +182,9 @@ public class ListorPanel extends javax.swing.JPanel {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jList1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jList1.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jList1.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jList1MousePressed(evt);
@@ -177,9 +203,12 @@ public class ListorPanel extends javax.swing.JPanel {
         jList1.setCellRenderer(new MyCellRenderer(jList1));
         jScrollPane1.setViewportView(jList1);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Listor");
+        jPanel7.add(jScrollPane1);
+
+        jPanel8.setOpaque(false);
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
+        jPanel9.setOpaque(false);
 
         jButton2.setText("ta bort");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -195,33 +224,46 @@ public class ListorPanel extends javax.swing.JPanel {
             }
         });
 
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel8.add(jPanel9, java.awt.BorderLayout.NORTH);
+
+        jPanel7.add(jPanel8);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         add(jPanel2);
@@ -229,12 +271,17 @@ public class ListorPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setOpaque(false);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.PAGE_AXIS));
 
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setBorder(null);
+        jScrollPane2.setOpaque(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        jPanel1.setOpaque(false);
         //jPanel1.setLayout(new ModifiedFlowLayout(FlowLayout.CENTER, 2, 2));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane2.setViewportView(jPanel1);
@@ -292,16 +339,16 @@ public class ListorPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel2)
                 .addGap(8, 8, 8)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         add(jPanel3);
@@ -313,7 +360,9 @@ public class ListorPanel extends javax.swing.JPanel {
         }
         if (!evt.getValueIsAdjusting()) {//This line prevents double events
             String s = (String) jList1.getSelectedValue();
-            
+            if(s.equals(NO_LISTS)){
+                return;
+            }
             
             updateVarorList(s);
 
@@ -364,9 +413,13 @@ public class ListorPanel extends javax.swing.JPanel {
                 return;
             }
             
+            
+            
             if(s.contains(";")){
                 JOptionPane.showMessageDialog(this, "semikolon ej tillåtet");
                 
+            } else if (s.length() == 0){
+                JOptionPane.showMessageDialog(this, "ge en längd");
             } else {
                 break;
             }
@@ -383,7 +436,6 @@ public class ListorPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList jList1;
@@ -393,6 +445,9 @@ public class ListorPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
@@ -603,6 +658,7 @@ public class ListorPanel extends javax.swing.JPanel {
         
         if(list.size() == 0){
             jPanel1.add(new JLabel("tom inköpslista"));
+            
         }
         jLabel3.setText("Totalt: " + String.format("%.2f", totalPrice) + " kr");
         
