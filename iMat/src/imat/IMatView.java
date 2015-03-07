@@ -394,7 +394,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga Kassar");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Lax i ugn");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept2");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kycklingpasta");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Recept3");
         treeNode2.add(treeNode3);
@@ -683,7 +683,7 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(rightPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
@@ -1083,7 +1083,7 @@ public class IMatView extends javax.swing.JFrame {
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
                 break;
-            case "Recept2":
+            case "Kycklingpasta":
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
                 break;
