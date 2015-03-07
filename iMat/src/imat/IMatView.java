@@ -1691,7 +1691,12 @@ public class IMatView extends javax.swing.JFrame {
             });
             if (dh.isFavorite(p)) {
                 psv.setFavorite();
+                psv.favoriteButton.setToolTipText("Tag bort från favoriter");
             }
+            else{
+                psv.favoriteButton.setToolTipText("Lägg till i favoriter");
+            }
+
             psv.getFavoriteButton().addActionListener(new ActionListener() {
 
                 @Override
