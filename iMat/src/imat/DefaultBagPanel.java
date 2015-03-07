@@ -45,9 +45,9 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     private Double totalPrice;
 
     private BufferedImage image;
-    
+
     private File recipeFile;
-    
+
     private String recipeName;
 
     /**
@@ -68,9 +68,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
         //int index = jList1.getSelectedIndex();
         /*if (index == -1) {
-            index = 0;
-        }*/
-
+         index = 0;
+         }*/
         listModel = new DefaultListModel<String>();
 
         File folder = new File(dh.imatDirectory() + "/Recept");
@@ -78,12 +77,12 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         File[] listOfFiles = folder.listFiles();
 
         if (listOfFiles.length == 0) {
-            jPanel1.removeAll();
-            jPanel1.revalidate();
-            jPanel1.repaint();
+            recipeList.removeAll();
+            recipeList.revalidate();
+            recipeList.repaint();
 
             totalLabel.setText("Totalt: ");
-           // jLabel2.setText("");
+            // jLabel2.setText("");
         }
 
         Scanner sc = null;
@@ -99,12 +98,12 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             listModel.addElement(listName);
             map.put(listName, f.getName());
         }
-/*
-        jList1.setModel(listModel);
-        jList1.setSelectedIndex(index);
-        this.repaint();
-    */
-        }
+        /*
+         jList1.setModel(listModel);
+         jList1.setSelectedIndex(index);
+         this.repaint();
+         */
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,45 +115,55 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         totalLabel = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        addToCartButton = new javax.swing.JButton();
+        recipeList = new javax.swing.JPanel();
         refrechButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(235, 235, 235));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        totalLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        totalLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         totalLabel.setText("jLabel1");
-        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 110, 31));
+        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 150, 30));
 
-        jButton2.setText("lägg till i kundvagnen");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        addToCartButton.setBackground(new java.awt.Color(0, 153, 75));
+        addToCartButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        addToCartButton.setForeground(new java.awt.Color(255, 255, 255));
+        addToCartButton.setText("lägg till i kundvagnen");
+        addToCartButton.setToolTipText("Lägg till varorna i kundvagnen");
+        addToCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                addToCartButtonActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 140, -1));
+        add(addToCartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 150, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Varor att köpa "));
-        jPanel1.setOpaque(false);
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 360));
+        recipeList.setBackground(new java.awt.Color(255, 255, 255));
+        recipeList.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        recipeList.setOpaque(false);
+        add(recipeList, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 290));
 
-        refrechButton.setText("jButton1");
+        refrechButton.setBackground(new java.awt.Color(153, 153, 153));
+        refrechButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        refrechButton.setForeground(new java.awt.Color(255, 255, 255));
+        refrechButton.setText("Uppdatera");
+        refrechButton.setToolTipText("Lägg tillbaka borttagna varor i listan");
         refrechButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refrechButtonActionPerformed(evt);
             }
         });
-        add(refrechButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 30, -1));
+        add(refrechButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
         for (ShoppingItem si : list) {
             view.addToKundVagn(si.getProduct(), si.getAmount());
         }
         view.updateKundVagn();
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_addToCartButtonActionPerformed
 
     private void refrechButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrechButtonActionPerformed
         initializeDefaultBag(recipeName);
@@ -162,26 +171,25 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton addToCartButton;
+    private javax.swing.JPanel recipeList;
     private javax.swing.JButton refrechButton;
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 
     private void updateVarorList(final String s, final File f) {
-       // jLabel2.setText(s);
+        // jLabel2.setText(s);
 
         list.clear();
 
-        jPanel1.removeAll();
-        jPanel1.revalidate();
-        jPanel1.repaint();
+        recipeList.removeAll();
+        recipeList.revalidate();
+        recipeList.repaint();
 
         totalPrice = 0.0;
 
        // File f = new File(dh.imatDirectory() + "/Recept/" + map.get(s));
         //File f = new File("src/imat/resources/filer/recept/" + map.get(s));
-
         String fileContent = "";
         Scanner sc;
         if (f.exists()) {
@@ -237,24 +245,23 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                 }
             });
 
-            jPanel1.add(pil);
+            recipeList.add(pil);
         }
 
         totalLabel.setText("Totalt: " + String.format("%.2f", totalPrice) + " kr");
 
-        jPanel1.repaint();
+        recipeList.repaint();
         this.repaint();
 
     }
 
-   /* public void addBackground() {
-        try {
-            image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
-        } catch (IOException ex) {
-            // handle exception...
-        }
-    }*/
-
+    /* public void addBackground() {
+     try {
+     image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
+     } catch (IOException ex) {
+     // handle exception...
+     }
+     }*/
     public void lowerPrice() {
 
     }
@@ -266,9 +273,9 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     }
 
     public void initializeDefaultBag(String s) {
-        
-        recipeName = s;
 
+        recipeName = s;
+        setVisibleConponents(true);
         switch (s) {
             case "Lax i ugn":
                 try {
@@ -290,9 +297,20 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                     // handle exception...
                 }
                 break;
-                case "Räksmörgås":
+            case "Räksmörgås":
                 try {
                     image = ImageIO.read(new File("src/imat/resources/bilder/recept3.png"));
+                    recipeFile = new File("src/imat/resources/filer/recept/Räksmörgås.txt");
+
+                    //updateVarorList(s, f);
+                } catch (IOException ex) {
+                    // handle exception...
+                }
+                break;
+            case "Färdiga kassar":
+                setVisibleConponents(false);
+                try {
+                    image = ImageIO.read(new File("src/imat/resources/bilder/kassevy.png"));
                     recipeFile = new File("src/imat/resources/filer/recept/Kycklingpasta.txt");
 
                     //updateVarorList(s, f);
@@ -300,10 +318,18 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                     // handle exception...
                 }
                 break;
+
         }
 
-                            updateVarorList(s, recipeFile);
+        updateVarorList(s, recipeFile);
 
+    }
+    
+    public void setVisibleConponents(boolean b){
+        addToCartButton.setVisible(b);
+        recipeList.setVisible(b);
+        refrechButton.setVisible(b);
+        totalLabel.setVisible(b);
     }
 
 }
