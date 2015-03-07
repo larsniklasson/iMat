@@ -47,6 +47,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     private BufferedImage image;
     
     private File recipeFile;
+    
+    private String recipeName;
 
     /**
      * Creates new form defaultBadPanel
@@ -117,12 +119,13 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        refrechButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(235, 235, 235));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         totalLabel.setText("jLabel1");
-        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 110, 31));
+        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 110, 31));
 
         jButton2.setText("lägg till i kundvagnen");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +133,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 140, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 140, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Recept");
@@ -139,9 +142,17 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 41, 294, 26));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Varor att köpa "));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Varor att köpa "));
         jPanel1.setOpaque(false);
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 297));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 360));
+
+        refrechButton.setText("jButton1");
+        refrechButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refrechButtonActionPerformed(evt);
+            }
+        });
+        add(refrechButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 30, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -152,11 +163,16 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void refrechButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrechButtonActionPerformed
+        initializeDefaultBag(recipeName);
+    }//GEN-LAST:event_refrechButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton refrechButton;
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -213,8 +229,11 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             totalPrice += si.getProduct().getPrice() * si.getAmount();
 
             //jPanel1.add(new JLabel("hej"));
-            ProductInRecipeList pil = new ProductInRecipeList(si);
-            pil.getDeleteButton().addActionListener(new ActionListener() {
+            //ProductInRecipeList pil = new ProductInRecipeList(si);
+            ProductInList pil = new ProductInList(si);
+            pil.getplusButton().setVisible(false);
+            pil.getminusButton().setVisible(false);
+            pil.getButton().addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -255,6 +274,8 @@ public class DefaultBagPanel extends javax.swing.JPanel {
     }
 
     public void initializeDefaultBag(String s) {
+        
+        recipeName = s;
 
         switch (s) {
             case "Lax i ugn":

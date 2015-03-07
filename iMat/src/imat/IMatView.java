@@ -1603,9 +1603,9 @@ public class IMatView extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(pil.isKgItem())
+                    if(pil.isKgItem() && si.getAmount() > 0.3)
                     addToKundVagn(si.getProduct(), -0.2);
-                    else
+                    else if(si.getAmount() > 1)
                         addToKundVagn(si.getProduct(), -1);
                     updateKundVagn();
                 }
