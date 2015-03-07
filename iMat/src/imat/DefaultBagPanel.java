@@ -83,7 +83,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             jPanel1.repaint();
 
             totalLabel.setText("Totalt: ");
-            jLabel2.setText("");
+           // jLabel2.setText("");
         }
 
         Scanner sc = null;
@@ -117,7 +117,6 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
         totalLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         refrechButton = new javax.swing.JButton();
 
@@ -134,12 +133,6 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 140, -1));
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Recept");
-        jLabel2.setFocusable(false);
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 41, 294, 26));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Varor att köpa "));
@@ -170,14 +163,13 @@ public class DefaultBagPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton refrechButton;
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 
     private void updateVarorList(final String s, final File f) {
-        jLabel2.setText(s);
+       // jLabel2.setText(s);
 
         list.clear();
 
@@ -288,10 +280,20 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                     // handle exception...
                 }
                 break;
-            case "Recept2":
+            case "Kycklingpasta":
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/star.jpg"));
-                    recipeFile = new File("src/imat/resources/filer/recept/laxiugn.txt");
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept2.png"));
+                    recipeFile = new File("src/imat/resources/filer/recept/Kycklingpasta.txt");
+
+                    //updateVarorList(s, f);
+                } catch (IOException ex) {
+                    // handle exception...
+                }
+                break;
+                case "Räksmörgås":
+                try {
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept3.png"));
+                    recipeFile = new File("src/imat/resources/filer/recept/Kycklingpasta.txt");
 
                     //updateVarorList(s, f);
                 } catch (IOException ex) {
