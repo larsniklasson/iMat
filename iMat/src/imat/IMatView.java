@@ -1706,6 +1706,7 @@ public class IMatView extends javax.swing.JFrame {
                         try {
                             Image image = ImageIO.read(sourceimage);
                             psv.favoriteButton.setIcon(new ImageIcon(image));
+                            psv.favoriteButton.setToolTipText("Tag bort från favoriter");
                         } catch (IOException ex) {
                             Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -1716,6 +1717,7 @@ public class IMatView extends javax.swing.JFrame {
                         try {
                             Image image = ImageIO.read(sourceimage);
                             psv.favoriteButton.setIcon(new ImageIcon(image));
+                            psv.favoriteButton.setToolTipText("Lägg till i favoriter");
                         } catch (IOException ex) {
                             Logger.getLogger(ProductSummaryView.class.getName()).log(Level.SEVERE, null, ex);
                         }
