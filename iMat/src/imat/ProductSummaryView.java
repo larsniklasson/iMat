@@ -46,8 +46,9 @@ public class ProductSummaryView extends javax.swing.JPanel {
         this.view = view;
         this.p = p;
         initComponents();
-        favoriteButton.setVisible(false);
-        listButton.setVisible(false);
+        //favoriteButton.setVisible(false);
+        //listButton.setVisible(false);
+        //showFavoriteAndListButtons();
         amountSpinner.setVisible(false);
         amountkgSpinner.setVisible(false);
 
@@ -198,7 +199,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         });
         add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 205, 50, -1));
 
-        favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/heartInteFyllt.jpg"))); // NOI18N
+        favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/heartInteFylltsmall.jpg"))); // NOI18N
         favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         favoriteButton.setBorderPainted(false);
         favoriteButton.setContentAreaFilled(false);
@@ -217,9 +218,9 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 favoriteButtonActionPerformed(evt);
             }
         });
-        add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 40, 28));
+        add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 170, 25, 25));
 
-        listButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/note.jpg"))); // NOI18N
+        listButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/notesmallgray.jpg"))); // NOI18N
         listButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         listButton.setBorderPainted(false);
         listButton.setContentAreaFilled(false);
@@ -233,7 +234,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
                 listButtonMouseExited(evt);
             }
         });
-        add(listButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 40, 40));
+        add(listButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 25, 25));
 
         nameLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         nameLabel.setText(p.getName());
@@ -471,13 +472,13 @@ public class ProductSummaryView extends javax.swing.JPanel {
     }
 
     protected void hideFavoriteAndListButtons() {
-        listButton.setVisible(false);
-        favoriteButton.setVisible(false);
+        //listButton.setVisible(false);
+        //favoriteButton.setVisible(false);
         //amountSpinner.setVisible(false);
     }
 
     public void setFavorite() {
-        File sourceimage = new File("src/imat/resources/bilder/heartFyllt.jpg");
+        File sourceimage = new File("src/imat/resources/bilder/heartFylltsmall.jpg");
         try {
             Image image = ImageIO.read(sourceimage);
             favoriteButton.setIcon(new ImageIcon(image));

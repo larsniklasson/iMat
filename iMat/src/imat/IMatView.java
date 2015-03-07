@@ -1692,7 +1692,7 @@ public class IMatView extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (!dh.isFavorite(p)) {
-                        File sourceimage = new File("src/imat/resources/bilder/heartFyllt.jpg");
+                        File sourceimage = new File("src/imat/resources/bilder/heartFylltsmall.jpg");
                         try {
                             Image image = ImageIO.read(sourceimage);
                             psv.favoriteButton.setIcon(new ImageIcon(image));
@@ -1702,7 +1702,7 @@ public class IMatView extends javax.swing.JFrame {
                         //psv.filled = true;
                         dh.addFavorite(p);
                     } else {
-                        File sourceimage = new File("src/imat/resources/bilder/HeartInteFyllt.jpg");
+                        File sourceimage = new File("src/imat/resources/bilder/HeartInteFylltsmall.jpg");
                         try {
                             Image image = ImageIO.read(sourceimage);
                             psv.favoriteButton.setIcon(new ImageIcon(image));
