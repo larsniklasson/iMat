@@ -1393,7 +1393,15 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        clearKundVagn();
+        if(shoppingCart.getItems().size()>0){
+        if (JOptionPane.showConfirmDialog(jButton5, 
+            "Är du säker på att du vill tömma kundvagnen?", "Tömma kundvagnen?", 
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            clearKundVagn();
+        }
+        }
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void varorPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_varorPanelMouseMoved
