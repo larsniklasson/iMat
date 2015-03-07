@@ -124,7 +124,6 @@ public class SignInView extends javax.swing.JPanel {
         rememberMeCheckBox = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(30, 0, 0, 0, new java.awt.Color(255, 255, 255)));
 
         divPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

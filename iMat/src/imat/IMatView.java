@@ -144,7 +144,6 @@ public class IMatView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
@@ -395,7 +394,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
         treeNode1.add(treeNode2);
         jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTree2MousePressed(evt);
@@ -500,7 +499,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kryddor");
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTree1.setToggleClickCount(1);
         jTree1.setRootVisible(false);
         jTree1.setToggleClickCount(1);
@@ -577,11 +576,15 @@ public class IMatView extends javax.swing.JFrame {
                     .addComponent(antalProdukterIKundVagnLabel)))
         );
 
+        jPanel7.setBackground(new java.awt.Color(255, 51, 0));
+        jPanel7.setOpaque(false);
         jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.PAGE_AXIS));
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        jScrollPane3.setOpaque(false);
         jScrollPane3.getVerticalScrollBar().setUnitIncrement(8);
 
+        kundvagnPanel.setOpaque(false);
         kundvagnPanel.setLayout(new java.awt.GridLayout(1, 1));
         jScrollPane3.setViewportView(kundvagnPanel);
 
@@ -593,28 +596,38 @@ public class IMatView extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(235, 255, 235));
 
-        jButton3.setText("spara");
+        jButton3.setBackground(new java.awt.Color(153, 153, 153));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Spara");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("töm ");
+        jButton5.setBackground(new java.awt.Color(153, 153, 153));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Töm ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("till Kassan");
+        jButton6.setBackground(new java.awt.Color(0, 153, 75));
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Till Kassan");
+        jButton6.setBorderPainted(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        totalPris.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        totalPris.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         totalPris.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -645,8 +658,7 @@ public class IMatView extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
-                .addContainerGap())
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.NORTH);
@@ -702,9 +714,11 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel.add(loginPanel, "LoginCard");
 
         changeInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        changeInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
         cardPanel.add(changeInfoPanel, "changeInfoCard");
 
         completeOrderPanel.setBackground(new java.awt.Color(255, 255, 255));
+        completeOrderPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2)));
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
         listorPanel = new ListorPanel(this);
@@ -1565,7 +1579,7 @@ public class IMatView extends javax.swing.JFrame {
         System.out.println(height);
         
         //jScrollPane3.setMinimumSize(new Dimension(0, Math.min(a, height - 100)));
-        jScrollPane3.setMaximumSize(new Dimension(Integer.MAX_VALUE, Math.min(a, height -130)));
+        jScrollPane3.setMaximumSize(new Dimension(252, Math.min(a, height -130)));
         //jScrollPane3.setPreferredSize(new Dimension(Integer.MAX_VALUE, Math.min(a, height -120)));
         
         
