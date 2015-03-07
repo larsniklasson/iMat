@@ -86,7 +86,7 @@ public class IMatView extends javax.swing.JFrame {
     
     Map<Product, ProductSummaryView> map = new HashMap<Product, ProductSummaryView>();
     
-    OrderPanel orderPanel;
+    ListorPanel1 orderPanel;
     ListorPanel listorPanel;
     DefaultBagPanel defaultBagPanel;
     private ShoppingCart shoppingCart;
@@ -711,7 +711,7 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel.add(listorPanel,"listorCard");
         defaultBagPanel = new DefaultBagPanel(this);
         cardPanel.add(defaultBagPanel, "defaultBagCard");
-        orderPanel = new OrderPanel(this);
+        orderPanel = new ListorPanel1(this);
         cardPanel.add(orderPanel, "orderCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
