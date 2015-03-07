@@ -200,6 +200,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         add(amountSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 205, 50, -1));
 
         favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/heartInteFylltsmall.jpg"))); // NOI18N
+        favoriteButton.setToolTipText("Lägg till i favoriter");
         favoriteButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         favoriteButton.setBorderPainted(false);
         favoriteButton.setContentAreaFilled(false);
@@ -221,6 +222,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         add(favoriteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 170, 25, 25));
 
         listButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/resources/bilder/notesmallgray.jpg"))); // NOI18N
+        listButton.setToolTipText("Lägg till i inköpslista");
         listButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         listButton.setBorderPainted(false);
         listButton.setContentAreaFilled(false);
