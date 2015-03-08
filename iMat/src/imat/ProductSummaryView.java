@@ -51,7 +51,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         //showFavoriteAndListButtons();
         amountSpinner.setVisible(false);
         amountkgSpinner.setVisible(false);
-
+        setNoHoverBorder();
         
         
         for(Component c : this.getComponents()){

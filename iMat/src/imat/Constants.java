@@ -21,7 +21,7 @@ public class Constants {
     public static final Color TOP_PANEL_BACKGROUND = NICE_GREEN;
     public static final Color TREE_SELECTION_BACKGROUND = NICE_GREEN;
     public static final Color BUY_BUTTON_COLOR = NICE_GREEN;
-    public static final Color CHECK_OUT_BUTTON_COLOR = NICE_GREEN;
+    public static final Color CHECK_OUT_BUTTON_COLOR = NICE_GREEN; //till kassan
     
     public static final Color MAIN_PANEL_INSIDE_BORDER_COLOR = new Color(153,153,153);
     public static final Color MAIN_PANEL_OUTSIDE_BORDER_COLOR = new Color(230,230,230);
