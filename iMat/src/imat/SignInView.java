@@ -371,6 +371,8 @@ public class SignInView extends javax.swing.JPanel {
         // TODO add your handling code here:
         switchForumState();
         
+        
+        
     }//GEN-LAST:event_NewUserLabelMouseClicked
 
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
@@ -502,12 +504,13 @@ public class SignInView extends javax.swing.JPanel {
         if(isNewUser){
             
             this.SignInButton.setText("Registrera");
-            this.NewUserLabel.setText("Redan Registrerad");
-            
+            this.NewUserLabel.setText("Redan Registrerad?");
+            this.rememberMeCheckBox.setVisible(false);
         }else{
             
             this.SignInButton.setText("Logga in");
-            this.NewUserLabel.setText("Ny användare");
+            this.NewUserLabel.setText("Ny användare?s");
+            this.rememberMeCheckBox.setVisible(true);
         }    
              
         this.regPanel.setVisible(isNewUser);
