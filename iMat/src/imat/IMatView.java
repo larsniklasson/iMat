@@ -208,12 +208,12 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        mainPanel.setBackground(new java.awt.Color(153, 0, 0));
+        mainPanel.setBackground(Constants.BACKGROUND);
         mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 750));
         mainPanel.setLayout(new java.awt.BorderLayout());
 
-        topPanel.setBackground(new java.awt.Color(0, 153, 51));
+        topPanel.setBackground(Constants.TOP_PANEL_BACKGROUND);
         topPanel.setPreferredSize(new java.awt.Dimension(800, 50));
         topPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -302,7 +302,7 @@ public class IMatView extends javax.swing.JFrame {
         loginButton.setForeground(new java.awt.Color(228, 228, 228));
         loginButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginButton.setText("Logga in/Registrera ");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginButtonMouseClicked(evt);
@@ -361,7 +361,8 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
-        leftPanel.setBackground(new java.awt.Color(236, 255, 235));
+        leftPanel.setBackground(new java.awt.Color(245, 245, 245));
+        leftPanel.setOpaque(false);
         leftPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 leftPanelMouseMoved(evt);
@@ -370,6 +371,7 @@ public class IMatView extends javax.swing.JFrame {
         leftPanel.setLayout(new javax.swing.BoxLayout(leftPanel, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel4.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -380,6 +382,7 @@ public class IMatView extends javax.swing.JFrame {
         leftPanel.add(jPanel4);
 
         jPanel2.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jTree2.setRootVisible(false);
@@ -409,6 +412,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode1.add(treeNode2);
         jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTree2.setOpaque(false);
         jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTree2MousePressed(evt);
@@ -422,6 +426,7 @@ public class IMatView extends javax.swing.JFrame {
         jPanel2.add(jTree2, java.awt.BorderLayout.PAGE_START);
 
         jPanel5.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel5.setOpaque(false);
         jPanel5.setPreferredSize(new java.awt.Dimension(164, 15));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -440,6 +445,7 @@ public class IMatView extends javax.swing.JFrame {
         leftPanel.add(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -449,13 +455,14 @@ public class IMatView extends javax.swing.JFrame {
 
         leftPanel.add(jPanel3);
 
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(0, 153, 0));
         jScrollPane1.setBorder(null);
         jScrollPane1.setOpaque(false);
 
-        jTree1.setBackground(new java.awt.Color(235, 255, 236));
+        jTree1.setBackground(Constants.BACKGROUND);
         jTree1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
@@ -558,6 +565,7 @@ public class IMatView extends javax.swing.JFrame {
         mainPanel.add(leftPanel, java.awt.BorderLayout.WEST);
 
         rightPanel.setBackground(new java.awt.Color(235, 255, 235));
+        rightPanel.setOpaque(false);
         rightPanel.setPreferredSize(new java.awt.Dimension(260, 550));
 
         jPanel6.setOpaque(false);
@@ -605,10 +613,12 @@ public class IMatView extends javax.swing.JFrame {
         jPanel7.add(jScrollPane3);
 
         jPanel8.setBackground(new java.awt.Color(234, 255, 235));
+        jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new java.awt.Dimension(256, 100));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(235, 255, 235));
+        jPanel9.setOpaque(false);
 
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -632,7 +642,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(0, 153, 75));
+        jButton6.setBackground(Constants.CHECK_OUT_BUTTON_COLOR);
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Till Kassan");
@@ -705,10 +715,11 @@ public class IMatView extends javax.swing.JFrame {
         mainPanel.add(rightPanel, java.awt.BorderLayout.LINE_END);
 
         centerPanel.setBackground(new java.awt.Color(194, 194, 194));
+        centerPanel.setOpaque(false);
         centerPanel.setPreferredSize(new java.awt.Dimension(700, 47));
         centerPanel.setLayout(new java.awt.BorderLayout());
 
-        cardPanel.setBackground(new java.awt.Color(204, 255, 204));
+        cardPanel.setBackground(imat.Constants.MAIN_PANEL_OUTSIDE_BORDER_COLOR);
         cardPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 cardPanelMouseExited(evt);
@@ -740,15 +751,15 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel.add(jScrollPane2, "varorCard");
 
         loginPanel.setBackground(new java.awt.Color(255, 255, 255));
-        loginPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
+        loginPanel.setBorder(imat.Constants.MAIN_PANEL_BORDER);
         cardPanel.add(loginPanel, "LoginCard");
 
         changeInfoPanel.setBackground(new java.awt.Color(255, 255, 255));
-        changeInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
+        changeInfoPanel.setBorder(imat.Constants.MAIN_PANEL_BORDER);
         cardPanel.add(changeInfoPanel, "changeInfoCard");
 
         completeOrderPanel.setBackground(new java.awt.Color(255, 255, 255));
-        completeOrderPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 2)));
+        completeOrderPanel.setBorder(imat.Constants.MAIN_PANEL_BORDER);
         cardPanel.add(completeOrderPanel, "completeOrderCard");
 
         listorPanel = new ListorPanel(this);
@@ -761,6 +772,7 @@ public class IMatView extends javax.swing.JFrame {
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
         centerTopPanel.setBackground(new java.awt.Color(235, 255, 236));
+        centerTopPanel.setOpaque(false);
         centerTopPanel.setPreferredSize(new java.awt.Dimension(500, 42));
         centerTopPanel.setLayout(new javax.swing.BoxLayout(centerTopPanel, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -1449,7 +1461,7 @@ public class IMatView extends javax.swing.JFrame {
         
         
         UIManager.put("List.focusCellHighlightBorder", BorderFactory.createEmptyBorder(1, 5, 1, 5));
-        UIManager.put("nimbusSelectionBackground", new Color(122,255,125).darker().darker());
+        UIManager.put("nimbusSelectionBackground", Constants.TREE_SELECTION_BACKGROUND);
         
         
         try {

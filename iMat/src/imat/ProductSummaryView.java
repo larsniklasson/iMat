@@ -146,7 +146,7 @@ public class ProductSummaryView extends javax.swing.JPanel {
         jLabel3.setText(String.format( "%.2f", p.getPrice()) + " " + p.getUnit());
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 20));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
+        jButton1.setBackground(Constants.BUY_BUTTON_COLOR);
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Köp");

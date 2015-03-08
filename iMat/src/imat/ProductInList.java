@@ -80,7 +80,7 @@ public class ProductInList extends javax.swing.JPanel {
         jButton1.setToolTipText("Ta bort varan från kundvagnen");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton1MouseEntered(evt);
@@ -101,7 +101,7 @@ public class ProductInList extends javax.swing.JPanel {
         plusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         plusButton.setBorderPainted(false);
         plusButton.setContentAreaFilled(false);
-        plusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        plusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         plusButton.setFocusPainted(false);
         plusButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -126,7 +126,7 @@ public class ProductInList extends javax.swing.JPanel {
         minusButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         minusButton.setBorderPainted(false);
         minusButton.setContentAreaFilled(false);
-        minusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        minusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         minusButton.setFocusPainted(false);
         minusButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
