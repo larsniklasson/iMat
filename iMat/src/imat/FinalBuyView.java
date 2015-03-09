@@ -424,8 +424,8 @@ public class FinalBuyView extends javax.swing.JPanel {
 
     private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
         // TODO add your handling code here:
-        im.placeOrder(false);
-        im.shutDown();
+        //im.placeOrder(false);
+        //im.shutDown();
         
         jp.removeAll();
         jp.revalidate();
@@ -439,6 +439,7 @@ public class FinalBuyView extends javax.swing.JPanel {
         jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), s));
         im.placeOrder(true);
         imv.updateKundVagn();
+        im.shutDown();
         //homeDeliveryRadioButton
         //pickupDeliveryRadioButton
         
