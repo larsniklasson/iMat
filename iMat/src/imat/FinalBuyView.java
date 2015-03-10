@@ -7,6 +7,7 @@ package imat;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 
@@ -24,6 +25,7 @@ public class FinalBuyView extends javax.swing.JPanel {
     private static IMatView imv;
     private static boolean ishomeDelivery;
     private IMatDataHandler im;
+    private static boolean validInputs;
     
     public FinalBuyView(JPanel jpInput, IMatView imvInput) {
         initComponents();
@@ -33,6 +35,7 @@ public class FinalBuyView extends javax.swing.JPanel {
         ShoppingCart SC = im.getShoppingCart();
         jp = jpInput;
         ishomeDelivery = false;
+        validInputs = true;
         
         totalLabel.setText(totalLabel.getText()+ " " + (String.format("%.2f",SC.getTotal())) + " kr");
      
@@ -107,6 +110,7 @@ public class FinalBuyView extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         OrderButton = new javax.swing.JButton();
         totalLabel = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         validMComboBox = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
@@ -114,6 +118,10 @@ public class FinalBuyView extends javax.swing.JPanel {
         cardNrField4 = new javax.swing.JTextField();
         cardNrField2 = new javax.swing.JTextField();
         cardNrField3 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -148,6 +156,17 @@ public class FinalBuyView extends javax.swing.JPanel {
         cardNrField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cardNrField1ActionPerformed(evt);
+            }
+        });
+        cardNrField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cardNrField1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cardNrField1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cardNrField1KeyTyped(evt);
             }
         });
 
@@ -220,6 +239,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                 .addComponent(OrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -240,7 +261,10 @@ public class FinalBuyView extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(deliveryMComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(deliveryFComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(SMSBox))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(SMSBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel17)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -264,7 +288,9 @@ public class FinalBuyView extends javax.swing.JPanel {
                             .addComponent(pickupDeliveryRadioButton)
                             .addComponent(deliveryFComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(SMSBox)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SMSBox)
+                            .addComponent(jLabel17))))
                 .addContainerGap())
         );
 
@@ -282,10 +308,32 @@ public class FinalBuyView extends javax.swing.JPanel {
                 cardNrField4ActionPerformed(evt);
             }
         });
+        cardNrField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cardNrField4KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cardNrField4KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cardNrField4KeyTyped(evt);
+            }
+        });
 
         cardNrField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cardNrField2ActionPerformed(evt);
+            }
+        });
+        cardNrField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cardNrField2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cardNrField2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cardNrField2KeyTyped(evt);
             }
         });
 
@@ -294,6 +342,25 @@ public class FinalBuyView extends javax.swing.JPanel {
                 cardNrField3ActionPerformed(evt);
             }
         });
+        cardNrField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cardNrField3KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cardNrField3KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cardNrField3KeyTyped(evt);
+            }
+        });
+
+        jLabel13.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel15.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel16.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -319,50 +386,54 @@ public class FinalBuyView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(LastNameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                                        .addComponent(emailField, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LastNameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel13))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cityField))
+                                    .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel14))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(validMComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel11))
-                                            .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(validYComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(validMComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(jLabel11))
+                                    .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(CVCField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                                            .addComponent(cardNrField4)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(cityField))
-                                        .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 131, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                                        .addComponent(validYComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(CVCField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                                    .addComponent(cardNrField4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel16))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                                    .addComponent(emailField, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel15))))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +441,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -380,7 +452,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -392,7 +465,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -405,7 +479,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                     .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -424,24 +499,59 @@ public class FinalBuyView extends javax.swing.JPanel {
 
     private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
         // TODO add your handling code here:
-        im.placeOrder(false);
-        im.shutDown();
-        
-        jp.removeAll();
-        jp.revalidate();
-        jp.repaint();
-        String s = "";
-        if(ishomeDelivery){
-            s = "Hemkörning";
-        }else{
-            s = "Hämtas";
+         this.jLabel14.setText("");
+          this.jLabel14.setText("");
+           this.jLabel14.setText("");
+          
+        validInputs();
+        if(validInputs){
+            im.placeOrder(false);
+            im.shutDown();
+
+            jp.removeAll();
+            jp.revalidate();
+            jp.repaint();
+            String s = "";
+            if(ishomeDelivery){
+                s = "Hemkörning";
+            }else{
+                s = "Hämtas";
+            }
+            String time = this.deliveryFComboBox.getSelectedItem().toString();
+            String day = this.deliveryDComboBox.getSelectedItem().toString();
+            String month = this.deliveryMComboBox.getSelectedItem().toString();
+            jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), time, day, month ,s));
+            im.placeOrder(true);
+            imv.updateKundVagn();
         }
-        jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), s));
-        im.placeOrder(true);
-        imv.updateKundVagn();
-
+        validInputs = true;
     }//GEN-LAST:event_OrderButtonActionPerformed
-
+    
+    
+    private void validInputs(){
+        if(!isValid(this.nameField.getText()) && !isValid(this.LastNameField.getText())){
+            this.jLabel13.setText("Du måste fylla i hela ditt namn");
+        }
+        
+        if(!isValid(this.addressField.getText()) && !isValid(this.zipCodeField.getText()) && !isValid(this.cityField.getText())){
+            this.jLabel14.setText("Kolla så du har fyllt i din adress rätt");
+        }
+        
+        if(!isValid(this.phoneField.getText()) && !isValid(this.emailField.getText())){
+            this.jLabel15.setText("Din Email eller telefonr är inte ifyllt");
+        }
+               
+                
+    }
+    
+    private static boolean isValid(String input){
+        if(input.equals("")){
+            validInputs = false;
+            return false;
+        }
+        return true;
+    }
+    
     private void zipCodeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_zipCodeFieldActionPerformed
@@ -495,6 +605,73 @@ public class FinalBuyView extends javax.swing.JPanel {
         ishomeDelivery = false;
     }//GEN-LAST:event_pickupDeliveryRadioButtonActionPerformed
 
+    private void cardNrField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField1KeyTyped
+        // TODO add your handling code here:
+       onlyFour(this.cardNrField1);
+       onlyFour(this.cardNrField2); 
+       onlyFour(this.cardNrField3);
+       onlyFour(this.cardNrField4);
+                   
+    }//GEN-LAST:event_cardNrField1KeyTyped
+
+    private void cardNrField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField1KeyReleased
+        // TODO add your handling code here:
+        onlyFour(this.cardNrField1);
+       onlyFour(this.cardNrField2); 
+       onlyFour(this.cardNrField3);
+       onlyFour(this.cardNrField4);
+        
+    }//GEN-LAST:event_cardNrField1KeyReleased
+
+    private void cardNrField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField1KeyPressed
+        // TODO add your handling code here:
+        onlyFour(this.cardNrField1);
+       onlyFour(this.cardNrField2); 
+       onlyFour(this.cardNrField3);
+       onlyFour(this.cardNrField4);
+    }//GEN-LAST:event_cardNrField1KeyPressed
+
+    private void cardNrField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField2KeyPressed
+
+    private void cardNrField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField2KeyReleased
+
+    private void cardNrField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField2KeyTyped
+
+    private void cardNrField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField3KeyPressed
+
+    private void cardNrField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField3KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField3KeyReleased
+
+    private void cardNrField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField3KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField3KeyTyped
+
+    private void cardNrField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField4KeyPressed
+
+    private void cardNrField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField4KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField4KeyReleased
+
+    private void cardNrField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField4KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNrField4KeyTyped
+    
+    private static void onlyFour(JTextField jtf){
+       if(jtf.getText().length()>4){
+           jtf.setText(jtf.getText().substring(0, 4));
+       }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CVCField;
@@ -516,6 +693,11 @@ public class FinalBuyView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -16,13 +16,14 @@ public class orderNotification extends javax.swing.JPanel {
     /**
      * Creates new form orderNotification
      */
-    public orderNotification(IMatView view, String name, String lastName, String address, String dv) {
+    public orderNotification(IMatView view, String name, String lastName, String address,String time, String day,String month , String dv) {
         this.view = view;
         initComponents();
         IMatDataHandler dh = IMatDataHandler.getInstance();
         deliveryLabel.setText("Val av metod: " + dv);
         nameLabel.setText(name+" "+lastName);
         addressLabel.setText("Till: " + address);
+        this.timeLabel.setText("När:s "+time+" "+ day +"/"+ month );
         priceLabel.setText("Totalkostnad: "+(String.format("%.2f",dh.getShoppingCart().getTotal())) +" kr");
         
     }
@@ -42,6 +43,7 @@ public class orderNotification extends javax.swing.JPanel {
         addressLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        timeLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -63,6 +65,8 @@ public class orderNotification extends javax.swing.JPanel {
             }
         });
 
+        timeLabel.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,16 +74,17 @@ public class orderNotification extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(priceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(deliveryLabel)
                             .addComponent(nameLabel)
                             .addComponent(addressLabel)
-                            .addComponent(priceLabel)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(timeLabel))
                         .addGap(0, 254, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -95,10 +100,12 @@ public class orderNotification extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(addressLabel)
                 .addGap(18, 18, 18)
-                .addComponent(priceLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(timeLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priceLabel)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,5 +123,6 @@ public class orderNotification extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
+    private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
 }
