@@ -134,6 +134,8 @@ public class IMatView extends javax.swing.JFrame {
         Utils.changeScrollBar(jScrollPane1, 5);
         Utils.changeScrollBar(jScrollPane3, 7);
         Utils.changeScrollBar(jScrollPane2, 13);
+        Utils.changeScrollBar(this.scrollfinnishorder, 13);
+        
         
         topPanel.requestFocus();
 
@@ -187,6 +189,7 @@ public class IMatView extends javax.swing.JFrame {
         varorPanel = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
         changeInfoPanel = new javax.swing.JPanel();
+        scrollfinnishorder = new javax.swing.JScrollPane();
         completeOrderPanel = new javax.swing.JPanel();
         centerTopPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
@@ -758,9 +761,14 @@ public class IMatView extends javax.swing.JFrame {
         changeInfoPanel.setBorder(imat.Constants.MAIN_PANEL_BORDER);
         cardPanel.add(changeInfoPanel, "changeInfoCard");
 
+        scrollfinnishorder.getVerticalScrollBar().setUnitIncrement(8);
+        scrollfinnishorder.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         completeOrderPanel.setBackground(new java.awt.Color(255, 255, 255));
         completeOrderPanel.setBorder(imat.Constants.MAIN_PANEL_BORDER);
-        cardPanel.add(completeOrderPanel, "completeOrderCard");
+        scrollfinnishorder.setViewportView(completeOrderPanel);
+
+        cardPanel.add(scrollfinnishorder, "completeOrderCard");
 
         listorPanel = new ListorPanel(this);
         cardPanel.add(listorPanel,"listorCard");
@@ -1532,6 +1540,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
+    private javax.swing.JScrollPane scrollfinnishorder;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextFIeld;
     private javax.swing.JLabel sortLabel;

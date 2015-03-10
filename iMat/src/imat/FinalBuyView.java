@@ -439,18 +439,7 @@ public class FinalBuyView extends javax.swing.JPanel {
         jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), s));
         im.placeOrder(true);
         imv.updateKundVagn();
-        //homeDeliveryRadioButton
-        //pickupDeliveryRadioButton
-        
-        //JFrame frame = new JFrame();
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
-        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-       // frame.setSize(300,250);
-        //frame.setLocation(((this.getWidth()-frame.getWidth())/2), ((this.getHeight()-frame.getHeight())/2));
-       /* System.out.println(this.getWidth()+ " "+ frame.getWidth());
-        frame.add(new orderNotification());
-        frame.setUndecorated(true);
-        frame.setVisible(true);*/
+
     }//GEN-LAST:event_OrderButtonActionPerformed
 
     private void zipCodeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeFieldActionPerformed
