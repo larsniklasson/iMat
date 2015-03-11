@@ -112,6 +112,7 @@ public class FinalBuyView extends javax.swing.JPanel {
         OrderButton = new javax.swing.JButton();
         totalLabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel10 = new javax.swing.JLabel();
         validMComboBox = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
@@ -252,13 +253,15 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
 
+        jCheckBox1.setText("jCheckBox1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pickupDeliveryRadioButton)
@@ -275,7 +278,9 @@ public class FinalBuyView extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(SMSBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel17)))
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -301,17 +306,17 @@ public class FinalBuyView extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(SMSBox)
-                            .addComponent(jLabel17))))
+                            .addComponent(jLabel17)
+                            .addComponent(jCheckBox1))))
                 .addContainerGap())
         );
 
         jLabel10.setText("Varar:");
 
-        validMComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Månad" }));
+        validMComboBox.setName("Månad"); // NOI18N
 
         jLabel11.setText("/");
 
-        validYComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "År" }));
         validYComboBox.setToolTipText("");
 
         cardNrField4.addActionListener(new java.awt.event.ActionListener() {
@@ -492,12 +497,19 @@ public class FinalBuyView extends javax.swing.JPanel {
 
     private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
         // TODO add your handling code here:
-         this.jLabel14.setText("");
+         this.jLabel13.setText("");
           this.jLabel14.setText("");
-           this.jLabel14.setText("");
+           this.jLabel15.setText("");
+            this.jLabel15.setText("");
+           
           
         validInputs();
         if(validInputs){
+            
+            if(jCheckBox1.isSelected()){
+                im.getCreditCard().setCardNumber(cardNrField1.getText()+cardNrField2.getText()+ cardNrField2.getText()+ cardNrField4.getText());
+            }
+            
             im.placeOrder(false);
             im.shutDown();
 
@@ -522,16 +534,20 @@ public class FinalBuyView extends javax.swing.JPanel {
     
     
     private void validInputs(){
-        if(!isValid(this.nameField.getText()) && !isValid(this.LastNameField.getText())){
+        if(!isValid(this.nameField.getText()) || !isValid(this.LastNameField.getText())){
             this.jLabel13.setText("Du måste fylla i hela ditt namn");
         }
         
-        if(!isValid(this.addressField.getText()) && !isValid(this.zipCodeField.getText()) && !isValid(this.cityField.getText())){
+        if(!isValid(this.addressField.getText()) || !isValid(this.zipCodeField.getText()) && !isValid(this.cityField.getText())){
             this.jLabel14.setText("Kolla så du har fyllt i din adress rätt");
         }
         
-        if(!isValid(this.phoneField.getText()) && !isValid(this.emailField.getText())){
+        if(!isValid(this.phoneField.getText()) || !isValid(this.emailField.getText())){
             this.jLabel15.setText("Din Email eller telefonr är inte ifyllt");
+        }
+        
+        if(!isValid(this.CVCField.getText()) || !isValid(this.cardNrField1.getText()) || !isValid(this.cardNrField2.getText()) || !isValid(this.cardNrField3.getText()) || !isValid(this.cardNrField4.getText()) || this.validMComboBox.getSelectedItem().toString() == null || this.validMComboBox.getSelectedItem().toString() == null  ){
+            this.jLabel16.setText("Du har inte fyllt i alla dina kontouppgiter");
         }
                
                 
@@ -664,6 +680,7 @@ public class FinalBuyView extends javax.swing.JPanel {
     private javax.swing.JComboBox deliveryMComboBox;
     private javax.swing.JTextField emailField;
     private javax.swing.JRadioButton homeDeliveryRadioButton;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
