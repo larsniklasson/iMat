@@ -5,16 +5,23 @@
  */
 package imat;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
+import java.awt.RenderingHints.Key;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.text.MaskFormatter;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
@@ -192,6 +199,11 @@ public class SignInView extends javax.swing.JPanel {
 
         PhoneField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PhoneField.setText("07");
+        PhoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PhoneFieldKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Förnamn:");
@@ -474,6 +486,14 @@ public class SignInView extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_rememberMeCheckBoxStateChanged
+
+    private void PhoneFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PhoneFieldKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_PhoneFieldKeyTyped
     
     
     private static boolean validRegistation(){

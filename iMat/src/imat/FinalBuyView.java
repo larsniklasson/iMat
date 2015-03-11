@@ -5,6 +5,7 @@
  */
 package imat;
 
+import com.sun.glass.events.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -138,6 +139,11 @@ public class FinalBuyView extends javax.swing.JPanel {
                 zipCodeFieldActionPerformed(evt);
             }
         });
+        zipCodeField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                zipCodeFieldKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Stad:");
 
@@ -151,6 +157,12 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         jLabel7.setText("Mobil:");
 
+        phoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                phoneFieldKeyTyped(evt);
+            }
+        });
+
         jLabel8.setText("Kort nr:");
 
         cardNrField1.addActionListener(new java.awt.event.ActionListener() {
@@ -159,14 +171,8 @@ public class FinalBuyView extends javax.swing.JPanel {
             }
         });
         cardNrField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cardNrField1KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                cardNrField1KeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                cardNrField1KeyTyped(evt);
+                cardNrFieldKeyTyped(evt);
             }
         });
 
@@ -175,6 +181,11 @@ public class FinalBuyView extends javax.swing.JPanel {
         CVCField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CVCFieldActionPerformed(evt);
+            }
+        });
+        CVCField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CVCFieldKeyTyped(evt);
             }
         });
 
@@ -309,14 +320,8 @@ public class FinalBuyView extends javax.swing.JPanel {
             }
         });
         cardNrField4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cardNrField4KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                cardNrField4KeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                cardNrField4KeyTyped(evt);
+                cardNrFieldKeyTyped(evt);
             }
         });
 
@@ -326,14 +331,8 @@ public class FinalBuyView extends javax.swing.JPanel {
             }
         });
         cardNrField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cardNrField2KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                cardNrField2KeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                cardNrField2KeyTyped(evt);
+                cardNrFieldKeyTyped(evt);
             }
         });
 
@@ -343,14 +342,8 @@ public class FinalBuyView extends javax.swing.JPanel {
             }
         });
         cardNrField3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cardNrField3KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                cardNrField3KeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                cardNrField3KeyTyped(evt);
+                cardNrFieldKeyTyped(evt);
             }
         });
 
@@ -605,72 +598,54 @@ public class FinalBuyView extends javax.swing.JPanel {
         ishomeDelivery = false;
     }//GEN-LAST:event_pickupDeliveryRadioButtonActionPerformed
 
-    private void cardNrField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField1KeyTyped
+    private void cardNrFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrFieldKeyTyped
         // TODO add your handling code here:
-       onlyFour(this.cardNrField1);
-       onlyFour(this.cardNrField2); 
-       onlyFour(this.cardNrField3);
-       onlyFour(this.cardNrField4);
-                   
-    }//GEN-LAST:event_cardNrField1KeyTyped
 
-    private void cardNrField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField1KeyReleased
-        // TODO add your handling code here:
-        onlyFour(this.cardNrField1);
-       onlyFour(this.cardNrField2); 
-       onlyFour(this.cardNrField3);
-       onlyFour(this.cardNrField4);
-        
-    }//GEN-LAST:event_cardNrField1KeyReleased
-
-    private void cardNrField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField1KeyPressed
-        // TODO add your handling code here:
-        onlyFour(this.cardNrField1);
-       onlyFour(this.cardNrField2); 
-       onlyFour(this.cardNrField3);
-       onlyFour(this.cardNrField4);
-    }//GEN-LAST:event_cardNrField1KeyPressed
-
-    private void cardNrField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField2KeyPressed
-
-    private void cardNrField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField2KeyReleased
-
-    private void cardNrField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField2KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField2KeyTyped
-
-    private void cardNrField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField3KeyPressed
-
-    private void cardNrField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField3KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField3KeyReleased
-
-    private void cardNrField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField3KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField3KeyTyped
-
-    private void cardNrField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField4KeyPressed
-
-    private void cardNrField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField4KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField4KeyReleased
-
-    private void cardNrField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrField4KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNrField4KeyTyped
     
-    private static void onlyFour(JTextField jtf){
+       JTextField tf = (JTextField)evt.getComponent();
+       
+       char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) ||  tf.getText().length()>3){
+            evt.consume();
+        }
+                   
+    }//GEN-LAST:event_cardNrFieldKeyTyped
+
+    private void phoneFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyTyped
+        // TODO add your handling code here:
+        JTextField tf = (JTextField)evt.getComponent();
+       
+       char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_phoneFieldKeyTyped
+
+    private void CVCFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CVCFieldKeyTyped
+        // TODO add your handling code here:
+        JTextField tf = (JTextField)evt.getComponent();
+       
+       char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) ||  tf.getText().length()>2){
+            evt.consume();
+        }
+    }//GEN-LAST:event_CVCFieldKeyTyped
+
+    private void zipCodeFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_zipCodeFieldKeyTyped
+        // TODO add your handling code here:
+        JTextField tf = (JTextField)evt.getComponent();
+       
+       char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) ||  tf.getText().length()>4){
+            evt.consume();
+        }
+    }//GEN-LAST:event_zipCodeFieldKeyTyped
+    
+    private boolean isOnlyFour(JTextField jtf){
        if(jtf.getText().length()>4){
-           jtf.setText(jtf.getText().substring(0, 4));
+           return false;
        }
+       return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
