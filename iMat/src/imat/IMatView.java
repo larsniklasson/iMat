@@ -93,8 +93,6 @@ public class IMatView extends javax.swing.JFrame {
     DagensErbjudandeView dagensErbjudandePanel;
     private ShoppingCart shoppingCart;
     private IMatDataHandler dh = IMatDataHandler.getInstance();
-
-    
     
     private SignInView SIV;
     
@@ -108,9 +106,11 @@ public class IMatView extends javax.swing.JFrame {
         cr.registerComponent(this);
         cr.setSnapSize(new Dimension(1, 1));
         cr.setMinimumSize(new Dimension(40,40));
-        
+                
         this.setUndecorated(true);
         //this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+        
+        setSaleItems();
         
         initMap();
         
@@ -1925,6 +1925,15 @@ public class IMatView extends javax.swing.JFrame {
     
     public JPanel getVarorPanel(){
         return varorPanel;
+    }
+    
+    private void setSaleItems(){
+        String melon = dh.getProduct(90).getName();
+        
+        if(dh.getProduct(90).getName().equals("Vattenmelon")){
+            System.out.println("Namn på vattenmelon " + melon);
+            dh.getProduct(90).setPrice(4.90);
+        }
     }
     
 
