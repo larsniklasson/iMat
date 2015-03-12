@@ -117,7 +117,7 @@ public class IMatView extends javax.swing.JFrame {
         Utils.makeLoginTextFile();
         Utils.makeInköpslistaDir();
         Utils.makeRecipeListDir();
-
+        Utils.makeSaveCreitFile();
         shoppingCart = dh.getShoppingCart();
 
         initComponents();

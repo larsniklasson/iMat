@@ -6,6 +6,12 @@
 package imat;
 
 import com.sun.glass.events.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -31,6 +37,8 @@ public class FinalBuyView extends javax.swing.JPanel {
     public FinalBuyView(JPanel jpInput, IMatView imvInput) {
         initComponents();
         
+      
+        
         im = IMatDataHandler.getInstance();
         imv = imvInput;
         ShoppingCart SC = im.getShoppingCart();
@@ -39,7 +47,17 @@ public class FinalBuyView extends javax.swing.JPanel {
         validInputs = true;
         
         totalLabel.setText(totalLabel.getText()+ " " + (String.format("%.2f",SC.getTotal())) + " kr");
-     
+        
+        
+          File f = new File(im.imatDirectory() + "/saveCredit.txt");
+        Scanner sc = null;
+        try {
+            sc = new Scanner(f);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SignInView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s = sc.nextLine();
+        sc.close();
         
         if(imv.isLoggedIn){
         
@@ -50,6 +68,20 @@ public class FinalBuyView extends javax.swing.JPanel {
             this.cityField.setText(im.getCustomer().getPostAddress());
             this.emailField.setText(im.getUser().getUserName());
             this.phoneField.setText(im.getCustomer().getMobilePhoneNumber());
+            if(im.getCreditCard().getCardNumber()!=null &&  s.equals("1")){
+                String credNr = im.getCreditCard().getCardNumber();
+                this.cardNrField1.setText(credNr.substring(0,4));
+                this.cardNrField2.setText(credNr.substring(4,8));
+                this.cardNrField3.setText(credNr.substring(8,12));
+                this.cardNrField4.setText(credNr.substring(12));
+                
+            }
+            
+            if(s.equals("1")){
+            
+                jCheckBox1.setSelected(true);
+            
+            }
             
         
         }
@@ -253,7 +285,7 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
 
-        jCheckBox1.setText("jCheckBox1");
+        jCheckBox1.setText("spara");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -507,8 +539,19 @@ public class FinalBuyView extends javax.swing.JPanel {
         if(validInputs){
             
             if(jCheckBox1.isSelected()){
-                im.getCreditCard().setCardNumber(cardNrField1.getText()+cardNrField2.getText()+ cardNrField2.getText()+ cardNrField4.getText());
+                im.getCreditCard().setCardNumber(cardNrField1.getText()+cardNrField2.getText()+ cardNrField3.getText()+ cardNrField4.getText());
             }
+            
+             File f = new File(im.imatDirectory() + "/saveCredit.txt");
+                PrintWriter pw = null;
+                try {
+                    pw = new PrintWriter(f);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FinalBuyView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                pw.print(boolToInt(jCheckBox1.isSelected()) + "");
+                pw.close();
             
             im.placeOrder(false);
             im.shutDown();
@@ -532,6 +575,12 @@ public class FinalBuyView extends javax.swing.JPanel {
         validInputs = true;
     }//GEN-LAST:event_OrderButtonActionPerformed
     
+    private static int boolToInt(boolean b){
+        if(b){
+        return 1;
+        }
+        return 0;
+    }
     
     private void validInputs(){
         if(!isValid(this.nameField.getText()) || !isValid(this.LastNameField.getText())){

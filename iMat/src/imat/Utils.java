@@ -55,6 +55,27 @@ public class Utils {
         }
     }
     
+      public static void makeSaveCreitFile(){
+        IMatDataHandler dh = IMatDataHandler.getInstance();
+        String path = dh.imatDirectory();
+        File f = new File(path + "/saveCredit.txt");
+        if(!f.exists()){
+            try {
+                f.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            PrintWriter pw = null;
+            try {
+                pw = new PrintWriter(f);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pw.print("0");
+            pw.close();
+        }
+    }
+    
     public static void makeInköpslistaDir(){
         IMatDataHandler dh = IMatDataHandler.getInstance();
         String path = dh.imatDirectory() + "/inköpslistor";
@@ -71,6 +92,7 @@ public class Utils {
             dir.mkdirs();
     }
     }
+
     
     public static void saveShoppingCartAsList(String name){
         IMatDataHandler dh = IMatDataHandler.getInstance();
