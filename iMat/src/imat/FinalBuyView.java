@@ -156,6 +156,8 @@ public class FinalBuyView extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        cardVerLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -256,7 +258,10 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         deliveryFComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tid på dygnet...", "10:00-12:00", "12:00-14:00", "16:00-18:00", "18:00-20:00", "20:00-22:00" }));
 
-        OrderButton.setBackground(new java.awt.Color(0, 153, 51));
+        OrderButton.setBackground(Constants.NICE_GREEN
+        );
+        OrderButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        OrderButton.setForeground(new java.awt.Color(255, 255, 255));
         OrderButton.setText("Slutför köp");
         OrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +290,7 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
 
-        jCheckBox1.setText("spara");
+        jCheckBox1.setText("spara kontouppgifter");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -313,7 +318,7 @@ public class FinalBuyView extends javax.swing.JPanel {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jCheckBox1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -419,6 +424,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(LastNameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel13))
                             .addGroup(layout.createSequentialGroup()
@@ -454,6 +461,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(CVCField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                                     .addComponent(cardNrField4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cardVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel16))
                             .addGroup(layout.createSequentialGroup()
@@ -472,7 +481,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -510,7 +520,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                     .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
+                    .addComponent(jLabel16)
+                    .addComponent(cardVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -665,15 +676,22 @@ public class FinalBuyView extends javax.swing.JPanel {
 
     private void cardNrFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cardNrFieldKeyTyped
         // TODO add your handling code here:
-
-    
+        
        JTextField tf = (JTextField)evt.getComponent();
        
        char c = evt.getKeyChar();
         if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) ||  tf.getText().length()>3){
             evt.consume();
         }
-                   
+        char s = (char) cardNrField1.getText().indexOf(0);
+        if(s == '4'){
+            cardVerLabel.setText("Visa");
+        }else if(s == '5'){
+            cardVerLabel.setText("Master Card");
+        }else{
+            cardVerLabel.setText("");
+        }
+        
     }//GEN-LAST:event_cardNrFieldKeyTyped
 
     private void phoneFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyTyped
@@ -723,6 +741,7 @@ public class FinalBuyView extends javax.swing.JPanel {
     private javax.swing.JTextField cardNrField2;
     private javax.swing.JTextField cardNrField3;
     private javax.swing.JTextField cardNrField4;
+    private javax.swing.JLabel cardVerLabel;
     private javax.swing.JTextField cityField;
     private javax.swing.JComboBox deliveryDComboBox;
     private javax.swing.JComboBox deliveryFComboBox;
@@ -739,6 +758,7 @@ public class FinalBuyView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

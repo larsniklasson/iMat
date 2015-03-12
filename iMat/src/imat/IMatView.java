@@ -1343,8 +1343,9 @@ public class IMatView extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     isLoggedIn = false;
-                    loginButton.setText("Logga in");
+                    loginButton.setText("Logga in/Registrera");
                     loginButton.setIcon(null);
+                    switchCard("varorCard");
                     
                 }
             });

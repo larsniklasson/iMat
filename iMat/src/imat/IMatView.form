@@ -216,7 +216,7 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Logga in/Registrera "/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Standardmark&#xf6;r"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -294,7 +294,7 @@
                       <TreeModel code="Favoriter&#xa;Ink&#xf6;pslistor&#xa;F&#xe4;rdiga kassar&#xa; Lax i ugn&#xa; Kycklingpasta&#xa; R&#xe4;ksm&#xf6;rg&#xe5;s&#xa;Dagens Erbjudande"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Standardmark&#xf6;r"/>
+                      <Color id="Default Cursor"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -407,7 +407,7 @@
                           <TreeModel code="Visa Alla&#xa;Gr&#xf6;nsaker&#xa;  Rotfrukter&#xa;  K&#xe5;l&#xa;  Gr&#xf6;nsaksfrukter&#xa;  &#xc4;rtv&#xe4;xter&#xa;K&#xf6;tt&#xa;Fisk&#xa;Frukt &amp; B&#xe4;r&#xa;  Stenfrukter&#xa;  Meloner&#xa;  Citrusfrukter&#xa;  Exotiska Frukter&#xa;  B&#xe4;r&#xa;Br&#xf6;d&#xa;Drycker&#xa;  Varma Drycker&#xa;  Kalla Drycker&#xa;Mejeriprodukter&#xa;Mj&#xf6;l, Socker &amp; Salt&#xa;N&#xf6;tter &amp; Fr&#xf6;n&#xa;Pasta, Potatis &amp; Ris&#xa;  Pasta&#xa;  Potatis&#xa;  Ris&#xa;S&#xf6;tsaker&#xa;Kryddor"/>
                         </Property>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                          <Color id="Standardmark&#xf6;r"/>
+                          <Color id="Default Cursor"/>
                         </Property>
                         <Property name="toggleClickCount" type="int" value="1"/>
                       </Properties>
@@ -451,7 +451,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel6" pref="267" max="32767" attributes="0"/>
+                          <Component id="jPanel6" pref="262" max="32767" attributes="0"/>
                           <Component id="jPanel7" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>

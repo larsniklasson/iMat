@@ -23,7 +23,7 @@ public class orderNotification extends javax.swing.JPanel {
         deliveryLabel.setText("Val av metod: " + dv);
         nameLabel.setText(name+" "+lastName);
         addressLabel.setText("Till: " + address);
-        this.timeLabel.setText("När:s "+time+" "+ day +"/"+ month );
+        this.timeLabel.setText("När: "+time+" "+ day +"/"+ month );
         priceLabel.setText("Totalkostnad: "+(String.format("%.2f",dh.getShoppingCart().getTotal())) +" kr");
         
     }

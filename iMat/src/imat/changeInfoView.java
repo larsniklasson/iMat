@@ -45,7 +45,7 @@ public class changeInfoView extends javax.swing.JPanel {
         CityField.setText(im.getCustomer().getPostAddress());
         MailField.setText(im.getUser().getUserName());
         System.out.println(im.getCustomer().getMobilePhoneNumber());
-        PhoneField.setText(im.getCustomer().getPhoneNumber());
+        PhoneField.setText(im.getCustomer().getMobilePhoneNumber());
         PasswordField.setText(im.getUser().getPassword());
         RepPasswordField.setText(im.getUser().getPassword());
     }
