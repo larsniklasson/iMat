@@ -90,6 +90,7 @@ public class IMatView extends javax.swing.JFrame {
     OrderPanel orderPanel;
     ListorPanel listorPanel;
     DefaultBagPanel defaultBagPanel;
+    DagensErbjudandeView dagensErbjudandePanel;
     private ShoppingCart shoppingCart;
     private IMatDataHandler dh = IMatDataHandler.getInstance();
 
@@ -305,7 +306,7 @@ public class IMatView extends javax.swing.JFrame {
         loginButton.setForeground(new java.awt.Color(228, 228, 228));
         loginButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginButton.setText("Logga in/Registrera ");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginButtonMouseClicked(evt);
@@ -702,7 +703,7 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(rightPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
@@ -774,8 +775,10 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel.add(listorPanel,"listorCard");
         defaultBagPanel = new DefaultBagPanel(this);
         cardPanel.add(defaultBagPanel, "defaultBagCard");
-        orderPanel = new OrderPanel(this);
+        orderPanel = new imat.OrderPanel(this);
         cardPanel.add(orderPanel, "orderCard");
+        dagensErbjudandePanel = new imat.DagensErbjudandeView(this);
+        cardPanel.add(dagensErbjudandePanel, "dagensErbjudandeView");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
