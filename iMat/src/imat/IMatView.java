@@ -778,7 +778,7 @@ public class IMatView extends javax.swing.JFrame {
         orderPanel = new imat.OrderPanel(this);
         cardPanel.add(orderPanel, "orderCard");
         dagensErbjudandePanel = new imat.DagensErbjudandeView(this);
-        cardPanel.add(dagensErbjudandePanel, "dagensErbjudandeView");
+        cardPanel.add(dagensErbjudandePanel, "dagensErbjudandeCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -1121,7 +1121,7 @@ public class IMatView extends javax.swing.JFrame {
                 switchCard("defaultBagCard");
                 break;
             case "Dagens Erbjudande":
-                //asfsdf
+                switchCard("dagensErbjudandeCard");
                 break;
 
         }
