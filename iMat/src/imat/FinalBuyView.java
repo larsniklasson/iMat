@@ -9,6 +9,7 @@ import com.sun.glass.events.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +44,8 @@ public class FinalBuyView extends javax.swing.JPanel {
         imv = imvInput;
         ShoppingCart SC = im.getShoppingCart();
         jp = jpInput;
-        ishomeDelivery = false;
+        ishomeDelivery = true;
+        homeDeliveryRadioButton.setSelected(true);
         validInputs = true;
         
         totalLabel.setText(totalLabel.getText()+ " " + (String.format("%.2f",SC.getTotal())) + " kr");
@@ -350,10 +352,12 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         jLabel10.setText("Varar:");
 
+        validMComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---" }));
         validMComboBox.setName("Månad"); // NOI18N
 
         jLabel11.setText("/");
 
+        validYComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---" }));
         validYComboBox.setToolTipText("");
 
         cardNrField4.addActionListener(new java.awt.event.ActionListener() {
@@ -514,14 +518,15 @@ public class FinalBuyView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16)
-                    .addComponent(cardVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cardVerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel16)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -543,14 +548,16 @@ public class FinalBuyView extends javax.swing.JPanel {
          this.jLabel13.setText("");
           this.jLabel14.setText("");
            this.jLabel15.setText("");
-            this.jLabel15.setText("");
+            this.jLabel16.setText("");
            
           
         validInputs();
-        if(validInputs){
+        if((this.jLabel13.getText() + this.jLabel14.getText()+ this.jLabel15.getText()+ this.jLabel16.getText()).length()<1){
             
             if(jCheckBox1.isSelected()){
                 im.getCreditCard().setCardNumber(cardNrField1.getText()+cardNrField2.getText()+ cardNrField3.getText()+ cardNrField4.getText());
+                im.getCreditCard().setValidMonth(parseInt(validMComboBox.getSelectedItem().toString()));
+                im.getCreditCard().setValidMonth(parseInt(validMComboBox.getSelectedItem().toString()));
             }
             
              File f = new File(im.imatDirectory() + "/saveCredit.txt");
@@ -606,7 +613,7 @@ public class FinalBuyView extends javax.swing.JPanel {
             this.jLabel15.setText("Din Email eller telefonr är inte ifyllt");
         }
         
-        if(!isValid(this.CVCField.getText()) || !isValid(this.cardNrField1.getText()) || !isValid(this.cardNrField2.getText()) || !isValid(this.cardNrField3.getText()) || !isValid(this.cardNrField4.getText()) || this.validMComboBox.getSelectedItem().toString() == null || this.validMComboBox.getSelectedItem().toString() == null  ){
+        if(!isValid(this.CVCField.getText()) || ((this.cardNrField1.getText() + this.cardNrField2.getText() + this.cardNrField3.getText() + this.cardNrField4.getText()).length() < 16) || this.validMComboBox.getSelectedItem().toString().equals( "---" ) || this.validYComboBox.getSelectedItem().toString().equals("---")  ){
             this.jLabel16.setText("Du har inte fyllt i alla dina kontouppgiter");
         }
                
@@ -692,6 +699,17 @@ public class FinalBuyView extends javax.swing.JPanel {
             cardVerLabel.setText("");
         }
         
+        if(isOnlyFour(cardNrField4)){
+         
+        }else if(isOnlyFour(cardNrField3)){
+            cardNrField4.requestFocusInWindow();
+        }else if(isOnlyFour(cardNrField2)){
+            cardNrField3.requestFocusInWindow();
+        }else if(isOnlyFour(cardNrField1)){
+            //System.out.print("hejhejhej");
+            cardNrField2.requestFocusInWindow();
+        }
+        
     }//GEN-LAST:event_cardNrFieldKeyTyped
 
     private void phoneFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyTyped
@@ -725,10 +743,10 @@ public class FinalBuyView extends javax.swing.JPanel {
     }//GEN-LAST:event_zipCodeFieldKeyTyped
     
     private boolean isOnlyFour(JTextField jtf){
-       if(jtf.getText().length()>4){
-           return false;
+       if(jtf.getText().length()>2){
+           return true;
        }
-       return true;
+       return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
