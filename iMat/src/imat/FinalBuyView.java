@@ -466,7 +466,7 @@ public class FinalBuyView extends javax.swing.JPanel {
                                     .addComponent(CVCField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                                     .addComponent(cardNrField4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cardVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cardVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel16))
                             .addGroup(layout.createSequentialGroup()
@@ -690,13 +690,18 @@ public class FinalBuyView extends javax.swing.JPanel {
         if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) ||  tf.getText().length()>3){
             evt.consume();
         }
-        String s = cardNrField1.getText().indexOf(0)+"";
+        
+        String s = cardNrField1.getText();
+        if(isOnlyFour(cardNrField1)){
+        s = s.substring(0, 1);
+        System.out.println("String: " + s);
         if(s.equals("4")){
             cardVerLabel.setText("Visa");
         }else if(s.equals("5")){
             cardVerLabel.setText("Master Card");
         }else{
             cardVerLabel.setText("");
+        }
         }
         
         if(isOnlyFour(cardNrField4)){
@@ -709,6 +714,7 @@ public class FinalBuyView extends javax.swing.JPanel {
             //System.out.print("hejhejhej");
             cardNrField2.requestFocusInWindow();
         }
+        
         
     }//GEN-LAST:event_cardNrFieldKeyTyped
 
