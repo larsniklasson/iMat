@@ -690,10 +690,10 @@ public class FinalBuyView extends javax.swing.JPanel {
         if(!(Character.isDigit(c) || c == KeyEvent.VK_BACKSPACE || c == KeyEvent.VK_DELETE) ||  tf.getText().length()>3){
             evt.consume();
         }
-        char s = (char) cardNrField1.getText().indexOf(0);
-        if(s == '4'){
+        String s = cardNrField1.getText().indexOf(0)+"";
+        if(s.equals("4")){
             cardVerLabel.setText("Visa");
-        }else if(s == '5'){
+        }else if(s.equals("5")){
             cardVerLabel.setText("Master Card");
         }else{
             cardVerLabel.setText("");
