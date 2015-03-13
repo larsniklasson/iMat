@@ -91,6 +91,7 @@ public class IMatView extends javax.swing.JFrame {
     ListorPanel listorPanel;
     DefaultBagPanel defaultBagPanel;
     DagensErbjudandeView dagensErbjudandePanel;
+    kontaktaOssPanel kontaktaOssPanel;
     private ShoppingCart shoppingCart;
     private IMatDataHandler dh = IMatDataHandler.getInstance();
     
@@ -185,6 +186,7 @@ public class IMatView extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         totalPris = new javax.swing.JLabel();
+        aboutUsButton = new javax.swing.JButton();
         centerPanel = new javax.swing.JPanel();
         cardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -600,10 +602,11 @@ public class IMatView extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(0, 12, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(antalProdukterIKundVagnLabel)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(antalProdukterIKundVagnLabel)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -699,6 +702,19 @@ public class IMatView extends javax.swing.JFrame {
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.NORTH);
 
+        aboutUsButton.setForeground(new java.awt.Color(51, 51, 255));
+        aboutUsButton.setText("Om oss");
+        aboutUsButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        aboutUsButton.setBorderPainted(false);
+        aboutUsButton.setContentAreaFilled(false);
+        aboutUsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        aboutUsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutUsButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(aboutUsButton, java.awt.BorderLayout.PAGE_END);
+
         jPanel7.add(jPanel8);
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
@@ -709,7 +725,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 262, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
         rightPanelLayout.setVerticalGroup(
@@ -784,6 +800,8 @@ public class IMatView extends javax.swing.JFrame {
         cardPanel.add(orderPanel, "orderCard");
         dagensErbjudandePanel = new imat.DagensErbjudandeView(this);
         cardPanel.add(dagensErbjudandePanel, "dagensErbjudandeCard");
+        kontaktaOssPanel = new imat.kontaktaOssPanel(this);
+        cardPanel.add(kontaktaOssPanel, "kontaktaOssCard");
 
         centerPanel.add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -1471,6 +1489,12 @@ public class IMatView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_leftPanelMouseMoved
 
+    private void aboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutUsButtonActionPerformed
+         switchCard("kontaktaOssCard");
+         TitleLabel.setText("Om oss");
+         antalProdukterLabel.setText("");
+    }//GEN-LAST:event_aboutUsButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1517,6 +1541,7 @@ public class IMatView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JButton aboutUsButton;
     private javax.swing.JLabel antalProdukterIKundVagnLabel;
     private javax.swing.JLabel antalProdukterLabel;
     private javax.swing.JPanel cardPanel;
