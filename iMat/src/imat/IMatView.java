@@ -130,7 +130,7 @@ public class IMatView extends javax.swing.JFrame {
         
         jTree1.setSelectionRow(0);
         
-        setSize(1010,600);
+        setSize(1010,650);
         setLocationRelativeTo(null);
         
         Utils.changeScrollBar(jScrollPane1, 5);
@@ -1499,6 +1499,7 @@ public class IMatView extends javax.swing.JFrame {
          switchCard("kontaktaOssCard");
          TitleLabel.setText("Om oss");
          antalProdukterLabel.setText("");
+         deSelectTrees();
     }//GEN-LAST:event_aboutUsButtonActionPerformed
 
     /**

@@ -8,6 +8,7 @@ package imat;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -120,29 +121,30 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         refrechButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(235, 235, 235));
+        setBorder(Constants.MAIN_PANEL_BORDER);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         totalLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         totalLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         totalLabel.setText("jLabel1");
-        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 150, 30));
+        add(totalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 470, 150, 30));
 
         addToCartButton.setBackground(new java.awt.Color(0, 153, 75));
         addToCartButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         addToCartButton.setForeground(new java.awt.Color(255, 255, 255));
-        addToCartButton.setText("lägg till i kundvagnen");
+        addToCartButton.setText("Lägg till i kundvagnen");
         addToCartButton.setToolTipText("Lägg till varorna i kundvagnen");
         addToCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addToCartButtonActionPerformed(evt);
             }
         });
-        add(addToCartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 150, -1));
+        add(addToCartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 510, 170, -1));
 
         recipeList.setBackground(new java.awt.Color(255, 255, 255));
-        recipeList.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         recipeList.setOpaque(false);
-        add(recipeList, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 280, 290));
+        recipeList.setLayout(new java.awt.GridLayout());
+        add(recipeList, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 210, 255, 290));
 
         refrechButton.setBackground(new java.awt.Color(153, 153, 153));
         refrechButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -154,7 +156,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                 refrechButtonActionPerformed(evt);
             }
         });
-        add(refrechButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, 90, -1));
+        add(refrechButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 510, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
@@ -213,6 +215,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         sc.close();
 
         String[] arr = fileContent.split(";");
+        recipeList.setLayout(new GridLayout(arr.length, 1));
         int counter = 0;
         for (String x : arr) {
             counter++;
@@ -279,7 +282,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
         switch (s) {
             case "Lax i ugn":
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/recept1.jpg"));
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept1fix.jpg"));
                     recipeFile = new File("src/imat/resources/filer/recept/Laxiugn.txt");
 
                     //updateVarorList(s, f);
@@ -289,7 +292,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                 break;
             case "Kycklingpasta":
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/recept2.png"));
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept2fix.jpg"));
                     recipeFile = new File("src/imat/resources/filer/recept/Kycklingpasta.txt");
 
                     //updateVarorList(s, f);
@@ -299,7 +302,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                 break;
             case "Räksmörgås":
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/recept3.png"));
+                    image = ImageIO.read(new File("src/imat/resources/bilder/recept3fix.jpg"));
                     recipeFile = new File("src/imat/resources/filer/recept/Räksmörgås.txt");
 
                     //updateVarorList(s, f);
@@ -310,7 +313,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
             case "Färdiga kassar":
                 setVisibleConponents(false);
                 try {
-                    image = ImageIO.read(new File("src/imat/resources/bilder/kassevy.png"));
+                    image = ImageIO.read(new File("src/imat/resources/bilder/kassevyfix.png"));
                     recipeFile = new File("src/imat/resources/filer/recept/Kycklingpasta.txt");
 
                     //updateVarorList(s, f);
