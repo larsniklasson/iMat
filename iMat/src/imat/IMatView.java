@@ -594,9 +594,9 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(antalProdukterIKundVagnLabel)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1354,6 +1354,7 @@ public class IMatView extends javax.swing.JFrame {
             SIV = new SignInView(this,loginButton ,lastView);
             switchCard("LoginCard");
             TitleLabel.setText("Login");
+            deSelectTrees();
             showSortPanelAndAntalProductLabel(false);
             loginPanel.add(SIV);
         } else {
@@ -1370,6 +1371,7 @@ public class IMatView extends javax.swing.JFrame {
                     loginButton.setIcon(null);
                     switchCard("varorCard");
                     
+                    
                 }
             });
             
@@ -1383,6 +1385,7 @@ public class IMatView extends javax.swing.JFrame {
                     TitleLabel.setText("Inställningar");
                     showSortPanelAndAntalProductLabel(false);
                     switchCard("changeInfoCard");
+                    deSelectTrees();
                     
                     
                 }
@@ -1397,6 +1400,7 @@ public class IMatView extends javax.swing.JFrame {
                     switchCard("orderCard");
                     
                     TitleLabel.setText("Tidigare Köp");
+                    deSelectTrees();
                 }
             });
             
@@ -1448,6 +1452,8 @@ public class IMatView extends javax.swing.JFrame {
             switchCard("completeOrderCard");
             TitleLabel.setText("Order");
             completeOrderPanel.add(FBV);
+            deSelectTrees();
+            
         }else{
             jLabel8.setText("Inga varor");
             jLabel8.setForeground(Color.red);
@@ -1974,5 +1980,9 @@ public class IMatView extends javax.swing.JFrame {
         }
     }
     
+    private void deSelectTrees(){
+        jTree1.setSelectionRow(-1);
+        jTree2.setSelectionRow(-1);
+    }
 
 }
