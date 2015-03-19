@@ -1421,7 +1421,7 @@ public class IMatView extends javax.swing.JFrame {
             pu.add(cs);
             pu.add(xx);
             pu.add(mi);
-            pu.show(loginButton, loginButton.getWidth()- mi.getPreferredSize().width,loginButton.getHeight());
+            pu.show(loginButton, loginButton.getWidth()- mi.getPreferredSize().width-30,loginButton.getHeight());
         }
     }//GEN-LAST:event_loginButtonMouseClicked
 

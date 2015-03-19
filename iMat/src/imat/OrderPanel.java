@@ -16,6 +16,7 @@ import java.awt.event.AdjustmentListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -91,8 +92,10 @@ public class OrderPanel extends javax.swing.JPanel {
         int index = 0;
         for(Order o : dh.getOrders()){
             index ++;
-            map.put("" + o.getOrderNumber(), o);
-            listModel.addElement("" + o.getOrderNumber());
+            SimpleDateFormat sdfr = new SimpleDateFormat("yyyy-MMM-dd HH:mm");
+            String s = sdfr.format(o.getDate());
+            map.put(s, o);
+            listModel.addElement(s);
         }
         
         
@@ -358,7 +361,7 @@ public class OrderPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void updateVarorList(final String s) {
-        jLabel2.setText(map.get(s).getDate().toString());
+        jLabel2.setText("Order " + map.get(s).getOrderNumber());
         
         list.clear();
         
