@@ -1256,7 +1256,7 @@ public class IMatView extends javax.swing.JFrame {
         TitleLabel.setText("<html>Sökresultat för: <i>" + searchTextFIeld.getText() + "</i></html>");
         switchCard("varorCard");
         updateVarorView(dh.findProducts(searchTextFIeld.getText().toLowerCase()));
-        jTree1.setSelectionRow(-1);
+        deSelectTrees();
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchTextFIeldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFIeldKeyPressed
@@ -1984,6 +1984,14 @@ public class IMatView extends javax.swing.JFrame {
     private void deSelectTrees(){
         jTree1.setSelectionRow(-1);
         jTree2.setSelectionRow(-1);
+    }
+    
+    public JTextField getSearchField(){
+        return searchTextFIeld;
+    }
+    
+    public JButton getSearchButton(){
+        return searchButton;
     }
 
 }
