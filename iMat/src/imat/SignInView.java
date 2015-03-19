@@ -564,7 +564,7 @@ public class SignInView extends javax.swing.JPanel {
         }else{
             if(validSignIn()){
                 this.errorLabel.setText("Du är inloggad");
-                JB.setText(customer.getFirstName() + " " + customer.getLastName());
+                JB.setText("<html>" + customer.getFirstName() + " " + customer.getLastName() + "▼</html>");
                 JB.setIcon(new ImageIcon("src/imat/resources/bilder/gubbet.png"));
                 System.out.println(prevView);
                 iMatView.switchCard(prevView);

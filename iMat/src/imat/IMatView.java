@@ -308,11 +308,11 @@ public class IMatView extends javax.swing.JFrame {
         });
 
         loginButton.setBackground(new java.awt.Color(230, 230, 230));
-        loginButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         loginButton.setForeground(new java.awt.Color(228, 228, 228));
         loginButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginButton.setText("Logga in/Registrera ");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginButtonMouseClicked(evt);
