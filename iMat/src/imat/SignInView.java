@@ -678,7 +678,7 @@ public class SignInView extends javax.swing.JPanel {
 
     private void NewUserLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMouseEntered
         if(isNewUser){
-            NewUserLabel.setText("<html><u>Redan registerad?</u></html>");
+            NewUserLabel.setText("<html><u>Redan registrerad?</u></html>");
         } else {
             NewUserLabel.setText("<html><u>Ny användare?</u></html>");
         }
@@ -688,7 +688,7 @@ public class SignInView extends javax.swing.JPanel {
 
     private void NewUserLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMouseExited
         if(isNewUser){
-            NewUserLabel.setText("Redan registerad?");
+            NewUserLabel.setText("Redan registrerad?");
         } else {
             NewUserLabel.setText("Ny användare?");
         }
@@ -723,7 +723,7 @@ public class SignInView extends javax.swing.JPanel {
         if(isNewUser){
             
             this.SignInButton.setText("Registrera");
-            this.NewUserLabel.setText("Redan Registrerad?");
+            this.NewUserLabel.setText("Redan registrerad?");
             this.rememberMeCheckBox.setVisible(false);
         }else{
             

@@ -219,7 +219,7 @@ public class IMatView extends javax.swing.JFrame {
         });
 
         mainPanel.setBackground(Constants.BACKGROUND);
-        mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 750));
         mainPanel.setLayout(new java.awt.BorderLayout());
 
