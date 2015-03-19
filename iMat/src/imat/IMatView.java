@@ -71,7 +71,9 @@ import se.chalmers.ait.dat215.project.*;
  * @author Lasse
  */
 public class IMatView extends javax.swing.JFrame {
-
+    
+    public static final int MIN_WIDTH = 1010;
+    public static final int MIN_HEIGHT = 650;
     /*
     Point pointAtPress;
     Point prevPoint;*/
@@ -106,7 +108,7 @@ public class IMatView extends javax.swing.JFrame {
         cr = new ComponentResizer();
         cr.registerComponent(this);
         cr.setSnapSize(new Dimension(1, 1));
-        cr.setMinimumSize(new Dimension(40,40));
+        cr.setMinimumSize(new Dimension(MIN_WIDTH,MIN_HEIGHT));
                 
         this.setUndecorated(true);
         //this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
@@ -130,7 +132,7 @@ public class IMatView extends javax.swing.JFrame {
         
         jTree1.setSelectionRow(0);
         
-        setSize(1010,650);
+        setSize(MIN_WIDTH,MIN_HEIGHT);
         setLocationRelativeTo(null);
         
         Utils.changeScrollBar(jScrollPane1, 5);
@@ -707,7 +709,15 @@ public class IMatView extends javax.swing.JFrame {
         aboutUsButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         aboutUsButton.setBorderPainted(false);
         aboutUsButton.setContentAreaFilled(false);
-        aboutUsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        aboutUsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        aboutUsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                aboutUsButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                aboutUsButtonMouseExited(evt);
+            }
+        });
         aboutUsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutUsButtonActionPerformed(evt);
@@ -1197,7 +1207,7 @@ public class IMatView extends javax.swing.JFrame {
         
         this.setLocation((int)(prevPoint.getX() + deltax), (int)(prevPoint.getY() + deltay));*/
         if(isFullScreen){
-            this.setSize(994, 600);
+            this.setSize(MIN_WIDTH, MIN_HEIGHT);
             jLabel4.setIcon(new ImageIcon("src/imat/resources/bilder/maximizegray.png"));
             //this.setLocation(500, this.getLocation().y + evt.getY() - y);
             isFullScreen = false;
@@ -1225,15 +1235,15 @@ public class IMatView extends javax.swing.JFrame {
     private void topPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMousePressed
         if(isFullScreen){
             
-            x = 996/2;
-            if(evt.getXOnScreen() < 996/2){
+            x = MIN_WIDTH/2;
+            if(evt.getXOnScreen() < MIN_WIDTH/2){
                 x = evt.getXOnScreen();
             }
             int screenwidth = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
             
-            if(evt.getXOnScreen() > screenwidth - 996/2){
-               int diff = evt.getXOnScreen() - (screenwidth - 996/2);
-               x = 996 - (996/2 - diff);
+            if(evt.getXOnScreen() > screenwidth - MIN_WIDTH/2){
+               int diff = evt.getXOnScreen() - (screenwidth - MIN_WIDTH/2);
+               x = MIN_WIDTH - (MIN_WIDTH/2 - diff);
             }
             
             y = evt.getY();
@@ -1501,6 +1511,14 @@ public class IMatView extends javax.swing.JFrame {
          antalProdukterLabel.setText("");
          deSelectTrees();
     }//GEN-LAST:event_aboutUsButtonActionPerformed
+
+    private void aboutUsButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutUsButtonMouseEntered
+        aboutUsButton.setText("<html><u>Om oss</u></html>");
+    }//GEN-LAST:event_aboutUsButtonMouseEntered
+
+    private void aboutUsButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutUsButtonMouseExited
+        aboutUsButton.setText("<html>Om oss</html>");
+    }//GEN-LAST:event_aboutUsButtonMouseExited
 
     /**
      * @param args the command line arguments
