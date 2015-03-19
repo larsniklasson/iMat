@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
@@ -781,7 +782,7 @@ public class IMatView extends javax.swing.JFrame {
             }
         });
 
-        varorPanel.setLayout(new ModifiedFlowLayout());
+        varorPanel.setLayout(new ModifiedFlowLayout(FlowLayout.LEFT));
 
         jScrollPane2.setViewportView(varorPanel);
 

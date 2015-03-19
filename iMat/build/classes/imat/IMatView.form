@@ -805,7 +805,7 @@
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="varorPanelMouseExited"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="varorPanel.setLayout(new ModifiedFlowLayout());"/>
+                        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="varorPanel.setLayout(new ModifiedFlowLayout(FlowLayout.LEFT));"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
