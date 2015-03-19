@@ -430,10 +430,19 @@ public class SignInView extends javax.swing.JPanel {
         });
 
         NewUserLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        NewUserLabel.setForeground(new java.awt.Color(0, 0, 153));
+        NewUserLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         NewUserLabel.setText("Ny användare?");
+        NewUserLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         NewUserLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 NewUserLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                NewUserLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                NewUserLabelMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 NewUserLabelMousePressed(evt);
@@ -459,11 +468,11 @@ public class SignInView extends javax.swing.JPanel {
                 .addComponent(errorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rememberMeCheckBox)
-                .addGap(18, 18, 18)
-                .addComponent(NewUserLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NewUserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(SignInButton)
-                .addContainerGap())
+                .addGap(36, 36, 36))
             .addComponent(regPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         divPanel2Layout.setVerticalGroup(
@@ -666,6 +675,24 @@ public class SignInView extends javax.swing.JPanel {
         // TODO add your handling code here:
  
     }//GEN-LAST:event_MailFieldVetoableChange
+
+    private void NewUserLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMouseEntered
+        if(isNewUser){
+            NewUserLabel.setText("<html><u>Redan registerad?</u></html>");
+        } else {
+            NewUserLabel.setText("<html><u>Ny användare?</u></html>");
+        }
+        
+        
+    }//GEN-LAST:event_NewUserLabelMouseEntered
+
+    private void NewUserLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMouseExited
+        if(isNewUser){
+            NewUserLabel.setText("Redan registerad?");
+        } else {
+            NewUserLabel.setText("Ny användare?");
+        }
+    }//GEN-LAST:event_NewUserLabelMouseExited
     
     
     private static boolean validRegistation(){
