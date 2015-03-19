@@ -571,8 +571,8 @@ public class FinalBuyView extends javax.swing.JPanel {
                 pw.print(boolToInt(jCheckBox1.isSelected()) + "");
                 pw.close();
             
-            im.placeOrder(false);
-            im.shutDown();
+            //im.placeOrder(false);
+            //im.shutDown();
 
             jp.removeAll();
             jp.revalidate();
@@ -588,6 +588,7 @@ public class FinalBuyView extends javax.swing.JPanel {
             String month = this.deliveryMComboBox.getSelectedItem().toString();
             jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), time, day, month ,s));
             im.placeOrder(true);
+            im.shutDown();
             imv.updateKundVagn();
         }
         validInputs = true;
