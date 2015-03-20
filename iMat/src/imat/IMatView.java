@@ -419,6 +419,7 @@ public class IMatView extends javax.swing.JFrame {
         jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTree2.setOpaque(false);
+        jTree2.setPreferredSize(new java.awt.Dimension(122, 45));
         jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTree2MousePressed(evt);
@@ -456,7 +457,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Alla Varor");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Grönsaker");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
@@ -927,7 +928,7 @@ public class IMatView extends javax.swing.JFrame {
        
         
         switch (s) {
-            case "Visa Alla":
+            case "Alla Varor":
                 
                 updateVarorView(ProductCategory.values());
                 
