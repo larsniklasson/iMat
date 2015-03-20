@@ -52,6 +52,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -169,7 +170,6 @@ public class IMatView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTree2 = new javax.swing.JTree();
-        jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -412,15 +412,9 @@ public class IMatView extends javax.swing.JFrame {
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Inköpslistor");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga kassar");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Lax i ugn");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kycklingpasta");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Räksmörgås");
-        treeNode2.add(treeNode3);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Tidigare Köp");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Inställningar");
         treeNode1.add(treeNode2);
         jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -435,24 +429,7 @@ public class IMatView extends javax.swing.JFrame {
                 jTree2ValueChanged(evt);
             }
         });
-        jPanel2.add(jTree2, java.awt.BorderLayout.PAGE_START);
-
-        jPanel5.setBackground(new java.awt.Color(235, 255, 235));
-        jPanel5.setOpaque(false);
-        jPanel5.setPreferredSize(new java.awt.Dimension(164, 15));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 164, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel5, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jTree2, java.awt.BorderLayout.CENTER);
 
         leftPanel.add(jPanel2);
 
@@ -477,10 +454,12 @@ public class IMatView extends javax.swing.JFrame {
         jTree1.setBackground(Constants.BACKGROUND);
         jTree1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dagens Erbjudande");
+        treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Visa Alla");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Grönsaker");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kål");
         treeNode2.add(treeNode3);
@@ -530,6 +509,14 @@ public class IMatView extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Sötsaker");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kryddor");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga kassar");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Lax i ugn");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kycklingpasta");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Räksmörgås");
+        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1046,6 +1033,26 @@ public class IMatView extends javax.swing.JFrame {
             case "Kryddor":
                 updateVarorView(ProductCategory.HERB);
                 break;
+                
+            case "Färdiga kassar":
+                defaultBagPanel.initializeDefaultBag(s);
+                switchCard("defaultBagCard");
+                break;
+            case "Lax i ugn":
+                defaultBagPanel.initializeDefaultBag(s);
+                switchCard("defaultBagCard");
+                break;
+            case "Kycklingpasta":
+                defaultBagPanel.initializeDefaultBag(s);
+                switchCard("defaultBagCard");
+                break;
+            case "Räksmörgås":
+                defaultBagPanel.initializeDefaultBag(s);
+                switchCard("defaultBagCard");
+                break;
+            case "Dagens Erbjudande":
+                switchCard("dagensErbjudandeCard");
+                break;
 
         }
 
@@ -1140,25 +1147,24 @@ public class IMatView extends javax.swing.JFrame {
                 listorPanel.update();
                 switchCard("listorCard");
                 break;
-            case "Färdiga kassar":
-                defaultBagPanel.initializeDefaultBag(s);
-                switchCard("defaultBagCard");
+            case "Inställningar":
+                changeInfoPanel.removeAll();
+                changeInfoPanel.revalidate();
+                changeInfoPanel.add(new changeInfoView());
+                
+                showSortPanelAndAntalProductLabel(false);
+                switchCard("changeInfoCard");
+                
                 break;
-            case "Lax i ugn":
-                defaultBagPanel.initializeDefaultBag(s);
-                switchCard("defaultBagCard");
+            case "Tidigare Köp":
+                orderPanel.update();
+                showSortPanelAndAntalProductLabel(false);
+                switchCard("orderCard");
+
+                TitleLabel.setText("Tidigare Köp");
+                
                 break;
-            case "Kycklingpasta":
-                defaultBagPanel.initializeDefaultBag(s);
-                switchCard("defaultBagCard");
-                break;
-            case "Räksmörgås":
-                defaultBagPanel.initializeDefaultBag(s);
-                switchCard("defaultBagCard");
-                break;
-            case "Dagens Erbjudande":
-                switchCard("dagensErbjudandeCard");
-                break;
+            
 
         }
 
@@ -1368,11 +1374,33 @@ public class IMatView extends javax.swing.JFrame {
             switchCard("LoginCard");
             TitleLabel.setText("Login");
             deSelectTrees();
+            
             showSortPanelAndAntalProductLabel(false);
             loginPanel.add(SIV);
         } else {
             JPopupMenu pu = new JPopupMenu();
-            JMenuItem cs = new JMenuItem("Min profil");
+            
+            JMenuItem ink = new JMenuItem("Inköpslistor");
+            ink.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    deSelectTrees();
+                    jTree2.setSelectionRow(1);
+                }
+            });
+            
+            JMenuItem fav = new JMenuItem("Favoriter");
+            fav.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    deSelectTrees();
+                    jTree2.setSelectionRow(0);
+                }
+            });
+            
+            JMenuItem cs = new JMenuItem("Inställningar");
             JMenuItem mi = new JMenuItem("Logga ut");
             JMenuItem xx = new JMenuItem("Tidigare Köp");
             mi.addActionListener(new ActionListener() {
@@ -1392,13 +1420,14 @@ public class IMatView extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    changeInfoPanel.removeAll();
+                    /*changeInfoPanel.removeAll();
                     changeInfoPanel.revalidate();
                     changeInfoPanel.add(new changeInfoView());
                     TitleLabel.setText("Inställningar");
                     showSortPanelAndAntalProductLabel(false);
-                    switchCard("changeInfoCard");
+                    switchCard("changeInfoCard");*/
                     deSelectTrees();
+                    jTree2.setSelectionRow(3);
                     
                     
                 }
@@ -1408,18 +1437,22 @@ public class IMatView extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    orderPanel.update();
+                    /*orderPanel.update();
                     showSortPanelAndAntalProductLabel(false);
                     switchCard("orderCard");
                     
-                    TitleLabel.setText("Tidigare Köp");
+                    TitleLabel.setText("Tidigare Köp");*/
                     deSelectTrees();
+                    jTree2.setSelectionRow(2);
+                    
                 }
             });
             
-            
-            pu.add(cs);
+            pu.add(fav);
+            pu.add(ink);
             pu.add(xx);
+            pu.add(cs);
+            pu.add(new JSeparator());
             pu.add(mi);
             pu.show(loginButton, loginButton.getWidth()- mi.getPreferredSize().width-30,loginButton.getHeight());
         }
@@ -1593,7 +1626,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
