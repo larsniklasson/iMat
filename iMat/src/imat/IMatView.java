@@ -1038,21 +1038,26 @@ public class IMatView extends javax.swing.JFrame {
             case "Färdiga kassar":
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
+                showSortPanelAndAntalProductLabel(false);
                 break;
             case "Lax i ugn":
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
+                showSortPanelAndAntalProductLabel(false);
                 break;
             case "Kycklingpasta":
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
+                showSortPanelAndAntalProductLabel(false);
                 break;
             case "Räksmörgås":
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
+                showSortPanelAndAntalProductLabel(false);
                 break;
             case "Dagens Erbjudande":
                 switchCard("dagensErbjudandeCard");
+                showSortPanelAndAntalProductLabel(false);
                 break;
 
         }
