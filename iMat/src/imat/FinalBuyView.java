@@ -251,7 +251,7 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         deliveryDComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Imorgon", "2 dagar", "3 dagar", "4 dagar", "5dagar" }));
 
-        deliveryFComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tid på dygnet...", "10:00-12:00", "12:00-14:00", "16:00-18:00", "18:00-20:00", "20:00-22:00" }));
+        deliveryFComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eftermiddag", "Förmiddag" }));
 
         OrderButton.setBackground(Constants.NICE_GREEN
         );
