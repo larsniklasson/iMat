@@ -74,6 +74,7 @@ public class DagensErbjudandeView extends javax.swing.JPanel {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         view.getSearchField().setText("vattenmelon");
         view.getSearchButton().doClick();
+        view.getSearchField().setText("");
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
