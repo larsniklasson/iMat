@@ -817,7 +817,7 @@ public class SignInView extends javax.swing.JPanel {
            
             this.SignInButton.setText("Logga in");
             this.NewUserLabel.setText("Ny användare?");
-             iMatView.setTitle("Login");
+             iMatView.setMainTitle("Login");
              this.jLabel11.setVisible(false);
             this.rememberMeCheckBox.setVisible(true);
         }    

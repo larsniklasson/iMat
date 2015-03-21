@@ -108,7 +108,7 @@ public class IMatView extends javax.swing.JFrame {
      * Creates new form IMatView
      */
     public IMatView() {
-        
+        this.setTitle("iMat");
         cr = new ComponentResizer();
         cr.registerComponent(this);
         cr.setSnapSize(new Dimension(1, 1));
@@ -2076,7 +2076,7 @@ public class IMatView extends javax.swing.JFrame {
             completeOrderPanel.repaint();
     }
     
-      public void setTitle(String s){
+      public void setMainTitle(String s){
         TitleLabel.setText(s);
     }
     
