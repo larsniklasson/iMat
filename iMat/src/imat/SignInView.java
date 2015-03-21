@@ -95,6 +95,7 @@ public class SignInView extends javax.swing.JPanel {
         prevTitle = lastTitle;
         iMatView = imv;
         this.regPanel.setVisible(isNewUser);
+        jLabel11.setVisible(isNewUser);
         user = im.getUser();
         customer = im.getCustomer();
         JB = jbutton;
@@ -634,7 +635,7 @@ public class SignInView extends javax.swing.JPanel {
                 if(prevView.equals("completeOrderCard")){
                     
                     iMatView.setOrderview();
-                    System.out.println("hejhahahahhaha");
+                   
                     
                 } else {
                     iMatView.deSelectTrees();
