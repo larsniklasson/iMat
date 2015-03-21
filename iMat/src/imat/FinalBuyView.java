@@ -47,6 +47,10 @@ public class FinalBuyView extends javax.swing.JPanel {
         jp = jpInput;
         ishomeDelivery = true;
         homeDeliveryRadioButton.setSelected(true);
+        this.deliveryDComboBox.setVisible(true);
+        this.deliveryFComboBox.setVisible(true);
+        this.pickupDComboBox.setVisible(false);
+        this.pickupTComboBox.setVisible(false);
         validInputs = true;
         
         totalLabel.setText(totalLabel.getText()+ " " + (String.format("%.2f",SC.getTotal())) + " kr");
@@ -146,6 +150,8 @@ public class FinalBuyView extends javax.swing.JPanel {
         totalLabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        pickupDComboBox = new javax.swing.JComboBox();
+        pickupTComboBox = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         validMComboBox = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
@@ -252,6 +258,11 @@ public class FinalBuyView extends javax.swing.JPanel {
         deliveryDComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Imorgon", "2 dagar", "3 dagar", "4 dagar", "5dagar" }));
 
         deliveryFComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eftermiddag", "Förmiddag" }));
+        deliveryFComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliveryFComboBoxActionPerformed(evt);
+            }
+        });
 
         OrderButton.setBackground(Constants.NICE_GREEN
         );
@@ -287,6 +298,15 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         jCheckBox1.setText("Spara kontouppgifter");
 
+        pickupDComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Imorgon", "2 dagar", "3 dagar", "4 dagar", "5dagar" }));
+        pickupDComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickupDComboBoxActionPerformed(evt);
+            }
+        });
+
+        pickupTComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eftermiddag", "Förmiddag" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -300,15 +320,20 @@ public class FinalBuyView extends javax.swing.JPanel {
                             .addComponent(homeDeliveryRadioButton))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(deliveryFComboBox, 0, 113, Short.MAX_VALUE)
-                            .addComponent(deliveryDComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(deliveryDComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pickupDComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pickupTComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deliveryFComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 30, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(SMSBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jCheckBox1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -323,11 +348,13 @@ public class FinalBuyView extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(homeDeliveryRadioButton)
-                            .addComponent(deliveryDComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deliveryDComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deliveryFComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pickupDeliveryRadioButton)
-                            .addComponent(deliveryFComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pickupTComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pickupDComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(SMSBox)
@@ -572,8 +599,17 @@ public class FinalBuyView extends javax.swing.JPanel {
             }else{
                 s = "Hämtas";
             }
-            String time = this.deliveryFComboBox.getSelectedItem().toString();
-            String day = this.deliveryDComboBox.getSelectedItem().toString();
+            
+            String time;
+            String day;
+            
+            if(ishomeDelivery){
+                time = this.deliveryFComboBox.getSelectedItem().toString();
+                day = this.deliveryDComboBox.getSelectedItem().toString();
+            }else{
+                time = this.pickupTComboBox.getSelectedItem().toString();
+                day = this.pickupDComboBox.getSelectedItem().toString();
+            }
             jp.add(new orderNotification(imv, nameField.getText(),LastNameField.getText(),addressField.getText(), time, day,s));
             im.placeOrder(true);
             im.shutDown();
@@ -667,13 +703,20 @@ public class FinalBuyView extends javax.swing.JPanel {
     private void homeDeliveryRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeDeliveryRadioButtonActionPerformed
         // TODO add your handling code here:
         pickupDeliveryRadioButton.setSelected(false);
-        
+        this.deliveryDComboBox.setVisible(true);
+        this.deliveryFComboBox.setVisible(true);
+        this.pickupDComboBox.setVisible(false);
+        this.pickupTComboBox.setVisible(false);
         ishomeDelivery = true;
     }//GEN-LAST:event_homeDeliveryRadioButtonActionPerformed
 
     private void pickupDeliveryRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickupDeliveryRadioButtonActionPerformed
         // TODO add your handling code here:
         homeDeliveryRadioButton.setSelected(false);
+         this.deliveryDComboBox.setVisible(false);
+        this.deliveryFComboBox.setVisible(false);
+        this.pickupDComboBox.setVisible(true);
+        this.pickupTComboBox.setVisible(true);
         ishomeDelivery = false;
     }//GEN-LAST:event_pickupDeliveryRadioButtonActionPerformed
 
@@ -744,6 +787,14 @@ public class FinalBuyView extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_zipCodeFieldKeyTyped
+
+    private void pickupDComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickupDComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pickupDComboBoxActionPerformed
+
+    private void deliveryFComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryFComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deliveryFComboBoxActionPerformed
     
     private boolean isOnlyFour(JTextField jtf){
        if(jtf.getText().length()>2){
@@ -792,7 +843,9 @@ public class FinalBuyView extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField phoneField;
+    private javax.swing.JComboBox pickupDComboBox;
     private javax.swing.JRadioButton pickupDeliveryRadioButton;
+    private javax.swing.JComboBox pickupTComboBox;
     private javax.swing.JLabel totalLabel;
     private javax.swing.JComboBox validMComboBox;
     private javax.swing.JComboBox validYComboBox;
