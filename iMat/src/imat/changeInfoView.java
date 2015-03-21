@@ -167,22 +167,42 @@ public class changeInfoView extends javax.swing.JPanel {
         jLabel4.setText("*Upprepa Lösenord:");
 
         LastNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LastNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                LastNameFieldFocusGained(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Efternamn:");
 
         PhoneField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PhoneField.setText("07");
+        PhoneField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PhoneFieldFocusGained(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Förnamn:");
 
         NameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        NameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                NameFieldFocusGained(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Mobilnummer:");
 
         RepPasswordField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        RepPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RepPasswordFieldFocusGained(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Stad:");
@@ -191,13 +211,28 @@ public class changeInfoView extends javax.swing.JPanel {
         jLabel8.setText("Address:");
 
         AddressField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AddressField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddressFieldFocusGained(evt);
+            }
+        });
 
         ZipCodeField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ZipCodeField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ZipCodeFieldFocusGained(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Postnummer:");
 
         CityField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CityField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CityFieldFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout regPanelLayout = new javax.swing.GroupLayout(regPanel);
         regPanel.setLayout(regPanelLayout);
@@ -352,12 +387,13 @@ public class changeInfoView extends javax.swing.JPanel {
 
     private void MailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MailFieldFocusGained
         // TODO add your handling code here:
-        MailField.setText("");
+        //MailField.setText("");
+        MailField.selectAll();
     }//GEN-LAST:event_MailFieldFocusGained
 
     private void PasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusGained
         // TODO add your handling code here:
-        PasswordField.setText("");
+        PasswordField.selectAll();
     }//GEN-LAST:event_PasswordFieldFocusGained
 
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
@@ -404,6 +440,41 @@ public class changeInfoView extends javax.swing.JPanel {
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFieldActionPerformed
+
+    private void RepPasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RepPasswordFieldFocusGained
+        // TODO add your handling code here:
+        this.RepPasswordField.selectAll();
+    }//GEN-LAST:event_RepPasswordFieldFocusGained
+
+    private void NameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusGained
+        // TODO add your handling code here:
+        this.NameField.selectAll();
+    }//GEN-LAST:event_NameFieldFocusGained
+
+    private void LastNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastNameFieldFocusGained
+        // TODO add your handling code here:
+        this.LastNameField.selectAll();
+    }//GEN-LAST:event_LastNameFieldFocusGained
+
+    private void PhoneFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PhoneFieldFocusGained
+        // TODO add your handling code here:
+        this.PhoneField.selectAll();
+    }//GEN-LAST:event_PhoneFieldFocusGained
+
+    private void AddressFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AddressFieldFocusGained
+        // TODO add your handling code here:
+        this.AddressField.selectAll();
+    }//GEN-LAST:event_AddressFieldFocusGained
+
+    private void ZipCodeFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ZipCodeFieldFocusGained
+        // TODO add your handling code here:
+        this.ZipCodeField.selectAll();
+    }//GEN-LAST:event_ZipCodeFieldFocusGained
+
+    private void CityFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CityFieldFocusGained
+        // TODO add your handling code here:
+        this.CityField.selectAll();
+    }//GEN-LAST:event_CityFieldFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
