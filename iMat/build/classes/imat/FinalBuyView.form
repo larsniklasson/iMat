@@ -306,14 +306,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="deliveryDComboBox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="deliveryMComboBox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="deliveryFComboBox" max="32767" attributes="0"/>
+                              <Component id="deliveryFComboBox" pref="113" max="32767" attributes="0"/>
+                              <Component id="deliveryDComboBox" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -343,8 +337,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="homeDeliveryRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="deliveryDComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="deliveryMComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -391,22 +383,12 @@
         <Component class="javax.swing.JComboBox" name="deliveryDComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Dag"/>
-              </StringArray>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="/"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="deliveryMComboBox">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="M&#xe5;nad"/>
+              <StringArray count="5">
+                <StringItem index="0" value="Imorgon"/>
+                <StringItem index="1" value="2 dagar"/>
+                <StringItem index="2" value="3 dagar"/>
+                <StringItem index="3" value="4 dagar"/>
+                <StringItem index="4" value="5dagar"/>
               </StringArray>
             </Property>
           </Properties>

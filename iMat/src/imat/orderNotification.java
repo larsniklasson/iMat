@@ -16,14 +16,18 @@ public class orderNotification extends javax.swing.JPanel {
     /**
      * Creates new form orderNotification
      */
-    public orderNotification(IMatView view, String name, String lastName, String address,String time, String day,String month , String dv) {
+    public orderNotification(IMatView view, String name, String lastName, String address,String time, String day, String dv) {
         this.view = view;
         initComponents();
         IMatDataHandler dh = IMatDataHandler.getInstance();
         deliveryLabel.setText("Val av metod: " + dv);
         nameLabel.setText(name+" "+lastName);
         addressLabel.setText("Till: " + address);
-        this.timeLabel.setText("När: "+time+" "+ day +"/"+ month );
+        if(day.equals("Imorgon")){
+            this.timeLabel.setText("När: "+time+" "+ day );
+        }else{
+            this.timeLabel.setText("När: "+time+" om "+ day );
+        }
         priceLabel.setText("Totalkostnad: "+(String.format("%.2f",dh.getShoppingCart().getTotal())) +" kr");
         
     }
