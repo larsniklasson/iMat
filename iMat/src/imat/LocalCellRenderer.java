@@ -116,13 +116,7 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
                 break;
              
             case "Dagens Erbjudande":
-                //r.setIcon(new ImageIcon("src/imat/resources/bilder/erbjudande.png"));
-                if(selected){
-                    r.setForeground(Color.white);
-                } else {
-                    r.setForeground(new Color(155,0,0));
-                }
-                
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/erbjudande.png"));
                 break;
             default:
                 r.setIcon(null);
