@@ -1430,7 +1430,11 @@ public class IMatView extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     isLoggedIn = false;
                     jTree2.setSelectionRow(-1);
-                    if(jTree1.getSelectionRows().length == 0){
+                    if(lastView.equals("completeOrderCard")){
+                        switchCard("completeOrderCard");
+                        TitleLabel.setText("Order");
+                        showSortPanelAndAntalProductLabel(false);
+                    }else if(jTree1.getSelectionRows().length == 0){
                         jTree1.setSelectionRow(0);
                     }
                     jTree2.setEnabled(false);
