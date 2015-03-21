@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -244,12 +245,22 @@ public class SignInView extends javax.swing.JPanel {
         jLabel4.setText("*Upprepa Lösenord:");
 
         LastNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LastNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FieldFocusGained(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Efternamn:");
 
         PhoneField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         PhoneField.setText("07");
+        PhoneField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FieldFocusGained(evt);
+            }
+        });
         PhoneField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 PhoneFieldKeyTyped(evt);
@@ -260,11 +271,21 @@ public class SignInView extends javax.swing.JPanel {
         jLabel5.setText("Förnamn:");
 
         NameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        NameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FieldFocusGained(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Mobilnummer:");
 
         RepPasswordField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        RepPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FieldFocusGained(evt);
+            }
+        });
         RepPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 PasswordFieldKeyTyped(evt);
@@ -278,13 +299,28 @@ public class SignInView extends javax.swing.JPanel {
         jLabel8.setText("Address:");
 
         AddressField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        AddressField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FieldFocusGained(evt);
+            }
+        });
 
         ZipCodeField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ZipCodeField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FieldFocusGained(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Postnummer:");
 
         CityField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CityField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FieldFocusGained(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Minst 6 tecken och inga specialtecken.");
@@ -606,12 +642,12 @@ public class SignInView extends javax.swing.JPanel {
 
     private void MailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MailFieldFocusGained
         // TODO add your handling code here:
-        MailField.setText("");
+        MailField.selectAll();;
     }//GEN-LAST:event_MailFieldFocusGained
 
     private void PasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusGained
         // TODO add your handling code here:
-        PasswordField.setText("");
+        PasswordField.selectAll();;
     }//GEN-LAST:event_PasswordFieldFocusGained
 
     private void NewUserLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMousePressed
@@ -711,6 +747,13 @@ public class SignInView extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_NewUserLabelMouseExited
+
+    private void FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldFocusGained
+        // TODO add your handling code here:
+        JTextField tf = (JTextField)evt.getComponent();
+        
+        tf.selectAll();
+    }//GEN-LAST:event_FieldFocusGained
     
     
     private static boolean validRegistation(){
