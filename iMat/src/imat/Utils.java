@@ -124,7 +124,7 @@ public class Utils {
         try {
             pw = new PrintWriter(f);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -320,7 +320,7 @@ public class Utils {
         try {
             pw = new PrintWriter(f);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
