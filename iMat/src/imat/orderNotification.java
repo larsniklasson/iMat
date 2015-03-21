@@ -54,12 +54,16 @@ public class orderNotification extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel1.setText("Tack för ditt köp!");
 
+        deliveryLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         deliveryLabel.setText("leverans metod");
 
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nameLabel.setText("jLabel3");
 
+        addressLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addressLabel.setText("jLabel4");
 
+        priceLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         priceLabel.setText("jLabel5");
 
         jButton1.setText("Din order");
@@ -69,6 +73,7 @@ public class orderNotification extends javax.swing.JPanel {
             }
         });
 
+        timeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         timeLabel.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
