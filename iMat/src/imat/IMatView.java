@@ -375,6 +375,7 @@ public class IMatView extends javax.swing.JFrame {
 
         leftPanel.setBackground(new java.awt.Color(245, 245, 245));
         leftPanel.setOpaque(false);
+        leftPanel.setPreferredSize(new java.awt.Dimension(165, 411));
         leftPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 leftPanelMouseMoved(evt);
