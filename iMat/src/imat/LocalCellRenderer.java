@@ -93,11 +93,13 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
         
         JComponent comp = (JComponent) super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
         
+        
         //comp.setOpaque(true);
         
         boolean highlight = (oldSelectedRow != -1 && row == oldSelectedRow);
         
         LocalCellRenderer r = (LocalCellRenderer) comp;
+        
         
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
         String name = node.getUserObject().toString();
@@ -130,7 +132,7 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
         
         Dimension size = r.getPreferredSize();
         
-        if (highlight) {
+        if (highlight && tree.isEnabled()) {
             //r.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
             
             if(!tree.isRowSelected(row)){

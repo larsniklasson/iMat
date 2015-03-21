@@ -61,6 +61,7 @@ import javax.swing.JRootPane;
 import javax.swing.JScrollBar;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -426,6 +427,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode1.add(treeNode2);
         jTree2.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTree2.setEnabled(false);
         jTree2.setOpaque(false);
         jTree2.setPreferredSize(new java.awt.Dimension(122, 45));
         jTree2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1186,6 +1188,10 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTree2ValueChanged
 
     private void jTree2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree2MousePressed
+        if(!isLoggedIn){
+            return;
+        }
+        
         TreePath path = jTree2.getClosestPathForLocation(evt.getX(), evt.getY());
         if (jTree2.isPathSelected(path)) {
             if (jTree2.isExpanded(path)) {
@@ -1423,9 +1429,14 @@ public class IMatView extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     isLoggedIn = false;
+                    jTree2.setSelectionRow(-1);
+                    if(jTree1.getSelectionRows().length == 0){
+                        jTree1.setSelectionRow(0);
+                    }
+                    jTree2.setEnabled(false);
                     loginButton.setText("Logga in/Registrera");
                     loginButton.setIcon(null);
-                    switchCard("varorCard");
+                    
                     
                     
                 }
@@ -1490,8 +1501,9 @@ public class IMatView extends javax.swing.JFrame {
             if(s == null){
                 return;
             }
-            
-            if(s.contains(";")){
+            if(s.equals("")){
+                JOptionPane.showMessageDialog(this, "Ge listan ett namn");
+            } else if(s.contains(";")){
                 JOptionPane.showMessageDialog(this, "semikolon ej tillåtet");
                 
             } else {
@@ -1506,7 +1518,7 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        if(dh.getShoppingCart().getTotal()>1){
+        if(dh.getShoppingCart().getTotal() > 0){
             jLabel8.setText("");
             completeOrderPanel.removeAll();
             FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel, this);
@@ -2082,6 +2094,10 @@ public class IMatView extends javax.swing.JFrame {
     
     public JButton getSearchButton(){
         return searchButton;
+    }
+    
+    public JTree getTree2(){
+        return jTree2;
     }
 
 }
