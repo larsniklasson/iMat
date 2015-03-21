@@ -24,9 +24,9 @@ public class orderNotification extends javax.swing.JPanel {
         nameLabel.setText(name+" "+lastName);
         addressLabel.setText("Till: " + address);
         if(day.equals("Imorgon")){
-            this.timeLabel.setText("När: "+time+" "+ day );
+            this.timeLabel.setText("Levereras: "+ day +" på "+ time.toLowerCase() +"en");
         }else{
-            this.timeLabel.setText("När: "+time+" om "+ day );
+            this.timeLabel.setText("Levereras: om "+day+" på "+ time.toLowerCase() +"en" );
         }
         priceLabel.setText("Totalkostnad: "+(String.format("%.2f",dh.getShoppingCart().getTotal())) +" kr");
         

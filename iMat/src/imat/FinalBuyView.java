@@ -541,7 +541,7 @@ public class FinalBuyView extends javax.swing.JPanel {
            
           
         validInputs();
-        if((this.jLabel13.getText() + this.jLabel14.getText()+ this.jLabel15.getText()).length()<1 && !this.cardVerLabel.getForeground().equals(Color.red)){
+        if((this.jLabel13.getText() + this.jLabel14.getText()+ this.jLabel15.getText()).length()<1 && this.cardVerLabel.getText().length()<13){
             
             if(jCheckBox1.isSelected()){
                 im.getCreditCard().setCardNumber(cardNrField1.getText()+cardNrField2.getText()+ cardNrField3.getText()+ cardNrField4.getText());
