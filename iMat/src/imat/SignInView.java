@@ -509,10 +509,13 @@ public class SignInView extends javax.swing.JPanel {
 
     private void NewUserLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMouseClicked
         // TODO add your handling code here:
+        this.errorLabel.setText("");
         switchForumState();
+        this.errorLabel.setText("");
          mailVerLabel.setText("");
          passVerLabel.setText("");
-         passReVerLabel.setText("O");
+         passReVerLabel.setText("");
+         
         
         
     }//GEN-LAST:event_NewUserLabelMouseClicked
@@ -612,6 +615,7 @@ public class SignInView extends javax.swing.JPanel {
 
     private void NewUserLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMousePressed
         // TODO add your handling code here:
+        this.errorLabel.setText("");
         switchForumState();
     }//GEN-LAST:event_NewUserLabelMousePressed
 
@@ -659,14 +663,14 @@ public class SignInView extends javax.swing.JPanel {
 
     private void MailFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MailFieldKeyTyped
         // TODO add your handling code here:
-               if(isNewUser){ 
-        mail = this.MailField.getText();
-        
-        if(mail.contains("@") && mail.contains(".")){
-            mailVerLabel.setText("O");
-        }else{
-            mailVerLabel.setText("x");
-        }
+        if(isNewUser){ 
+            mail = this.MailField.getText();
+
+            if(mail.contains("@") && mail.contains(".")){
+                mailVerLabel.setText("O");
+            }else{
+                mailVerLabel.setText("x");
+            }
         }
  
     }//GEN-LAST:event_MailFieldKeyTyped
@@ -697,11 +701,13 @@ public class SignInView extends javax.swing.JPanel {
     }//GEN-LAST:event_NewUserLabelMouseEntered
 
     private void NewUserLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewUserLabelMouseExited
+        
         if(isNewUser){
             NewUserLabel.setText("Redan registrerad?");
         } else {
             NewUserLabel.setText("Ny användare?");
         }
+        
     }//GEN-LAST:event_NewUserLabelMouseExited
     
     
