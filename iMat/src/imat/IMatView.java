@@ -1432,7 +1432,7 @@ public class IMatView extends javax.swing.JFrame {
                     jTree2.setSelectionRow(-1);
                     if(lastView.equals("completeOrderCard")){
                         switchCard("completeOrderCard");
-                        TitleLabel.setText("Order");
+                        TitleLabel.setText("Kassan");
                         showSortPanelAndAntalProductLabel(false);
                     }else if(jTree1.getSelectionRows().length == 0){
                         jTree1.setSelectionRow(0);
@@ -1527,9 +1527,11 @@ public class IMatView extends javax.swing.JFrame {
             completeOrderPanel.removeAll();
             FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel, this);
             switchCard("completeOrderCard");
-            TitleLabel.setText("Order");
+            TitleLabel.setText("Kassan");
             completeOrderPanel.add(FBV);
             deSelectTrees();
+            showSortPanelAndAntalProductLabel(false);
+            
             
         }else{
             jLabel8.setText("Inga varor");
@@ -2067,7 +2069,7 @@ public class IMatView extends javax.swing.JFrame {
             completeOrderPanel.removeAll();
             FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel, this);
             switchCard("completeOrderCard");
-            TitleLabel.setText("Order");
+            TitleLabel.setText("Kassan");
             completeOrderPanel.add(FBV);
             deSelectTrees();
             completeOrderPanel.revalidate();
