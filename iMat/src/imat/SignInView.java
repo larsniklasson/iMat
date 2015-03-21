@@ -54,6 +54,7 @@ public class SignInView extends javax.swing.JPanel {
     
     private static JLabel JB;
     private static String prevView;
+    private static String prevTitle;
     private static IMatView iMatView;
     
     private static String rememberMe;
@@ -62,7 +63,7 @@ public class SignInView extends javax.swing.JPanel {
     /**
      * Creates new form SignInView
      */
-    public SignInView(IMatView imv,JLabel jbutton, String lastView) {
+    public SignInView(IMatView imv,JLabel jbutton, String lastView, String lastTitle) {
         initComponents();
         
         File f = new File(im.imatDirectory() + "/login.txt");
@@ -79,6 +80,7 @@ public class SignInView extends javax.swing.JPanel {
         
         isNewUser = false;
         prevView = lastView;
+        prevTitle = lastTitle;
         iMatView = imv;
         this.regPanel.setVisible(isNewUser);
         user = im.getUser();
@@ -567,8 +569,16 @@ public class SignInView extends javax.swing.JPanel {
                 JB.setText("<html>" + customer.getFirstName() + " " + customer.getLastName() + "▼</html>");
                 JB.setIcon(new ImageIcon("src/imat/resources/bilder/gubbet.png"));
                 System.out.println(prevView);
-                iMatView.switchCard(prevView);
                 iMatView.isLoggedIn = true;
+                if(prevView.equals("completeOrderCard")){
+                    
+                    iMatView.setOrderview();
+                    System.out.println("hejhahahahhaha");
+                    
+                }
+                iMatView.setTitle(prevTitle);
+                iMatView.switchCard(prevView);
+                
                 
                 
                 
@@ -640,7 +650,7 @@ public class SignInView extends javax.swing.JPanel {
             if(password.equals(rePassword) && rePassword.equals("") && password.length() > 6){
                 passReVerLabel.setText("O");
             }else{
-                passReVerLabel.setText("x");
+                passReVerLabel.setText("X");
             }
             
         }

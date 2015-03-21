@@ -51,7 +51,7 @@ public class FinalBuyView extends javax.swing.JPanel {
         totalLabel.setText(totalLabel.getText()+ " " + (String.format("%.2f",SC.getTotal())) + " kr");
         
         
-          File f = new File(im.imatDirectory() + "/saveCredit.txt");
+        File f = new File(im.imatDirectory() + "/saveCredit.txt");
         Scanner sc = null;
         try {
             sc = new Scanner(f);

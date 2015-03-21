@@ -85,6 +85,7 @@ public class IMatView extends javax.swing.JFrame {
     
     boolean isLoggedIn = false;
     String lastView ="";
+    String lastTitle ="";
     
     int x;
     int y;
@@ -1375,9 +1376,10 @@ public class IMatView extends javax.swing.JFrame {
         
         
         if(!isLoggedIn){
+            
             loginPanel.removeAll();
             loginPanel.revalidate();
-            SIV = new SignInView(this,loginButton ,lastView);
+            SIV = new SignInView(this,loginButton ,lastView, lastTitle);
             switchCard("LoginCard");
             TitleLabel.setText("Login");
             deSelectTrees();
@@ -1814,6 +1816,7 @@ public class IMatView extends javax.swing.JFrame {
         cl.show(cardPanel, card);
         if(!card.equals("LoginCard")){
            lastView = card;
+           lastTitle = TitleLabel.getText();
         }
     }
     
@@ -2030,6 +2033,22 @@ public class IMatView extends javax.swing.JFrame {
     
     public JPanel getVarorPanel(){
         return varorPanel;
+    }
+    
+    public void setOrderview(){
+            jLabel8.setText("");
+            completeOrderPanel.removeAll();
+            FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel, this);
+            switchCard("completeOrderCard");
+            TitleLabel.setText("Order");
+            completeOrderPanel.add(FBV);
+            deSelectTrees();
+            completeOrderPanel.revalidate();
+            completeOrderPanel.repaint();
+    }
+    
+      public void setTitle(String s){
+        TitleLabel.setText(s);
     }
     
     private void setSaleItems(){
