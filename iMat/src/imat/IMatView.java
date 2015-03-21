@@ -521,7 +521,6 @@ public class IMatView extends javax.swing.JFrame {
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTree1.setPreferredSize(new java.awt.Dimension(165, 256));
         jTree1.setToggleClickCount(1);
         jTree1.setRootVisible(false);
         jTree1.setToggleClickCount(1);
