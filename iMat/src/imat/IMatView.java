@@ -2083,7 +2083,7 @@ public class IMatView extends javax.swing.JFrame {
         }
     }
     
-    private void deSelectTrees(){
+    public void deSelectTrees(){
         jTree1.setSelectionRow(-1);
         jTree2.setSelectionRow(-1);
     }
@@ -2100,4 +2100,7 @@ public class IMatView extends javax.swing.JFrame {
         return jTree2;
     }
 
+    public JTree getTree1(){
+        return jTree1;
+    }
 }

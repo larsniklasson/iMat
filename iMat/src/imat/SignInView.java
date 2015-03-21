@@ -60,12 +60,23 @@ public class SignInView extends javax.swing.JPanel {
     
     private static String rememberMe;
     
+    private int tree1 = -1;
+    private int tree2 = -1;
+    
     
     /**
      * Creates new form SignInView
      */
     public SignInView(IMatView imv,JLabel jbutton, String lastView, String lastTitle) {
         initComponents();
+        
+        if(imv.getTree1().getSelectionRows().length != 0){
+            tree1 = imv.getTree1().getSelectionRows()[0];
+        }
+        
+        if(imv.getTree2().getSelectionRows().length != 0){
+            tree2 = imv.getTree2().getSelectionRows()[0];
+        }
         
         File f = new File(im.imatDirectory() + "/login.txt");
         Scanner sc = null;
@@ -615,9 +626,13 @@ public class SignInView extends javax.swing.JPanel {
                     iMatView.setOrderview();
                     System.out.println("hejhahahahhaha");
                     
+                } else {
+                    iMatView.deSelectTrees();
+                    iMatView.getTree1().setSelectionRow(tree1);
+                    iMatView.getTree2().setSelectionRow(tree2);
                 }
-                iMatView.setTitle(prevTitle);
-                iMatView.switchCard(prevView);
+                //iMatView.setTitle(prevTitle);
+                //iMatView.switchCard(prevView);
                 
                 
                 
