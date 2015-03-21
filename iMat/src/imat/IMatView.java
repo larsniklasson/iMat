@@ -1386,7 +1386,8 @@ public class IMatView extends javax.swing.JFrame {
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         
-        
+        loginPanel.removeAll();
+            loginPanel.revalidate();
         if(!isLoggedIn){
             
             loginPanel.removeAll();

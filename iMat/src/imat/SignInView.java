@@ -516,13 +516,10 @@ public class SignInView extends javax.swing.JPanel {
         divPanel2.setLayout(divPanel2Layout);
         divPanel2Layout.setHorizontalGroup(
             divPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(regPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, divPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(divPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(errorLabel)
-                    .addGroup(divPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel11)))
+                .addComponent(errorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rememberMeCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -530,7 +527,9 @@ public class SignInView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(SignInButton)
                 .addGap(36, 36, 36))
-            .addComponent(regPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(divPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         divPanel2Layout.setVerticalGroup(
             divPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,9 +540,9 @@ public class SignInView extends javax.swing.JPanel {
                     .addComponent(SignInButton)
                     .addComponent(NewUserLabel)
                     .addComponent(errorLabel)
-                    .addComponent(rememberMeCheckBox)
-                    .addComponent(jLabel11))
-                .addContainerGap())
+                    .addComponent(rememberMeCheckBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -558,7 +557,7 @@ public class SignInView extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(divPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(divPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
