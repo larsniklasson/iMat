@@ -114,7 +114,7 @@ public class LocalCellRenderer extends DefaultTreeCellRenderer {
                 break;
              
             case "Inköpslistor":
-                r.setIcon(new ImageIcon("src/imat/resources/bilder/inkopslista.png"));
+                r.setIcon(new ImageIcon("src/imat/resources/bilder/inkopslistagray.png"));
                 break;
              
             case "Dagens Erbjudande":
