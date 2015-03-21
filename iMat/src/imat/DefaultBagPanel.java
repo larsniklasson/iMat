@@ -310,7 +310,7 @@ public class DefaultBagPanel extends javax.swing.JPanel {
                     // handle exception...
                 }
                 break;
-            case "Färdiga kassar":
+            case "Färdiga Kassar":
                 setVisibleConponents(false);
                 try {
                     image = ImageIO.read(new File("src/imat/resources/bilder/kassevyfix.png"));
