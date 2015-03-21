@@ -6,6 +6,7 @@
 package imat;
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -545,10 +546,11 @@ public class FinalBuyView extends javax.swing.JPanel {
           this.jLabel14.setText("");
            this.jLabel15.setText("");
             this.jLabel16.setText("");
+            this.cardVerLabel.setText("");
            
           
         validInputs();
-        if((this.jLabel13.getText() + this.jLabel14.getText()+ this.jLabel15.getText()+ this.jLabel16.getText()).length()<1){
+        if((this.jLabel13.getText() + this.jLabel14.getText()+ this.jLabel15.getText()).length()<1 && !this.cardVerLabel.getForeground().equals(Color.red)){
             
             if(jCheckBox1.isSelected()){
                 im.getCreditCard().setCardNumber(cardNrField1.getText()+cardNrField2.getText()+ cardNrField3.getText()+ cardNrField4.getText());
@@ -617,7 +619,8 @@ public class FinalBuyView extends javax.swing.JPanel {
         
         if(!isValid(this.CVCField.getText()) || ((this.cardNrField1.getText() + this.cardNrField2.getText() + this.cardNrField3.getText() + this.cardNrField4.getText()).length() < 16) || this.validMComboBox.getSelectedItem().toString().equals( "---" ) || this.validYComboBox.getSelectedItem().toString().equals("---")  ){
             //this.jLabel16.setText("<html>"+"Du har inte fyllt i alla "+"<br>" +"  dina kontouppgiter"+"</html>");
-             this.cardVerLabel.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", w,"Du har inte fyllt i alla dina kontouppgiter"));
+            this.cardVerLabel.setForeground(Color.red);
+            this.cardVerLabel.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", w,"Du har inte fyllt i alla dina kontouppgiter"));
         }
                
                 
@@ -699,8 +702,10 @@ public class FinalBuyView extends javax.swing.JPanel {
         s = s.substring(0, 1);
         System.out.println("String: " + s);
         if(s.equals("4")){
+            this.cardVerLabel.setForeground(Color.black);
             cardVerLabel.setText("Visa");
         }else if(s.equals("5")){
+            this.cardVerLabel.setForeground(Color.black);
             cardVerLabel.setText("Master Card");
         }else{
             cardVerLabel.setText("");
