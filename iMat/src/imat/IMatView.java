@@ -1479,14 +1479,16 @@ public class IMatView extends javax.swing.JFrame {
         String s;
         
         while(true){
-            s = JOptionPane.showInputDialog("namn på listan?");
+            s = JOptionPane.showInputDialog("Namn på listan?");
             
             if(s == null){
                 return;
             }
             
-            if(s.contains(";")){
-                JOptionPane.showMessageDialog(this, "semikolon ej tillåtet");
+            if(s.equals("")){
+                JOptionPane.showMessageDialog(this, "Ge listan ett namn.");
+            } else if(s.contains(";")){
+                JOptionPane.showMessageDialog(this, "Semikolon ej tillåtet.");
                 
             } else {
                 break;
