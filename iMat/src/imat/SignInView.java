@@ -808,9 +808,9 @@ public class SignInView extends javax.swing.JPanel {
         
         if(isNewUser){
             
-            this.SignInButton.setText("Login");
+            this.SignInButton.setText("Registrera");
             this.NewUserLabel.setText("Redan registrerad?");
-            iMatView.setTitle("Registrering");
+            iMatView.setMainTitle("Registrering");
             this.jLabel11.setVisible(true);
             this.rememberMeCheckBox.setVisible(false);
         }else{
