@@ -1518,7 +1518,7 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        if(dh.getShoppingCart().getTotal()>1){
+        if(dh.getShoppingCart().getTotal() > 0){
             jLabel8.setText("");
             completeOrderPanel.removeAll();
             FinalBuyView FBV = new FinalBuyView(this.completeOrderPanel, this);
