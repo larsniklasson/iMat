@@ -512,7 +512,7 @@ public class IMatView extends javax.swing.JFrame {
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kryddor");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga kassar");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Färdiga Kassar");
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Lax i ugn");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kycklingpasta");
@@ -1036,7 +1036,7 @@ public class IMatView extends javax.swing.JFrame {
                 updateVarorView(ProductCategory.HERB);
                 break;
                 
-            case "Färdiga kassar":
+            case "Färdiga Kassar":
                 defaultBagPanel.initializeDefaultBag(s);
                 switchCard("defaultBagCard");
                 showSortPanelAndAntalProductLabel(false);
