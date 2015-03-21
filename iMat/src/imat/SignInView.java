@@ -708,15 +708,15 @@ public class SignInView extends javax.swing.JPanel {
               password = new String(this.PasswordField.getPassword());
             rePassword = new String(this.RepPasswordField.getPassword());
             if(password.length() > 6){
-                passVerLabel.setText("O");
+                //passVerLabel.setText("O");
             }else{
-                 passVerLabel.setText("X");
+                // passVerLabel.setText("X");
             }
             
             if(password.equals(rePassword) && rePassword.equals("") && password.length() > 6){
-                passReVerLabel.setText("O");
+               // passReVerLabel.setText("O");
             }else{
-                passReVerLabel.setText("X");
+                //passReVerLabel.setText("X");
             }
             
         }
@@ -729,9 +729,9 @@ public class SignInView extends javax.swing.JPanel {
             mail = this.MailField.getText();
 
             if(mail.contains("@") && mail.contains(".")){
-                mailVerLabel.setText("O");
+               // mailVerLabel.setText("O");
             }else{
-                mailVerLabel.setText("x");
+               // mailVerLabel.setText("x");
             }
         }
  
