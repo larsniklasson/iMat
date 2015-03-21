@@ -704,6 +704,7 @@ public class SignInView extends javax.swing.JPanel {
         
         if(isNewUser){
             NewUserLabel.setText("Redan registrerad?");
+            
         } else {
             NewUserLabel.setText("Ny användare?");
         }
@@ -738,13 +739,15 @@ public class SignInView extends javax.swing.JPanel {
         
         if(isNewUser){
             
-            this.SignInButton.setText("Registrera");
+            this.SignInButton.setText("Login");
             this.NewUserLabel.setText("Redan registrerad?");
+            iMatView.setTitle("Registrering");
             this.rememberMeCheckBox.setVisible(false);
         }else{
-            
+           
             this.SignInButton.setText("Logga in");
             this.NewUserLabel.setText("Ny användare?");
+             iMatView.setTitle("Login");
             this.rememberMeCheckBox.setVisible(true);
         }    
              
