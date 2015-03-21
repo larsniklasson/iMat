@@ -446,6 +446,7 @@ public class IMatView extends javax.swing.JFrame {
         leftPanel.add(jPanel3);
 
         jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(166, 320));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(0, 153, 0));
