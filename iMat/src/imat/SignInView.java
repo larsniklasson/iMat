@@ -573,6 +573,7 @@ public class SignInView extends javax.swing.JPanel {
                 JB.setIcon(new ImageIcon("src/imat/resources/bilder/gubbet.png"));
                 System.out.println(prevView);
                 iMatView.isLoggedIn = true;
+                iMatView.getTree2().setEnabled(true);
                 if(prevView.equals("completeOrderCard")){
                     
                     iMatView.setOrderview();
