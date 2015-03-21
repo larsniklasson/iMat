@@ -292,7 +292,7 @@ public class FinalBuyView extends javax.swing.JPanel {
 
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
 
-        jCheckBox1.setText("spara kontouppgifter");
+        jCheckBox1.setText("Spara kontouppgifter");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -441,7 +441,7 @@ public class FinalBuyView extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cityField))
                                     .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, Short.MAX_VALUE)
                                 .addComponent(jLabel14))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,8 +467,9 @@ public class FinalBuyView extends javax.swing.JPanel {
                                     .addComponent(cardNrField4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cardVerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel16))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
@@ -519,14 +520,17 @@ public class FinalBuyView extends javax.swing.JPanel {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cardVerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cardVerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(cardNrField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cardNrField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cardNrField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cardNrField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(20, 20, 20)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -603,19 +607,19 @@ public class FinalBuyView extends javax.swing.JPanel {
     
     private void validInputs(){
         if(!isValid(this.nameField.getText()) || !isValid(this.LastNameField.getText())){
-            this.jLabel13.setText("Du måste fylla i hela ditt namn");
+            this.jLabel13.setText("<html>"+"Du måste fylla i"+"<br>" +"hela ditt namn"+"</html>");
         }
         
         if(!isValid(this.addressField.getText()) || !isValid(this.zipCodeField.getText()) && !isValid(this.cityField.getText())){
-            this.jLabel14.setText("Kolla så du har fyllt i din adress rätt");
+            this.jLabel14.setText("<html>"+"Kolla så du har fyllt i"+"<br>" +" din adress rätt"+"</html>");
         }
         
         if(!isValid(this.phoneField.getText()) || !isValid(this.emailField.getText())){
-            this.jLabel15.setText("Din Email eller telefonr är inte ifyllt");
+            this.jLabel15.setText("<html>"+"Din Email eller telefonr"+"<br>" +" är inte ifyllt"+"</html>");
         }
         
         if(!isValid(this.CVCField.getText()) || ((this.cardNrField1.getText() + this.cardNrField2.getText() + this.cardNrField3.getText() + this.cardNrField4.getText()).length() < 16) || this.validMComboBox.getSelectedItem().toString().equals( "---" ) || this.validYComboBox.getSelectedItem().toString().equals("---")  ){
-            this.jLabel16.setText("Du har inte fyllt i alla dina kontouppgiter");
+            this.jLabel16.setText("<html>"+"Du har inte fyllt i alla "+"<br>" +"  dina kontouppgiter"+"</html>");
         }
                
                 
@@ -712,7 +716,6 @@ public class FinalBuyView extends javax.swing.JPanel {
         }else if(isOnlyFour(cardNrField2)){
             cardNrField3.requestFocusInWindow();
         }else if(isOnlyFour(cardNrField1)){
-            //System.out.print("hejhejhej");
             cardNrField2.requestFocusInWindow();
         }
         
