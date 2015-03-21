@@ -7,13 +7,14 @@ package imat;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 /**
  *
  * @author jesper
  */
 public class DagensErbjudandeView extends javax.swing.JPanel {
-    
+    private IMatDataHandler dh = IMatDataHandler.getInstance();
     private IMatView view;
 
     /**
@@ -21,7 +22,12 @@ public class DagensErbjudandeView extends javax.swing.JPanel {
      */
     public DagensErbjudandeView(IMatView view) {
         this.view = view;
+        
         initComponents();
+        jPanel1.add(new ProductSummaryView(view, dh.getProduct(44)));
+        jPanel1.add(new ProductSummaryView(view, dh.getProduct(77)));
+        jPanel1.add(new ProductSummaryView(view, dh.getProduct(99)));
+        jPanel1.setBackground(Color.white);
     }
 
     /**
@@ -34,6 +40,7 @@ public class DagensErbjudandeView extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(Constants.MAIN_PANEL_BORDER);
@@ -53,13 +60,18 @@ public class DagensErbjudandeView extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 7, 5));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(330, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -67,7 +79,9 @@ public class DagensErbjudandeView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(257, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -88,5 +102,6 @@ public class DagensErbjudandeView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

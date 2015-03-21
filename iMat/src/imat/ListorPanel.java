@@ -164,7 +164,7 @@ public class ListorPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(Constants.MAIN_PANEL_BORDER);
+        setBorder(imat.Constants.MAIN_PANEL_BORDER);
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -210,14 +210,14 @@ public class ListorPanel extends javax.swing.JPanel {
 
         jPanel9.setOpaque(false);
 
-        jButton2.setText("ta bort");
+        jButton2.setText("Ta Bort");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("ny");
+        jButton3.setText("Ny");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -297,6 +297,9 @@ public class ListorPanel extends javax.swing.JPanel {
 
         jLabel3.setText("jLabel3");
 
+        jButton1.setBackground(Constants.NICE_GREEN);
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Lägg till i kundvagnen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

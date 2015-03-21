@@ -310,6 +310,9 @@ public class changeInfoView extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
+        SignInButton.setBackground(Constants.NICE_GREEN);
+        SignInButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        SignInButton.setForeground(new java.awt.Color(255, 255, 255));
         SignInButton.setText("Spara");
         SignInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
